@@ -1,43 +1,14 @@
-.performance-lab {
-  margin-top: 28px;
-  padding: 22px;
-  border: 1px solid rgba(255, 255, 255, .12);
-  border-radius: 18px;
-  background: rgba(13, 19, 37, .7);
-}
-
-.performance-lab header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.performance-lab h2 { margin: 4px 0 0; font-size: 1.2rem; }
-.performance-lab__eyebrow { color: #15cfae; font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.performance-lab > p { color: #aab5ce; }
-
-.performance-lab button {
-  min-width: 140px;
-  padding: 10px 14px;
-  border: 0;
-  border-radius: 10px;
-  background: #15cfae;
-  color: #07120f;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.performance-lab button:disabled { cursor: wait; opacity: .6; }
-.performance-lab__status { display: block; margin: 20px 0 12px; color: #ff8d8d; }
-.performance-lab__status.is-ok { color: #43e7bc; }
-.performance-lab dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; }
-.performance-lab dl div { padding: 10px; border-radius: 10px; background: rgba(255, 255, 255, .04); }
-.performance-lab dt { color: #8793ad; font-size: .75rem; }
-.performance-lab dd { margin: 4px 0 0; font-weight: 800; }
+.performance-lab { overflow: hidden; border: 1px solid rgba(255,255,255,.11); border-radius: 24px; background: #0d131f; box-shadow: 0 30px 80px rgba(0,0,0,.26); }
+.performance-lab__header { display: flex; min-height: 78px; padding: 0 25px; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.018); }
+.performance-lab__title { display: flex; align-items: center; gap: 17px; }.performance-lab__terminal { display: flex; width: 44px; height: 38px; padding: 0 9px; align-items: center; justify-content: center; gap: 4px; border: 1px solid rgba(255,255,255,.1); border-radius: 9px; background: #090e17; }.performance-lab__terminal i { width: 5px; height: 5px; border-radius: 50%; background: #ff6b73; }.performance-lab__terminal i:nth-child(2) { background: #ffc557; }.performance-lab__terminal i:nth-child(3) { background: #4bd69a; }
+.performance-lab__eyebrow { color: var(--accent); font-family: monospace; font-size: .56rem; letter-spacing: .09em; text-transform: uppercase; }.performance-lab h3 { margin: 4px 0 0; font-size: 1rem; }
+.performance-lab__header button { min-width: 150px; padding: 10px 13px; border: 1px solid var(--accent); border-radius: 9px; color: white; background: var(--accent-soft); font-size: .67rem; font-weight: 750; cursor: pointer; }.performance-lab__header button:hover { background: var(--accent-strong); }.performance-lab__header button:disabled { cursor: wait; opacity: .65; }
+.performance-lab__running { display: flex; min-height: 260px; align-items: center; justify-content: center; gap: 12px; color: #8995aa; font-size: .75rem; }.performance-lab__running i { width: 17px; height: 17px; border: 2px solid rgba(255,255,255,.12); border-top-color: var(--accent); border-radius: 50%; animation: lab-spin .7s linear infinite; }
+.performance-lab__score { display: grid; padding: 30px; grid-template-columns: auto 1fr; align-items: center; gap: 22px; border-bottom: 1px solid rgba(255,255,255,.075); }.score-ring { display: flex; width: 78px; height: 78px; align-items: center; justify-content: center; flex-direction: column; border: 5px solid #ff8d8d; border-radius: 50%; background: rgba(255,255,255,.02); }.score-ring.is-ok { border-color: #43e7bc; box-shadow: 0 0 30px rgba(67,231,188,.1); }.score-ring strong { font-size: 1.7rem; line-height: 1; }.score-ring span { margin-top: 3px; color: #718098; font-size: .5rem; text-transform: uppercase; }
+.performance-lab__status { display: block; color: #ff8d8d; font-size: 1rem; }.performance-lab__status.is-ok { color: #69e7c4; }.performance-lab__score p { max-width: 600px; margin: 7px 0 0; color: #77849c; font-size: .7rem; line-height: 1.6; }
+.performance-lab__results { display: grid; margin: 0; padding: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }.performance-lab__results div { min-width: 0; padding: 18px; border: 1px solid rgba(255,255,255,.065); border-radius: 12px; background: rgba(255,255,255,.018); }.performance-lab__results dt { color: #707c93; font-size: .62rem; }.performance-lab__results dd { overflow: hidden; margin: 12px 0 4px; color: #f1f4fa; font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 850; letter-spacing: -.04em; text-overflow: ellipsis; }.performance-lab__results dd b { margin-left: 3px; color: var(--accent); font-family: monospace; font-size: .62rem; font-weight: 600; }.performance-lab__results small { color: #536077; font-size: .55rem; }
+.performance-lab__content > footer { display: flex; min-height: 48px; padding: 0 20px; align-items: center; gap: 22px; border-top: 1px solid rgba(255,255,255,.07); color: #667289; background: rgba(0,0,0,.12); font-size: .59rem; }.performance-lab__content > footer span { display: flex; align-items: center; gap: 7px; }.performance-lab__content > footer i { width: 5px; height: 5px; border-radius: 50%; background: #f7b955; }.performance-lab__content > footer i.is-green { background: #43e7bc; }.performance-lab__content > footer code { margin-left: auto; color: #5b687f; }
 .performance-lab__sandbox { position: fixed; left: -100000px; width: 1px; height: 1px; overflow: hidden; }
-
-@media (max-width: 560px) {
-  .performance-lab header { align-items: flex-start; flex-direction: column; }
-  .performance-lab dl { grid-template-columns: 1fr; }
-}
+@keyframes lab-spin { to { transform: rotate(360deg); } }
+@media (max-width: 650px) { .performance-lab__header { padding: 18px; align-items: flex-start; flex-direction: column; }.performance-lab__header button { width: 100%; }.performance-lab__results { grid-template-columns: repeat(2, minmax(0,1fr)); }.performance-lab__content > footer { padding-block: 12px; align-items: flex-start; flex-direction: column; gap: 7px; }.performance-lab__content > footer code { margin-left: 0; } }
+@media (max-width: 420px) { .performance-lab__score { grid-template-columns: 1fr; }.performance-lab__results { grid-template-columns: 1fr; } }

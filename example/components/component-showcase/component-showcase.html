@@ -1,0 +1,48 @@
+<div class="component-showcase">
+  <header class="component-showcase__summary">
+    <div><span class="component-showcase__dot"></span><strong>24 componentes registrados</strong><small>Todos usando a mesma API declarativa</small></div>
+    <code>&lt;component-showcase&gt;</code>
+  </header>
+
+  <ui-tabs tabs="vm.tabs" active="vm.activeTab" on-change="vm.changeTab($event)">
+    <div ng-switch="vm.activeTab">
+      <section class="showcase-panel" ng-switch-when="base">
+        <div class="showcase-heading"><div><span>01 · ELEMENTOS</span><h3>Botoes, badges, alertas e selects</h3></div><code>{{ vm.lastAction }}</code></div>
+
+        <div class="showcase-group"><header><strong>Botoes</strong><small>5 variantes · 3 tamanhos · estados</small></header>
+          <div class="showcase-row"><ui-button label="Primario" icon="→" on-click="vm.handleAction($event)"></ui-button><ui-button label="Secundario" variant="secondary" on-click="vm.handleAction($event)"></ui-button><ui-button label="Sucesso" icon="✓" variant="success" on-click="vm.handleAction($event)"></ui-button><ui-button label="Perigo" variant="danger" on-click="vm.handleAction($event)"></ui-button><ui-button label="Ghost" variant="ghost" on-click="vm.handleAction($event)"></ui-button><ui-button label="Desabilitado" disabled="true"></ui-button></div>
+          <div class="showcase-row"><ui-button label="Pequeno" size="small"></ui-button><ui-button label="Medio" variant="secondary"></ui-button><ui-button label="Grande" size="large" icon="◇"></ui-button></div>
+        </div>
+
+        <div class="showcase-columns">
+          <div class="showcase-group"><header><strong>Badges e status</strong><small>Semantica visual reutilizavel</small></header><div class="showcase-row"><ui-badge label="Padrao"></ui-badge><ui-badge label="Primary" variant="primary" dot="true"></ui-badge><ui-badge label="Sucesso" variant="success" dot="true"></ui-badge><ui-badge label="Atencao" variant="warning"></ui-badge><ui-badge label="Erro" variant="danger"></ui-badge><ui-badge label="Info" variant="info"></ui-badge></div></div>
+          <div class="showcase-group"><header><strong>Selects</strong><small>Binding e callback on-change</small></header><div class="showcase-selects"><ui-select label="Tamanho" options="[{ value: 'sm', label: 'Pequeno' }, { value: 'md', label: 'Medio' }, { value: 'lg', label: 'Grande' }]" value="'md'"></ui-select><ui-select label="Estado" options="[{ value: 'ready', label: 'Pronto' }, { value: 'review', label: 'Em revisao' }]" value="'ready'"></ui-select></div></div>
+        </div>
+
+        <div class="showcase-alerts"><ui-alert title="Operacao concluida" message="O componente foi atualizado e todos os bindings estao sincronizados." variant="success" dismissible="true"></ui-alert><ui-alert title="Revise esta configuracao" message="Esta e uma mensagem de atencao com acao para dispensar." variant="warning" dismissible="true"></ui-alert><ui-alert title="Informacao do sistema" message="Alertas tambem podem ser persistentes e informativos." variant="info"></ui-alert></div>
+      </section>
+
+      <section class="showcase-panel" ng-switch-when="data">
+        <div class="showcase-heading"><div><span>02 · DADOS</span><h3>Metricas e tabela interativa</h3></div><code>tabela → select → badge → pagination</code></div>
+        <div class="showcase-stats"><stat-card label="Receita mensal" value="R$ 84,2 mil" change="12,4%" icon="$"></stat-card><stat-card label="Projetos ativos" value="128" change="8,1%" icon="▦"></stat-card><stat-card label="Tempo medio" value="1,8s" change="4,2%" trend="down" icon="◷"></stat-card><stat-card label="Satisfacao" value="96%" change="2,7%" icon="☆"></stat-card></div>
+        <records-table></records-table>
+      </section>
+
+      <section class="showcase-panel" ng-switch-when="cards">
+        <div class="showcase-heading"><div><span>03 · CONTEUDO</span><h3>Cards, listas e accordion</h3></div><code>componentes reutilizados dentro de componentes</code></div>
+        <div class="showcase-products"><product-card ng-repeat="product in vm.products track by product.id" product="product" on-select="vm.selectProduct($event)"></product-card></div>
+        <div class="showcase-columns showcase-columns--content"><user-list users="vm.users"></user-list><accordion-list></accordion-list></div>
+      </section>
+
+      <section class="showcase-panel" ng-switch-when="forms">
+        <div class="showcase-heading"><div><span>04 · ENTRADA</span><h3>Formulario, validacao e modal</h3></div><ui-button label="Abrir modal" icon="↗" variant="secondary" size="small" on-click="vm.openModal()"></ui-button></div>
+        <demo-form></demo-form>
+      </section>
+    </div>
+  </ui-tabs>
+
+  <ui-modal open="vm.modalOpen" title="{{ vm.selectedProduct ? vm.selectedProduct.name : 'Componente reutilizavel' }}" on-close="vm.closeModal()" on-confirm="vm.confirmModal()">
+    <p ng-if="vm.selectedProduct">Voce selecionou <strong>{{ vm.selectedProduct.name }}</strong>, no valor de {{ vm.selectedProduct.price | currency:'R$ ':0 }}. O card enviou o produto por evento e o componente pai abriu este modal.</p>
+    <p ng-if="!vm.selectedProduct">Este modal e um componente independente com props, eventos, transclusao, backdrop e estados acessiveis.</p>
+  </ui-modal>
+</div>

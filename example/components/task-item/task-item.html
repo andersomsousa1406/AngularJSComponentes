@@ -1,0 +1,10 @@
+<article class="task-item" ng-class="{ 'is-done': vm.task.done }">
+  <button type="button" class="task-item__check" ng-click="vm.toggle()" aria-label="{{ vm.task.done ? 'Reabrir' : 'Concluir' }} {{ vm.task.title }}">
+    <span aria-hidden="true">{{ vm.task.done ? '✓' : '' }}</span>
+  </button>
+  <div class="task-item__content">
+    <strong>{{ vm.task.title }}</strong>
+    <small>{{ vm.task.category }}</small>
+  </div>
+  <span class="task-item__points">{{ vm.task.points }} pt</span>
+</article>

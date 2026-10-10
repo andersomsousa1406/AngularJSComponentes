@@ -1,0 +1,8 @@
+<section class="ui-tabs">
+  <nav class="ui-tabs__nav" role="tablist" aria-label="Categorias de componentes">
+    <button ng-repeat="tab in vm.tabs track by tab.id" type="button" role="tab" ng-click="vm.select(tab)" ng-disabled="tab.disabled" ng-class="{ active: vm.active === tab.id }" aria-selected="{{ vm.active === tab.id }}">
+      <span class="ui-tabs__icon">{{ tab.icon }}</span><span>{{ tab.label }}</span><small ng-if="tab.count">{{ tab.count }}</small>
+    </button>
+  </nav>
+  <div class="ui-tabs__panel" role="tabpanel" ng-transclude></div>
+</section>

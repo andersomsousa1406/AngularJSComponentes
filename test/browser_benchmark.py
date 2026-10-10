@@ -108,6 +108,12 @@ async def run_browser_test(debug_port, page_url):
             await cdp.call("Runtime.enable")
             await cdp.call("Page.enable")
             await cdp.call("Network.enable")
+            await cdp.call("Emulation.setDeviceMetricsOverride", {
+                "width": 390,
+                "height": 844,
+                "deviceScaleFactor": 1,
+                "mobile": True,
+            })
             await cdp.call("Page.navigate", {"url": page_url})
 
             result = None
@@ -159,6 +165,54 @@ async def run_browser_test(debug_port, page_url):
                 await cdp.call("HeapProfiler.collectGarbage")
                 heap_samples.append((await cdp.call("Runtime.getHeapUsage"))["usedSize"])
 
+            showcase = await cdp.evaluate("""
+              (function () {
+                var host = document.querySelector('component-showcase');
+                var scope = angular.element(host).isolateScope();
+                var tabs = host.querySelectorAll('.ui-tabs__nav button');
+                function select(index) {
+                  tabs[index].click();
+                  scope.$root.$digest();
+                }
+
+                var result = { tabCount: tabs.length };
+                select(1);
+                result.data = {
+                  stats: host.querySelectorAll('stat-card').length,
+                  rows: host.querySelectorAll('.data-table tbody tr').length,
+                  selects: host.querySelectorAll('records-table ui-select').length,
+                  paginations: host.querySelectorAll('records-table ui-pagination').length
+                };
+
+                select(2);
+                result.cards = {
+                  products: host.querySelectorAll('product-card').length,
+                  lists: host.querySelectorAll('user-list').length,
+                  accordions: host.querySelectorAll('accordion-list').length
+                };
+                host.querySelector('.product-card .ui-button').click();
+                scope.$root.$digest();
+                result.modalOpened = !!host.querySelector('.ui-modal__dialog');
+                scope.vm.closeModal();
+                scope.$root.$digest();
+
+                select(3);
+                result.forms = {
+                  forms: host.querySelectorAll('demo-form').length,
+                  nestedSelects: host.querySelectorAll('demo-form ui-select').length
+                };
+                select(0);
+                result.base = {
+                  buttons: host.querySelectorAll('ui-button').length,
+                  badges: host.querySelectorAll('ui-badge').length,
+                  alerts: host.querySelectorAll('ui-alert').length,
+                  selects: host.querySelectorAll('.showcase-selects ui-select').length
+                };
+                result.styleCount = document.querySelectorAll('[data-easy-component-style]').length;
+                return result;
+              }())
+            """)
+
             await cdp.evaluate("""
               (function () {
                 document.querySelector('.counter button[aria-label="Aumentar"]').click();
@@ -178,7 +232,9 @@ async def run_browser_test(debug_port, page_url):
                   nestedChild: text('.counter value-display strong'),
                   sibling: text('.data-flow value-display strong'),
                   styleCount: document.querySelectorAll('[data-easy-component-style]').length,
-                  benchmarkNodes: document.querySelectorAll('benchmark-probe').length
+                  benchmarkNodes: document.querySelectorAll('benchmark-probe').length,
+                  viewportWidth: document.documentElement.clientWidth,
+                  contentWidth: document.documentElement.scrollWidth
                 };
               }())
             """)
@@ -194,6 +250,20 @@ async def run_browser_test(debug_port, page_url):
             assert rendered["counter"] == "3"
             assert rendered["nestedChild"] == "3"
             assert rendered["sibling"] == "3"
+            assert rendered["viewportWidth"] == 390
+            assert rendered["contentWidth"] <= rendered["viewportWidth"], (
+                "A demonstracao possui overflow horizontal no layout mobile."
+            )
+            assert showcase["tabCount"] == 4
+            assert showcase["data"] == {"stats": 4, "rows": 4, "selects": 1, "paginations": 1}, showcase["data"]
+            assert showcase["cards"] == {"products": 3, "lists": 1, "accordions": 1}, showcase["cards"]
+            assert showcase["modalOpened"], "O card de produto nao abriu o modal."
+            assert showcase["forms"] == {"forms": 1, "nestedSelects": 1}, showcase["forms"]
+            assert showcase["base"]["buttons"] >= 9
+            assert showcase["base"]["badges"] >= 6
+            assert showcase["base"]["alerts"] == 3
+            assert showcase["base"]["selects"] == 2
+            assert showcase["styleCount"] >= 24
             assert not cdp.exceptions, "Erros JavaScript: " + ", ".join(cdp.exceptions)
 
             component_requests = [url for url in cdp.requests if "/components/" in url]
@@ -216,6 +286,7 @@ async def run_browser_test(debug_port, page_url):
                     "allowedGrowth": round(allowed_growth),
                 },
                 "rendered": rendered,
+                "showcase": showcase,
                 "network": {
                     "totalRequests": len(cdp.requests),
                     "componentPartRequests": component_requests,

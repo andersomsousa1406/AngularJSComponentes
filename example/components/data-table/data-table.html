@@ -1,0 +1,33 @@
+<section class="data-table">
+  <header class="data-table__toolbar">
+    <label class="data-table__search"><span aria-hidden="true">⌕</span><input type="search" ng-model="vm.query" ng-change="vm.search()" placeholder="Buscar projeto ou responsavel" aria-label="Buscar na tabela"></label>
+    <ui-select options="vm.statusOptions" value="vm.status" on-change="vm.setStatus($event)"></ui-select>
+    <ui-button label="Exportar" icon="↓" variant="secondary" size="small"></ui-button>
+  </header>
+
+  <div class="data-table__scroll">
+    <table>
+      <thead><tr>
+        <th><button type="button" ng-click="vm.sort('id')">ID <span>↕</span></button></th>
+        <th><button type="button" ng-click="vm.sort('name')">Projeto <span>↕</span></button></th>
+        <th>Responsavel</th><th>Status</th>
+        <th><button type="button" ng-click="vm.sort('value')">Valor <span>↕</span></button></th>
+        <th>Atualizado</th><th><span class="sr-only">Acoes</span></th>
+      </tr></thead>
+      <tbody>
+        <tr ng-repeat="row in vm.visibleRows track by row.id">
+          <td><code>{{ row.id }}</code></td>
+          <td><strong>{{ row.name }}</strong></td>
+          <td><span class="data-table__owner"><i>{{ row.initials }}</i>{{ row.owner }}</span></td>
+          <td><ui-badge label="{{ vm.statusLabel(row.status) }}" variant="{{ vm.statusVariant(row.status) }}" dot="true"></ui-badge></td>
+          <td><strong>{{ row.value | currency:'R$ ':0 }}</strong></td>
+          <td><span class="data-table__date">{{ row.date }}</span></td>
+          <td><button class="data-table__more" type="button" aria-label="Acoes para {{ row.name }}">•••</button></td>
+        </tr>
+        <tr ng-if="!vm.visibleRows.length"><td colspan="7" class="data-table__empty">Nenhum registro encontrado.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer><span>Mostrando {{ vm.visibleRows.length }} de {{ vm.filteredRows.length }} registros</span><ui-pagination page="vm.page" total="vm.pageCount" on-change="vm.setPage($event)"></ui-pagination></footer>
+</section>

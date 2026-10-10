@@ -1,0 +1,5 @@
+<article class="product-card">
+  <div class="product-card__visual product-card__visual--{{ vm.product.color }}"><span>{{ vm.product.icon }}</span><ui-badge label="{{ vm.product.tag }}" variant="{{ vm.product.badge }}"></ui-badge></div>
+  <div class="product-card__body"><span>{{ vm.product.category }}</span><h3>{{ vm.product.name }}</h3><p>{{ vm.product.description }}</p></div>
+  <footer><div><small>a partir de</small><strong>{{ vm.product.price | currency:'R$ ':0 }}</strong></div><ui-button label="Detalhes" variant="secondary" size="small" on-click="vm.select()"></ui-button></footer>
+</article>

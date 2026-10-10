@@ -1,0 +1,6 @@
+<section class="accordion-list">
+  <article ng-repeat="item in vm.items track by item.id" ng-class="{ open: vm.openId === item.id }">
+    <button type="button" ng-click="vm.toggle(item.id)" aria-expanded="{{ vm.openId === item.id }}"><span>{{ item.title }}</span><i>{{ vm.openId === item.id ? '−' : '+' }}</i></button>
+    <div ng-if="vm.openId === item.id"><p>{{ item.text }}</p></div>
+  </article>
+</section>

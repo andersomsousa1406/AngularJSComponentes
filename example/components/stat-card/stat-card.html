@@ -1,0 +1,5 @@
+<article class="stat-card">
+  <header><span>{{ vm.label }}</span><i>{{ vm.icon }}</i></header>
+  <strong>{{ vm.value }}</strong>
+  <footer ng-if="vm.change"><span class="stat-card__trend stat-card__trend--{{ vm.trend }}">{{ vm.trend === 'up' ? '↗' : '↘' }} {{ vm.change }}</span><small>vs. mes anterior</small></footer>
+</article>

@@ -1,0 +1,9 @@
+<label class="ui-select">
+  <span ng-if="vm.label">{{ vm.label }}</span>
+  <span class="ui-select__control">
+    <select ng-model="vm.value" ng-change="vm.changed()" ng-options="option.value as option.label for option in vm.options">
+      <option value="">{{ vm.placeholder }}</option>
+    </select>
+    <i aria-hidden="true">⌄</i>
+  </span>
+</label>

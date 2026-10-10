@@ -1,0 +1,10 @@
+<section class="activity-feed">
+  <header><div><span class="activity-feed__live"></span><strong>Event stream</strong></div><small>{{ vm.total }} recentes</small></header>
+  <div class="activity-feed__list">
+    <article ng-repeat="item in vm.items track by item.id" class="activity-feed__item activity-feed__item--{{ item.type }}">
+      <span class="activity-feed__marker">{{ item.type === 'success' ? '✓' : item.type === 'theme' ? '◐' : item.type === 'event' ? '↗' : '·' }}</span>
+      <div><strong>{{ item.title }}</strong><p>{{ item.detail }}</p></div>
+      <code>#{{ $index + 1 }}</code>
+    </article>
+  </div>
+</section>

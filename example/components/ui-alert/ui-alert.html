@@ -1,0 +1,5 @@
+<aside class="ui-alert ui-alert--{{ vm.variant }}" ng-if="vm.visible" role="status">
+  <span class="ui-alert__icon">{{ vm.icon }}</span>
+  <div><strong>{{ vm.title }}</strong><p>{{ vm.message }}</p></div>
+  <button ng-if="vm.dismissible" type="button" ng-click="vm.dismiss()" aria-label="Fechar alerta">×</button>
+</aside>

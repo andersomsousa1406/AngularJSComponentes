@@ -305,6 +305,30 @@ Para abrir o exemplo, sirva a raiz do projeto por HTTP e visite `/example/`. Uma
 npm run demo
 ```
 
+## Projeto de demonstracao
+
+A rota `/example/` funciona como uma apresentacao completa da biblioteca. Ela inclui:
+
+- landing page responsiva e navegacao acessivel;
+- contador com estado, metodos, computed value, evento e transclusao;
+- quadro de tarefas composto por componentes pai e filhos;
+- seletor de tema usando props e callback;
+- feed que demonstra comunicacao entre componentes irmaos;
+- exemplos de codigo com abas;
+- vitrine com 24 componentes publicos organizados em tabs;
+- botoes, badges, alertas, selects e paginacao;
+- tabela com busca, filtro, ordenacao e componentes aninhados;
+- cards de metricas, produtos, usuarios e listas expansivas;
+- formulario reativo, validacao e modal com transclusao;
+- laboratorio que cria e destroi 3.000 componentes por rodada;
+- templates e estilos incorporados em um unico bundle.
+
+Para reconstruir automaticamente enquanto edita os componentes:
+
+```bash
+npm run watch:example
+```
+
 ## Limites intencionais
 
 - O plugin nao implementa Virtual DOM; ele usa o compilador e o digest do AngularJS.

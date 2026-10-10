@@ -1,0 +1,9 @@
+<article class="feature-card feature-card--{{ vm.accent }}">
+  <div class="feature-card__top">
+    <span class="feature-card__icon" aria-hidden="true">{{ vm.icon }}</span>
+    <span class="feature-card__tag">{{ vm.tag }}</span>
+  </div>
+  <h3>{{ vm.title }}</h3>
+  <p>{{ vm.description }}</p>
+  <div class="feature-card__demo" ng-transclude></div>
+</article>

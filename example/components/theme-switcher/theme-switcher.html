@@ -1,0 +1,8 @@
+<aside class="theme-switcher" aria-label="Personalizar demonstracao">
+  <div><span class="theme-switcher__icon">◐</span><p><strong>Props em tempo real</strong><small>Tema atual: {{ vm.currentLabel }}</small></p></div>
+  <div class="theme-switcher__options">
+    <button ng-repeat="theme in vm.themes" type="button" ng-click="vm.choose(theme)" ng-class="{ active: vm.value === theme.id }" aria-label="Usar tema {{ theme.label }}" aria-pressed="{{ vm.value === theme.id }}">
+      <i ng-style="{ background: theme.color }"></i><span>{{ theme.label }}</span>
+    </button>
+  </div>
+</aside>

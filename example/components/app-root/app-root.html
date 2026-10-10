@@ -1,23 +1,207 @@
-<main class="page">
-  <p class="eyebrow">AngularJS 1.8.4</p>
-  <h1>Componentes simples,<br>mesmo em projetos legados.</h1>
-  <p class="intro">Props, estado, computed values e eventos em uma API pequena e previsivel.</p>
+<div class="demo-shell theme-{{ vm.theme }}">
+  <a class="skip-link" href="#conteudo">Pular para o conteudo</a>
 
-  <counter-card
-    title="Contador de exemplo"
-    initial="vm.start"
-    step="vm.step"
-    on-change="vm.record($event)">
-    <span>Este texto chegou pelo slot.</span>
-  </counter-card>
+  <header class="topbar">
+    <a class="brand" href="#inicio" ng-click="vm.closeMenu()" aria-label="Easy Components - inicio">
+      <span class="brand__mark" aria-hidden="true">EC</span>
+      <span>Easy Components</span>
+      <small>v0.1</small>
+    </a>
 
-  <section class="data-flow">
-    <p>Componente irmao recebendo o valor pelo pai:</p>
-    <value-display
-      label="Ultimo evento"
-      value="vm.lastValue">
-    </value-display>
-  </section>
+    <button class="menu-button" type="button" ng-click="vm.toggleMenu()" aria-label="Abrir menu" aria-expanded="{{ vm.menuOpen }}">
+      <span></span><span></span><span></span>
+    </button>
 
-  <performance-lab></performance-lab>
-</main>
+    <nav class="nav" ng-class="{ 'is-open': vm.menuOpen }" aria-label="Navegacao principal">
+      <a href="#recursos" ng-click="vm.closeMenu()">Recursos</a>
+      <a href="#componentes" ng-click="vm.closeMenu()">Componentes</a>
+      <a href="#biblioteca" ng-click="vm.closeMenu()">Biblioteca</a>
+      <a href="#desempenho" ng-click="vm.closeMenu()">Desempenho</a>
+      <a href="#comecar" ng-click="vm.closeMenu()">Documentacao</a>
+    </nav>
+
+    <a class="button button--small button--ghost topbar__cta" href="#comecar">Comecar agora</a>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero section" id="inicio">
+      <div class="hero__copy">
+        <div class="eyebrow"><span></span> AngularJS 1.5+ · experiencia moderna</div>
+        <h1>Componentes simples.<br><em>Legado poderoso.</em></h1>
+        <p class="hero__lead">Uma camada pequena e produtiva para criar componentes AngularJS com props, estado, eventos e estilos isolados por arquivo — sem abandonar o ecossistema que voce ja tem.</p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="#componentes">Explorar componentes <span aria-hidden="true">→</span></a>
+          <a class="button button--ghost" href="#comecar">Ver como funciona</a>
+        </div>
+
+        <dl class="hero__stats" aria-label="Resumo do projeto">
+          <div><dt>3.000</dt><dd>componentes no teste</dd></div>
+          <div><dt>0</dt><dd>scopes retidos</dd></div>
+          <div><dt>1</dt><dd>bundle da aplicacao</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero__visual" aria-label="Exemplo de codigo do Easy Components">
+        <div class="orb orb--one"></div>
+        <div class="orb orb--two"></div>
+        <div class="code-window">
+          <header class="code-window__bar">
+            <span class="window-dots"><i></i><i></i><i></i></span>
+            <span>counter-card.component.js</span>
+            <span class="code-window__status">● pronto</span>
+          </header>
+          <pre><code><span class="token-keyword">export default</span> <span class="token-keyword">function</span> <span class="token-fn">register</span>(app) {
+  <span class="token-keyword">return</span> app.<span class="token-fn">component</span>(<span class="token-string">'counterCard'</span>, {
+    <span class="token-prop">props</span>: { initial: Number },
+    <span class="token-prop">state</span>: { count: <span class="token-number">0</span> },
+    <span class="token-prop">computed</span>: {
+      doubled() { <span class="token-keyword">return this</span>.count * <span class="token-number">2</span>; }
+    },
+    <span class="token-prop">template</span>, <span class="token-prop">styles</span>
+  });
+}</code></pre>
+          <footer><span>✓ HTML + CSS incorporados</span><span>8 linhas de API</span></footer>
+        </div>
+        <div class="floating-chip floating-chip--top"><b>vm.</b> autocomplete</div>
+        <div class="floating-chip floating-chip--bottom"><span>✓</span> mount automatico</div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Compatibilidade">
+      <span>FEITO PARA PROJETOS REAIS</span>
+      <ul>
+        <li>AngularJS 1.5+</li>
+        <li>ES Modules</li>
+        <li>VS Code</li>
+        <li>Build com esbuild</li>
+        <li>Zero runtime extra</li>
+      </ul>
+    </section>
+
+    <section class="section section--features" id="recursos">
+      <div class="section-heading">
+        <div><span class="kicker">Uma API que faz sentido</span><h2>Menos cerimonia.<br>Mais produto.</h2></div>
+        <p>Continue usando AngularJS por baixo, mas escreva componentes com uma estrutura que qualquer pessoa acostumada a frameworks modernos reconhece.</p>
+      </div>
+
+      <div class="feature-grid">
+        <feature-card icon="↘" tag="Fluxo previsivel" title="Props e eventos" description="Dados descem por props; mudancas voltam por callbacks nativos do AngularJS." accent="violet">
+          <div class="mini-flow"><span>Pai</span><i>props →</i><span>Filho</span><i>← event</i></div>
+        </feature-card>
+        <feature-card icon="◇" tag="Estado local" title="$setState simples" description="Atualize objetos ou use uma funcao, mantendo o digest sincronizado automaticamente." accent="cyan">
+          <code>vm.$setState({ open: true })</code>
+        </feature-card>
+        <feature-card icon="ƒ" tag="Valores derivados" title="Computed values" description="Getters declarativos que acompanham o estado pelo ciclo normal do AngularJS." accent="orange">
+          <code>doubled: () =&gt; count * 2</code>
+        </feature-card>
+        <feature-card icon="{ }" tag="Organizacao" title="HTML, CSS e JS juntos" description="Cada componente mora em sua pasta; o build entrega tudo em um unico bundle." accent="green">
+          <div class="file-stack"><span>component.js</span><span>template.html</span><span>styles.css</span></div>
+        </feature-card>
+      </div>
+    </section>
+
+    <section class="section playground" id="componentes">
+      <div class="section-heading section-heading--center">
+        <div><span class="kicker">Playground interativo</span><h2>Componentes trabalhando juntos</h2></div>
+        <p>Interaja com os exemplos. Cada bloco abaixo e um componente independente, com estado, estilos e responsabilidades proprias.</p>
+      </div>
+
+      <theme-switcher value="vm.theme" on-change="vm.changeTheme($event)"></theme-switcher>
+
+      <div class="playground__grid">
+        <div class="playground__primary">
+          <div class="demo-label"><span>01</span><div><strong>Estado + computed</strong><small>contador-card</small></div></div>
+          <counter-card
+            title="Contador reativo"
+            initial="vm.start"
+            step="vm.step"
+            on-change="vm.record($event)">
+            <span>Este conteudo chegou por <code>ng-transclude</code>.</span>
+          </counter-card>
+
+          <section class="data-flow">
+            <p><span class="pulse"></span> Componente irmao atualizado pelo evento do contador</p>
+            <value-display label="Ultimo valor recebido" value="vm.lastValue"></value-display>
+          </section>
+        </div>
+
+        <div class="playground__secondary">
+          <div class="demo-label"><span>02</span><div><strong>Composicao + eventos</strong><small>task-board → task-item</small></div></div>
+          <task-board on-activity="vm.recordTask($event)"></task-board>
+        </div>
+      </div>
+
+      <div class="activity-section">
+        <div class="activity-section__copy">
+          <span class="kicker">Fluxo entre irmaos</span>
+          <h3>Um evento, varios componentes sincronizados.</h3>
+          <p>O componente pai recebe eventos do contador, do quadro de tarefas e do seletor de tema. Em seguida, repassa o estado atualizado para o feed.</p>
+          <div class="flow-diagram" aria-label="Fluxo dos dados">
+            <span>Filho A</span><i>evento</i><b>App Root</b><i>prop</i><span>Filho B</span>
+          </div>
+        </div>
+        <activity-feed items="vm.activities"></activity-feed>
+      </div>
+    </section>
+
+    <section class="section library-section" id="biblioteca">
+      <div class="section-heading section-heading--center">
+        <div><span class="kicker">Biblioteca de interface</span><h2>Um kit completo de componentes.</h2></div>
+        <p>Explore componentes inspirados nos padrões do Bootstrap, agora declarados com props, estado e eventos do Easy Components.</p>
+      </div>
+      <component-showcase></component-showcase>
+    </section>
+
+    <section class="section performance-section" id="desempenho">
+      <div class="section-heading">
+        <div><span class="kicker">Medicao real, nao promessa</span><h2>Velocidade e memoria<br>ao vivo no seu navegador.</h2></div>
+        <p>O laboratorio cria, atualiza e destroi milhares de componentes. Depois verifica scopes, DOM e heap para identificar retencoes.</p>
+      </div>
+      <performance-lab></performance-lab>
+    </section>
+
+    <section class="section quickstart" id="comecar">
+      <div class="quickstart__copy">
+        <span class="kicker">Do zero ao componente</span>
+        <h2>Comece em poucos minutos.</h2>
+        <p>Crie o modulo uma vez, importe seus componentes e deixe o Easy Components fazer o bootstrap no momento certo.</p>
+        <ol class="steps">
+          <li><span>1</span><div><strong>Instale ou copie o plugin</strong><small>Adicione AngularJS e angularjs-easy-components.js.</small></div></li>
+          <li><span>2</span><div><strong>Crie componentes por pasta</strong><small>JavaScript, template e estilos proximos.</small></div></li>
+          <li><span>3</span><div><strong>Registre e use</strong><small>Uma tag HTML normal, pronta para o AngularJS.</small></div></li>
+        </ol>
+      </div>
+      <code-preview></code-preview>
+    </section>
+
+    <section class="section api-section">
+      <div class="section-heading section-heading--center">
+        <div><span class="kicker">API essencial</span><h2>Tudo que um componente precisa.</h2></div>
+        <p>Uma superficie pequena, previsivel e totalmente apoiada no ciclo de vida nativo do AngularJS.</p>
+      </div>
+      <div class="api-grid">
+        <article><code>props</code><h3>Entradas tipadas</h3><p>Defaults, validadores e bindings <code>&lt; @ = &amp;</code>.</p></article>
+        <article><code>state</code><h3>Estado local</h3><p>Objeto ou factory inicializada depois das props.</p></article>
+        <article><code>methods</code><h3>Metodos ligados</h3><p><code>this</code> sempre aponta para o componente.</p></article>
+        <article><code>computed</code><h3>Valores derivados</h3><p>Getters enxutos, sem sincronizacao manual.</p></article>
+        <article><code>watch</code><h3>Observadores seguros</h3><p>Watchers removidos automaticamente no destroy.</p></article>
+        <article><code>hooks</code><h3>Ciclo completo</h3><p>Init, changes, post-link e destroy.</p></article>
+      </div>
+    </section>
+
+    <section class="final-cta section">
+      <div>
+        <span class="kicker">Seu legado nao precisa parecer antigo</span>
+        <h2>Modernize a experiencia.<br>Preserve o investimento.</h2>
+      </div>
+      <a class="button button--light" href="#comecar">Criar primeiro componente <span>→</span></a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#inicio"><span class="brand__mark">EC</span><span>Easy Components</span></a>
+    <p>Componentes modernos para AngularJS. Projeto demonstrativo local.</p>
+    <div><a href="#recursos">API</a><a href="#componentes">Exemplos</a><a href="#desempenho">Benchmark</a></div>
+  </footer>
+</div>

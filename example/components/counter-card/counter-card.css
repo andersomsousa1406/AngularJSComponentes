@@ -1,37 +1,7 @@
-.counter {
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, .12);
-  border-radius: 24px;
-  background: rgba(20, 27, 50, .82);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, .3);
-  backdrop-filter: blur(18px);
-}
-
-.counter .badge {
-  color: #9e8cff;
-  font-size: .75rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-.counter header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.counter h2 { margin: 0; font-size: 1.1rem; }
-.counter__value { margin-top: 32px; font-size: 5rem; font-weight: 800; line-height: 1; }
-.counter p { color: #aab5ce; }
-.counter__actions { display: flex; gap: 10px; margin: 28px 0; }
-
-.counter button {
-  width: 52px;
-  height: 52px;
-  border: 0;
-  border-radius: 14px;
-  background: #795cff;
-  color: white;
-  font-size: 1.7rem;
-  cursor: pointer;
-  transition: transform .15s ease, background .15s ease;
-}
-
-.counter button:hover { background: #8c74ff; transform: translateY(-2px); }
-.counter .slot { padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .1); color: #c6cee0; }
+.counter { overflow: hidden; padding: 23px; border: 1px solid rgba(255,255,255,.11); border-radius: 20px; background: radial-gradient(circle at 100% 0, var(--accent-soft), transparent 40%), #111827; box-shadow: 0 24px 60px rgba(0,0,0,.22); }
+.counter > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }.counter > header > div { display: flex; flex-direction: column; gap: 5px; }
+.counter .badge { color: var(--accent); font-size: .56rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }.counter h2 { margin: 0; font-size: 1.02rem; }
+.counter__live { display: flex; padding: 5px 8px; align-items: center; gap: 6px; border: 1px solid rgba(67,231,188,.13); border-radius: 99px; color: #75d9bd; background: rgba(67,231,188,.06); font-size: .56rem; }.counter__live i { width: 5px; height: 5px; border-radius: 50%; background: #43e7bc; }
+.counter__number { display: flex; margin-top: 34px; align-items: flex-end; justify-content: space-between; }.counter__value { font-size: 5rem; font-weight: 850; line-height: .85; letter-spacing: -.07em; }.counter__number p { display: flex; margin: 0; flex-direction: column; align-items: flex-end; color: #71809a; font-size: .62rem; }.counter__number strong { margin-top: 3px; color: var(--accent); font-family: monospace; font-size: 1.05rem; }
+.counter__actions { display: grid; margin: 30px 0 22px; grid-template-columns: 1fr 1fr; gap: 8px; }.counter__actions button { height: 43px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; color: #e6eaf2; background: rgba(255,255,255,.04); font-size: 1.2rem; cursor: pointer; transition: transform .15s, background .15s; }.counter__actions button:last-child { border-color: transparent; color: white; background: linear-gradient(135deg, var(--accent), var(--accent-strong)); }.counter__actions button:hover { transform: translateY(-2px); background: rgba(255,255,255,.08); }.counter__actions button:last-child:hover { background: linear-gradient(135deg, var(--accent), var(--accent-strong)); }
+.counter .slot { display: flex; padding: 12px; align-items: center; gap: 12px; border: 1px dashed rgba(255,255,255,.12); border-radius: 10px; color: #8793aa; font-size: .67rem; }.counter .slot > span { padding: 3px 6px; border-radius: 5px; color: var(--accent); background: var(--accent-soft); font-family: monospace; font-size: .55rem; }.counter .slot p { margin: 0; }

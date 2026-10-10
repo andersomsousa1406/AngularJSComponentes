@@ -1,0 +1,12 @@
+<section class="code-preview">
+  <header>
+    <nav aria-label="Arquivos do exemplo">
+      <button type="button" ng-click="vm.select('component')" ng-class="{ active: vm.active === 'component' }">component.js</button>
+      <button type="button" ng-click="vm.select('template')" ng-class="{ active: vm.active === 'template' }">template.html</button>
+      <button type="button" ng-click="vm.select('app')" ng-class="{ active: vm.active === 'app' }">app.js</button>
+    </nav>
+    <button class="code-preview__copy" type="button" ng-click="vm.copy()">{{ vm.copied ? 'Copiado ✓' : 'Copiar' }}</button>
+  </header>
+  <pre><code ng-bind="vm.code"></code></pre>
+  <footer><span>JavaScript</span><span>UTF-8</span><span>Easy Components</span></footer>
+</section>

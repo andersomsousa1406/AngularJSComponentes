@@ -1,0 +1,27 @@
+<section class="task-board">
+  <header class="task-board__header">
+    <div>
+      <span>SPRINT ATUAL</span>
+      <h3>Componentes da release</h3>
+    </div>
+    <button type="button" class="task-board__add" ng-click="vm.addTask()"><span>+</span> Nova tarefa</button>
+  </header>
+
+  <div class="task-board__progress">
+    <div><span>Progresso</span><strong>{{ vm.doneCount }}/{{ vm.tasks.length }} concluidas</strong></div>
+    <div class="task-board__track"><i ng-style="{ width: vm.progress + '%' }"></i></div>
+  </div>
+
+  <nav class="task-board__filters" aria-label="Filtrar tarefas">
+    <button type="button" ng-click="vm.setFilter('all')" ng-class="{ active: vm.filter === 'all' }">Todas</button>
+    <button type="button" ng-click="vm.setFilter('open')" ng-class="{ active: vm.filter === 'open' }">Abertas</button>
+    <button type="button" ng-click="vm.setFilter('done')" ng-class="{ active: vm.filter === 'done' }">Concluidas</button>
+  </nav>
+
+  <div class="task-board__list">
+    <task-item ng-repeat="task in vm.visibleTasks track by task.id" task="task" on-toggle="vm.toggleTask($event)"></task-item>
+    <p class="task-board__empty" ng-if="!vm.visibleTasks.length">Nenhuma tarefa nesta visualizacao.</p>
+  </div>
+
+  <footer><span><i></i> Estado sincronizado</span><code>{{ vm.progress }}%</code></footer>
+</section>

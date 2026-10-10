@@ -1,21 +1,20 @@
 <article class="counter">
   <header>
-    <span class="badge">easyComponent</span>
-    <h2>{{ vm.title }}</h2>
+    <div><span class="badge">easyComponent</span><h2>{{ vm.title }}</h2></div>
+    <span class="counter__live"><i></i> reativo</span>
   </header>
 
-  <div class="counter__value">{{ vm.count }}</div>
-  <p>Dobro: {{ vm.doubled }}</p>
+  <div class="counter__number">
+    <div class="counter__value">{{ vm.count }}</div>
+    <p>Valor computado <strong>{{ vm.doubled }}</strong></p>
+  </div>
 
   <div class="counter__actions">
     <button type="button" ng-click="vm.decrement()" aria-label="Diminuir">−</button>
     <button type="button" ng-click="vm.increment()" aria-label="Aumentar">+</button>
   </div>
 
-  <div class="slot" ng-transclude></div>
+  <div class="slot"><span>slot</span><div ng-transclude></div></div>
 
-  <value-display
-    label="Filho aninhado recebeu"
-    value="vm.count">
-  </value-display>
+  <value-display label="Filho aninhado recebeu" value="vm.count"></value-display>
 </article>

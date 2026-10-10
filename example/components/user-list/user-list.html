@@ -1,0 +1,9 @@
+<section class="user-list">
+  <header><div><strong>Equipe do projeto</strong><small>{{ vm.onlineCount }} online agora</small></div><button type="button" aria-label="Adicionar pessoa">+</button></header>
+  <ul><li ng-repeat="user in vm.users track by user.email">
+    <span class="user-list__avatar user-list__avatar--{{ user.color }}">{{ user.initials }}<i ng-if="user.online"></i></span>
+    <div><strong>{{ user.name }}</strong><small>{{ user.email }}</small></div>
+    <ui-badge label="{{ user.role }}" variant="{{ user.role === 'Admin' ? 'primary' : 'neutral' }}"></ui-badge>
+    <button class="user-list__more" type="button" aria-label="Acoes para {{ user.name }}">•••</button>
+  </li></ul>
+</section>

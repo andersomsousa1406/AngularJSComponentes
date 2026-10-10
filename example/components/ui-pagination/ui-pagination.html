@@ -1,0 +1,5 @@
+<nav class="ui-pagination" aria-label="Paginacao">
+  <button type="button" ng-click="vm.go(vm.page - 1)" ng-disabled="vm.page === 1" aria-label="Pagina anterior">‹</button>
+  <button ng-repeat="number in vm.pages track by number" type="button" ng-click="vm.go(number)" ng-class="{ active: vm.page === number }" aria-current="{{ vm.page === number ? 'page' : undefined }}">{{ number }}</button>
+  <button type="button" ng-click="vm.go(vm.page + 1)" ng-disabled="vm.page === vm.total" aria-label="Proxima pagina">›</button>
+</nav>

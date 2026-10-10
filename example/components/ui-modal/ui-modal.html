@@ -1,0 +1,8 @@
+<div class="ui-modal" ng-if="vm.open" role="dialog" aria-modal="true" aria-label="{{ vm.title }}">
+  <button class="ui-modal__backdrop" type="button" ng-click="vm.close()" aria-label="Fechar modal"></button>
+  <section class="ui-modal__dialog">
+    <header><div><span>COMPONENTE MODAL</span><h3>{{ vm.title }}</h3></div><button type="button" ng-click="vm.close()" aria-label="Fechar">×</button></header>
+    <div class="ui-modal__body" ng-transclude></div>
+    <footer><ui-button label="Cancelar" variant="ghost" on-click="vm.close()"></ui-button><ui-button label="Confirmar" icon="✓" on-click="vm.confirm()"></ui-button></footer>
+  </section>
+</div>

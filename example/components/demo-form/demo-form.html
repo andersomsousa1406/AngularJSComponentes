@@ -1,0 +1,12 @@
+<form class="demo-form" ng-submit="vm.submit()" novalidate>
+  <header><div><span>FORMULARIO REATIVO</span><h3>Criar acesso ao projeto</h3></div><ui-badge label="AngularJS form" variant="info"></ui-badge></header>
+  <ui-alert ng-if="vm.submitted" title="Cadastro pronto" message="O formulario foi validado e o estado atualizado com sucesso." variant="success" dismissible="true"></ui-alert>
+  <div class="demo-form__grid">
+    <label><span>Nome completo</span><input type="text" ng-model="vm.name" placeholder="Ex.: Marina Alves" required><small>Minimo de 2 caracteres</small></label>
+    <label><span>E-mail profissional</span><input type="email" ng-model="vm.email" placeholder="nome@empresa.com" required><small>Usado somente nesta demonstracao</small></label>
+  </div>
+  <ui-select label="Area principal" options="vm.roleOptions" value="vm.role" on-change="vm.setRole($event)"></ui-select>
+  <fieldset><legend>Plano preferido</legend><label><input type="radio" ng-model="vm.plan" value="solo"><span><strong>Individual</strong><small>Para projetos pessoais</small></span></label><label><input type="radio" ng-model="vm.plan" value="team"><span><strong>Equipe</strong><small>Colaboracao completa</small></span></label><label><input type="radio" ng-model="vm.plan" value="company"><span><strong>Empresa</strong><small>Controle avancado</small></span></label></fieldset>
+  <label class="demo-form__check"><input type="checkbox" ng-model="vm.updates"><i>✓</i><span>Quero receber novidades da biblioteca de componentes.</span></label>
+  <footer><span ng-class="{ ready: vm.valid }"><i></i>{{ vm.valid ? 'Formulario valido' : 'Preencha nome e e-mail' }}</span><button type="submit" ng-disabled="!vm.valid">Criar demonstracao <b>→</b></button></footer>
+</form>
