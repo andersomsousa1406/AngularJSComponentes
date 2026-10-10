@@ -1,0 +1,35 @@
+<section class="performance-lab" aria-live="polite">
+  <header>
+    <div>
+      <span class="performance-lab__eyebrow">Diagnostico real no navegador</span>
+      <h2>Desempenho e ciclo de vida</h2>
+    </div>
+    <button type="button" ng-click="vm.run()" ng-disabled="vm.running">
+      {{ vm.running ? 'Testando…' : 'Testar novamente' }}
+    </button>
+  </header>
+
+  <p ng-if="vm.running">Criando, atualizando e destruindo componentes…</p>
+
+  <div class="performance-lab__results" ng-if="vm.result">
+    <strong class="performance-lab__status" ng-class="{ 'is-ok': vm.result.passed }">
+      {{ vm.result.passed ? 'Sem vazamento estrutural' : 'Possivel retencao detectada' }}
+    </strong>
+    <dl>
+      <div><dt>Componentes compilados</dt><dd>{{ vm.result.compiled }}</dd></div>
+      <div><dt>Atualizacoes de binding</dt><dd>{{ vm.result.bindingUpdates }}</dd></div>
+      <div><dt>Tempo total</dt><dd>{{ vm.result.duration }} ms</dd></div>
+      <div><dt>Vazao</dt><dd>{{ vm.result.componentsPerSecond }}/s</dd></div>
+      <div><dt>Scopes retidos</dt><dd data-testid="scope-delta">{{ vm.result.scopeDelta }}</dd></div>
+      <div><dt>Nos retidos</dt><dd data-testid="node-delta">{{ vm.result.remainingNodes }}</dd></div>
+      <div ng-if="vm.result.heapDelta !== null"><dt>Variacao do heap</dt><dd>{{ vm.result.heapDelta | number }} bytes</dd></div>
+    </dl>
+  </div>
+
+  <div class="performance-lab__sandbox" aria-hidden="true">
+    <benchmark-probe
+      ng-repeat="item in vm.items track by item.id"
+      value="item.value">
+    </benchmark-probe>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+<main class="page">
+  <p class="eyebrow">AngularJS 1.8.4</p>
+  <h1>Componentes simples,<br>mesmo em projetos legados.</h1>
+  <p class="intro">Props, estado, computed values e eventos em uma API pequena e previsivel.</p>
+
+  <counter-card
+    title="Contador de exemplo"
+    initial="vm.start"
+    step="vm.step"
+    on-change="vm.record($event)">
+    <span>Este texto chegou pelo slot.</span>
+  </counter-card>
+
+  <section class="data-flow">
+    <p>Componente irmao recebendo o valor pelo pai:</p>
+    <value-display
+      label="Ultimo evento"
+      value="vm.lastValue">
+    </value-display>
+  </section>
+
+  <performance-lab></performance-lab>
+</main>

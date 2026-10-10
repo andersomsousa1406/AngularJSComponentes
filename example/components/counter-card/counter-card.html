@@ -1,0 +1,21 @@
+<article class="counter">
+  <header>
+    <span class="badge">easyComponent</span>
+    <h2>{{ vm.title }}</h2>
+  </header>
+
+  <div class="counter__value">{{ vm.count }}</div>
+  <p>Dobro: {{ vm.doubled }}</p>
+
+  <div class="counter__actions">
+    <button type="button" ng-click="vm.decrement()" aria-label="Diminuir">−</button>
+    <button type="button" ng-click="vm.increment()" aria-label="Aumentar">+</button>
+  </div>
+
+  <div class="slot" ng-transclude></div>
+
+  <value-display
+    label="Filho aninhado recebeu"
+    value="vm.count">
+  </value-display>
+</article>

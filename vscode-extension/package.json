@@ -1,0 +1,33 @@
+{
+  "name": "angularjs-easy-components-navigation",
+  "displayName": "AngularJS Easy Components Navigation",
+  "description": "Ir para a declaracao JavaScript de componentes AngularJS Easy Components a partir do HTML.",
+  "publisher": "local",
+  "version": "0.5.0",
+  "engines": {
+    "vscode": ">=1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "AngularJS Easy Components",
+      "properties": {
+        "easyComponents.navigation.filePattern": {
+          "type": "string",
+          "default": "**/*.component.{js,ts,mjs}",
+          "description": "Glob usado para localizar declaracoes de componentes."
+        }
+      }
+    }
+  }
+}

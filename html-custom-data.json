@@ -1,0 +1,49 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "app-root",
+      "description": "Componente raiz da aplicacao de exemplo."
+    },
+    {
+      "name": "counter-card",
+      "description": "Contador reutilizavel criado com AngularJS Easy Components.",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Titulo textual exibido no card."
+        },
+        {
+          "name": "initial",
+          "description": "Expressao AngularJS que fornece o valor inicial (Number)."
+        },
+        {
+          "name": "step",
+          "description": "Expressao AngularJS que fornece o incremento (Number maior que zero)."
+        },
+        {
+          "name": "on-change",
+          "description": "Callback executado ao mudar. Disponibiliza o novo valor em $event."
+        }
+      ]
+    },
+    {
+      "name": "value-display",
+      "description": "Componente filho que demonstra passagem de valor por binding unidirecional.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Rotulo textual exibido ao lado do valor."
+        },
+        {
+          "name": "value",
+          "description": "Expressao AngularJS recebida por binding unidirecional."
+        }
+      ]
+    },
+    {
+      "name": "performance-lab",
+      "description": "Painel que mede compilacao, atualizacao e destruicao de componentes no navegador."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "angularjs-easy-components",
+  "version": "0.1.0",
+  "description": "Componentes modernos e declarativos para AngularJS 1.5+.",
+  "main": "src/angularjs-easy-components.js",
+  "files": [
+    "src",
+    "html-custom-data.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:example": "node scripts/build-example.js",
+    "watch:example": "node scripts/build-example.js --watch",
+    "test": "node test/easy-components.test.js",
+    "pretest:browser": "npm run build:example",
+    "test:browser": "python test/browser_benchmark.py",
+    "predemo": "npm run build:example",
+    "demo": "npx http-server . -o /example/"
+  },
+  "keywords": [
+    "angularjs",
+    "component",
+    "components",
+    "legacy"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "angular": ">=1.5.0 <2"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5"
+  }
+}

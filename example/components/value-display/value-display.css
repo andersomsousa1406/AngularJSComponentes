@@ -1,0 +1,13 @@
+.value-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(121, 92, 255, .1);
+  color: #aab5ce;
+}
+
+.value-display strong { color: #edf2ff; font-size: 1.1rem; }
