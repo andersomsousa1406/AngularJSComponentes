@@ -22,6 +22,7 @@ import registerAccordionList from './components/accordion-list/accordion-list.co
 import registerDemoForm from './components/demo-form/demo-form.component.js';
 import registerUiModal from './components/ui-modal/ui-modal.component.js';
 import registerComponentShowcase from './components/component-showcase/component-showcase.component.js';
+import registerToastStack from './components/toast-stack/toast-stack.component.js';
 
 // AngularJS: cria somente o modulo da aplicacao.
 angular.module('demoApp', ['ngEasyComponents']);
@@ -53,5 +54,6 @@ app.register(
   registerAccordionList,
   registerDemoForm,
   registerUiModal,
-  registerComponentShowcase
+  registerComponentShowcase,
+  registerToastStack
 );

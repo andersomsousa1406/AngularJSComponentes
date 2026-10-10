@@ -315,11 +315,12 @@ A rota `/example/` funciona como uma apresentacao completa da biblioteca. Ela in
 - seletor de tema usando props e callback;
 - feed que demonstra comunicacao entre componentes irmaos;
 - exemplos de codigo com abas;
-- vitrine com 24 componentes publicos organizados em tabs;
+- vitrine com 25 componentes publicos organizados em tabs;
 - botoes, badges, alertas, selects e paginacao;
 - tabela com busca, filtro, ordenacao e componentes aninhados;
 - cards de metricas, produtos, usuarios e listas expansivas;
 - formulario reativo, validacao e modal com transclusao;
+- navegacao sticky com scroll-spy, progresso e notificacoes toast;
 - laboratorio que cria e destroi 3.000 componentes por rodada;
 - templates e estilos incorporados em um unico bundle.
 

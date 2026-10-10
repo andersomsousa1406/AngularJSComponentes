@@ -201,6 +201,14 @@
         { "name": "on-close", "description": "Callback ao fechar." },
         { "name": "on-confirm", "description": "Callback ao confirmar." }
       ]
+    },
+    {
+      "name": "toast-stack",
+      "description": "Pilha de notificacoes temporarias com feedback acessivel.",
+      "attributes": [
+        { "name": "items", "description": "Array de notificacoes." },
+        { "name": "on-dismiss", "description": "Callback com o id removido em $event." }
+      ]
     }
   ]
 }

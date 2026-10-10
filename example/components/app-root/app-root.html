@@ -1,7 +1,7 @@
 <div class="demo-shell theme-{{ vm.theme }}">
   <a class="skip-link" href="#conteudo">Pular para o conteudo</a>
 
-  <header class="topbar">
+  <header class="topbar" ng-class="{ 'is-scrolled': vm.scrolled }">
     <a class="brand" href="#inicio" ng-click="vm.closeMenu()" aria-label="Easy Components - inicio">
       <span class="brand__mark" aria-hidden="true">EC</span>
       <span>Easy Components</span>
@@ -13,14 +13,15 @@
     </button>
 
     <nav class="nav" ng-class="{ 'is-open': vm.menuOpen }" aria-label="Navegacao principal">
-      <a href="#recursos" ng-click="vm.closeMenu()">Recursos</a>
-      <a href="#componentes" ng-click="vm.closeMenu()">Componentes</a>
-      <a href="#biblioteca" ng-click="vm.closeMenu()">Biblioteca</a>
-      <a href="#desempenho" ng-click="vm.closeMenu()">Desempenho</a>
-      <a href="#comecar" ng-click="vm.closeMenu()">Documentacao</a>
+      <a href="#recursos" ng-click="vm.closeMenu()" ng-class="{ active: vm.activeSection === 'recursos' }">Recursos</a>
+      <a href="#componentes" ng-click="vm.closeMenu()" ng-class="{ active: vm.activeSection === 'componentes' }">Componentes</a>
+      <a href="#biblioteca" ng-click="vm.closeMenu()" ng-class="{ active: vm.activeSection === 'biblioteca' }">Biblioteca</a>
+      <a href="#desempenho" ng-click="vm.closeMenu()" ng-class="{ active: vm.activeSection === 'desempenho' }">Desempenho</a>
+      <a href="#comecar" ng-click="vm.closeMenu()" ng-class="{ active: vm.activeSection === 'comecar' }">Documentacao</a>
     </nav>
 
     <a class="button button--small button--ghost topbar__cta" href="#comecar">Comecar agora</a>
+    <span class="topbar__progress" ng-style="{ width: vm.scrollProgress + '%' }" aria-hidden="true"></span>
   </header>
 
   <main id="conteudo">
@@ -204,4 +205,6 @@
     <p>Componentes modernos para AngularJS. Projeto demonstrativo local.</p>
     <div><a href="#recursos">API</a><a href="#componentes">Exemplos</a><a href="#desempenho">Benchmark</a></div>
   </footer>
+
+  <button class="back-to-top" type="button" ng-class="{ visible: vm.showBackTop }" ng-click="vm.scrollTop()" aria-label="Voltar ao inicio">↑</button>
 </div>

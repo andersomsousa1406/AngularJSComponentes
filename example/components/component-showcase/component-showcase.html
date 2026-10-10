@@ -1,6 +1,6 @@
 <div class="component-showcase">
   <header class="component-showcase__summary">
-    <div><span class="component-showcase__dot"></span><strong>24 componentes registrados</strong><small>Todos usando a mesma API declarativa</small></div>
+    <div><span class="component-showcase__dot"></span><strong>25 componentes registrados</strong><small>Todos usando a mesma API declarativa</small></div>
     <code>&lt;component-showcase&gt;</code>
   </header>
 
@@ -45,4 +45,5 @@
     <p ng-if="vm.selectedProduct">Voce selecionou <strong>{{ vm.selectedProduct.name }}</strong>, no valor de {{ vm.selectedProduct.price | currency:'R$ ':0 }}. O card enviou o produto por evento e o componente pai abriu este modal.</p>
     <p ng-if="!vm.selectedProduct">Este modal e um componente independente com props, eventos, transclusao, backdrop e estados acessiveis.</p>
   </ui-modal>
+  <toast-stack items="vm.toasts" on-dismiss="vm.dismissToast($event)"></toast-stack>
 </div>

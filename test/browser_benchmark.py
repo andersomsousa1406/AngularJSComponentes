@@ -208,9 +208,31 @@ async def run_browser_test(debug_port, page_url):
                   alerts: host.querySelectorAll('ui-alert').length,
                   selects: host.querySelectorAll('.showcase-selects ui-select').length
                 };
+                host.querySelector('.showcase-panel ui-button .ui-button').click();
+                scope.$root.$digest();
+                result.toasts = host.querySelectorAll('.toast-stack__item').length;
                 result.styleCount = document.querySelectorAll('[data-easy-component-style]').length;
                 return result;
               }())
+            """)
+
+            navigation = await cdp.evaluate("""
+              new Promise(function (resolve) {
+                document.documentElement.style.scrollBehavior = 'auto';
+                window.scrollTo(0, document.getElementById('recursos').offsetTop + 100);
+                window.dispatchEvent(new Event('scroll'));
+                window.requestAnimationFrame(function () {
+                  window.setTimeout(function () {
+                    var root = angular.element(document.querySelector('app-root')).isolateScope().vm;
+                    resolve({
+                      scrolled: root.scrolled,
+                      progress: root.scrollProgress,
+                      activeSection: root.activeSection,
+                      backToTop: root.showBackTop
+                    });
+                  }, 100);
+                });
+              })
             """)
 
             await cdp.evaluate("""
@@ -263,7 +285,12 @@ async def run_browser_test(debug_port, page_url):
             assert showcase["base"]["badges"] >= 6
             assert showcase["base"]["alerts"] == 3
             assert showcase["base"]["selects"] == 2
-            assert showcase["styleCount"] >= 24
+            assert showcase["toasts"] == 1
+            assert showcase["styleCount"] >= 25
+            assert navigation["scrolled"]
+            assert navigation["progress"] > 0
+            assert navigation["activeSection"] != "inicio"
+            assert navigation["backToTop"]
             assert not cdp.exceptions, "Erros JavaScript: " + ", ".join(cdp.exceptions)
 
             component_requests = [url for url in cdp.requests if "/components/" in url]
@@ -287,6 +314,7 @@ async def run_browser_test(debug_port, page_url):
                 },
                 "rendered": rendered,
                 "showcase": showcase,
+                "navigation": navigation,
                 "network": {
                     "totalRequests": len(cdp.requests),
                     "componentPartRequests": component_requests,

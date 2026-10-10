@@ -7,6 +7,7 @@ export default function registerComponentShowcase(app) {
       activeTab: 'base',
       modalOpen: false,
       selectedProduct: null,
+      toasts: [],
       lastAction: 'Nenhuma acao executada',
       tabs: [
         { id: 'base', label: 'Elementos', icon: '◇', count: 4 },
@@ -28,11 +29,32 @@ export default function registerComponentShowcase(app) {
     },
     methods: {
       changeTab: function (tab) { this.$setState({ activeTab: tab }); },
-      handleAction: function (event) { this.$setState({ lastAction: 'Botao ' + event.label + ' acionado' }); },
+      handleAction: function (event) {
+        this.$setState({ lastAction: 'Botao ' + event.label + ' acionado' });
+        this.notify('Acao executada', 'O botao ' + event.label + ' enviou um evento ao componente pai.', 'success');
+      },
       selectProduct: function (product) { this.$setState({ selectedProduct: product, modalOpen: true }); },
       openModal: function () { this.$setState({ selectedProduct: null, modalOpen: true }); },
       closeModal: function () { this.$setState({ modalOpen: false }); },
-      confirmModal: function () { this.$setState({ modalOpen: false, lastAction: 'Acao do modal confirmada' }); }
+      confirmModal: function () {
+        this.$setState({ modalOpen: false, lastAction: 'Acao do modal confirmada' });
+        this.notify('Modal confirmado', 'O evento on-confirm foi processado com sucesso.', 'success');
+      },
+      notify: function (title, message, variant) {
+        var vm = this;
+        var toast = { id: Date.now() + Math.random(), title: title, message: message, variant: variant || 'info' };
+        vm.$setState({ toasts: vm.toasts.concat(toast).slice(-3) });
+        vm.__toastTimers.push(window.setTimeout(function () { vm.dismissToast(toast.id); }, 3500));
+      },
+      dismissToast: function (id) {
+        this.$setState({ toasts: this.toasts.filter(function (toast) { return toast.id !== id; }) });
+      }
+    },
+    hooks: {
+      onInit: function () { this.__toastTimers = []; },
+      onDestroy: function () {
+        this.__toastTimers.forEach(function (timer) { window.clearTimeout(timer); });
+      }
     },
     template: template,
     styles: styles
