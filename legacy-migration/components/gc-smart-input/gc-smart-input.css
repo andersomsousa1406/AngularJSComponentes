@@ -1,0 +1,6 @@
+:host { display: block; position: relative; }
+.gc-smart-input { position: relative; margin-bottom: 15px; }
+.gc-smart-input__menu { display: block; right: 0; max-height: 260px; overflow-y: auto; }
+.gc-smart-input__menu li button { display: block; width: 100%; padding: 6px 20px; border: 0; background: transparent; color: #333; text-align: left; }
+.gc-smart-input__menu li button:hover, .gc-smart-input__menu li.active button { background: #337ab7; color: #fff; }
+

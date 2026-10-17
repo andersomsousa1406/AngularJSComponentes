@@ -1,0 +1,4 @@
+<section class="gc-history-panel">
+  <header><h3><span class="glyphicon glyphicon-time"></span> {{ vm.title }}</h3><button class="btn btn-default btn-sm" type="button" ng-click="vm.refresh()"><span class="glyphicon glyphicon-refresh"></span> Atualizar</button></header>
+  <gc-data-grid rows="vm.entries" columns="vm.columns" loading="vm.loading" track-by="ID" selectable="true" on-select="vm.select($event)"></gc-data-grid>
+</section>

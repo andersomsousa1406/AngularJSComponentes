@@ -21,18 +21,24 @@
     "components:create": "node bin/easy-components.js create",
     "components:sync": "node bin/easy-components.js sync",
     "components:check": "node bin/easy-components.js check",
+    "components:check:legacy": "node scripts/check-legacy-migration.js",
+    "legacy:inventory": "node scripts/inventory-legacy-api.js",
+    "legacy:parity": "npm run legacy:inventory && node scripts/report-legacy-parity.js",
     "prebuild:example": "npm run components:sync",
     "build:example": "node scripts/build-example.js",
+    "build:legacy": "node scripts/build-legacy-migration.js",
     "prewatch:example": "npm run components:sync",
     "watch:example": "node scripts/build-example.js --watch",
     "test": "node test/easy-components.test.js",
     "pretest:browser": "npm run build:example",
     "test:browser": "python test/browser_benchmark.py",
-    "validate": "npm test && npm run components:check && npm run build:example",
-    "validate:release": "npm run validate && npm run test:browser",
+    "test:legacy": "python test/legacy_migration_browser.py",
+    "validate": "npm test && npm run components:check && npm run components:check:legacy && npm run build:example && npm run build:legacy",
+    "validate:release": "npm run validate && npm run test:browser && npm run test:legacy",
     "pack:check": "npm pack --dry-run",
     "predemo": "npm run build:example",
-    "demo": "npx http-server . -o /example/"
+    "demo": "npx http-server . -o /example/",
+    "demo:legacy": "npm run build:legacy && npx http-server . -o /legacy-migration/"
   },
   "easyComponents": {
     "componentsDir": "example/components",
@@ -75,5 +81,9 @@
   },
   "dependencies": {
     "esbuild": "^0.28.2"
+  },
+  "devDependencies": {
+    "acorn": "^8.15.0",
+    "bootstrap": "^3.4.1"
   }
 }

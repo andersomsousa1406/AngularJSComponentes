@@ -1,0 +1,6 @@
+:host { display: block; }
+.gc-file-import__chooser { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+.gc-file-import .panel-footer .btn + .btn { margin-left: 5px; }
+.gc-spin { animation: gc-import-spin 1s linear infinite; }
+@keyframes gc-import-spin { to { transform: rotate(360deg); } }
+

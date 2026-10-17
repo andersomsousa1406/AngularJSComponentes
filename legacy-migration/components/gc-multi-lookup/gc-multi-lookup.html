@@ -1,0 +1,32 @@
+<section class="panel panel-default gc-multi-lookup">
+  <header class="panel-heading"><strong>{{ vm.title }}</strong><span class="badge pull-right">{{ vm.draft.length }}</span></header>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group gc-multi-lookup__search">
+          <input class="form-control" type="search" aria-label="Filtrar itens disponiveis" ng-model="vm.query" placeholder="Filtrar disponiveis">
+          <span class="input-group-btn"><button class="btn btn-primary" type="button" ng-click="vm.addAll()" ng-disabled="!vm.available.length">Adicionar todos</button></span>
+        </div>
+        <div class="list-group gc-multi-lookup__list">
+          <button class="list-group-item" type="button" ng-repeat="item in vm.available track by vm.identity(item)" ng-click="vm.add(item)">
+            <span ng-repeat="column in vm.columns track by column.key"><strong ng-if="$first">{{ item[column.key] }}</strong><small ng-if="!$first" class="text-muted"> · {{ item[column.key] }}</small></span>
+            <span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
+          </button>
+          <p class="list-group-item text-muted" ng-if="!vm.available.length">Nenhum item disponivel.</p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-link btn-xs pull-right" type="button" ng-click="vm.clear()" ng-disabled="!vm.draft.length">Limpar</button>
+        <label>Selecionados</label>
+        <div class="list-group gc-multi-lookup__list">
+          <button class="list-group-item" type="button" ng-repeat="item in vm.draft track by vm.identity(item)" ng-click="vm.remove(item)">
+            <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+            <span ng-repeat="column in vm.columns track by column.key"> {{ item[column.key] }}<span ng-if="!$last"> ·</span></span>
+          </button>
+          <p class="list-group-item text-muted" ng-if="!vm.draft.length">Nenhum item selecionado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="panel-footer text-right"><button class="btn btn-success" type="button" ng-click="vm.confirm()"><span class="glyphicon glyphicon-ok"></span> Confirmar selecao</button></footer>
+</section>

@@ -1,0 +1,24 @@
+<div class="form-group gc-lookup" ng-class="{ 'has-error': vm.required && !vm.value }">
+  <label>{{ vm.label }}</label>
+  <div class="input-group">
+    <input class="form-control" type="search" ng-model="vm.query" ng-change="vm.search()" ng-focus="vm.search()" ng-disabled="vm.disabled" placeholder="{{ vm.selectedLabel || vm.placeholder }}" aria-label="{{ vm.label }}">
+    <span class="input-group-btn">
+      <button class="btn btn-danger" type="button" aria-label="Limpar consulta" ng-if="vm.value" ng-click="vm.clear()" ng-disabled="vm.disabled"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      <button class="btn btn-primary" type="button" aria-label="Pesquisar" ng-click="vm.search()" ng-disabled="vm.disabled"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </span>
+  </div>
+  <div class="panel panel-default gc-lookup__results" ng-if="vm.open">
+    <div class="panel-body text-center" ng-if="vm.loading"><span class="glyphicon glyphicon-refresh gc-spin"></span> Carregando...</div>
+    <div class="table-responsive" ng-if="!vm.loading">
+      <table class="table table-condensed table-striped table-bordered table-hover">
+        <thead><tr><th ng-repeat="column in vm.columns track by column.key">{{ column.label }}</th></tr></thead>
+        <tbody>
+          <tr ng-repeat="item in vm.visibleItems track by vm.identity(item)" ng-click="vm.select(item)" tabindex="0">
+            <td ng-repeat="column in vm.columns track by column.key">{{ item[column.key] }}</td>
+          </tr>
+          <tr ng-if="!vm.visibleItems.length"><td colspan="{{ vm.columns.length || 1 }}" class="text-center text-muted">Nenhum registro encontrado.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

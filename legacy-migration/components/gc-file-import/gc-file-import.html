@@ -1,0 +1,18 @@
+<section class="panel panel-default gc-file-import">
+  <header class="panel-heading"><strong>{{ vm.title }}</strong></header>
+  <div class="panel-body">
+    <div class="well well-sm gc-file-import__chooser">
+      <input class="sr-only" type="file" aria-label="Escolher arquivo para importar" accept="{{ vm.accept }}">
+      <button class="btn btn-primary" type="button" ng-click="vm.choose()"><span class="glyphicon glyphicon-folder-open"></span> Escolher arquivo</button>
+      <span ng-if="vm.fileName"><strong>{{ vm.fileName }}</strong> · {{ vm.rows.length }} linhas</span>
+    </div>
+    <div class="alert alert-danger" ng-if="vm.error"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ vm.error }}</div>
+    <p class="text-center" ng-if="vm.loading"><span class="glyphicon glyphicon-refresh gc-spin"></span> Lendo arquivo...</p>
+    <gc-data-grid ng-if="!vm.loading && vm.rows.length" rows="vm.previewRows" columns="vm.columns" track-by="__id" page-size="10"></gc-data-grid>
+    <p class="text-muted" ng-if="vm.rows.length > vm.maxPreview">A visualizacao mostra {{ vm.maxPreview }} de {{ vm.rows.length }} linhas. Todas serao enviadas na importacao.</p>
+  </div>
+  <footer class="panel-footer text-right">
+    <button class="btn btn-default" type="button" ng-click="vm.clear()" ng-disabled="!vm.fileName">Limpar</button>
+    <button class="btn btn-success" type="button" ng-click="vm.importRows()" ng-disabled="!vm.rows.length"><span class="glyphicon glyphicon-import"></span> Importar {{ vm.rows.length }} linhas</button>
+  </footer>
+</section>

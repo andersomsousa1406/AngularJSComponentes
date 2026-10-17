@@ -1,0 +1,11 @@
+:host { display: block; }
+.gc-operation-flow__steps { display: flex; margin: 0 0 20px; padding: 0; list-style: none; }
+.gc-operation-flow__steps li { position: relative; flex: 1; }
+.gc-operation-flow__steps li:not(:last-child)::after { position: absolute; top: 17px; right: -50%; left: 50%; height: 2px; background: #ddd; content: ''; }
+.gc-operation-flow__steps button { position: relative; z-index: 1; display: flex; width: 100%; align-items: center; gap: 8px; border: 0; background: transparent; text-align: left; }
+.gc-operation-flow__steps small { display: block; color: #777; }
+.gc-operation-flow__number { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border: 2px solid #ccc; border-radius: 50%; background: #fff; }
+.gc-operation-flow--primary .gc-operation-flow__number { border-color: #337ab7; color: #337ab7; }
+.gc-operation-flow--success .gc-operation-flow__number { border-color: #5cb85c; background: #5cb85c; color: #fff; }
+.gc-operation-flow--danger .gc-operation-flow__number { border-color: #d9534f; background: #d9534f; color: #fff; }
+@media (max-width: 767px) { .gc-operation-flow__steps { flex-direction: column; gap: 8px; } .gc-operation-flow__steps li::after { display: none; } }

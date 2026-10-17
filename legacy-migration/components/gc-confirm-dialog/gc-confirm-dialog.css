@@ -1,0 +1,7 @@
+:host { display: block; }
+.gc-confirm { position: fixed; inset: 0; z-index: 1050; display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 30px 15px; }
+.gc-confirm__backdrop { position: fixed; inset: 0; z-index: -1; width: 100%; border: 0; background: rgba(0, 0, 0, .5); }
+.modal-dialog { width: 600px; max-width: 100%; margin: 0; }
+.modal-content { box-shadow: 0 5px 15px rgba(0, 0, 0, .5); }
+.modal-body > p:last-child { margin-bottom: 0; }
+

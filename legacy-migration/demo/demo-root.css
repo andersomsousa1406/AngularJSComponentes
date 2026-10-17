@@ -1,0 +1,5 @@
+:host { display: block; }
+.gc-demo { padding-top: 20px; padding-bottom: 60px; }
+.gc-demo .page-header h1 { margin-top: 8px; }
+.gc-demo > h2, .gc-demo .row h2 { margin-top: 30px; font-size: 22px; }
+

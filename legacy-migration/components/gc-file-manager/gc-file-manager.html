@@ -1,0 +1,25 @@
+<section class="panel panel-default gc-file-manager">
+  <header class="panel-heading gc-file-manager__header">
+    <strong>{{ vm.label }}</strong>
+    <button class="btn btn-info btn-sm" type="button" ng-click="vm.choose()" ng-disabled="vm.disabled"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+    <input class="sr-only" type="file" aria-label="Adicionar arquivos" accept="{{ vm.accept }}" ng-attr-multiple="{{ vm.multiple || undefined }}">
+  </header>
+  <div class="alert alert-danger" ng-if="vm.error">{{ vm.error }}</div>
+  <ul class="list-group">
+    <li class="list-group-item gc-file-manager__item" ng-repeat="file in vm.localFiles track by vm.identity(file)">
+      <span class="glyphicon glyphicon-file gc-file-manager__icon" aria-hidden="true"></span>
+      <span class="gc-file-manager__name"><strong>{{ vm.name(file) }}</strong><small class="text-muted">{{ vm.size(file.size || file.TAMANHO) }}</small></span>
+      <span class="btn-group btn-group-sm">
+        <button class="btn btn-default" type="button" ng-if="file.url" ng-click="vm.open(file)" title="Visualizar"><span class="glyphicon glyphicon-eye-open"></span></button>
+        <button class="btn btn-default" type="button" ng-click="vm.download(file)" title="Baixar"><span class="glyphicon glyphicon-download-alt"></span></button>
+        <button class="btn btn-danger" type="button" ng-click="vm.remove(file)" ng-disabled="vm.disabled" title="Remover"><span class="glyphicon glyphicon-trash"></span></button>
+      </span>
+    </li>
+    <li class="list-group-item text-muted text-center" ng-if="!vm.localFiles.length">Nenhum arquivo adicionado.</li>
+  </ul>
+  <div class="gc-file-manager__preview" ng-if="vm.preview">
+    <button class="btn btn-default" type="button" ng-click="vm.closePreview()"><span class="glyphicon glyphicon-remove"></span> Fechar</button>
+    <img ng-if="vm.preview.type.indexOf('image/') === 0" ng-src="{{ vm.preview.url }}" alt="{{ vm.name(vm.preview) }}">
+    <object ng-if="vm.preview.type.indexOf('image/') !== 0" data="{{ vm.preview.url }}" type="{{ vm.preview.type }}"><p>Visualizacao indisponivel.</p></object>
+  </div>
+</section>

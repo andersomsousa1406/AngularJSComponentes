@@ -1,0 +1,15 @@
+<div class="form-group gc-smart-input" ng-class="{ 'has-error': vm.required && !vm.query }">
+  <label ng-if="vm.label">{{ vm.label }}</label>
+  <div class="input-group">
+    <input class="form-control" type="text" autocomplete="off" aria-label="{{ vm.label || vm.placeholder }}" ng-model="vm.query" ng-change="vm.search()" ng-focus="vm.search()" ng-keydown="vm.keydown($event)" ng-disabled="vm.disabled" ng-required="vm.required" placeholder="{{ vm.placeholder }}" role="combobox" aria-expanded="{{ vm.open }}">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" ng-click="vm.clear()" ng-disabled="vm.disabled || !vm.query" aria-label="Limpar"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    </span>
+  </div>
+  <ul class="dropdown-menu gc-smart-input__menu" ng-if="vm.open" role="listbox">
+    <li ng-repeat="item in vm.filteredItems track by vm.itemId(item)" ng-class="{ active: $index === vm.activeIndex }">
+      <button type="button" ng-mousedown="vm.select(item)" role="option">{{ item[vm.displayKey] }}</button>
+    </li>
+    <li class="disabled" ng-if="!vm.filteredItems.length"><span>Nenhum resultado</span></li>
+  </ul>
+</div>

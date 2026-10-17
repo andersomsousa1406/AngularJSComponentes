@@ -1,0 +1,18 @@
+<section class="panel panel-default gc-operation-flow">
+  <header class="panel-heading"><strong>{{ vm.title }}</strong><span class="label label-info pull-right" ng-if="vm.running">Executando</span></header>
+  <div class="panel-body">
+    <ol class="gc-operation-flow__steps">
+      <li ng-repeat="step in vm.steps track by step.id" ng-class="'gc-operation-flow--' + vm.statusClass(step, $index)">
+        <button type="button" ng-click="vm.select(step, $index)" ng-disabled="vm.running">
+          <span class="gc-operation-flow__number">{{ $index + 1 }}</span>
+          <span><strong>{{ step.title }}</strong><small>{{ step.description }}</small></span>
+        </button>
+      </li>
+    </ol>
+    <div class="progress" ng-if="vm.running"><div class="progress-bar progress-bar-striped active" role="progressbar" ng-style="{ width: vm.steps[vm.current].progress + '%' }">{{ vm.steps[vm.current].progress || 0 }}%</div></div>
+  </div>
+  <footer class="panel-footer text-right">
+    <button class="btn btn-danger" type="button" ng-if="vm.running" ng-click="vm.cancel()"><span class="glyphicon glyphicon-stop"></span> Cancelar</button>
+    <button class="btn btn-primary" type="button" ng-if="!vm.running" ng-click="vm.execute()" ng-disabled="!vm.steps.length"><span class="glyphicon glyphicon-play"></span> Executar</button>
+  </footer>
+</section>

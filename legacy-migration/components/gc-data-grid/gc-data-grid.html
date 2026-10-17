@@ -1,0 +1,35 @@
+<section class="panel panel-default gc-data-grid">
+  <header class="panel-heading gc-data-grid__toolbar">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+      <input class="form-control" type="search" aria-label="Filtrar registros" ng-model="vm.query" ng-change="vm.search()" placeholder="Filtrar registros">
+    </div>
+    <span class="label label-default">{{ vm.filteredRows.length }} registros</span>
+  </header>
+  <div class="table-responsive gc-data-grid__viewport">
+    <table class="table table-striped table-bordered table-condensed table-hover">
+      <thead><tr>
+        <th ng-repeat="column in vm.columns track by column.key" ng-style="{ width: column.width }">
+          <button type="button" ng-click="vm.sort(column)" ng-disabled="column.sortable === false">
+            {{ column.label }}
+            <span class="glyphicon" ng-if="vm.sortKey === column.key" ng-class="vm.sortDirection === 'asc' ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
+          </button>
+        </th>
+      </tr></thead>
+      <tbody>
+        <tr ng-if="vm.loading"><td colspan="{{ vm.columns.length }}" class="text-center"><span class="glyphicon glyphicon-refresh gc-spin"></span> Carregando...</td></tr>
+        <tr ng-if="!vm.loading" ng-repeat="row in vm.visibleRows track by vm.identity(row)" ng-click="vm.select(row)" ng-class="{ info: vm.selected(row), 'gc-data-grid__selectable': vm.selectable }">
+          <td ng-repeat="column in vm.columns track by column.key" ng-class="column.className">{{ row[column.key] }}</td>
+        </tr>
+        <tr ng-if="!vm.loading && !vm.visibleRows.length"><td colspan="{{ vm.columns.length }}" class="text-center text-muted">{{ vm.emptyText }}</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="panel-footer gc-data-grid__footer">
+    <span>Pagina {{ vm.page }} de {{ vm.pageCount }}</span>
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-default" type="button" aria-label="Pagina anterior" ng-click="vm.go(vm.page - 1)" ng-disabled="vm.page <= 1"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+      <button class="btn btn-default" type="button" aria-label="Proxima pagina" ng-click="vm.go(vm.page + 1)" ng-disabled="vm.page >= vm.pageCount"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+    </div>
+  </footer>
+</section>

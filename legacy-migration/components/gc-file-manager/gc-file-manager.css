@@ -1,0 +1,12 @@
+:host { display: block; }
+.gc-file-manager__header, .gc-file-manager__item { display: flex; align-items: center; gap: 10px; }
+.gc-file-manager__header strong { flex: 1; }
+.gc-file-manager .list-group { margin-bottom: 0; }
+.gc-file-manager__icon { color: #337ab7; font-size: 20px; }
+.gc-file-manager__name { display: flex; flex: 1; min-width: 0; flex-direction: column; overflow: hidden; }
+.gc-file-manager__name strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gc-file-manager__preview { position: fixed; inset: 50px 0 0; z-index: 1060; padding: 50px 30px 30px; overflow: auto; background: rgba(0, 0, 0, .82); text-align: center; }
+.gc-file-manager__preview > button { position: fixed; top: 60px; right: 30px; }
+.gc-file-manager__preview img, .gc-file-manager__preview object { max-width: 100%; height: calc(100vh - 150px); background: #fff; }
+.gc-file-manager__preview object { width: 100%; }
+

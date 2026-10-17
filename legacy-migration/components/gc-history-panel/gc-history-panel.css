@@ -1,0 +1,4 @@
+:host { display: block; }
+.gc-history-panel > header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.gc-history-panel h3 { margin: 0; color: #a94442; }
+

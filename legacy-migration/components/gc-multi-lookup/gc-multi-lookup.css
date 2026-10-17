@@ -1,0 +1,6 @@
+:host { display: block; }
+.gc-multi-lookup__search { margin-bottom: 10px; }
+.gc-multi-lookup__list { max-height: 280px; overflow-y: auto; }
+.gc-multi-lookup__list .list-group-item { width: 100%; text-align: left; }
+.gc-multi-lookup__list p.list-group-item { margin: 0; }
+

@@ -1,0 +1,7 @@
+:host { display: block; position: relative; }
+.gc-lookup { position: relative; }
+.gc-lookup__results { position: absolute; z-index: 1000; right: 0; left: 0; max-height: 320px; margin-top: 2px; overflow: auto; box-shadow: 0 6px 12px rgba(0, 0, 0, .175); }
+.gc-lookup__results .table { margin-bottom: 0; }
+.gc-lookup__results tbody tr { cursor: pointer; }
+.gc-spin { animation: gc-spin 1s linear infinite; }
+@keyframes gc-spin { to { transform: rotate(360deg); } }

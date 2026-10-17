@@ -9,6 +9,7 @@ Este arquivo e o checklist permanente do projeto. A cada etapa concluida, os ite
 - [x] Fase 3 — inteligencia semantica no VS Code `v0.4`
 - [x] Fase 4 — build e desempenho de producao `v0.5`
 - [x] Fase 5 — estabilidade e distribuicao `v1.0`
+- [ ] Fase 6 — migracao de `old_componentes` para o modelo declarativo
 
 ## Fase 1 — API declarativa `v0.2`
 
@@ -67,6 +68,22 @@ Este arquivo e o checklist permanente do projeto. A cada etapa concluida, os ite
 - [ ] Publicar no VS Code Marketplace quando houver autorizacao e acesso ao publisher.
 
 Essas duas operacoes nao alteram o codigo da `v1.0`; os artefatos locais ficam em `release/`.
+
+## Fase 6 — migracao dos componentes legados Bootstrap 3
+
+- [x] Inventariar os arquivos e separar componentes, servicos e duplicatas.
+- [x] Definir o mapa entre as APIs antigas e os novos componentes.
+- [x] Converter os componentes visuais para `defineComponent`, com HTML e CSS separados.
+- [x] Criar adaptadores para os servicos que ainda dependem da aplicacao antiga.
+- [x] Criar demonstracao Bootstrap 3 e testes de comportamento, build e memoria.
+- [x] Documentar a troca gradual e os pontos que exigem integracao com o backend.
+- [x] Inventariar por AST a API publica antiga e gerar a linha de base de paridade.
+- [x] Criar motor de compatibilidade importavel com os 21 factories originais.
+- [x] Criar `gc-legacy-host` para usar os motores antigos por uma tag declarativa.
+- [ ] Portar e testar recursos avancados de `TabelaJS`: agrupamento, totalizadores, scroll incremental, exportacao e impressao.
+- [ ] Portar regras especializadas de consulta, arquivos, importacao, historico e fluxo operacional com casos reais do backend.
+- [ ] Configurar e validar os comandos reais de impressora, balanca e RFID no ambiente do GCWeb.
+- [ ] Migrar uma tela real consumidora e remover nela os factories antigos.
 
 ## Criterio para considerar o plano concluido
 
