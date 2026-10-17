@@ -1,0 +1,129 @@
+/* Mobile Large */
+@media (max-width: 768px) {
+	
+	.popup .modal-header {
+	
+		.btn-popup-right, .li-popup-right {
+			float: left;
+			margin-right: 5px;
+			margin-left: 0px;
+		}
+		
+	}
+
+	.modal {
+
+		.modal-header-left {
+			width: calc(100% - 45px);
+		}
+
+		.acoes-modal {
+			position: absolute;
+		    right: 15px;
+		    top: 38px;
+		    z-index: 3;
+    		height: 0;
+			overflow: hidden;
+		    background-color: $white;
+		    box-shadow: 1px 1px 3px $grey160;
+		    border-radius: 3px;
+		    @include transition(0.2s);
+
+		    &.abrir {
+		    	height: auto;
+				overflow: auto;
+		    	padding: 10px 10px 5px 10px;
+		    }
+
+		    .btn {
+    			margin-bottom: 5px;
+		    }
+		}
+
+		.acoes-modal-v2 {
+			position: absolute;
+		    right: 15px;
+		    top: 38px;
+		    z-index: 3;
+    		height: 0;
+			overflow: hidden;
+		    background-color: $white;
+		    box-shadow: 1px 1px 3px $grey160;
+		    border-radius: 3px;
+		    @include transition(0.2s);
+
+		    &.abrir {
+		    	height: auto;
+				overflow: auto;
+		    	padding: 10px 10px 5px 10px;
+		    }
+
+		    .btn {
+    			margin-bottom: 5px;
+		    }
+		}
+
+		.btn-toggle-acoes-modal {
+			float: right;
+		}
+
+		.btn-toggle-acoes-modal-v2 {
+			float: right;
+		}
+	}
+	
+}
+
+@media (max-width: 1024px) {
+
+	.modal {
+
+		.acoes-modal-v2 {
+			position: absolute;
+		    right: 15px;
+		    top: 38px;
+		    z-index: 3;
+    		height: 0;
+			overflow: hidden;
+		    background-color: $white;
+		    box-shadow: 1px 1px 3px $grey160;
+		    border-radius: 3px;
+		    @include transition(0.2s);
+
+		    &.abrir {
+		    	height: auto;
+				overflow: auto;
+		    	padding: 10px 10px 5px 10px;
+		    }
+
+		    .btn {
+    			margin-bottom: 5px;
+		    }
+		}
+
+		.btn-toggle-acoes-modal-v2 {
+			float: right;
+		}
+	}
+	
+}
+
+/* Mobile Large */
+@media (max-width: 425px) {
+	
+	.popup .modal-header {
+		
+/*		.popup-title {
+			position: relative;
+			top: 40px;
+			width: 100%;
+			text-indent: -40px;
+		}*/
+		
+/*		button.popup-close {
+			position: relative;
+			top: -33px;
+		}*/
+	}
+	
+}

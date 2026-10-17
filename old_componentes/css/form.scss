@@ -1,0 +1,445 @@
+/**
+ * Formulários 
+ */
+@import "../helper/partials/padrao.scss";
+
+.balao-suporte:hover {
+    text-decoration: underline;
+}
+
+.div-danger{
+	border: 1px solid #fd9a9a;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fde2e2;
+    font-weight: bold;
+    color: #d60b0b;
+}
+
+div.form-group {
+	.pesquisa-res-container {
+		.item-close-tab {
+			display: none;
+		}
+	}
+}
+
+form {
+
+    .btn-table-filter {
+        margin-top: 16px;
+    }
+    
+	&.form-inline {
+		
+		.form-group {
+			margin: 5px 10px 5px 0px;
+			
+			&.acao-item {
+				margin-right: 5px;
+			}
+			
+			label {
+				display: block;
+				margin-bottom: 0;
+
+				&.lbl-radio, &.lbl-checkbox {
+					margin-top: 18px !important;
+				}
+
+			}
+            
+            .btn-inline {
+                margin-top: 20px;
+            }
+		}
+		.row {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+	}
+	
+	&.edit {
+		/*itens que podem ser adicionados dinamicamente*/
+		.item-dinamico {
+
+			button {
+				
+				&.excluir-item-dinamico, &.editar-item-dinamico {
+                    width: 38px;
+                    height: 35px;
+				}
+			}
+		}
+	}
+	
+	fieldset {
+		margin-bottom: 30px;
+	}
+	
+    /**
+     * Criado por Emerson;
+     * Ajusta a visualizacao da consulta inline
+     */
+    /*.consulta-container > .consulta >*/ .form-group > .input-group {
+            display: inline-flex;
+    }      
+
+    /*.consulta-container > .consulta >*/ .form-group > .input-group > input {
+        /*width: 100% !important;*/
+    }      
+
+    /*.consulta-container > .consulta >*/ .form-group > .input-group > button {
+        margin-bottom: 0 !important;
+    }    
+    
+    
+	
+    /**
+     * Criado por Emerson;
+     * Oculta o label na consulta inline
+     */
+    .consulta-container.no-label {
+        width: 100%;
+    }     
+
+    .consulta-container.no-label > .consulta {
+        width: 100%;
+    }     
+
+    .consulta-container.no-label > .consulta > .form-group {
+        width: 100%;
+        margin: 0 !important;
+    }     
+
+    .consulta-container.no-label > .consulta > .form-group > label {
+        display: none !important;
+    }      
+
+    
+    
+	.ccusto-container, .gestor-container, .indicadores-container, .turno-container,.ccustoindicador-container, .consulta-container {
+		display: inline-block;
+	}
+	
+	/*itens que podem ser adicionados dinamicamente*/
+	.item-dinamico-container {
+		position: relative;
+		
+		&.anexo-container {
+			padding-bottom: 20px;
+		}
+		
+		.item-dinamico {
+			position: relative;
+			margin-bottom: 10px;
+			padding: 10px;
+			background-color: rgba($bluePrimary, 0.1);
+			border-left: 3px solid rgba($bluePrimary, 0.5);
+			
+			&:nth-of-type(even) {
+				background-color: rgba($greenSuccess, 0.1);
+				border-left-color: rgba($greenSuccess, 0.5);
+			}
+
+			/*&:first-of-type {*/
+
+/*				label {
+					display: block !important;
+				}*/
+				
+				button {
+					margin-top: 20px;
+					
+					&.btn-filtro {
+						margin-top: 0;
+					}
+				}
+			/*}*/
+
+/*			label {
+				display: none !important;
+			}*/
+
+			button {
+				
+				&.excluir-item-dinamico {
+					padding: 0;
+					width: 38px;
+					height: 35px;
+					line-height: 1em;
+					font-size: 14px;
+				}
+			}
+		}
+		
+		progress {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			margin: 10px 0;
+		}
+		
+		~ button.add-item-dinamico {
+			float: left;
+			clear: left;
+		}
+	}
+	
+	div.form-group {
+
+		input, select {
+
+			&.input-menor, {
+				display: inline-block;
+				width: 90px !important;
+			}
+
+			&[type="checkbox"], &[type="radio"] {
+				top: 13px;
+
+                &[checked] {
+                    ~ label.label-chk-bold {
+                        font-weight: bold;
+                    }
+                }
+                
+				~ label {
+				    top: 13px;
+				}
+			}
+
+		}
+
+		progress {
+			margin-top: 25px;
+		}
+
+		&.anexo {
+			display: block;
+		}
+
+		.pesquisa-res-container {
+			position: absolute;
+			z-index: 99;
+			max-height: 0;
+			width: 437px;
+			margin-top: 0px;
+    		margin-left: 1px;
+    		overflow: hidden;
+			text-transform: uppercase;
+		    background-color: $white;
+		    box-shadow: 0px 1px 3px $redEmpresa;
+		    @include border-radius(0 0 5px 5px);
+		    @include transition(0.5s);
+
+		    &.ativo {
+		    	max-height: 300px;
+		    }
+
+			.item-close-tab {
+				display: none;
+			}
+			
+			&.lista-tabela-container, &.lista-empresas-container, &.lista-empresa-container {
+				width: 717px;
+				
+				.pesquisa-res {
+					
+					ul, ul.empresas, ul.empresa {
+						
+						li {
+
+							.titulo-lista {
+								padding-left: 5px;
+							}
+
+							a, .titulo-lista {
+								display: inline-flex;
+								padding: 0;
+
+								> span {
+									display: inline-block;
+									position: relative;
+									padding: 5px;
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+									text-align: left;
+									border-top: 1px solid $lightGrey;
+									border-right: 1px solid $lightGrey;
+
+									&.span-codigo {
+										width: 60px;
+									}
+									&.span-razao {
+										width: 325px;
+									}
+									&.span-uf {
+										width: 35px;
+									}
+									&.span-cidade {
+										width: 150px;
+									}
+									&.span-cnpj {
+										width: 130px;
+										border-right: 0;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		    .pesquisa-res {
+		    	max-height: inherit;
+		    	overflow: auto;
+				
+				.titulo-lista {
+					font-weight: bold;
+				}
+
+			    ul li a {
+				    padding: 5px;
+				    cursor: pointer;
+				    color: $black;
+
+				    &:hover, &:focus {
+				    	background-color: rgba($redEmpresa, 0.2);
+				    }
+					
+					&.opcao_todos {
+						display: block;
+						padding: 5px !important;
+						text-align: center;
+					}
+				}
+
+				.nao-cadastrado {
+					margin-top: 20px;
+    				margin-bottom: 20px;
+					text-align: center;
+					text-transform: none;
+
+					> div {
+						margin-top: 10px;
+
+						button {
+							margin-top: 0px;
+							margin-right: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+.check-group {
+    padding: 0 0 4px 10px;
+    border-radius: 6px;
+    background: rgb(226, 226, 226);
+    margin-top: -1px;
+
+    label {
+        display: inline-block !important;
+        margin-right: 10px;
+        font-weight: initial;
+
+        [checked] ~ span {
+            font-weight: bold;
+        }
+        input {
+            &[type="checkbox"], &[type="radio"] {
+                margin-top: 0;
+                margin-bottom: 0;
+                top: 5px !important;
+                position: relative;
+                width: 20px!important;
+                height: 20px;
+                vertical-align: baseline;
+                box-shadow: none;
+            }
+        }
+    }            
+}
+
+.inline {
+    display: inline-block;
+}    
+    
+.status-ec {
+    min-width: 65px;
+    height: 24px;
+    margin: 0;
+    display: inline-block;
+    top: 4px;
+    position: relative;
+}
+.status-ec input {
+    display: none;
+}
+
+.status-ec input + div {
+    background: rgb(217, 83, 79);
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;        
+    position: relative;
+    transition: 0.4s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.status-ec input + div:hover {
+    background: rgb(201, 48, 44);
+}
+
+.status-ec input:checked + div {
+    background: rgb(92, 184, 92);
+}    
+
+.status-ec input:checked + div:hover {
+    background: rgb(68, 157, 68);
+}
+
+.status-ec input + div:before,.status-ec input + div:after {
+    color: white;
+    position: absolute;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);        
+}
+
+.status-ec input + div:before {
+    content: "\f056";
+    font: normal normal normal 20px/1 FontAwesome;
+    margin-left: 3px;
+}
+
+.status-ec input:checked + div:before {
+    content: "\f058";
+}
+
+
+.status-ec input + div:after {
+    content: "Inativo";
+    margin-left: 24px;
+    width: calc(100% - 30px);     
+    font-size: 11px;
+}
+
+.status-ec input:checked + div:after {
+    content: "Ativo";
+}
+
+.status-ec input:disabled + div {
+    opacity: 0.6;
+    cursor: not-allowed;
+}    

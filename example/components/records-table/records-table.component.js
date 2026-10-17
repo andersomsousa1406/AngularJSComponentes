@@ -1,5 +1,5 @@
-import template from './data-table.html';
-import styles from './data-table.css';
+import template from './records-table.html';
+import styles from './records-table.css';
 
 var INITIAL_ROWS = [
   { id: 'EC-1048', name: 'Dashboard financeiro', owner: 'Ana Lima', initials: 'AL', status: 'active', date: '10 out 2026', value: 18400 },

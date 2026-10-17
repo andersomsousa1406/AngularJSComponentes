@@ -1,0 +1,80 @@
+/**
+ * CSS para a página de erro
+ */
+
+@import "../helper/partials/padrao.scss";
+
+.duplicar-tela,
+.go-fullscreen,
+.go-calendario,
+.go-ajuda,
+.go-msg,
+.go-rel,
+.go-cham,
+.go-favorito-1,
+.go-favorito-2,
+.portal-colaborador-btn {
+  display: none !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: table;
+  font-family: Arial, sans-serif;
+}
+
+nav.navbar {
+  .navbar-header .navbar-toggle, div.sessao {
+    //display: none;
+  }
+}
+
+.container {
+  text-align: center;
+  margin-top: 10%;
+
+  .content {
+    text-align: center;
+    display: inline-block;
+  }
+
+  .title {
+    color: $redEmpresa;
+    font-size: 72px;
+    margin-bottom: 40px;
+
+    div {
+      display: inline-block;
+      margin-left: 30px;
+      @include transform-rotate(90deg)
+    }
+  }
+
+  .msg {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  .msg-erro {
+	font-size: 13px;
+    text-align: left;
+	padding: 10px 15px;
+	background: $lightGrey231;
+    border-radius: 5px;
+	
+	.lbl {
+		display: inline-block;
+		font-weight: bold;
+		margin-right: 5px;
+		min-width: 50px;
+		text-align: right;
+	}
+  }
+  
+}

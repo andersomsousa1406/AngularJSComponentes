@@ -1,0 +1,61 @@
+/** 
+ * CSS para mobile
+ */
+
+@import "../menu/menu-media.scss";
+@import "style-media.scss";
+@import "header-media.scss";
+@import "form-media.scss";
+
+
+/* Laptop */
+@media (max-width: 1024px) {
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+	div.carregando-pagina .progress {
+		width: 40%;
+	}
+	
+}
+
+/* Mobile Large */
+@media (max-width: 500px) {
+	
+	body {
+		padding-top: 100px;
+	}
+	
+	.acoes-toggle {
+		top: 110px;
+	}
+	
+	div.carregando-pagina .progress {
+		width: calc(100% - 30px);
+	}
+	
+}
+
+/* Mobile Large */
+@media (max-width: 425px) {
+}
+
+/* Mobile Medium */
+@media (max-width: 375px) {
+}
+
+@media (max-height: 500px) {
+	.alert.alert-principal {
+		max-height: 300px;
+		
+		div.texto {
+			max-height: 250px;
+		}
+	}
+}
+
+.input-group div.input-group-addon {
+    background-color: white;
+    padding-top: 12px;
+}

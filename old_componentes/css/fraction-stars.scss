@@ -1,0 +1,99 @@
+:root {
+    --star-size: 18px;
+    --star-color: #fff;
+    --star-background: #fc0;
+}
+
+.fraction-stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times; // make sure ★ appears correctly
+    line-height: 1;
+    text-align: right;
+
+    &::before {
+        content: '★★★★★';
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.stars-tooltip {
+    position: relative;
+    display: inline-block;
+    // border-bottom: 1px dotted black;
+}
+
+.stars-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.stars-tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.stars-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+// ---------------------------------------------------------- TOOLTIP LEFT ---------------------------------------------------------- //
+
+.tooltip-left {
+    position: relative;
+    display: inline-block;
+    // border-bottom: 1px dotted black;
+}
+
+.tooltip-left .tooltip-text-left {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 110%;
+}
+
+.tooltip-left .tooltip-text-left::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.tooltip-left:hover .tooltip-text-left {
+    visibility: visible;
+}

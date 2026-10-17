@@ -1,0 +1,111 @@
+/*Cores*/
+$black			    : rgb(0, 0, 0);
+$black50		    : rgb(50, 50, 50);
+$black85		    : rgb(85, 85, 85);
+$black100		    : rgb(100, 100, 100);
+$blue			    : rgb(0, 0, 255);
+$blue180		    : rgb(0, 0, 180);
+$blue225		    : rgb(225, 225, 255);
+$blue205		    : rgb(205, 205, 255);
+$blueFocus          : rgb(33, 150, 243);
+$blueInfo		    : rgb(91, 192, 222);
+$bluePrimary	    : rgb(51, 122, 183);
+$bluePrimaryLight   : rgb(235, 240, 255);
+$bluePrimary2	    : rgb(40, 96, 144);
+$green			    : rgb(0, 128, 0);
+$green225		    : rgb(225, 255, 225);
+$green205		    : rgb(205, 255, 205);
+$greenSuccess	    : rgb(68, 157, 68);
+$greenSuccessLight	: rgb(223, 240, 216);
+$greenSuccessLight2	: rgb(240, 255, 235);
+$greenSuccess2	    : rgb(48, 137, 48);
+$greenSuccess3      : rgb(108, 137, 108);
+$greenSuccess4	    : rgb(66, 204, 66);
+$grey130		    : rgb(130, 130, 130);
+$grey160		    : rgb(160, 160, 160);
+$grey204		    : rgb(204, 204, 204);
+$gold			    : rgb(255, 215, 0);
+$lightGrey		    : rgb(211, 211, 211);
+$lightGrey231	    : rgb(231, 231, 231);
+$purple             : rgb(128, 0, 128);
+$purpleSmooth       : rgb(150, 80, 215);
+$red			    : rgb(255, 0, 0);
+$red180			    : rgb(180, 0, 0);
+$redEmpresa		    : rgb(169, 15, 15);
+$redEmpresa2	    : rgb(129, 0, 0);
+$redEmpresa3	    : rgb(89, 0, 0);
+$redDanger		    : rgb(217, 83, 79);
+$redDangerLight     : rgb(242, 222, 222);
+$redDangerLight2    : rgb(242, 182, 182);
+$redDanger2		    : rgb(197, 63, 59);
+$redDanger3		    : rgb(157, 63, 69);
+$yellowWarning	    : rgb(240, 173, 78);
+$yellowWarningLight	: rgb(252, 248, 227);
+$yellowWarning2     : rgb(220, 153, 58);
+$yellowWarning3	    : rgb(190, 123, 28);
+$white			    : rgb(255, 255, 255);
+$whiteSmoke		    : rgb(245, 245, 245);
+$white238		    : rgb(238, 238, 238);
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	transition: $transition;
+}
+
+@mixin box-shadow($box-shadow) {
+   -moz-box-shadow:    $box-shadow;
+   -webkit-box-shadow: $box-shadow;
+   box-shadow:         $box-shadow;
+}
+
+@mixin linear-gradient($color, $gradient) {
+	background-color: $color;
+    background-image: -moz-linear-gradient($gradient); 
+    background-image: -webkit-linear-gradient($gradient); 
+    background-image: -o-linear-gradient($gradient); 
+    background-image: -ms-linear-gradient($gradient); 
+    background-image: linear-gradient($gradient); 
+}
+
+@mixin animation($exp) {
+	animation: $exp;
+    -webkit-animation: $exp; 
+    -moz-animation: $exp; 
+    -o-animation: $exp; 
+}
+
+@mixin transform($valor) {
+	-ms-transform: $valor;
+	-webkit-transform: $valor;
+	transform: $valor;
+}
+
+@mixin transform-rotate($valor) {
+	-ms-transform: rotate($valor);
+	-webkit-transform: rotate($valor);
+	transform: rotate($valor);
+}
+
+
+    .kay-cor-0{  background-color: #ebf4fb;}
+    .kay-cor-1{  background-color: #ffece2;}
+    .kay-cor-2{  background-color: #e8ffe2;}
+    .kay-cor-3{  background-color: #e3e2ff;}
+    .kay-cor-4{  background-color: #fffad1;}
+    .kay-cor-5{  background-color: #7efff8;}
+    .kay-cor-6{  background-color: #ffe2e2;}
+    .kay-cor-7{  background-color: #f6ccf9;}
+    .kay-cor-8{  background-color: #9ec5b7;}
+    .kay-cor-9{  background-color: #fffbdf;}
+    .kay-cor-10{  background-color: #ffb74d;}
+    .kay-cor-11{  background-color: #cecece;}
+    .kay-cor-12{  background-color: #d0b2a8;}
+    .kay-cor-13{  background-color: #ff8bb2;}
+

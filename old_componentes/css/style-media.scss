@@ -1,0 +1,35 @@
+/* Tablet */
+@media (max-width: 768px) {
+	
+	.input-group {
+		
+		.input-group-addon:not(.tamanho) {
+			width: auto;
+		}
+	}
+	
+	.search-imput {
+       width: calc(100% - 37px) !important;
+    }
+	
+	button, a {
+	
+		&[data-hotkey]::before {
+			display: none;
+		}
+	}
+	
+}
+
+
+/* Mobile Large */
+@media (max-width: 425px) {
+	
+	.radio input[type="radio"], 
+	.radio-inline input[type="radio"], 
+	.checkbox input[type="checkbox"], 
+	.checkbox-inline input[type="checkbox"] {
+		margin-left: 0;
+	}
+	
+}

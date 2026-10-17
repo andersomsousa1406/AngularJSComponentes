@@ -1,37 +1,79 @@
 {
   "name": "angularjs-easy-components",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Componentes modernos e declarativos para AngularJS 1.5+.",
   "main": "src/angularjs-easy-components.js",
+  "bin": {
+    "easy-components": "bin/easy-components.js"
+  },
   "files": [
     "src",
+    "bin",
+    "lib",
     "html-custom-data.json",
     "README.md",
+    "CHANGELOG.md",
+    "MIGRATION.md",
+    "SUPPORT.md",
     "LICENSE"
   ],
   "scripts": {
+    "components:create": "node bin/easy-components.js create",
+    "components:sync": "node bin/easy-components.js sync",
+    "components:check": "node bin/easy-components.js check",
+    "prebuild:example": "npm run components:sync",
     "build:example": "node scripts/build-example.js",
+    "prewatch:example": "npm run components:sync",
     "watch:example": "node scripts/build-example.js --watch",
     "test": "node test/easy-components.test.js",
     "pretest:browser": "npm run build:example",
     "test:browser": "python test/browser_benchmark.py",
+    "validate": "npm test && npm run components:check && npm run build:example",
+    "validate:release": "npm run validate && npm run test:browser",
+    "pack:check": "npm pack --dry-run",
     "predemo": "npm run build:example",
     "demo": "npx http-server . -o /example/"
+  },
+  "easyComponents": {
+    "componentsDir": "example/components",
+    "registry": "example/components/index.generated.js",
+    "customData": "html-custom-data.json",
+    "build": {
+      "entry": "example/app.js",
+      "outfile": "example/dist/app.bundle.js",
+      "report": "example/dist/easy-components-report.json",
+      "target": [
+        "es2017"
+      ],
+      "minify": true,
+      "sourcemap": true,
+      "budgets": {
+        "bundle": 130000,
+        "gzip": 30000
+      }
+    }
   },
   "keywords": [
     "angularjs",
     "component",
     "components",
-    "legacy"
+    "legacy",
+    "declarative",
+    "frontend"
   ],
   "license": "MIT",
+  "browser": "src/angularjs-easy-components.js",
+  "exports": {
+    ".": "./src/angularjs-easy-components.js",
+    "./html-custom-data.json": "./html-custom-data.json"
+  },
   "peerDependencies": {
     "angular": ">=1.5.0 <2"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
-  "devDependencies": {
-    "esbuild": "^0.21.5"
+  "dependencies": {
+    "esbuild": "^0.28.2"
   }
 }

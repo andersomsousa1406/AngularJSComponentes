@@ -5,6 +5,8 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 var navigation = require('../vscode-extension/navigation');
+var semantic = require('../vscode-extension/semantic');
+var projectTools = require('../lib/project-tools');
 var total = 0;
 var failures = 0;
 
@@ -133,6 +135,86 @@ test('registra imports de componentes sem forEach manual', function () {
   assert.ok(app.angularModule.components.secondCard);
 });
 
+test('define componentes declarativos e aceita nomes em kebab-case', function () {
+  var loaded = loadLibrary();
+  var CounterCard = loaded.api.defineComponent('counter-card', {
+    props: { initial: loaded.api.number(0) },
+    template: '<div>{{ vm.initial }}</div>'
+  });
+  var app = loaded.api.app('descriptorApp');
+
+  app.register(CounterCard);
+
+  assert.equal(CounterCard.name, 'counterCard');
+  assert.equal(CounterCard.selector, 'counter-card');
+  assert.ok(app.angularModule.components.counterCard);
+});
+
+test('createApp registra API nova e antiga antes de montar uma unica vez', function () {
+  var loaded = loadLibrary();
+  var root = { nodeName: 'MAIN' };
+  var NewCard = loaded.api.defineComponent('new-card', { template: '<div></div>' });
+
+  function registerLegacy(app) {
+    app.component('legacyCard', { template: '<div></div>' });
+  }
+
+  var app = loaded.api.createApp({
+    name: 'modernApp',
+    dependencies: ['ngRoute'],
+    components: [NewCard, registerLegacy],
+    root: root
+  });
+
+  assert.deepEqual(app.angularModule.dependencies, ['ngEasyComponents', 'ngRoute']);
+  assert.ok(app.angularModule.components.newCard);
+  assert.ok(app.angularModule.components.legacyCard);
+  assert.equal(loaded.angular.bootstraps.length, 1);
+  assert.equal(loaded.angular.bootstraps[0].element, root);
+});
+
+test('oferece helpers curtos para props tipadas e obrigatorias', function () {
+  var loaded = loadLibrary();
+  var component = loaded.api.toAngularComponent('typedCard', {
+    props: {
+      title: loaded.api.text('Titulo'),
+      count: loaded.api.number(2, function (value) { return value >= 0; }),
+      enabled: loaded.api.boolean(true),
+      user: loaded.api.required(loaded.api.object()),
+      tags: loaded.api.array(function () { return []; }),
+      onSave: loaded.api.event()
+    },
+    template: '<div></div>'
+  });
+  var controller = new component.controller({}, {}, createScope());
+  controller.user = { id: 1 };
+  controller.$onInit();
+
+  assert.deepEqual(JSON.parse(JSON.stringify(component.bindings)), {
+    title: '@?', count: '<?', enabled: '<?', user: '<', tags: '<?', onSave: '&?'
+  });
+  assert.equal(controller.title, 'Titulo');
+  assert.equal(controller.count, 2);
+  assert.equal(controller.enabled, true);
+  assert.ok(Array.isArray(controller.tags));
+});
+
+test('injeta servicos AngularJS usando aliases declarativos', function () {
+  var loaded = loadLibrary();
+  var users = { list: function () { return ['Ana']; } };
+  var component = loaded.api.toAngularComponent('usersCard', {
+    inject: { users: 'UserService' },
+    methods: { load: function () { return this.users.list(); } },
+    template: '<div></div>'
+  });
+  var controller = new component.controller({}, {}, createScope(), undefined, users);
+
+  assert.deepEqual(JSON.parse(JSON.stringify(component.controller.$inject)), [
+    '$element', '$attrs', '$scope', '$document', 'UserService'
+  ]);
+  assert.deepEqual(controller.load(), ['Ana']);
+});
+
 test('monta o app somente depois que os componentes foram registrados', function () {
   var loaded = loadLibrary();
   var app = loaded.api.app('mountedApp');
@@ -220,7 +302,43 @@ test('inicializa defaults, estado, metodos e computed values', function () {
   assert.equal(controller.initial, 3);
   assert.equal(controller.count, 4);
   assert.equal(controller.doubled, 8);
-  assert.equal(scope.asyncCalls, 2);
+  assert.equal(scope.asyncCalls, 1);
+});
+
+test('agrupa atualizacoes de estado e expoe metricas por componente', function () {
+  var loaded = loadLibrary();
+  var component = loaded.api.toAngularComponent('metricsCard', {
+    state: { count: 0 },
+    methods: {
+      updateMany: function () {
+        this.$setState({ count: 1 });
+        this.$setState({ count: 2 });
+        this.$setState({ count: 3 });
+      }
+    },
+    watch: { count: function () {} },
+    template: '<div></div>'
+  });
+  var scope = createScope();
+  var controller = new component.controller({}, {}, scope);
+
+  controller.$onInit();
+  controller.updateMany();
+  controller.$postLink();
+  var active = loaded.api.metrics();
+
+  assert.equal(scope.asyncCalls, 1);
+  assert.equal(active.components.metricsCard.stateUpdates, 4);
+  assert.equal(active.components.metricsCard.digestSchedules, 1);
+  assert.equal(active.components.metricsCard.active, 1);
+  assert.equal(active.components.metricsCard.watchers, 1);
+  assert.equal(active.totals.created, 1);
+
+  controller.$onDestroy();
+  var destroyed = loaded.api.metrics();
+  assert.equal(destroyed.components.metricsCard.active, 0);
+  assert.equal(destroyed.components.metricsCard.destroyed, 1);
+  assert.equal(destroyed.components.metricsCard.watchers, 0);
 });
 
 test('$emit entrega o payload no formato de callback do AngularJS', function () {
@@ -297,6 +415,48 @@ test('carrega arquivos e estilos inline apenas uma vez por pagina', function () 
   assert.equal(appended[2].child.text, '.card { color: red; }');
 });
 
+test('isola CSS por componente e aplica nonce para CSP', function () {
+  var loaded = loadLibrary();
+  var appended = [];
+  var attributes = {};
+  var document = {
+    head: { appendChild: function (element) { appended.push(element); } },
+    createElement: function (tagName) {
+      return {
+        tagName: tagName,
+        attributes: {},
+        setAttribute: function (name, value) { this.attributes[name] = value; },
+        appendChild: function (child) { this.child = child; }
+      };
+    },
+    createTextNode: function (text) { return { text: text }; }
+  };
+  var element = { attr: function (name, value) { attributes[name] = value; } };
+
+  loaded.api.configure({ styleNonce: 'nonce-123' });
+  var component = loaded.api.toAngularComponent('scopedCard', {
+    scoped: true,
+    styles: '.title, :host(.active) { color: red; } @media (max-width: 10px) { .title { color: blue; } }',
+    template: '<h2 class="title"></h2>'
+  });
+  new component.controller(element, {}, createScope(), [document]);
+
+  assert.equal(attributes['data-easy-scope'], 'scoped-card');
+  assert.equal(appended[0].attributes.nonce, 'nonce-123');
+  assert.match(appended[0].child.text, /\[data-easy-scope="scoped-card"\] \.title/);
+  assert.match(appended[0].child.text, /\[data-easy-scope="scoped-card"\]\.active/);
+  assert.equal(typeof loaded.api.testing.mount, 'function');
+});
+
+test('runtime nao adiciona eval ou Function dinamica para CSP', function () {
+  var source = fs.readFileSync(
+    path.join(__dirname, '..', 'src', 'angularjs-easy-components.js'),
+    'utf8'
+  );
+  assert.doesNotMatch(source, /(^|[^.$\w])eval\s*\(/m);
+  assert.doesNotMatch(source, /new\s+Function\s*\(/);
+});
+
 test('localiza a declaracao de um componente a partir da tag HTML', function () {
   var html = '<article><value-display value="vm.count"></value-display></article>';
   var source = "export default function register(app) { return app.component('valueDisplay', {}); }";
@@ -313,13 +473,21 @@ test('localiza a declaracao de um componente a partir da tag HTML', function () 
   );
 });
 
+test('localiza componentes declarados com defineComponent', function () {
+  var source = "export default EasyComponents.defineComponent('value-display', { template: '<p></p>' });";
+  var offset = navigation.componentDefinitionOffset(source, 'valueDisplay');
+
+  assert.notEqual(offset, -1);
+  assert.equal(source.slice(offset, offset + 'value-display'.length), 'value-display');
+});
+
 test('localiza metodos da API do plugin usados no JavaScript', function () {
   var source = fs.readFileSync(
     path.join(__dirname, '..', 'src', 'angularjs-easy-components.js'),
     'utf8'
   );
 
-  ['app', 'use', 'component', 'register', 'mount', '$setState', '$emit'].forEach(function (apiName) {
+  ['app', 'createApp', 'defineComponent', 'use', 'component', 'register', 'mount', '$setState', '$emit'].forEach(function (apiName) {
     var offset = navigation.apiDefinitionOffset(source, apiName);
     assert.notEqual(offset, -1, 'Nao encontrou ' + apiName);
     assert.equal(source.slice(offset, offset + apiName.length), apiName);
@@ -359,6 +527,109 @@ test('navega pelos imports, templates e estilos de um arquivo de componente', fu
     start: componentSource.indexOf('./value-display.html'),
     end: componentSource.indexOf('./value-display.html') + './value-display.html'.length
   });
+});
+
+test('descobre componentes e props para o catalogo automatico', function () {
+  var config = projectTools.loadConfig(path.join(__dirname, '..'));
+  var components = projectTools.discoverComponents(config);
+  var counter = components.filter(function (component) {
+    return component.selector === 'counter-card';
+  })[0];
+
+  assert.equal(components.length, 25);
+  assert.ok(counter);
+  assert.deepEqual(counter.props, ['title', 'initial', 'step', 'onChange']);
+});
+
+test('gera um catalogo ES Modules com todos os componentes', function () {
+  var config = projectTools.loadConfig(path.join(__dirname, '..'));
+  var components = projectTools.discoverComponents(config);
+  var source = projectTools.registrySource(config, components);
+
+  assert.match(source, /counter-card\/counter-card\.component\.js/);
+  assert.match(source, /export default components/);
+  assert.equal((source.match(/^import Component/gm) || []).length, components.length);
+});
+
+test('valida a estrutura e a nomenclatura dos componentes', function () {
+  var config = projectTools.loadConfig(path.join(__dirname, '..'));
+  var result = projectTools.checkProject(config);
+
+  assert.deepEqual(result.errors, []);
+  assert.deepEqual(result.warnings, []);
+});
+
+test('gerador cria JavaScript, HTML, CSS e teste sem sobrescrever', function () {
+  var temporaryRoot = fs.mkdtempSync(path.join(__dirname, 'tmp-cli-'));
+  var componentsDir = path.join(temporaryRoot, 'components');
+  var config = { componentsDir: componentsDir };
+
+  fs.mkdirSync(componentsDir);
+  try {
+    var created = projectTools.createComponent(config, 'ProfileCard');
+    ['component.js', 'html', 'css', 'test.js'].forEach(function (suffix) {
+      assert.ok(fs.existsSync(path.join(created.directory, 'profile-card.' + suffix)));
+    });
+    assert.throws(function () {
+      projectTools.createComponent(config, 'profile-card');
+    }, /ja existe/);
+  } finally {
+    fs.rmdirSync(temporaryRoot, { recursive: true });
+  }
+});
+
+test('indice semantico extrai props, tipos e membros de vm', function () {
+  var source = fs.readFileSync(
+    path.join(__dirname, '..', 'example', 'components', 'counter-card', 'counter-card.component.js'),
+    'utf8'
+  );
+  var component = semantic.parseComponent(source, 'counter-card.component.js');
+
+  assert.equal(component.selector, 'counter-card');
+  assert.deepEqual(component.props.map(function (prop) {
+    return [prop.attribute, prop.type, prop.binding];
+  }), [
+    ['title', 'String', '@'],
+    ['initial', 'Number', '<'],
+    ['step', 'Number', '<'],
+    ['on-change', 'Function', '&']
+  ]);
+  ['count', 'increment', 'decrement', 'doubled'].forEach(function (name) {
+    assert.ok(component.members.some(function (member) { return member.name === name; }), 'Nao encontrou vm.' + name);
+  });
+  assert.deepEqual(component.templates, ['./counter-card.html']);
+});
+
+test('indice semantico reconhece API legada e props obrigatorias', function () {
+  var source = [
+    "import template from './user-card.html';",
+    'export default function register(app) {',
+    "  return app.component('userCard', {",
+    '    props: { user: { type: Object, required: true }, onSave: Function },',
+    '    inject: { api: "UserService" },',
+    '    template: template',
+    '  });',
+    '}'
+  ].join('\n');
+  var component = semantic.parseComponent(source, 'user-card.component.js');
+
+  assert.equal(component.selector, 'user-card');
+  assert.equal(component.props[0].required, true);
+  assert.equal(component.props[1].binding, '&');
+  assert.ok(component.members.some(function (member) { return member.name === 'api' && member.kind === 'inject'; }));
+});
+
+test('indice semantico localiza tags e atributos no HTML', function () {
+  var html = '<counter-card initial="vm.total" on-change="vm.changed($event)"></counter-card>';
+  var tags = semantic.openingTags(html);
+  var offset = html.indexOf('on-change') + 3;
+  var context = semantic.attributeAtOffset(html, offset);
+
+  assert.equal(tags.length, 1);
+  assert.equal(tags[0].name, 'counter-card');
+  assert.equal(tags[0].attributes[0].value, 'vm.total');
+  assert.equal(context.attribute.name, 'on-change');
+  assert.equal(context.tag.name, 'counter-card');
 });
 
 if (failures) {

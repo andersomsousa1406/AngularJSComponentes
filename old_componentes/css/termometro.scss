@@ -1,0 +1,582 @@
+@import "../helper/partials/padrao.scss";
+
+.div-termometro{
+    /*border: 2px solid;*/
+    width: 100px;
+    height: 386px;
+    position: fixed;
+    top: 200px;
+    left: 100px;
+    
+    .div-termometro-1 {
+        border: 2px solid;
+        width: 96px;
+        height: 100px;
+        position: absolute;
+        bottom: 0px;
+        border-radius: 50%;
+        z-index: 90;
+        background-color: #F1F1F1;
+        
+        .div-termometro-2 {
+            /*border: 2px solid;*/
+            /*border-style: ridge;*/
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            bottom: 8px;
+            left: 6px;
+            border-radius: 50%;
+            z-index: 100;
+            background-color: white;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);
+            transform: rotate(153deg);
+            @include transition(1s);
+        }
+
+        .div-termometro-3 {
+            border: 2px solid;
+            width: 43px;
+            height: 370px;
+            position: absolute;
+            top: -284px;
+            left: 24px;
+            border-radius: 27px;
+            background-color: #F1F1F1;
+            
+            .div-termometro-4 {
+                /*border: 2px solid;*/
+                /*border-style: ridge;*/
+                width: 27px;
+                height: 363px;
+                position: absolute;
+                top: 5px;
+                left: 6px;
+                border-radius: 27px;
+                background-color: white;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+				
+				.div-termometro-color {
+					width: 27px;
+					/*height: 73px;*/
+					position: absolute;
+					bottom: 1px;
+					left: 0px;
+					border-radius: 27px;
+					background-color: white;
+					box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+                    @include transition(1s);
+				}
+            }
+        }
+    }
+    
+    .div-termometro-5 {
+        border: 4px solid;
+        border-style: dotted;
+        width: 6px;
+        height: 271px;
+        position: absolute;
+        top: 10px;
+        left: 22px;
+        z-index: 100;
+        border-radius: 33px;
+        opacity: 0.5;
+    }
+    
+    .div-termometro-6 {
+        width: 6px;
+        height: 18px;
+        position: absolute;
+        top: 275px;
+        left: 28px;
+        z-index: 76;
+        background-color: #F1F1F1;
+    }
+    
+    .div-termometro-7 {
+        width: 4px;
+        height: 10px;
+        position: absolute;
+        top: 5px;
+        left: 23px;
+        z-index: 92;
+        background-color: #F1F1F1;
+        border-radius: 10px;
+    }
+    
+    .div-termometro-8 {
+        width: 6px;
+        height: 18px;
+        position: absolute;
+        top: 275px;
+        left: 61px;
+        z-index: 76;
+        background-color: #F1F1F1;
+    }
+    
+    .div-termometro-9 {
+        width: 4px;
+        height: 10px;
+        position: absolute;
+        top: 5px;
+        left: 64px;
+        z-index: 92;
+        background-color: #F1F1F1;
+        border-radius: 10px;
+    }
+}
+
+
+$cor-base1	: #D20000;
+$cor-base2	: #D20000;
+$cor-base3	: #B3B50C;
+$cor-base4	: #B3B50C;
+$cor-base5	: green;
+
+$cor-gradiente1	: #F76464;
+$cor-gradiente2	: #F76464;
+$cor-gradiente3	: #F5F29F;
+$cor-gradiente4	: #F5F29F;
+$cor-gradiente5	: #4DF94D;
+
+$cor-faixa0: $cor-base1;
+$cor-faixa1: $cor-base1;
+$cor-faixa2: $cor-base1;
+$cor-faixa3: $cor-base1;
+$cor-faixa4: $cor-base1;
+$cor-faixa5: $cor-base1;
+$cor-faixa6: $cor-base1;
+$cor-faixa7: $cor-base1;
+$cor-faixa8: $cor-base1;
+$cor-faixa9: $cor-base1;
+
+$cor-faixa10: $cor-base1;
+$cor-faixa11: $cor-base1;
+$cor-faixa12: $cor-base1;
+$cor-faixa13: $cor-base1;
+$cor-faixa14: $cor-base1;
+$cor-faixa15: $cor-base1;
+$cor-faixa16: $cor-base1;
+$cor-faixa17: $cor-base1;
+$cor-faixa18: $cor-base1;
+$cor-faixa19: $cor-base1;
+
+$cor-faixa20: $cor-base2;
+$cor-faixa21: $cor-base2;
+$cor-faixa22: $cor-base2;
+$cor-faixa23: $cor-base2;
+$cor-faixa24: $cor-base2;
+$cor-faixa25: $cor-base2;
+$cor-faixa26: $cor-base2;
+$cor-faixa27: $cor-base2;
+$cor-faixa28: $cor-base2;
+$cor-faixa29: $cor-base2;
+
+$cor-faixa30: $cor-base2;
+$cor-faixa31: $cor-base2;
+$cor-faixa32: $cor-base2;
+$cor-faixa33: $cor-base2;
+$cor-faixa34: $cor-base2;
+$cor-faixa35: $cor-base2;
+$cor-faixa36: $cor-base2;
+$cor-faixa37: $cor-base2;
+$cor-faixa38: $cor-base2;
+$cor-faixa39: $cor-base2;
+
+$cor-faixa40: $cor-base3;
+$cor-faixa41: $cor-base3;
+$cor-faixa42: $cor-base3;
+$cor-faixa43: $cor-base3;
+$cor-faixa44: $cor-base3;
+$cor-faixa45: $cor-base3;
+$cor-faixa46: $cor-base3;
+$cor-faixa47: $cor-base3;
+$cor-faixa48: $cor-base3;
+$cor-faixa49: $cor-base3;
+
+$cor-faixa50: $cor-base3;
+$cor-faixa51: $cor-base3;
+$cor-faixa52: $cor-base3;
+$cor-faixa53: $cor-base3;
+$cor-faixa54: $cor-base3;
+$cor-faixa55: $cor-base3;
+$cor-faixa56: $cor-base3;
+$cor-faixa57: $cor-base3;
+$cor-faixa58: $cor-base3;
+$cor-faixa59: $cor-base3;
+
+$cor-faixa60: $cor-base4;
+$cor-faixa61: $cor-base4;
+$cor-faixa62: $cor-base4;
+$cor-faixa63: $cor-base4;
+$cor-faixa64: $cor-base4;
+$cor-faixa65: $cor-base4;
+$cor-faixa66: $cor-base4;
+$cor-faixa67: $cor-base4;
+$cor-faixa68: $cor-base4;
+$cor-faixa69: $cor-base4;
+
+$cor-faixa70: $cor-base4;
+$cor-faixa71: $cor-base4;
+$cor-faixa72: $cor-base4;
+$cor-faixa73: $cor-base4;
+$cor-faixa74: $cor-base4;
+$cor-faixa75: $cor-base4;
+$cor-faixa76: $cor-base4;
+$cor-faixa77: $cor-base4;
+$cor-faixa78: $cor-base4;
+$cor-faixa79: $cor-base4;
+
+$cor-faixa80: $cor-base5;
+$cor-faixa81: $cor-base5;
+$cor-faixa82: $cor-base5;
+$cor-faixa83: $cor-base5;
+$cor-faixa84: $cor-base5;
+$cor-faixa85: $cor-base5;
+$cor-faixa86: $cor-base5;
+$cor-faixa87: $cor-base5;
+$cor-faixa88: $cor-base5;
+$cor-faixa89: $cor-base5;
+
+$cor-faixa90: $cor-base5;
+$cor-faixa91: $cor-base5;
+$cor-faixa92: $cor-base5;
+$cor-faixa93: $cor-base5;
+$cor-faixa94: $cor-base5;
+$cor-faixa95: $cor-base5;
+$cor-faixa96: $cor-base5;
+$cor-faixa97: $cor-base5;
+$cor-faixa98: $cor-base5;
+$cor-faixa99: $cor-base5;
+
+$cor-faixa100: $cor-base5;
+
+$cor-faixa-g0: $cor-gradiente1;
+$cor-faixa-g1: $cor-gradiente1;
+$cor-faixa-g2: $cor-gradiente1;
+$cor-faixa-g3: $cor-gradiente1;
+$cor-faixa-g4: $cor-gradiente1;
+$cor-faixa-g5: $cor-gradiente1;
+$cor-faixa-g6: $cor-gradiente1;
+$cor-faixa-g7: $cor-gradiente1;
+$cor-faixa-g8: $cor-gradiente1;
+$cor-faixa-g9: $cor-gradiente1;
+
+$cor-faixa-g10: $cor-gradiente1;
+$cor-faixa-g11: $cor-gradiente1;
+$cor-faixa-g12: $cor-gradiente1;
+$cor-faixa-g13: $cor-gradiente1;
+$cor-faixa-g14: $cor-gradiente1;
+$cor-faixa-g15: $cor-gradiente1;
+$cor-faixa-g16: $cor-gradiente1;
+$cor-faixa-g17: $cor-gradiente1;
+$cor-faixa-g18: $cor-gradiente1;
+$cor-faixa-g19: $cor-gradiente1;
+
+$cor-faixa-g20: $cor-gradiente2;
+$cor-faixa-g21: $cor-gradiente2;
+$cor-faixa-g22: $cor-gradiente2;
+$cor-faixa-g23: $cor-gradiente2;
+$cor-faixa-g24: $cor-gradiente2;
+$cor-faixa-g25: $cor-gradiente2;
+$cor-faixa-g26: $cor-gradiente2;
+$cor-faixa-g27: $cor-gradiente2;
+$cor-faixa-g28: $cor-gradiente2;
+$cor-faixa-g29: $cor-gradiente2;
+
+$cor-faixa-g30: $cor-gradiente2;
+$cor-faixa-g31: $cor-gradiente2;
+$cor-faixa-g32: $cor-gradiente2;
+$cor-faixa-g33: $cor-gradiente2;
+$cor-faixa-g34: $cor-gradiente2;
+$cor-faixa-g35: $cor-gradiente2;
+$cor-faixa-g36: $cor-gradiente2;
+$cor-faixa-g37: $cor-gradiente2;
+$cor-faixa-g38: $cor-gradiente2;
+$cor-faixa-g39: $cor-gradiente2;
+
+$cor-faixa-g40: $cor-gradiente3;
+$cor-faixa-g41: $cor-gradiente3;
+$cor-faixa-g42: $cor-gradiente3;
+$cor-faixa-g43: $cor-gradiente3;
+$cor-faixa-g44: $cor-gradiente3;
+$cor-faixa-g45: $cor-gradiente3;
+$cor-faixa-g46: $cor-gradiente3;
+$cor-faixa-g47: $cor-gradiente3;
+$cor-faixa-g48: $cor-gradiente3;
+$cor-faixa-g49: $cor-gradiente3;
+
+$cor-faixa-g50: $cor-gradiente3;
+$cor-faixa-g51: $cor-gradiente3;
+$cor-faixa-g52: $cor-gradiente3;
+$cor-faixa-g53: $cor-gradiente3;
+$cor-faixa-g54: $cor-gradiente3;
+$cor-faixa-g55: $cor-gradiente3;
+$cor-faixa-g56: $cor-gradiente3;
+$cor-faixa-g57: $cor-gradiente3;
+$cor-faixa-g58: $cor-gradiente3;
+$cor-faixa-g59: $cor-gradiente3;
+
+$cor-faixa-g60: $cor-gradiente4;
+$cor-faixa-g61: $cor-gradiente4;
+$cor-faixa-g62: $cor-gradiente4;
+$cor-faixa-g63: $cor-gradiente4;
+$cor-faixa-g64: $cor-gradiente4;
+$cor-faixa-g65: $cor-gradiente4;
+$cor-faixa-g66: $cor-gradiente4;
+$cor-faixa-g67: $cor-gradiente4;
+$cor-faixa-g68: $cor-gradiente4;
+$cor-faixa-g69: $cor-gradiente4;
+
+$cor-faixa-g70: $cor-gradiente4;
+$cor-faixa-g71: $cor-gradiente4;
+$cor-faixa-g72: $cor-gradiente4;
+$cor-faixa-g73: $cor-gradiente4;
+$cor-faixa-g74: $cor-gradiente4;
+$cor-faixa-g75: $cor-gradiente4;
+$cor-faixa-g76: $cor-gradiente4;
+$cor-faixa-g77: $cor-gradiente4;
+$cor-faixa-g78: $cor-gradiente4;
+$cor-faixa-g79: $cor-gradiente4;
+
+$cor-faixa-g80: $cor-gradiente5;
+$cor-faixa-g81: $cor-gradiente5;
+$cor-faixa-g82: $cor-gradiente5;
+$cor-faixa-g83: $cor-gradiente5;
+$cor-faixa-g84: $cor-gradiente5;
+$cor-faixa-g85: $cor-gradiente5;
+$cor-faixa-g86: $cor-gradiente5;
+$cor-faixa-g87: $cor-gradiente5;
+$cor-faixa-g88: $cor-gradiente5;
+$cor-faixa-g89: $cor-gradiente5;
+
+$cor-faixa-g90: $cor-gradiente5;
+$cor-faixa-g91: $cor-gradiente5;
+$cor-faixa-g92: $cor-gradiente5;
+$cor-faixa-g93: $cor-gradiente5;
+$cor-faixa-g94: $cor-gradiente5;
+$cor-faixa-g95: $cor-gradiente5;
+$cor-faixa-g96: $cor-gradiente5;
+$cor-faixa-g97: $cor-gradiente5;
+$cor-faixa-g98: $cor-gradiente5;
+$cor-faixa-g99: $cor-gradiente5;
+
+$cor-faixa-g100: $cor-gradiente5;
+
+$pos-faixa0: 73px;
+$pos-faixa1: 75.8199px;
+$pos-faixa2: 78.6398px;
+$pos-faixa3: 81.4597px;
+$pos-faixa4: 84.2796px;
+$pos-faixa5: 87.0995px;
+$pos-faixa6: 89.9194px;
+$pos-faixa7: 92.7393px;
+$pos-faixa8: 95.5592px;
+$pos-faixa9: 98.3791px;
+$pos-faixa10: 101.199px;
+$pos-faixa11: 104.0189px;
+$pos-faixa12: 106.8388px;
+$pos-faixa13: 109.6587px;
+$pos-faixa14: 112.4786px;
+$pos-faixa15: 115.2985px;
+$pos-faixa16: 118.1184px;
+$pos-faixa17: 120.9383px;
+$pos-faixa18: 123.7582px;
+$pos-faixa19: 126.5781px;
+$pos-faixa20: 129.398px;
+$pos-faixa21: 132.2179px;
+$pos-faixa22: 135.0378px;
+$pos-faixa23: 137.8577px;
+$pos-faixa24: 140.6776px;
+$pos-faixa25: 143.4975px;
+$pos-faixa26: 146.3174px;
+$pos-faixa27: 149.1373px;
+$pos-faixa28: 151.9572px;
+$pos-faixa29: 154.7771px;
+$pos-faixa30: 157.597px;
+$pos-faixa31: 160.4169px;
+$pos-faixa32: 163.2368px;
+$pos-faixa33: 166.0567px;
+$pos-faixa34: 168.8766px;
+$pos-faixa35: 171.6965px;
+$pos-faixa36: 174.5164px;
+$pos-faixa37: 177.3363px;
+$pos-faixa38: 180.1562px;
+$pos-faixa39: 182.9761px;
+$pos-faixa40: 185.796px;
+$pos-faixa41: 188.6159px;
+$pos-faixa42: 191.4358px;
+$pos-faixa43: 194.2557px;
+$pos-faixa44: 197.0756px;
+$pos-faixa45: 199.8955px;
+$pos-faixa46: 202.7154px;
+$pos-faixa47: 205.5353px;
+$pos-faixa48: 208.3552px;
+$pos-faixa49: 211.1751px;
+$pos-faixa50: 213.995px;
+$pos-faixa51: 216.8149px;
+$pos-faixa52: 219.6348px;
+$pos-faixa53: 222.4547px;
+$pos-faixa54: 225.2746px;
+$pos-faixa55: 228.0945px;
+$pos-faixa56: 230.9144px;
+$pos-faixa57: 233.7343px;
+$pos-faixa58: 236.5542px;
+$pos-faixa59: 239.3741px;
+$pos-faixa60: 242.194px;
+$pos-faixa61: 245.0139px;
+$pos-faixa62: 247.8338px;
+$pos-faixa63: 250.6537px;
+$pos-faixa64: 253.4736px;
+$pos-faixa65: 256.2935px;
+$pos-faixa66: 259.1134px;
+$pos-faixa67: 261.9333px;
+$pos-faixa68: 264.7532px;
+$pos-faixa69: 267.5731px;
+$pos-faixa70: 270.393px;
+$pos-faixa71: 273.2129px;
+$pos-faixa72: 276.0328px;
+$pos-faixa73: 278.8527px;
+$pos-faixa74: 281.6726px;
+$pos-faixa75: 284.4925px;
+$pos-faixa76: 287.3124px;
+$pos-faixa77: 290.1323px;
+$pos-faixa78: 292.9522px;
+$pos-faixa79: 295.7721px;
+$pos-faixa80: 298.592px;
+$pos-faixa81: 301.4119px;
+$pos-faixa82: 304.2318px;
+$pos-faixa83: 307.0517px;
+$pos-faixa84: 309.8716px;
+$pos-faixa85: 312.6915px;
+$pos-faixa86: 315.5114px;
+$pos-faixa87: 318.3313px;
+$pos-faixa88: 321.1512px;
+$pos-faixa89: 323.9711px;
+$pos-faixa90: 326.791px;
+$pos-faixa91: 329.6109px;
+$pos-faixa92: 332.4308px;
+$pos-faixa93: 335.2507px;
+$pos-faixa94: 338.0706px;
+$pos-faixa95: 340.8905px;
+$pos-faixa96: 343.7104px;
+$pos-faixa97: 346.5303px;
+$pos-faixa98: 349.3502px;
+$pos-faixa99: 352.1701px;
+$pos-faixa100: 362px;
+
+.p0{.cor-ativa{background: radial-gradient($cor-faixa-g0,  $cor-faixa0 )!important;} .pos-ativa{height: $pos-faixa0;}}
+.p1{.cor-ativa{background: radial-gradient($cor-faixa-g1,  $cor-faixa1 )!important;} .pos-ativa{height: $pos-faixa1;}}
+.p2{.cor-ativa{background: radial-gradient($cor-faixa-g2,  $cor-faixa2 )!important;} .pos-ativa{height: $pos-faixa2;}}
+.p3{.cor-ativa{background: radial-gradient($cor-faixa-g3,  $cor-faixa3 )!important;} .pos-ativa{height: $pos-faixa3;}}
+.p4{.cor-ativa{background: radial-gradient($cor-faixa-g4,  $cor-faixa4 )!important;} .pos-ativa{height: $pos-faixa4;}}
+.p5{.cor-ativa{background: radial-gradient($cor-faixa-g5,  $cor-faixa5 )!important;} .pos-ativa{height: $pos-faixa5;}}
+.p6{.cor-ativa{background: radial-gradient($cor-faixa-g6,  $cor-faixa6 )!important;} .pos-ativa{height: $pos-faixa6;}}
+.p7{.cor-ativa{background: radial-gradient($cor-faixa-g7,  $cor-faixa7 )!important;} .pos-ativa{height: $pos-faixa7;}}
+.p8{.cor-ativa{background: radial-gradient($cor-faixa-g8,  $cor-faixa8 )!important;} .pos-ativa{height: $pos-faixa8;}}
+.p9{.cor-ativa{background: radial-gradient($cor-faixa-g9,  $cor-faixa9 )!important;} .pos-ativa{height: $pos-faixa9;}}
+
+.p10{.cor-ativa{background: radial-gradient($cor-faixa-g10,  $cor-faixa10 )!important;} .pos-ativa{height: $pos-faixa10;}}
+.p11{.cor-ativa{background: radial-gradient($cor-faixa-g11,  $cor-faixa11 )!important;} .pos-ativa{height: $pos-faixa11;}}
+.p12{.cor-ativa{background: radial-gradient($cor-faixa-g12,  $cor-faixa12 )!important;} .pos-ativa{height: $pos-faixa12;}}
+.p13{.cor-ativa{background: radial-gradient($cor-faixa-g13,  $cor-faixa13 )!important;} .pos-ativa{height: $pos-faixa13;}}
+.p14{.cor-ativa{background: radial-gradient($cor-faixa-g14,  $cor-faixa14 )!important;} .pos-ativa{height: $pos-faixa14;}}
+.p15{.cor-ativa{background: radial-gradient($cor-faixa-g15,  $cor-faixa15 )!important;} .pos-ativa{height: $pos-faixa15;}}
+.p16{.cor-ativa{background: radial-gradient($cor-faixa-g16,  $cor-faixa16 )!important;} .pos-ativa{height: $pos-faixa16;}}
+.p17{.cor-ativa{background: radial-gradient($cor-faixa-g17,  $cor-faixa17 )!important;} .pos-ativa{height: $pos-faixa17;}}
+.p18{.cor-ativa{background: radial-gradient($cor-faixa-g18,  $cor-faixa18 )!important;} .pos-ativa{height: $pos-faixa18;}}
+.p19{.cor-ativa{background: radial-gradient($cor-faixa-g19,  $cor-faixa19 )!important;} .pos-ativa{height: $pos-faixa19;}}
+
+.p20{.cor-ativa{background: radial-gradient($cor-faixa-g20,  $cor-faixa20 )!important;} .pos-ativa{height: $pos-faixa20;}}
+.p21{.cor-ativa{background: radial-gradient($cor-faixa-g21,  $cor-faixa21 )!important;} .pos-ativa{height: $pos-faixa21;}}
+.p22{.cor-ativa{background: radial-gradient($cor-faixa-g22,  $cor-faixa22 )!important;} .pos-ativa{height: $pos-faixa22;}}
+.p23{.cor-ativa{background: radial-gradient($cor-faixa-g23,  $cor-faixa23 )!important;} .pos-ativa{height: $pos-faixa23;}}
+.p24{.cor-ativa{background: radial-gradient($cor-faixa-g24,  $cor-faixa24 )!important;} .pos-ativa{height: $pos-faixa24;}}
+.p25{.cor-ativa{background: radial-gradient($cor-faixa-g25,  $cor-faixa25 )!important;} .pos-ativa{height: $pos-faixa25;}}
+.p26{.cor-ativa{background: radial-gradient($cor-faixa-g26,  $cor-faixa26 )!important;} .pos-ativa{height: $pos-faixa26;}}
+.p27{.cor-ativa{background: radial-gradient($cor-faixa-g27,  $cor-faixa27 )!important;} .pos-ativa{height: $pos-faixa27;}}
+.p28{.cor-ativa{background: radial-gradient($cor-faixa-g28,  $cor-faixa28 )!important;} .pos-ativa{height: $pos-faixa28;}}
+.p29{.cor-ativa{background: radial-gradient($cor-faixa-g29,  $cor-faixa29 )!important;} .pos-ativa{height: $pos-faixa29;}}
+
+.p30{.cor-ativa{background: radial-gradient($cor-faixa-g30,  $cor-faixa30 )!important;} .pos-ativa{height: $pos-faixa30;}}
+.p31{.cor-ativa{background: radial-gradient($cor-faixa-g31,  $cor-faixa31 )!important;} .pos-ativa{height: $pos-faixa31;}}
+.p32{.cor-ativa{background: radial-gradient($cor-faixa-g32,  $cor-faixa32 )!important;} .pos-ativa{height: $pos-faixa32;}}
+.p33{.cor-ativa{background: radial-gradient($cor-faixa-g33,  $cor-faixa33 )!important;} .pos-ativa{height: $pos-faixa33;}}
+.p34{.cor-ativa{background: radial-gradient($cor-faixa-g34,  $cor-faixa34 )!important;} .pos-ativa{height: $pos-faixa34;}}
+.p35{.cor-ativa{background: radial-gradient($cor-faixa-g35,  $cor-faixa35 )!important;} .pos-ativa{height: $pos-faixa35;}}
+.p36{.cor-ativa{background: radial-gradient($cor-faixa-g36,  $cor-faixa36 )!important;} .pos-ativa{height: $pos-faixa36;}}
+.p37{.cor-ativa{background: radial-gradient($cor-faixa-g37,  $cor-faixa37 )!important;} .pos-ativa{height: $pos-faixa37;}}
+.p38{.cor-ativa{background: radial-gradient($cor-faixa-g38,  $cor-faixa38 )!important;} .pos-ativa{height: $pos-faixa38;}}
+.p39{.cor-ativa{background: radial-gradient($cor-faixa-g39,  $cor-faixa39 )!important;} .pos-ativa{height: $pos-faixa39;}}
+
+.p40{.cor-ativa{background: radial-gradient($cor-faixa-g40,  $cor-faixa40 )!important;} .pos-ativa{height: $pos-faixa40;}}
+.p41{.cor-ativa{background: radial-gradient($cor-faixa-g41,  $cor-faixa41 )!important;} .pos-ativa{height: $pos-faixa41;}}
+.p42{.cor-ativa{background: radial-gradient($cor-faixa-g42,  $cor-faixa42 )!important;} .pos-ativa{height: $pos-faixa42;}}
+.p43{.cor-ativa{background: radial-gradient($cor-faixa-g43,  $cor-faixa43 )!important;} .pos-ativa{height: $pos-faixa43;}}
+.p44{.cor-ativa{background: radial-gradient($cor-faixa-g44,  $cor-faixa44 )!important;} .pos-ativa{height: $pos-faixa44;}}
+.p45{.cor-ativa{background: radial-gradient($cor-faixa-g45,  $cor-faixa45 )!important;} .pos-ativa{height: $pos-faixa45;}}
+.p46{.cor-ativa{background: radial-gradient($cor-faixa-g46,  $cor-faixa46 )!important;} .pos-ativa{height: $pos-faixa46;}}
+.p47{.cor-ativa{background: radial-gradient($cor-faixa-g47,  $cor-faixa47 )!important;} .pos-ativa{height: $pos-faixa47;}}
+.p48{.cor-ativa{background: radial-gradient($cor-faixa-g48,  $cor-faixa48 )!important;} .pos-ativa{height: $pos-faixa48;}}
+.p49{.cor-ativa{background: radial-gradient($cor-faixa-g49,  $cor-faixa49 )!important;} .pos-ativa{height: $pos-faixa49;}}
+
+.p50{.cor-ativa{background: radial-gradient($cor-faixa-g50,  $cor-faixa50 )!important;} .pos-ativa{height: $pos-faixa50;}}
+.p51{.cor-ativa{background: radial-gradient($cor-faixa-g51,  $cor-faixa51 )!important;} .pos-ativa{height: $pos-faixa51;}}
+.p52{.cor-ativa{background: radial-gradient($cor-faixa-g52,  $cor-faixa52 )!important;} .pos-ativa{height: $pos-faixa52;}}
+.p53{.cor-ativa{background: radial-gradient($cor-faixa-g53,  $cor-faixa53 )!important;} .pos-ativa{height: $pos-faixa53;}}
+.p54{.cor-ativa{background: radial-gradient($cor-faixa-g54,  $cor-faixa54 )!important;} .pos-ativa{height: $pos-faixa54;}}
+.p55{.cor-ativa{background: radial-gradient($cor-faixa-g55,  $cor-faixa55 )!important;} .pos-ativa{height: $pos-faixa55;}}
+.p56{.cor-ativa{background: radial-gradient($cor-faixa-g56,  $cor-faixa56 )!important;} .pos-ativa{height: $pos-faixa56;}}
+.p57{.cor-ativa{background: radial-gradient($cor-faixa-g57,  $cor-faixa57 )!important;} .pos-ativa{height: $pos-faixa57;}}
+.p58{.cor-ativa{background: radial-gradient($cor-faixa-g58,  $cor-faixa58 )!important;} .pos-ativa{height: $pos-faixa58;}}
+.p59{.cor-ativa{background: radial-gradient($cor-faixa-g59,  $cor-faixa59 )!important;} .pos-ativa{height: $pos-faixa59;}}
+
+.p60{.cor-ativa{background: radial-gradient($cor-faixa-g60,  $cor-faixa60 )!important;} .pos-ativa{height: $pos-faixa60;}}
+.p61{.cor-ativa{background: radial-gradient($cor-faixa-g61,  $cor-faixa61 )!important;} .pos-ativa{height: $pos-faixa61;}}
+.p62{.cor-ativa{background: radial-gradient($cor-faixa-g62,  $cor-faixa62 )!important;} .pos-ativa{height: $pos-faixa62;}}
+.p63{.cor-ativa{background: radial-gradient($cor-faixa-g63,  $cor-faixa63 )!important;} .pos-ativa{height: $pos-faixa63;}}
+.p64{.cor-ativa{background: radial-gradient($cor-faixa-g64,  $cor-faixa64 )!important;} .pos-ativa{height: $pos-faixa64;}}
+.p65{.cor-ativa{background: radial-gradient($cor-faixa-g65,  $cor-faixa65 )!important;} .pos-ativa{height: $pos-faixa65;}}
+.p66{.cor-ativa{background: radial-gradient($cor-faixa-g66,  $cor-faixa66 )!important;} .pos-ativa{height: $pos-faixa66;}}
+.p67{.cor-ativa{background: radial-gradient($cor-faixa-g67,  $cor-faixa67 )!important;} .pos-ativa{height: $pos-faixa67;}}
+.p68{.cor-ativa{background: radial-gradient($cor-faixa-g68,  $cor-faixa68 )!important;} .pos-ativa{height: $pos-faixa68;}}
+.p69{.cor-ativa{background: radial-gradient($cor-faixa-g69,  $cor-faixa69 )!important;} .pos-ativa{height: $pos-faixa69;}}
+
+.p70{.cor-ativa{background: radial-gradient($cor-faixa-g70,  $cor-faixa70 )!important;} .pos-ativa{height: $pos-faixa70;}}
+.p71{.cor-ativa{background: radial-gradient($cor-faixa-g71,  $cor-faixa71 )!important;} .pos-ativa{height: $pos-faixa71;}}
+.p72{.cor-ativa{background: radial-gradient($cor-faixa-g72,  $cor-faixa72 )!important;} .pos-ativa{height: $pos-faixa72;}}
+.p73{.cor-ativa{background: radial-gradient($cor-faixa-g73,  $cor-faixa73 )!important;} .pos-ativa{height: $pos-faixa73;}}
+.p74{.cor-ativa{background: radial-gradient($cor-faixa-g74,  $cor-faixa74 )!important;} .pos-ativa{height: $pos-faixa74;}}
+.p75{.cor-ativa{background: radial-gradient($cor-faixa-g75,  $cor-faixa75 )!important;} .pos-ativa{height: $pos-faixa75;}}
+.p76{.cor-ativa{background: radial-gradient($cor-faixa-g76,  $cor-faixa76 )!important;} .pos-ativa{height: $pos-faixa76;}}
+.p77{.cor-ativa{background: radial-gradient($cor-faixa-g77,  $cor-faixa77 )!important;} .pos-ativa{height: $pos-faixa77;}}
+.p78{.cor-ativa{background: radial-gradient($cor-faixa-g78,  $cor-faixa78 )!important;} .pos-ativa{height: $pos-faixa78;}}
+.p79{.cor-ativa{background: radial-gradient($cor-faixa-g79,  $cor-faixa79 )!important;} .pos-ativa{height: $pos-faixa79;}}
+
+.p80{.cor-ativa{background: radial-gradient($cor-faixa-g80,  $cor-faixa80 )!important;} .pos-ativa{height: $pos-faixa80;}}
+.p81{.cor-ativa{background: radial-gradient($cor-faixa-g81,  $cor-faixa81 )!important;} .pos-ativa{height: $pos-faixa81;}}
+.p82{.cor-ativa{background: radial-gradient($cor-faixa-g82,  $cor-faixa82 )!important;} .pos-ativa{height: $pos-faixa82;}}
+.p83{.cor-ativa{background: radial-gradient($cor-faixa-g83,  $cor-faixa83 )!important;} .pos-ativa{height: $pos-faixa83;}}
+.p84{.cor-ativa{background: radial-gradient($cor-faixa-g84,  $cor-faixa84 )!important;} .pos-ativa{height: $pos-faixa84;}}
+.p85{.cor-ativa{background: radial-gradient($cor-faixa-g85,  $cor-faixa85 )!important;} .pos-ativa{height: $pos-faixa85;}}
+.p86{.cor-ativa{background: radial-gradient($cor-faixa-g86,  $cor-faixa86 )!important;} .pos-ativa{height: $pos-faixa86;}}
+.p87{.cor-ativa{background: radial-gradient($cor-faixa-g87,  $cor-faixa87 )!important;} .pos-ativa{height: $pos-faixa87;}}
+.p88{.cor-ativa{background: radial-gradient($cor-faixa-g88,  $cor-faixa88 )!important;} .pos-ativa{height: $pos-faixa88;}}
+.p89{.cor-ativa{background: radial-gradient($cor-faixa-g89,  $cor-faixa89 )!important;} .pos-ativa{height: $pos-faixa89;}}
+
+.p90{.cor-ativa{background: radial-gradient($cor-faixa-g90,  $cor-faixa90 )!important;} .pos-ativa{height: $pos-faixa90;}}
+.p91{.cor-ativa{background: radial-gradient($cor-faixa-g91,  $cor-faixa91 )!important;} .pos-ativa{height: $pos-faixa91;}}
+.p92{.cor-ativa{background: radial-gradient($cor-faixa-g92,  $cor-faixa92 )!important;} .pos-ativa{height: $pos-faixa92;}}
+.p93{.cor-ativa{background: radial-gradient($cor-faixa-g93,  $cor-faixa93 )!important;} .pos-ativa{height: $pos-faixa93;}}
+.p94{.cor-ativa{background: radial-gradient($cor-faixa-g94,  $cor-faixa94 )!important;} .pos-ativa{height: $pos-faixa94;}}
+.p95{.cor-ativa{background: radial-gradient($cor-faixa-g95,  $cor-faixa95 )!important;} .pos-ativa{height: $pos-faixa95;}}
+.p96{.cor-ativa{background: radial-gradient($cor-faixa-g96,  $cor-faixa96 )!important;} .pos-ativa{height: $pos-faixa96;}}
+.p97{.cor-ativa{background: radial-gradient($cor-faixa-g97,  $cor-faixa97 )!important;} .pos-ativa{height: $pos-faixa97;}}
+.p98{.cor-ativa{background: radial-gradient($cor-faixa-g98,  $cor-faixa98 )!important;} .pos-ativa{height: $pos-faixa98;}}
+.p99{.cor-ativa{background: radial-gradient($cor-faixa-g99,  $cor-faixa99 )!important;} .pos-ativa{height: $pos-faixa99;}}
+
+.p100{.cor-ativa{background: radial-gradient($cor-faixa-g100,  $cor-faixa100) !important;} .pos-ativa{height: $pos-faixa100;}}
+
+
+

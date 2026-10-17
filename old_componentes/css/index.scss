@@ -1,0 +1,38 @@
+/** 
+ * Estilo para a página inicial
+ */
+
+@import "../helper/partials/_padrao.scss";
+
+#menu {
+	height: 100% !important;
+}
+
+nav.navbar {
+	z-index: 99999;
+	background-color: rgba($black, 0.85);
+	
+	.navbar-toggle {
+		display: none !important;
+	}
+	
+	.titulo-pagina {
+   		visibility: hidden;
+   	}
+	
+	.navbar-header {
+		.duplicar-tela-mobile, .go-fullscreen-mobile, .go-calendario-mobile, .go-ajuda-mobile, .go-msg-mobile {
+			visibility: hidden;
+		}
+	}
+	
+	#navbar .navbar-right {
+		visibility: visible;
+		
+		a, .go-fullscreen {
+			&:hover {
+				background-color: $redEmpresa;
+			}
+		}
+   	}	
+}

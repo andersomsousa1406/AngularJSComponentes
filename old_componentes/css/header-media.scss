@@ -1,0 +1,340 @@
+@import "../helper/partials/padrao.scss";
+
+/* Tablet */
+@media (max-width: 768px) {
+	
+	nav.navbar {
+		
+		.navbar-header {
+			float: left;
+			margin-left: -10px;
+			margin-right: 5px;
+			
+			a.navbar-brand {
+				width: 100px;
+				margin-left: 10px;
+				margin-right: 5px;
+				
+				span {
+					right: 2px;
+				}
+			}
+			
+			.duplicar-tela-mobile, .go-fullscreen-mobile, .go-calendario-mobile, .go-ajuda-mobile, .go-msg-mobile, .go-rel-mobile, .go-cham-mobile, .go-favorito-1-mobile, .go-favorito-2-mobile {
+				display: block;
+				visibility: visible;
+				padding: 5px 6px;
+				line-height: 1.2em;
+				@include transition(0.2s 0.7s);	/* transição para menu */
+				
+				span {
+					top: 1px;
+				}
+			}
+		}
+	
+		#navbar {
+				
+			.titulo-pagina {
+				/*max-width: calc(100% - 220px);*/
+                width: calc(100vw - 255px);
+			}
+			
+			.navbar-right {
+				position: absolute;
+				right: 15px;
+				padding: 0 10px 10px 10px;
+				visibility: hidden;
+				/*@include transition(0.2s 0.7s);	 transição para menu */
+				
+				#relogio {
+					display: none;
+				}
+			}
+		}
+		
+		&.menu-aberto {
+			
+			.navbar-header {
+				.duplicar-tela-mobile, .go-fullscreen-mobile, .go-calendario-mobile, .go-ajuda-mobile, .go-msg-mobile, .go-rel-mobile, .go-cham-mobile, .go-favorito-1-mobile, .go-favorito-2-mobile  {
+					visibility: hidden;
+					@include transition(0s 0s);	/* transição para menu */
+				}
+			}
+			
+			#navbar {
+				
+				.navbar-right {
+					visibility: visible;
+					@include transition(0s 0s);	/* transição para menu */
+				}
+			}
+		}
+        
+	}
+	
+	ul {
+		
+		&.acoes, &.popup-acoes {
+			z-index: 999;
+			top: 50px;
+			left: 65px;
+			width: calc(100% - 80px);
+			max-height: 0;
+			padding: 0px 5px 0px 5px;
+			margin: 0;
+			overflow: hidden;
+			background-color: rgba($white, 0.8);
+			box-shadow: 0 1px 3px $redEmpresa;
+			border-radius: 0 0 5px 5px;
+			@include transition(0.5s);
+		}
+
+		&.acoes3, &.popup-acoes3 {
+			z-index: 999;
+			top: 50px;
+			right: 10px;
+			width: calc(100% - 120px);
+			max-height: 0;
+			padding: 0px 5px 0px 5px;
+			margin: 0;
+			overflow: hidden;
+			background-color: rgba(255, 255, 255, 0.8);
+			box-shadow: 0 1px 3px #a90f0f;
+			border-radius: 0 0 5px 5px;
+			@include transition(0.5s);
+		}
+		
+		&.acoes {
+			li.align-right {
+				float: none;
+				margin-right: 0;
+			}
+		}
+
+		&.acoes3 {
+			li.align-right {
+				float: none;
+				margin-right: 0;
+			}
+		}
+		
+		&.abrir {
+			max-height: 200px;
+			padding-top: 10px;
+			overflow: auto;
+			display: block !important;
+		}
+
+		&.popup-acoes {
+			position: fixed;
+			top: 57px;
+			margin-left: 5px;
+			width: calc(100% - 90px);
+
+			~ .status {
+				float: none;
+				top: 0;
+			}
+		}
+
+		&.popup-acoes3 {
+			position: fixed;
+			top: 57px;
+			margin-left: 5px;
+			width: calc(100% - 90px);
+
+			~ .status {
+				float: none;
+				top: 0;
+			}
+		}
+
+
+		> li {
+			margin-bottom: 10px;
+
+			&.status {
+				margin-right: 25px;
+				margin-top: 40px;
+			}
+		}
+		
+		~ form {
+			/*margin-top: 30px;*/
+		}
+
+	}
+	
+	/*button.gerar-historico-padrao {
+		position: relative;
+		float: right;
+		top: 0;
+		right: 5px;
+		margin-bottom: 5px;
+	}*/
+	
+	.pesquisa-obj-container {
+		width: 50%;
+	}
+	
+}
+
+/* Mobile Large */
+@media (max-width: 500px) {
+	
+}
+
+/* Mobile Large */
+@media (max-width: 510px) {
+        
+    body {
+        
+        .menu-aberto + .container-fluid {
+            .acoes-toggle {
+                display: none;
+            }
+        }
+        
+        > .container-fluid {
+            padding-top: 0;
+            
+            .pesquisa-obj-container {
+                width: calc(100% - 30px);
+                top: 60px;
+            }            
+            
+            .acoes-toggle {
+                top: 11px;
+                z-index: 99999;
+                left: 59px;
+                height: 28px;
+                width: 40px;
+                background: rgba(0, 0, 0, 0); 
+                border-color: rgb(255, 255, 255); 
+                color: rgb(255, 255, 255);                 
+                
+                span {
+                    top: -1px;
+                }
+            }
+            
+            ul.acoes {
+                top: 50px;
+                left: 10px;
+                
+                &.abrir {
+                    max-height : initial;
+                }
+                
+                li {
+                    width: 100%;
+                    
+                    .btn {
+                        width: 100%;
+                        text-align: left;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                }
+			}
+			
+			ul.acoes3 {
+                top: 50px;
+                left: 10px;
+                
+                &.abrir {
+                    max-height : initial;
+                }
+                
+                li {
+                    width: 100%;
+                    
+                    .btn {
+                        width: 100%;
+                        text-align: left;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+        
+        #menu {
+            top: 50px;
+
+            .menu-container {
+                margin-top: 60px;
+            }
+        }
+    }
+    
+	nav.navbar {
+	
+		.navbar-header {
+			float: none;
+			margin: 0;
+			
+			a.navbar-brand {
+				float: none;
+				display: block;
+				margin: 0 auto;
+			}
+			
+			.duplicar-tela-mobile, .go-fullscreen-mobile, .go-calendario-mobile, .go-ajuda-mobile, .go-msg-mobile, .go-rel-mobile, .go-cham-mobile, .go-favorito-1-mobile, .go-favorito-2-mobile  {
+				display: block;
+				visibility: visible !important;
+				@include transition(0s 0s);
+			}
+		}
+		
+		#navbar {
+			
+			.titulo-pagina {
+                display: none;
+				max-width: 100%;
+				
+				h4 {
+					font-size: 14px;
+				}
+			}
+			
+			.navbar-right {
+				top: 50px;
+				width: calc(100% - 30px);
+				background-color: transparent;
+				
+				.duplicar-tela,
+				.go-fullscreen,
+				.go-calendario,
+				.go-ajuda,
+				.go-msg,
+				.go-rel,
+				.go-cham,
+				.go-favorito-1,
+				.go-favorito-2,
+				.portal-colaborador-btn {
+					display: none;
+					visibility: hidden;
+					@include transition(0s 0s);
+				}
+
+				.sessao {
+					float: none;
+					display: table;
+					margin-right: auto;
+					margin-left: auto;
+				}
+			}
+		}
+	}
+	
+	ul.acoes {
+		top: 100px;	
+	}
+    
+    .pesquisa-obj-container {
+        width: 50%;
+        top: 113px;
+    }
+}

@@ -1,0 +1,86 @@
+/*--====== Global Variables ======--*/
+:root {
+    --bg-color: #13131f;
+    --bg-color-2: #161623;
+    --text-color: #a9afc3;
+}
+
+/*--====== Sidebar ======--*/
+#__offcanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    max-width: 300px;
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    background-color: var(--bg-color-2);
+    box-shadow: 0 10px 20px -4px #000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.3s ease;
+    z-index: 99999;
+}
+
+/* when the offcanvas has 'show' class */
+#__offcanvas.show {
+    pointer-events: all !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+}
+
+.__offcanvas_content {
+    padding: 2.8rem 0;
+    pointer-events: none;
+    /* so that the Sidebar does not get closed while clicking on sidebar_content */
+}
+
+.__offcanvas_content a {
+    pointer-events: all;
+    /* so that all the a inside __offcanvas_content are clickable */
+}
+
+.__offcanvas_body {
+    /* border-top: 1px dashed var(--text-color);
+    border-bottom: 1px dashed var(--text-color); */
+}
+
+.__offcanvas_navlinks ul {
+    display: grid;
+    gap: 2rem;
+}
+
+.__offcanvas_navlinks li a {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.__offcanvas_navlinks a:hover {
+    opacity: 1;
+}
+
+#__offcanvas_close {
+    color: #fff; 
+    float: right;
+    cursor: pointer;
+    scale: 1.5;
+}
+
+.__offcanvas_head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.__side_navlinks ul {
+    color: white;
+    font-size: 18px;
+}

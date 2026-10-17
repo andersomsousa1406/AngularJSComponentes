@@ -1,0 +1,14 @@
+{
+  "output": "example/dist/app.bundle.js",
+  "bytes": 111238,
+  "gzipBytes": 27454,
+  "embeddedTemplates": 25,
+  "embeddedStyles": 25,
+  "inputCount": 77,
+  "budgets": {
+    "bundle": 130000,
+    "gzip": 30000
+  },
+  "passed": true,
+  "failures": []
+}

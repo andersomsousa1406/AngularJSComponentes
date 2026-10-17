@@ -1,0 +1,262 @@
+@import "../helper/partials/padrao.scss";
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.chat {
+	position: fixed;
+	z-index: 99998;
+	right: 10px;
+	bottom: 10px;
+	padding: 30px 10px 10px 10px;
+	overflow: hidden;
+	background-color: rgba($white, 0.9);
+    box-shadow: 0 0 3px $black;
+    @include border-radius(20px 20px 0 20px);
+
+    &.minimizado {
+    	padding: 0;
+    	height: 60px;
+	    width: 60px;
+	    background-color: $redEmpresa;	/* minimizar o 'serrilhado' */
+	    @include border-radius(30px);
+
+	    label {
+	    	&.chat-titulo {
+	    		height: 60px;
+	    		width: 60px;
+	    		cursor: pointer;
+	    		@include transition(0.3s);
+
+			    &:hover {
+			    	background-color: $redEmpresa2;
+			    }
+	    	}
+	    }
+
+	    .erro-container, .lista-usuario-container, .msg-container {
+	    	display: none;
+	    }
+    }
+
+    label {
+    	&.chat-titulo {
+    		position: absolute;
+    		z-index: 2;
+    		top: 0px;
+		    right: 0px;
+		    margin-bottom: 0;
+    		padding: 2px;
+    		width: 100%;
+		    font-weight: normal;
+		    text-align: center;
+    		color: $white;
+    		background-color: $redEmpresa;
+    		cursor: pointer;
+
+    		span {
+
+    			&.fa-window-minimize {
+	    			position: absolute;
+				    right: 20px;
+				    top: 4px;
+				}
+
+				&.fa-comment {
+    				margin-top: 12px;
+    				font-size: 28px;
+				}
+
+				&.fa-circle {
+					position: fixed;
+				    right: 10px;
+				    bottom: 55px;
+				    font-size: 18px;
+					color: $yellowWarning2;
+					text-shadow: -1px 2px 3px $black;
+				}
+    		}
+    	}
+    }
+
+    .erro-container {
+    	display: flex;
+    	align-items: center;
+        position: absolute;
+        z-index: 999;
+        top: 24px;
+	    left: 0;
+	    height: calc(100% - 24px);
+	    width: 100%;
+	    background-color: $white;
+
+	    > div {
+	    	width: 100%;
+	    	text-align: center;
+
+		    label {
+	    		width: 100%;
+	    		padding: 0 10px;
+	    		text-align: center;
+	    		font-weight: normal;
+	    		color: $redEmpresa;
+		    }
+
+		    span {
+		    	&.fa-circle-o-notch {
+		    		animation: spin 1s linear infinite;
+		    	}
+		    }
+		}
+	}
+
+    .lista-usuario-container, .msg-container {
+    	float: right;
+    }
+
+    .lista-usuario-container {
+    	width: 200px;
+    	height: 253px;
+    	overflow: auto;
+
+    	.lista {
+
+	    	.btn-selec-usuario {
+	    		display: block;
+	    		position: relative;
+	    		padding: 5px 15px 5px 5px;
+	    		width: 100%;
+	    		overflow: hidden;
+    			text-overflow: ellipsis;
+	    		font-size: 12px;
+	    		text-align: left;
+	    		text-transform: capitalize;
+	    		border: 0;
+	    		border-bottom: 1px solid $lightGrey231;
+	    		box-shadow: none;
+	    		@include border-radius(0);
+
+	    		&:last-child {
+	    			border-bottom: 0;
+	    		}
+
+	    		&.btn-primary {
+	    			color: $black50;
+	    			background-color: rgba($bluePrimary, 0.3);
+	    			outline: 0;
+	    		}
+
+	    		span {
+
+	    			&.usuario-online {
+	    				color: $greenSuccess;
+	    			}
+	    			&.usuario-offline {
+	    				color: $redDanger;
+	    			}
+	    			&.usuario-nova-msg {
+	    				position: absolute;
+    					right: 3px;
+	    				color: $yellowWarning2;
+	    			}
+	    		}
+	    	}
+	    }
+    }
+
+    .msg-container {
+    	margin-right: 5px;
+
+    	.conversa {
+    		width: 400px;
+    		margin-bottom: 5px;
+
+    		.conversa-msg-container {
+    			display: block;
+  			    height: 200px;
+  			    max-width: 400px;
+  			    overflow: auto;
+    			background-color: rgba($whiteSmoke, 0.9);
+    			@include border-radius(3px);
+
+    			.conversa-msg {
+    				position: relative;
+    				margin: 5px 5px 0 5px;
+    				padding: 5px 10px 12px 10px;
+    				width: 92%;
+    				overflow-wrap: break-word;
+
+    				&.msg-remetente {
+    					float: left;
+    					background-color: rgba($greenSuccess, 0.2);
+    					@include border-radius(0 20px 20px 20px);
+    				}
+
+    				&.msg-destinatario {
+    					float: right;
+    					background-color: rgba($bluePrimary, 0.2);
+    					@include border-radius(20px 0 20px 20px);
+
+    					label {
+    						text-align: right;
+
+    						&.data {
+    							text-align: left;
+    						}
+    					}
+    				}
+
+	    			label {
+	    				width: 100%;
+	    				font-weight: normal;
+	    				line-height: 1.2em;
+	    				font-size: 12px;
+
+	    				&.msg {
+	    					white-space: pre-wrap;
+	    				}
+
+	    				&.data {
+	    					position: absolute;
+						    bottom: 2px;
+						    left: 0;
+						    margin-bottom: 0;
+						    padding: 0 15px;
+	    					font-size: 10px;
+	    					text-align: right;
+
+	    					span.chave {
+	    						font-weight: bold;
+	    					}
+	    				}
+	    			}
+	    		}
+    		}
+    	}
+
+    	.digitar-msg {
+    		position: relative;
+
+    		textarea {
+    			width: 400px;
+    			padding-right: 30px;
+    			font-size: 12px;
+    		}
+
+    		button {
+    			position: absolute;
+    			right: 1px;
+			    bottom: 1px;
+			    width: 30px;
+    			height: 46px;
+    			padding: 4px;
+    			border-top: 0;
+			    border-right: 0;
+			    border-bottom: 0;
+    			@include border-radius(0 4px 4px 0);
+    		}
+    	}
+    }
+}

@@ -1,0 +1,86 @@
+@import "../helper/partials/padrao.scss";
+
+/**
+ * Estilo para impressão.
+ */
+@page {
+	size: A4 portrait;
+	margin: 30pt 25pt 30pt 25pt;
+}
+
+page[size="A4"] {
+	display: block;
+	/*
+	background: white;
+	height: 21cm;
+	width: 29.7cm;
+	margin: 0 auto;
+	margin-bottom: 0.5cm;
+	box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+	*/
+}
+
+.page-break {
+	page-break-after: always;
+}
+
+.pdf-ver {
+	display: none;
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba($black, 0.8);
+	
+	.pdf-acoes {
+        position: fixed;
+		z-index: 99999;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		height: 50px;
+        
+		button {
+			float: right;
+			margin-top: 10px;
+			margin-right: 40px;
+		}
+	}
+	
+	object {
+		position: fixed;
+		z-index: 99999;
+		top: 100px;
+		left: 0;
+		width: 100%;
+		height: calc(100% - 100px);
+	}
+
+	.pdf-ver-div{
+		object {
+			position: fixed;
+			z-index: 99999;
+			top: 100px;
+			left: 0;
+			width: 100%;
+			height: calc(100% - 100px);
+		}
+
+		iframe {
+			position: fixed;
+			z-index: 99999;
+			top: 100px;
+			left: 0;
+			width: 100%;
+			height: calc(100% - 100px);
+		}
+	}
+
+	
+
+	
+}
+
+

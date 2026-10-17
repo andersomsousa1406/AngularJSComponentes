@@ -107,7 +107,8 @@ export default function registerPerformanceLab(app) {
                 componentsPerSecond: Math.round(compiled / (duration / 1000)),
                 scopeDelta: scopesAfter - scopesBefore,
                 remainingNodes: remainingNodes,
-                heapDelta: heapBefore === null || heapAfter === null ? null : heapAfter - heapBefore
+                heapDelta: heapBefore === null || heapAfter === null ? null : heapAfter - heapBefore,
+                runtime: EasyComponents.metrics().totals
               }
             });
           }, 50);

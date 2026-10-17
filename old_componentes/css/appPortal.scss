@@ -1,0 +1,252 @@
+.navbar .navbar-brand{
+  background-size: 135px !important;
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  position: relative;
+  padding: 0px;
+  width: 150px;
+  text-align: center;
+}
+
+input {
+  text-transform: uppercase !important;
+}
+
+#buttonWithIcon svg,
+#buttonWithIcon i {
+  margin-right: 6px;
+  margin-top: -2px;
+}
+
+#buttonWithIcon span {
+  margin-left: 6px;
+}
+
+.carregando-pagina {
+  display: none;
+  width: 25%;
+  position: fixed !important;
+  top: 90% !important;
+  left: 2% !important;
+  z-index: 99999;
+}
+
+.baloes {
+  position: fixed;
+  top: 30px;
+  right: 25px;
+  width: 30%;
+  z-index: 9999;
+  border-radius: 0px;
+}
+
+.required {
+  border-left-color: #e81500 !important;
+  border-left-width: 3px !important;
+}
+
+.pesquisa-res.lista-consulta {
+  max-height: inherit;
+  overflow: auto;
+  font-size: 12px;
+}
+
+#tableConsulta {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#tableConsulta thead tr th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #4e73df;
+  color: #fff;
+  box-shadow: 0 -1px #ddd;
+  z-index: 9;
+  padding: 5px !important;
+}
+
+#tableConsulta tbody tr td {
+  padding: 5px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: Arial, sans-serif !important;
+}
+
+table tbody tr td {
+  white-space: nowrap !important;
+}
+
+.popover {
+  max-width: 100%;
+}
+
+.btn-dark .badge-counter {
+  color: #fff;
+  background-color: #434850;
+  top: 0 !important;
+  margin-left: 3px !important;
+}
+
+.btn-primary .badge-counter {
+  color: #fff;
+  background-color: #043ce0;
+  top: 0 !important;
+  margin-left: 3px !important;
+}
+
+.btn-success .badge-counter {
+  color: #fff;
+  background-color: #10885d;
+  top: 0 !important;
+  margin-left: 3px !important;
+}
+
+.btn-danger .badge-counter {
+  color: #fff;
+  background-color: #ab1405;
+  top: 0 !important;
+  margin-left: 3px !important;
+}
+
+.btn-warning .badge-counter {
+  color: #fff;
+  background-color: #b9890e;
+  top: 0 !important;
+  margin-left: 3px !important;
+}
+
+.btn-info .badge-counter {
+  color: #fff;
+  background-color: #4ab2b5;
+  top: 0 !important;
+  margin-left: 3px !important;
+}
+
+.btn-white .badge-counter {
+  color: black;
+  background-color: #d2d2d2;
+  top: 0 !important;
+  margin-left: 6px !important;
+}
+
+body {
+  padding-right: 0px !important;
+}
+
+@-webkit-keyframes carregandoFiltro {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes carregandoFiltro {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@keyframes carregandoFiltro {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fa-circle-notch {
+  -moz-animation-name: carregandoFiltro;
+  -moz-animation-duration: 0.8s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-name: carregandoFiltro;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-name: carregandoFiltro;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.pop-notificacao {
+  display: none !important;
+}
+
+.opcional {
+  color: #4e73df !important;
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white; /* cor do background que vai ocupar o body */
+  z-index: 999; /* z-index para jogar para frente e sobrepor tudo */
+}
+#preloader .inner {
+  position: absolute;
+  top: 50%; /* centralizar a parte interna do preload (onde fica a animação)*/
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bolas > div {
+  display: inline-block;
+  background-color: #0061f2;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  margin: 3px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-name: animarBola;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.bolas > div:nth-child(1) {
+  animation-duration: 0.75s;
+  animation-delay: 0;
+}
+.bolas > div:nth-child(2) {
+  animation-duration: 0.75s;
+  animation-delay: 0.12s;
+}
+.bolas > div:nth-child(3) {
+  animation-duration: 0.75s;
+  animation-delay: 0.24s;
+}
+
+@keyframes animarBola {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  16% {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    opacity: 0.7;
+  }
+  33% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}

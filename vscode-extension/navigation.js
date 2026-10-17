@@ -6,6 +6,10 @@ function kebabToCamel(name) {
   });
 }
 
+function camelToKebab(name) {
+  return name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -32,12 +36,23 @@ function tagAtOffset(text, offset) {
 }
 
 function componentDefinitionOffset(source, componentName) {
-  var expression = new RegExp(
-    '\\.component\\s*\\(\\s*(["\\\'])' + escapeRegExp(componentName) + '\\1'
-  );
-  var match = expression.exec(source);
-  if (!match) return -1;
-  return match.index + match[0].lastIndexOf(componentName);
+  var names = [componentName, camelToKebab(componentName)];
+  var patterns = ['\\.component', '\\bdefineComponent'];
+  var nameIndex;
+  var patternIndex;
+  var expression;
+  var match;
+
+  for (nameIndex = 0; nameIndex < names.length; nameIndex += 1) {
+    for (patternIndex = 0; patternIndex < patterns.length; patternIndex += 1) {
+      expression = new RegExp(
+        patterns[patternIndex] + '\\s*\\(\\s*(["\\\'])' + escapeRegExp(names[nameIndex]) + '\\1'
+      );
+      match = expression.exec(source);
+      if (match) return match.index + match[0].lastIndexOf(names[nameIndex]);
+    }
+  }
+  return -1;
 }
 
 function apiDefinitionOffset(source, apiName) {
@@ -122,6 +137,7 @@ function importedRegistrationOffset(source, registrationName) {
 
 module.exports = {
   apiDefinitionOffset: apiDefinitionOffset,
+  camelToKebab: camelToKebab,
   componentDefinitionOffset: componentDefinitionOffset,
   exportedRegistrationOffset: exportedRegistrationOffset,
   importedRegistrationOffset: importedRegistrationOffset,

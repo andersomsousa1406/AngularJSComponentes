@@ -2,8 +2,30 @@
   "version": 1.1,
   "tags": [
     {
+      "name": "accordion-list",
+      "description": "Lista de paineis expansivos com estado interno."
+    },
+    {
+      "name": "activity-feed",
+      "description": "Feed que recebe e apresenta eventos de componentes irmaos.",
+      "attributes": [
+        {
+          "name": "items",
+          "description": "Lista de atividades recebida por binding unidirecional."
+        }
+      ]
+    },
+    {
       "name": "app-root",
       "description": "Componente raiz da aplicacao de exemplo."
+    },
+    {
+      "name": "code-preview",
+      "description": "Exemplo de codigo com abas e acao de copiar."
+    },
+    {
+      "name": "component-showcase",
+      "description": "Vitrine completa da biblioteca de componentes de interface."
     },
     {
       "name": "counter-card",
@@ -28,6 +50,300 @@
       ]
     },
     {
+      "name": "demo-form",
+      "description": "Formulario reativo com validacao, selects, radios e checkbox."
+    },
+    {
+      "name": "feature-card",
+      "description": "Card de recurso com suporte a transclusao de conteudo.",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Simbolo exibido no cabecalho."
+        },
+        {
+          "name": "tag",
+          "description": "Categoria curta do recurso."
+        },
+        {
+          "name": "title",
+          "description": "Titulo obrigatorio do recurso."
+        },
+        {
+          "name": "description",
+          "description": "Descricao obrigatoria do recurso."
+        },
+        {
+          "name": "accent",
+          "description": "Cor: violet, cyan, orange ou green."
+        }
+      ]
+    },
+    {
+      "name": "performance-lab",
+      "description": "Painel que mede compilacao, atualizacao e destruicao de componentes no navegador."
+    },
+    {
+      "name": "product-card",
+      "description": "Card de produto composto por badge e botao.",
+      "attributes": [
+        {
+          "name": "product",
+          "description": "Objeto do produto."
+        },
+        {
+          "name": "on-select",
+          "description": "Callback com o produto em $event."
+        }
+      ]
+    },
+    {
+      "name": "records-table",
+      "description": "Tabela completa com busca, filtro, ordenacao, badges e paginacao."
+    },
+    {
+      "name": "stat-card",
+      "description": "Card compacto para metricas e tendencias.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Nome da metrica."
+        },
+        {
+          "name": "value",
+          "description": "Valor formatado."
+        },
+        {
+          "name": "change",
+          "description": "Variacao apresentada."
+        },
+        {
+          "name": "trend",
+          "description": "up ou down."
+        },
+        {
+          "name": "icon",
+          "description": "Icone textual."
+        }
+      ]
+    },
+    {
+      "name": "task-board",
+      "description": "Quadro de tarefas que demonstra estado, computed e composicao de componentes.",
+      "attributes": [
+        {
+          "name": "on-activity",
+          "description": "Callback chamado ao adicionar ou alternar uma tarefa. Recebe $event."
+        }
+      ]
+    },
+    {
+      "name": "task-item",
+      "description": "Item filho utilizado dentro do quadro de tarefas.",
+      "attributes": [
+        {
+          "name": "task",
+          "description": "Objeto da tarefa recebido por binding unidirecional."
+        },
+        {
+          "name": "on-toggle",
+          "description": "Callback chamado ao alternar a tarefa. Recebe $event."
+        }
+      ]
+    },
+    {
+      "name": "theme-switcher",
+      "description": "Seletor visual que demonstra props reativas e eventos.",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Identificador do tema atual."
+        },
+        {
+          "name": "on-change",
+          "description": "Callback chamado ao escolher um tema. Recebe $event."
+        }
+      ]
+    },
+    {
+      "name": "toast-stack",
+      "description": "Pilha de notificacoes temporarias com feedback acessivel.",
+      "attributes": [
+        {
+          "name": "items",
+          "description": "Array de notificacoes."
+        },
+        {
+          "name": "on-dismiss",
+          "description": "Callback com o id removido em $event."
+        }
+      ]
+    },
+    {
+      "name": "ui-alert",
+      "description": "Alerta semantico opcionalmente descartavel.",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Titulo obrigatorio."
+        },
+        {
+          "name": "message",
+          "description": "Mensagem obrigatoria."
+        },
+        {
+          "name": "variant",
+          "description": "info, success, warning ou danger."
+        },
+        {
+          "name": "dismissible",
+          "description": "Permite fechar o alerta."
+        }
+      ]
+    },
+    {
+      "name": "ui-badge",
+      "description": "Badge compacto para rotulos e status.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Texto obrigatorio."
+        },
+        {
+          "name": "variant",
+          "description": "neutral, primary, success, warning, danger ou info."
+        },
+        {
+          "name": "dot",
+          "description": "Expressao booleana que exibe o indicador."
+        }
+      ]
+    },
+    {
+      "name": "ui-button",
+      "description": "Botao reutilizavel com variantes, tamanhos, icone e evento.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Texto obrigatorio do botao."
+        },
+        {
+          "name": "variant",
+          "description": "primary, secondary, success, danger ou ghost."
+        },
+        {
+          "name": "size",
+          "description": "small, medium ou large."
+        },
+        {
+          "name": "icon",
+          "description": "Icone textual opcional."
+        },
+        {
+          "name": "disabled",
+          "description": "Expressao booleana que desabilita o botao."
+        },
+        {
+          "name": "on-click",
+          "description": "Callback executado no clique."
+        }
+      ]
+    },
+    {
+      "name": "ui-modal",
+      "description": "Modal acessivel com transclusao e eventos de confirmacao.",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Expressao booleana que controla o modal."
+        },
+        {
+          "name": "title",
+          "description": "Titulo do modal."
+        },
+        {
+          "name": "on-close",
+          "description": "Callback ao fechar."
+        },
+        {
+          "name": "on-confirm",
+          "description": "Callback ao confirmar."
+        }
+      ]
+    },
+    {
+      "name": "ui-pagination",
+      "description": "Paginacao controlada por props e evento.",
+      "attributes": [
+        {
+          "name": "page",
+          "description": "Pagina atual."
+        },
+        {
+          "name": "total",
+          "description": "Quantidade total de paginas."
+        },
+        {
+          "name": "on-change",
+          "description": "Callback com a pagina em $event."
+        }
+      ]
+    },
+    {
+      "name": "ui-select",
+      "description": "Select estilizado com opcoes, binding e callback.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Rotulo do campo."
+        },
+        {
+          "name": "options",
+          "description": "Array de objetos com value e label."
+        },
+        {
+          "name": "value",
+          "description": "Valor selecionado."
+        },
+        {
+          "name": "placeholder",
+          "description": "Texto da opcao vazia."
+        },
+        {
+          "name": "on-change",
+          "description": "Callback com o valor em $event."
+        }
+      ]
+    },
+    {
+      "name": "ui-tabs",
+      "description": "Navegacao por abas com suporte a componentes transcludidos.",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "Array com as definicoes das abas."
+        },
+        {
+          "name": "active",
+          "description": "Identificador da aba ativa."
+        },
+        {
+          "name": "on-change",
+          "description": "Callback de troca de aba. Recebe o id em $event."
+        }
+      ]
+    },
+    {
+      "name": "user-list",
+      "description": "Lista de usuarios com avatar, presenca e permissoes.",
+      "attributes": [
+        {
+          "name": "users",
+          "description": "Array de usuarios."
+        }
+      ]
+    },
+    {
       "name": "value-display",
       "description": "Componente filho que demonstra passagem de valor por binding unidirecional.",
       "attributes": [
@@ -39,175 +355,6 @@
           "name": "value",
           "description": "Expressao AngularJS recebida por binding unidirecional."
         }
-      ]
-    },
-    {
-      "name": "performance-lab",
-      "description": "Painel que mede compilacao, atualizacao e destruicao de componentes no navegador."
-    },
-    {
-      "name": "feature-card",
-      "description": "Card de recurso com suporte a transclusao de conteudo.",
-      "attributes": [
-        { "name": "icon", "description": "Simbolo exibido no cabecalho." },
-        { "name": "tag", "description": "Categoria curta do recurso." },
-        { "name": "title", "description": "Titulo obrigatorio do recurso." },
-        { "name": "description", "description": "Descricao obrigatoria do recurso." },
-        { "name": "accent", "description": "Cor: violet, cyan, orange ou green." }
-      ]
-    },
-    {
-      "name": "task-board",
-      "description": "Quadro de tarefas que demonstra estado, computed e composicao de componentes.",
-      "attributes": [
-        { "name": "on-activity", "description": "Callback chamado ao adicionar ou alternar uma tarefa. Recebe $event." }
-      ]
-    },
-    {
-      "name": "task-item",
-      "description": "Item filho utilizado dentro do quadro de tarefas.",
-      "attributes": [
-        { "name": "task", "description": "Objeto da tarefa recebido por binding unidirecional." },
-        { "name": "on-toggle", "description": "Callback chamado ao alternar a tarefa. Recebe $event." }
-      ]
-    },
-    {
-      "name": "theme-switcher",
-      "description": "Seletor visual que demonstra props reativas e eventos.",
-      "attributes": [
-        { "name": "value", "description": "Identificador do tema atual." },
-        { "name": "on-change", "description": "Callback chamado ao escolher um tema. Recebe $event." }
-      ]
-    },
-    {
-      "name": "activity-feed",
-      "description": "Feed que recebe e apresenta eventos de componentes irmaos.",
-      "attributes": [
-        { "name": "items", "description": "Lista de atividades recebida por binding unidirecional." }
-      ]
-    },
-    {
-      "name": "code-preview",
-      "description": "Exemplo de codigo com abas e acao de copiar."
-    },
-    {
-      "name": "component-showcase",
-      "description": "Vitrine completa da biblioteca de componentes de interface."
-    },
-    {
-      "name": "ui-tabs",
-      "description": "Navegacao por abas com suporte a componentes transcludidos.",
-      "attributes": [
-        { "name": "tabs", "description": "Array com as definicoes das abas." },
-        { "name": "active", "description": "Identificador da aba ativa." },
-        { "name": "on-change", "description": "Callback de troca de aba. Recebe o id em $event." }
-      ]
-    },
-    {
-      "name": "ui-button",
-      "description": "Botao reutilizavel com variantes, tamanhos, icone e evento.",
-      "attributes": [
-        { "name": "label", "description": "Texto obrigatorio do botao." },
-        { "name": "variant", "description": "primary, secondary, success, danger ou ghost." },
-        { "name": "size", "description": "small, medium ou large." },
-        { "name": "icon", "description": "Icone textual opcional." },
-        { "name": "disabled", "description": "Expressao booleana que desabilita o botao." },
-        { "name": "on-click", "description": "Callback executado no clique." }
-      ]
-    },
-    {
-      "name": "ui-badge",
-      "description": "Badge compacto para rotulos e status.",
-      "attributes": [
-        { "name": "label", "description": "Texto obrigatorio." },
-        { "name": "variant", "description": "neutral, primary, success, warning, danger ou info." },
-        { "name": "dot", "description": "Expressao booleana que exibe o indicador." }
-      ]
-    },
-    {
-      "name": "ui-alert",
-      "description": "Alerta semantico opcionalmente descartavel.",
-      "attributes": [
-        { "name": "title", "description": "Titulo obrigatorio." },
-        { "name": "message", "description": "Mensagem obrigatoria." },
-        { "name": "variant", "description": "info, success, warning ou danger." },
-        { "name": "dismissible", "description": "Permite fechar o alerta." }
-      ]
-    },
-    {
-      "name": "ui-select",
-      "description": "Select estilizado com opcoes, binding e callback.",
-      "attributes": [
-        { "name": "label", "description": "Rotulo do campo." },
-        { "name": "options", "description": "Array de objetos com value e label." },
-        { "name": "value", "description": "Valor selecionado." },
-        { "name": "placeholder", "description": "Texto da opcao vazia." },
-        { "name": "on-change", "description": "Callback com o valor em $event." }
-      ]
-    },
-    {
-      "name": "ui-pagination",
-      "description": "Paginacao controlada por props e evento.",
-      "attributes": [
-        { "name": "page", "description": "Pagina atual." },
-        { "name": "total", "description": "Quantidade total de paginas." },
-        { "name": "on-change", "description": "Callback com a pagina em $event." }
-      ]
-    },
-    {
-      "name": "records-table",
-      "description": "Tabela completa com busca, filtro, ordenacao, badges e paginacao."
-    },
-    {
-      "name": "stat-card",
-      "description": "Card compacto para metricas e tendencias.",
-      "attributes": [
-        { "name": "label", "description": "Nome da metrica." },
-        { "name": "value", "description": "Valor formatado." },
-        { "name": "change", "description": "Variacao apresentada." },
-        { "name": "trend", "description": "up ou down." },
-        { "name": "icon", "description": "Icone textual." }
-      ]
-    },
-    {
-      "name": "product-card",
-      "description": "Card de produto composto por badge e botao.",
-      "attributes": [
-        { "name": "product", "description": "Objeto do produto." },
-        { "name": "on-select", "description": "Callback com o produto em $event." }
-      ]
-    },
-    {
-      "name": "user-list",
-      "description": "Lista de usuarios com avatar, presenca e permissoes.",
-      "attributes": [
-        { "name": "users", "description": "Array de usuarios." }
-      ]
-    },
-    {
-      "name": "accordion-list",
-      "description": "Lista de paineis expansivos com estado interno."
-    },
-    {
-      "name": "demo-form",
-      "description": "Formulario reativo com validacao, selects, radios e checkbox."
-    },
-    {
-      "name": "ui-modal",
-      "description": "Modal acessivel com transclusao e eventos de confirmacao.",
-      "attributes": [
-        { "name": "open", "description": "Expressao booleana que controla o modal." },
-        { "name": "title", "description": "Titulo do modal." },
-        { "name": "on-close", "description": "Callback ao fechar." },
-        { "name": "on-confirm", "description": "Callback ao confirmar." }
-      ]
-    },
-    {
-      "name": "toast-stack",
-      "description": "Pilha de notificacoes temporarias com feedback acessivel.",
-      "attributes": [
-        { "name": "items", "description": "Array de notificacoes." },
-        { "name": "on-dismiss", "description": "Callback com o id removido em $event." }
       ]
     }
   ]

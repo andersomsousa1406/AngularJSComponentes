@@ -1,40 +1,24 @@
 'use strict';
 
 var path = require('path');
-var esbuild = require('esbuild');
+var tools = require('../lib/project-tools');
+var buildProject = require('../lib/build-project').buildProject;
 
-var projectRoot = path.resolve(__dirname, '..');
-var options = {
-  entryPoints: [path.join(projectRoot, 'example', 'app.js')],
-  outfile: path.join(projectRoot, 'example', 'dist', 'app.bundle.js'),
-  bundle: true,
-  format: 'iife',
-  platform: 'browser',
-  target: ['es2017'],
-  minify: true,
-  sourcemap: false,
-  charset: 'utf8',
-  legalComments: 'none',
-  loader: {
-    '.html': 'text',
-    '.css': 'text'
+var config = tools.loadConfig(path.resolve(__dirname, '..'));
+var watch = process.argv.indexOf('--watch') !== -1;
+
+buildProject(config, {
+  watch: watch,
+  onReport: function (report) {
+    console.log(
+      'Bundle criado: ' + report.output +
+      ' (' + report.bytes + ' bytes, ' + report.gzipBytes + ' gzip, ' +
+      report.embeddedTemplates + ' templates incorporados)'
+    );
   }
-};
-
-async function main() {
-  if (process.argv.indexOf('--watch') !== -1) {
-    var context = await esbuild.context(options);
-    await context.watch();
-    console.log('Observando JavaScript, HTML e CSS dos componentes...');
-    return;
-  }
-
-  var result = await esbuild.build(options);
-  var output = path.relative(projectRoot, options.outfile);
-  console.log('Bundle criado: ' + output + ' (' + result.errors.length + ' erros)');
-}
-
-main().catch(function (error) {
-  console.error(error);
+}).then(function () {
+  if (watch) console.log('Observando JavaScript, HTML e CSS dos componentes...');
+}).catch(function (error) {
+  console.error(error.message || error);
   process.exitCode = 1;
 });

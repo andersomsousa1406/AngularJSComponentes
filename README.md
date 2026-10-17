@@ -13,52 +13,39 @@ Carregue o AngularJS e o plugin:
 <script src="angularjs-easy-components.js"></script>
 ```
 
-Crie o app uma vez e use componentes, sem declarar um controller separado:
+Declare cada componente sem receber ou recriar o modulo AngularJS:
 
 ```js
 import template from './like-button.html';
 import styles from './like-button.css';
 
-var app = EasyComponents.app('app');
+export default EasyComponents.defineComponent('like-button', {
+  props: {
+    initial: EasyComponents.number(0),
+    label: EasyComponents.text('Curtidas'),
+    onChange: EasyComponents.event()
+  },
 
-app
-  .component('appRoot', {
-    state: { total: 0 },
-    methods: {
-      changed: function (value) {
-        this.$setState({ total: value });
-      }
-    },
-    templateUrl: 'templates/app-root.html',
-    styleUrl: 'styles/app-root.css'
-  })
-  .component('likeButton', {
-    props: {
-      initial: { type: Number, default: 0 },
-      label: { type: String, binding: '@', default: 'Curtidas' },
-      onChange: Function
-    },
+  state: function () {
+    return { likes: this.initial };
+  },
 
-    state: function () {
-      return { likes: this.initial };
-    },
+  computed: {
+    summary: function () {
+      return this.likes + ' ' + this.label;
+    }
+  },
 
-    computed: {
-      summary: function () {
-        return this.likes + ' ' + this.label;
-      }
-    },
+  methods: {
+    like: function () {
+      this.$setState({ likes: this.likes + 1 });
+      this.$emit('onChange', this.likes);
+    }
+  },
 
-    methods: {
-      like: function () {
-        this.$setState({ likes: this.likes + 1 });
-        this.$emit('onChange', this.likes);
-      }
-    },
-
-    template: template,
-    styles: styles
-  });
+  template: template,
+  styles: styles
+});
 ```
 
 `templates/app-root.html`:
@@ -81,16 +68,28 @@ app
 </button>
 ```
 
-No HTML principal basta montar a raiz com `<app-root></app-root>`. Dependencias adicionais podem ser passadas como segundo argumento: `EasyComponents.app('app', ['ngRoute'])`.
+No HTML principal basta montar a raiz com `<app-root></app-root>`. O app importa e registra os componentes em um unico lugar:
 
-Para registrar componentes em outro arquivo sem recriar o modulo, use `EasyComponents.use('app').component(...)`.
+```js
+import AppRoot from './components/app-root/app-root.component.js';
+import LikeButton from './components/like-button/like-button.component.js';
+
+EasyComponents.createApp({
+  name: 'app',
+  dependencies: ['ngRoute'],
+  components: [AppRoot, LikeButton]
+});
+```
+
+`createApp` cria o modulo, registra tudo e agenda um unico bootstrap para quando o DOM estiver pronto. Para controlar o inicio manualmente, informe `autoMount: false` e chame `app.start(element)`.
 
 Uma organizacao recomendada separa claramente o AngularJS dos componentes:
 
 ```text
 example/
-  app.js                         # cria o modulo e importa os componentes
+  app.js                         # configura o app e importa o catalogo
   components/
+    index.generated.js           # catalogo automatico de componentes
     app-root/
       app-root.component.js      # estado e comportamento
       app-root.html              # template
@@ -101,29 +100,24 @@ example/
       like-button.css
 ```
 
-No `app.js` ficam a infraestrutura AngularJS e a lista explicita de imports:
+O catalogo de imports e gerado pelo CLI. Assim, o `app.js` possui um unico import mesmo quando o projeto cresce:
 
 ```js
-import registerAppRoot from './components/app-root/app-root.component.js';
-import registerLikeButton from './components/like-button/like-button.component.js';
+import components from './components/index.generated.js';
 
-angular.module('app', ['ngEasyComponents']);
-
-var app = EasyComponents.use('app');
-app.register(registerAppRoot, registerLikeButton);
+EasyComponents.createApp({
+  name: 'app',
+  components: components
+});
 ```
 
-`register(...)` aceita quantas funcoes forem necessarias, inclusive arrays, e devolve o proprio app para permitir encadeamento.
-
-Nos arquivos de componente, a declaracao fica isolada e e exportada:
+Nos arquivos de componente, a declaracao fica isolada e e exportada. O arquivo nao conhece o app nem o modulo onde sera usado:
 
 ```js
-export default function registerLikeButton(app) {
-  return app.component('likeButton', {
-    templateUrl: 'components/like-button/like-button.html',
-    styleUrl: 'components/like-button/like-button.css'
-  });
-}
+export default EasyComponents.defineComponent('like-button', {
+  templateUrl: 'components/like-button/like-button.html',
+  styleUrl: 'components/like-button/like-button.css'
+});
 ```
 
 O HTML carrega apenas o ponto de entrada:
@@ -134,7 +128,47 @@ O HTML carrega apenas o ponto de entrada:
 <script type="module" src="app.js"></script>
 ```
 
-Com ES Modules, nao use `ng-app` no HTML. O primeiro registro agenda automaticamente um unico bootstrap para o fim da tarefa JavaScript atual e ainda aguarda o DOM ficar pronto. Isso permite que todos os registros sincronos terminem antes de o AngularJS iniciar e evita a condicao de corrida que poderia deixar as tags vazias. `mount(element)` continua disponivel apenas para casos que precisam controlar manualmente o elemento raiz.
+Com ES Modules, nao use `ng-app` no HTML. `createApp` aguarda o DOM, registra os componentes antes do bootstrap e monta a aplicacao uma unica vez.
+
+## CLI e geracao de componentes
+
+Configure uma vez os caminhos no `package.json`:
+
+```json
+{
+  "easyComponents": {
+    "componentsDir": "src/components",
+    "registry": "src/components/index.generated.js",
+    "customData": "html-custom-data.json"
+  }
+}
+```
+
+Crie um componente completo com JavaScript, HTML, CSS e um teste inicial:
+
+```bash
+npx easy-components create user-card
+```
+
+O comando tambem atualiza o catalogo de imports e os metadados HTML. Para sincronizar todo o projeto ou apenas procurar inconsistencias:
+
+```bash
+npx easy-components sync
+npx easy-components check
+```
+
+Comandos disponiveis:
+
+- `create <nome>`: cria os quatro arquivos sem sobrescrever pastas existentes;
+- `sync`: regenera catalogo e autocomplete, depois valida o projeto;
+- `registry`: regenera apenas o arquivo de imports;
+- `custom-data`: regenera apenas `html-custom-data.json`;
+- `check`: detecta seletores duplicados, definicoes invalidas e arquivos ausentes.
+- `build [--watch]`: gera bundle, sourcemap e relatorio de orcamento.
+
+### Compatibilidade com a API anterior
+
+Projetos existentes podem continuar usando `EasyComponents.app(...)`, `EasyComponents.use(...)`, `app.component(...)` e funcoes `register...(app)`. Um mesmo `createApp` aceita componentes declarativos novos e funcoes de registro antigas no array `components`, permitindo migracao gradual.
 
 ## CSS do componente
 
@@ -161,6 +195,30 @@ styles: [
 
 Cada bloco inline e inserido no `<head>` somente uma vez. Como no AngularJS tradicional, esses estilos sao globais; use uma classe raiz do componente, como `.user-card`, para evitar conflitos.
 
+Para isolamento opt-in, use `scoped: true`. O plugin adiciona um atributo exclusivo ao host e prefixa os seletores inline no build/runtime, incluindo regras dentro de `@media` e `@supports`:
+
+```js
+EasyComponents.defineComponent('user-card', {
+  scoped: true,
+  styles: ':host { display: block; } .title { font-weight: 700; }',
+  template: '<h2 class="title">{{ vm.title }}</h2>'
+});
+```
+
+O isolamento se aplica a `styles` e a CSS importado como texto. Um `styleUrl` externo continua global, pois seu conteudo e processado pelo navegador.
+
+Em ambientes com Content Security Policy, informe o nonce que o servidor incluiu em `style-src`:
+
+```js
+EasyComponents.createApp({
+  name: 'app',
+  csp: { styleNonce: window.__CSP_NONCE__ },
+  components: components
+});
+```
+
+O Easy Components nao usa `eval` nem `new Function`; o teste de navegador inclui uma pagina CSP sem adicionar `unsafe-eval`.
+
 O build usa o loader `text` do esbuild para incorporar os imports de HTML e CSS no bundle. Assim os arquivos continuam separados no projeto, mas nao geram requests individuais no navegador:
 
 ```bash
@@ -168,6 +226,34 @@ npm run build:example
 ```
 
 Durante edicoes, use `npm run watch:example` para reconstruir o bundle automaticamente. `npm run demo` executa um build antes de iniciar o servidor.
+
+### Build de producao e orcamentos
+
+O CLI fornece o mesmo build para outros projetos:
+
+```bash
+npx easy-components build
+npx easy-components build --watch
+```
+
+Configure entrada, saida, sourcemap e limites no `package.json`:
+
+```json
+{
+  "easyComponents": {
+    "build": {
+      "entry": "src/app.js",
+      "outfile": "dist/app.bundle.js",
+      "report": "dist/easy-components-report.json",
+      "sourcemap": true,
+      "minify": true,
+      "budgets": { "bundle": 130000, "gzip": 30000 }
+    }
+  }
+}
+```
+
+HTML e CSS importados sao incorporados ao bundle no build. O relatorio registra tamanho normal/gzip e quantidade de templates e estilos; o comando falha quando um orçamento e ultrapassado.
 
 ## Autocomplete no VS Code
 
@@ -179,9 +265,35 @@ Ao criar um componente, adicione sua tag e suas props nesse catálogo. Isso reco
 
 O alias padrao dos componentes nos templates e `vm`. Ele pode ser alterado por componente com `controllerAs`, se necessario.
 
+### `defineComponent` e `createApp`
+
+`defineComponent(nome, definicao)` valida e exporta uma descricao reutilizavel do componente. O nome pode ser escrito como a tag HTML (`counter-card`) ou no formato AngularJS (`counterCard`).
+
+`createApp(config)` aceita:
+
+- `name`: nome obrigatorio do modulo;
+- `dependencies`: modulos AngularJS adicionais;
+- `components`: componentes declarativos, funcoes legadas ou arrays;
+- `root`: elemento DOM ou seletor usado no bootstrap;
+- `autoMount: false`: desativa o bootstrap automatico.
+
 ### `props`
 
-Aceita um construtor como atalho ou uma configuracao completa:
+Use os helpers curtos para declarar o tipo, binding e valor padrao:
+
+```js
+props: {
+  title: EasyComponents.text('Titulo'),
+  quantity: EasyComponents.number(0),
+  active: EasyComponents.boolean(false),
+  user: EasyComponents.object(),
+  items: EasyComponents.array(function () { return []; }),
+  onSave: EasyComponents.event(),
+  id: EasyComponents.required(EasyComponents.number())
+}
+```
+
+Tambem e possivel usar um construtor como atalho ou uma configuracao completa:
 
 ```js
 props: {
@@ -195,6 +307,23 @@ props: {
 ```
 
 Bindings sao opcionais por padrao. Use `required: true` para remover `?`. Os modos nativos `<`, `@`, `=`, `&` e aliases do AngularJS sao aceitos em `binding`.
+
+### Injecao de servicos
+
+Mapeie um nome curto do componente para qualquer servico AngularJS. O servico fica disponivel em `this` e a anotacao de dependencia e criada automaticamente, inclusive para codigo minificado:
+
+```js
+EasyComponents.defineComponent('user-list', {
+  inject: {
+    users: 'UserService',
+    http: '$http'
+  },
+  state: function () {
+    return { items: this.users.list() };
+  },
+  template: '<p>{{ vm.items.length }} usuarios</p>'
+});
+```
 
 ### `state` e `$setState`
 
@@ -249,6 +378,37 @@ methods: {
 ```
 
 Componentes podem ser aninhados normalmente. O exemplo usa `app-root > counter-card > value-display`.
+
+### Metricas de runtime
+
+`EasyComponents.metrics()` devolve um snapshot global e por componente com instancias criadas, montadas, destruidas e ativas, atualizacoes de estado, agendamentos de digest, watchers ativos e tempo acumulado de montagem. Quando o navegador oferece `performance.memory`, o snapshot tambem inclui o heap:
+
+```js
+var report = EasyComponents.metrics();
+console.table(report.components);
+console.log(report.totals, report.heap);
+```
+
+Chamadas consecutivas de `$setState` no mesmo ciclo sao agrupadas em um unico `$evalAsync`, reduzindo digests redundantes sem mudar a atualizacao imediata do estado.
+
+### Testes de componentes
+
+O harness oficial monta um componente declarativo em um modulo e injector isolados:
+
+```js
+var fixture = EasyComponents.testing.mount(UserCard, {
+  props: { user: { name: 'Ana' } },
+  events: {
+    onSave: function (user) { /* assert */ }
+  }
+});
+
+fixture.controller.save();
+fixture.update({ user: { name: 'Bia' } });
+fixture.destroy();
+```
+
+O fixture expoe `element`, `controller`, `scope`, `update(props)` e `destroy()`. Cada teste deve chamar `destroy()` para encerrar scopes, watchers e DOM.
 
 ### Diagnostico no navegador
 
@@ -335,3 +495,7 @@ npm run watch:example
 - O plugin nao implementa Virtual DOM; ele usa o compilador e o digest do AngularJS.
 - A validacao de tipos ajuda durante o desenvolvimento, mas nao substitui validacao de dados de negocio.
 - Componentes continuam usando expressoes e diretivas AngularJS no template.
+
+## Versoes e suporte
+
+Consulte [SUPPORT.md](SUPPORT.md) para ambientes suportados, [MIGRATION.md](MIGRATION.md) para migracao gradual e [CHANGELOG.md](CHANGELOG.md) para mudancas por versao. As ferramentas de CLI/build requerem Node.js 18+; o runtime continua sendo JavaScript para AngularJS 1.5+ no navegador.

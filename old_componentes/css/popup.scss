@@ -1,0 +1,354 @@
+/**
+ * Estilo para popup
+ */
+@import "../helper/partials/padrao.scss";
+
+.popup {
+	display: none;
+	position: fixed;
+	z-index: 9997;
+	top: 58px;
+	width: calc(100% - 30px);
+	height: calc(100% - 70px);
+	overflow: hidden;
+	background-color: $white;
+	box-shadow: 0 0 3px $black;
+	@include border-radius(5px);
+	
+	form {
+		height: 100%;
+		/*overflow: hidden;*/
+	}
+	
+	.modal-header {
+		padding: 7px 10px;
+		
+		.popup-title {
+			display: table;
+			position: absolute;
+			z-index: -1;
+			top: 7px;
+			width: calc(100% - 30px);
+			font-size: 16px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 2.2em;
+			
+			.modal-title {
+				display: table-cell;
+				vertical-align: middle;
+				height: 35px;
+			}
+		}
+		
+		.btn-popup-left, li {
+			float: left;
+			margin-right: 5px;
+		}
+
+		.btn-popup-right, .li-popup-right {
+			float: right;
+			margin-left: 5px;
+		}
+
+		.popup-close {
+			float: right;
+		}
+		
+	}
+	
+	.modal-body {
+		overflow: auto;
+		height: calc(100% - 50px);
+		
+		.label {
+			
+			&.label-status {
+				position: absolute;
+				margin-top: -7px;
+				right: 10px;				
+			}
+		}
+		
+		.bootstrap-switch {
+			position: absolute;
+			z-index: 1;
+			margin-top: -7px;
+			right: 15px;
+		}
+	}
+	
+}
+
+.modal.master-modal-full {
+    margin: -10px;
+    padding-left: 0 !important;
+
+    .modal-dialog {
+        height: calc(100% - 68px);
+
+        form {
+            height: 100%;
+        }
+        .modal-content {
+            border-radius: 0px;
+            height: 100%;
+            margin-top: -1px;  
+            width: 100vw;
+
+            .modal-body {
+                height: calc(100% - 46px);
+                max-height: initial;
+            }
+        }
+
+    }
+
+    .modal .modal-dialog.modal-full {
+        width: 100%;
+        margin: 0;            
+    }    
+    
+}
+
+
+.modal {
+	
+	.modal-dialog {
+		margin-top: 60px;
+		margin-bottom: 0;
+
+		&.modal-lg {
+			
+			.modal-content .modal-header .modal-title {
+				max-width: 670px;
+			}
+		}
+
+		&:not(.modal-sm):not(.modal-lg):not(.modal-extend):not(.modal-lg2):not(.modal-extend-medio):not(.modal-big) {
+			
+			.modal-content .modal-header .modal-title {
+				max-width: 370px;
+			}
+		}
+
+		&.modal-extend {
+			width: calc(100% - 200px);
+		}
+
+		&.modal-lg2 {
+			width: calc(100% - 350px);
+		}
+
+		&.modal-extend-medio {
+			width: calc(100% - 620px);
+		}
+		
+		&.modal-big {
+			width: calc(100% - 20px);
+		}
+		
+		.modal-content {
+			overflow: hidden;
+	
+			.modal-header {
+				padding: 5px 15px;
+				$gradient: to right, $lightGrey231 35%, $white;
+				@include linear-gradient($lightGrey231, $gradient);
+
+				.modal-header-left {
+					float: left;
+				}
+
+				.modal-header-center {
+					float: left;
+
+					.modal-title {
+						position: absolute;
+						z-index: 0;
+						width: 95%;
+						text-align: center;
+						line-height: 1.9em;
+					}
+				}
+
+				.modal-header-right {
+					float: right;
+				}	
+
+				.modal-header-end {
+					float: right;
+					margin-right: 5px;
+				}
+
+				.modal-title {
+					padding-top: 5px;
+					font-weight: bold;
+				}
+
+				button {
+					position: relative;
+					z-index: 1;
+
+					&.btn-popup-left {
+						float: left;
+						margin-right: 5px;
+					}
+					&.btn-popup-right {
+						float: right;
+						margin-left: 5px;
+					}
+				}
+
+				.btn-toggle-acoes-modal {
+					display: none;
+					margin-top: 2px;
+					
+					&.exibir {
+						display: block;
+					}
+				}
+
+				.btn-toggle-acoes-modal-v2 {
+					display: none;
+					margin-top: 2px;
+					
+					&.exibir {
+						display: block;
+					}
+				}
+			}
+
+			.modal-body {
+				max-height: calc(100vh - 115px);
+    			overflow: auto;
+
+				button {
+					&.settamanho {
+						margin-bottom: 5px;
+						transition: 1s;
+					}
+				}
+			}
+		}
+	}
+
+	&.fade {
+
+		.modal-dialog {
+			top: -30%;
+			transition: 0.3s ease-out !important;
+			transform: none !important;	/* Devido ao position fixed. */
+		}
+	}
+
+	&.in {
+
+		.modal-dialog {
+			top: 0;
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////
+#divPrincipalInformacoesChart {
+	width: 430px;
+	border-radius: 0.25rem;
+	background-color: white;
+	box-sizing: border-box;
+	z-index: 999;
+	position: fixed;
+	right: 0%;
+	bottom: 120px;
+}
+
+.informacoesChart#toggleDetailsChart {
+	background: #1274a8;
+}
+
+.informacoesChart#toggleDetailsChart i {
+	top: 6px;
+	position: absolute;
+	right: 6px;
+	font-size: 30px;
+}
+
+.toggleLeftChart {
+	left: 337px !important;
+}
+
+.toggleRightChart {
+	left: 90% !important;
+}
+
+.toggleRightChartPanel {
+	right: -430px !important;
+    margin-bottom: 59px;
+}
+
+#toggleDetailsChart {
+	cursor: pointer;
+	position: relative;
+	left: -47px;
+	background: #a91515;
+	width: 40px;
+	height: 41px;
+	margin: 0px 0px 0px 7px;
+	border-radius: 7px 0px 0px 7px;
+	color: #ffffff;
+	font-size: 12px;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	z-index: 9999;
+}
+
+.box-informacoes-Chart {
+	margin-top: -41px;
+}
+
+.box-informacoes-Chart .box_header_chat {
+	background: linear-gradient(to right, #0f73a9 0%, #8bb8d2 100%);
+	height: 40px;
+}
+
+.box-informacoes-Chart .notification-list__item a span {
+	font-weight: bold;
+}
+
+.informacoesChart#toggleDetailsChart {
+	background: #1274a8;
+}
+
+.informacoesChart#toggleDetailsChart i {
+	top: 6px;
+	position: absolute;
+	right: 6px;
+	font-size: 30px;
+}
+
+.box_header_chat,
+.box_content_chat {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.box_content_chat{
+  border: 1px solid #1074a9 !important;
+}
+
+.box_header_chat {
+  background: linear-gradient(to right, #1ea5ce 0%, #23c09e 100%);
+  height: 40px;
+}
+
+.box_header_chat h5 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+@import "popup-media.scss";

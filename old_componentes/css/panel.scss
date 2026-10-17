@@ -1,0 +1,244 @@
+/**
+ * Estilos para painel.
+ */
+@import "../helper/partials/padrao.scss";
+
+.panel {
+	
+	&[disabled] {
+		opacity: 0.7;
+	}
+	
+	/* simula table */
+	&.panel-table {
+		font-size: 12px;
+		
+		.panel-heading {
+			padding: 0;
+			border-bottom: 0;
+			
+			a {
+				padding: 0;
+				font-size: 12px;
+				
+				> span {
+					display: table-cell;
+					padding: 7px 5px;
+					border-right: 1px solid $lightGrey;
+					
+					&:last-of-type {
+						border-right: 0;
+					}
+				}
+			}
+			
+		}
+		
+		> .panel-body {
+			height: 70vh;
+			overflow: auto;
+		}
+		
+		.panel-body {
+			padding: 0;
+			
+			.panel-group {
+				display: inline-table;
+			}
+			
+			.panel {
+				margin-top: 0;
+				border: 0;
+				border-bottom: 1px solid $lightGrey;
+				border-radius: 0;
+				
+				&.in {
+					margin: 5px;
+					box-shadow: 0 0 5px rgb(0, 0, 0);
+				}
+				
+				&:nth-child(even) {
+					background-color: $white;
+					
+					.panel-heading {
+						background-color: $white;
+					}
+					
+				}
+				
+				.panel-heading {
+					border: 0;
+				}
+			
+				.t-status {
+
+					&:before {
+						content: '';
+						display: inline-block;
+						width: 10px;
+						height: 10px;
+						background-color: $black;
+						@include border-radius(5px);
+					}
+
+					&.inativo {
+						&:before {
+							background-color: $redDanger;
+						}
+					}
+
+					&.ativo {
+						&:before {
+							background-color: $greenSuccess;
+						}
+					}
+				}
+				
+				.panel-collapse {
+					
+					> .panel-body {
+						padding: 5px;
+					}
+					
+					table {
+						border-bottom: 0;
+					}
+				}
+			}
+			
+			div.dataTables_wrapper {
+				
+				.dataTables_scrollHead {
+					background-color: rgba($bluePrimary, 0.3);
+					
+					table thead {
+						th {
+							padding: 3px 5px;
+							color: $black;
+							background-color: rgba($bluePrimary, 0.3);
+							border-color: $whiteSmoke;
+						}
+					}
+				}
+				
+			}
+		}
+		
+		.text-right {
+			text-align: right;
+		}
+		.text-center {
+			text-align: center;
+		}
+		
+	}
+		
+}
+
+.panel-group {
+
+	.panel-heading {
+		padding: 0;
+
+		.panel-title {
+			padding: 10px;
+			font-size: 14px;
+		}
+
+		a {
+			display: block;
+			padding: 10px;
+			color: $black50;
+			text-decoration: none;
+			border-radius: 0;
+
+			&:hover {
+				background-color: $lightGrey231;
+			}
+
+		}
+
+		span {
+
+			&.glyphicon-alert {
+				float: right;
+			}
+		}
+	}
+}
+
+.panel-filter {
+    background: rgba(221,221,221,.33);
+    padding: 2px 10px 7px;
+    border-radius: 5px;
+    margin-bottom: 5px;    
+    
+    .form-group {
+        margin: 5px 10px 5px 0;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 12px;
+        
+        label {
+            display: block;
+            margin-bottom: 0;
+            font-weight: normal;
+            
+        }
+        
+        select, input {
+            height: 26px;
+            padding: 2px 7px;
+            line-height: 1em;
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+            font-size: 12px;
+            
+            &[type="checkbox"] {
+                top: 6px;
+                position: relative;
+                width: 20px !important;
+                height: 20px;
+                box-shadow: none;
+                
+                + label {
+                    top: 15px;
+                }
+            }
+            
+            &[type="date"] {
+                + button {
+                    width: auto;
+                }
+            }
+        }
+        
+        .input-group {
+            display: inline-block;
+            
+            button {
+                height: 26px;
+            }
+        }
+        
+        .check-group {
+            margin-top: 0px;
+            padding: 0 0 0 5px;
+            
+            .lbl {
+                position: relative;
+                top: -2px;                
+            }
+        }
+    }
+    
+    button {
+        height: 26px;
+    }
+    
+    > button {
+        margin-top: 17px;
+        margin-right: 13px;
+    }
+}

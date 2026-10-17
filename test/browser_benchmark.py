@@ -165,6 +165,93 @@ async def run_browser_test(debug_port, page_url):
                 await cdp.call("HeapProfiler.collectGarbage")
                 heap_samples.append((await cdp.call("Runtime.getHeapUsage"))["usedSize"])
 
+            performance_comparison = await cdp.evaluate("""
+              (function () {
+                var nativeModule = angular.module('nativeComparison', []);
+                nativeModule.component('nativeProbe', {
+                  bindings: { value: '<' },
+                  controllerAs: 'vm',
+                  template: '<span>{{ vm.value }}</span>'
+                });
+
+                var easyModule = angular.module('easyComparison', ['ngEasyComponents']);
+                easyModule.easyComponent('easyProbe', {
+                  props: { value: Number },
+                  template: '<span>{{ vm.value }}</span>'
+                });
+
+                function measure(moduleName, tagName, count) {
+                  var host = document.createElement('div');
+                  var markup = '';
+                  for (var index = 0; index < count; index += 1) {
+                    markup += '<' + tagName + ' value="1"></' + tagName + '>';
+                  }
+                  host.innerHTML = markup;
+                  var startedAt = performance.now();
+                  var injector = angular.bootstrap(host, [moduleName]);
+                  injector.get('$rootScope').$digest();
+                  var duration = performance.now() - startedAt;
+                  injector.get('$rootScope').$destroy();
+                  return duration;
+                }
+
+                measure('nativeComparison', 'native-probe', 50);
+                measure('easyComparison', 'easy-probe', 50);
+                var nativeDuration = 0;
+                var easyDuration = 0;
+                for (var round = 0; round < 3; round += 1) {
+                  nativeDuration += measure('nativeComparison', 'native-probe', 1000);
+                  easyDuration += measure('easyComparison', 'easy-probe', 1000);
+                }
+                return {
+                  componentsPerImplementation: 3000,
+                  nativeDuration: Math.round(nativeDuration * 100) / 100,
+                  easyDuration: Math.round(easyDuration * 100) / 100,
+                  overheadRatio: Math.round((easyDuration / nativeDuration) * 100) / 100,
+                  runtime: EasyComponents.metrics().totals
+                };
+              }())
+            """)
+
+            fixture_result = await cdp.evaluate("""
+              (function () {
+                var received = null;
+                var activeBefore = EasyComponents.metrics().totals.active;
+                var TestCard = EasyComponents.defineComponent('harness-card', {
+                  props: {
+                    label: EasyComponents.text('Teste'),
+                    initial: EasyComponents.number(0),
+                    onChange: EasyComponents.event()
+                  },
+                  state: function () { return { count: this.initial }; },
+                  methods: {
+                    increment: function () {
+                      this.$setState({ count: this.count + 1 });
+                      this.$emit('onChange', this.count);
+                    }
+                  },
+                  template: '<button aria-label="Incrementar">{{ vm.label }} {{ vm.count }}</button>'
+                });
+                var fixture = EasyComponents.testing.mount(TestCard, {
+                  props: { label: 'Contador', initial: 4 },
+                  events: { onChange: function (value) { received = value; } }
+                });
+                fixture.controller.increment();
+                fixture.scope.$digest();
+                fixture.update({ label: 'Atualizado' });
+                var text = fixture.element.text().trim().replace(/\\s+/g, ' ');
+                var count = fixture.controller.count;
+                fixture.destroy();
+                return {
+                  text: text,
+                  count: count,
+                  received: received,
+                  activeBefore: activeBefore,
+                  activeAfter: EasyComponents.metrics().totals.active
+                };
+              }())
+            """)
+
             showcase = await cdp.evaluate("""
               (function () {
                 var host = document.querySelector('component-showcase');
@@ -261,12 +348,48 @@ async def run_browser_test(debug_port, page_url):
               }())
             """)
 
+            accessibility = await cdp.evaluate("""
+              (function () {
+                var violations = [];
+                var ids = {};
+                document.querySelectorAll('[id]').forEach(function (element) {
+                  if (ids[element.id]) violations.push('id duplicado: ' + element.id);
+                  ids[element.id] = true;
+                });
+                document.querySelectorAll('button, a[href]').forEach(function (element) {
+                  var name = (element.getAttribute('aria-label') || element.getAttribute('title') || element.textContent || '').trim();
+                  if (!name) violations.push('controle sem nome: ' + element.tagName.toLowerCase());
+                });
+                document.querySelectorAll('input, select, textarea').forEach(function (element) {
+                  var labelled = element.getAttribute('aria-label') || element.getAttribute('aria-labelledby') ||
+                    (element.id && document.querySelector('label[for="' + element.id + '"]')) || element.closest('label');
+                  if (!labelled) violations.push('campo sem rotulo: ' + (element.name || element.id || element.tagName.toLowerCase()));
+                });
+                document.querySelectorAll('img').forEach(function (element) {
+                  if (!element.hasAttribute('alt')) violations.push('imagem sem alt');
+                });
+                return { passed: violations.length === 0, violations: violations };
+              }())
+            """)
+
             assert all(item["passed"] for item in benchmarks), "Scopes ou nos DOM ficaram retidos."
             assert all(item["compiled"] == 3000 for item in benchmarks)
             assert all(item["bindingUpdates"] == 12000 for item in benchmarks)
             assert all(item["duration"] > 0 for item in benchmarks), "A duracao real deve ser maior que zero."
             assert all(item["scopeDelta"] == 0 for item in benchmarks)
             assert all(item["remainingNodes"] == 0 for item in benchmarks)
+            assert all(item["runtime"]["active"] >= 1 for item in benchmarks)
+            assert all(item["runtime"]["created"] >= item["runtime"]["destroyed"] for item in benchmarks)
+            assert performance_comparison["easyDuration"] <= max(
+                performance_comparison["nativeDuration"] * 2.5,
+                performance_comparison["nativeDuration"] + 150,
+            ), "A camada declarativa excedeu o orcamento relativo ao AngularJS nativo."
+            assert performance_comparison["runtime"]["active"] >= 1
+            assert fixture_result["text"] == "Atualizado 5", fixture_result
+            assert fixture_result["count"] == 5
+            assert fixture_result["received"] == 5
+            assert fixture_result["activeAfter"] == fixture_result["activeBefore"]
+            assert accessibility["passed"], accessibility["violations"]
             assert rendered["benchmarkNodes"] == 0
             assert rendered["styleCount"] >= 4
             assert rendered["counter"] == "3"
@@ -305,6 +428,34 @@ async def run_browser_test(debug_port, page_url):
                 f"Heap cresceu {heap_growth} bytes apos aquecimento; limite: {allowed_growth:.0f}."
             )
 
+            csp_url = page_url.replace("/example/", "/test/csp.html")
+            await cdp.call("Page.navigate", {"url": csp_url})
+            csp_result = None
+            for _ in range(100):
+                csp_result = await cdp.evaluate("""
+                  (function () {
+                    var root = document.querySelector('csp-root');
+                    var message = root && root.querySelector('.message');
+                    var style = document.querySelector('[data-easy-component-style="cspRoot"]');
+                    if (!message || !style) return null;
+                    return {
+                      text: message.textContent.trim(),
+                      color: getComputedStyle(message).color,
+                      scope: root.getAttribute('data-easy-scope'),
+                      nonce: style.nonce || style.getAttribute('nonce')
+                    };
+                  }())
+                """)
+                if csp_result:
+                    break
+                await asyncio.sleep(0.05)
+            assert csp_result, "A pagina CSP nao montou o componente."
+            assert csp_result["text"] == "CSP ativo"
+            assert csp_result["color"] == "rgb(12, 120, 80)", csp_result
+            assert csp_result["scope"] == "csp-root"
+            assert csp_result["nonce"] == "easy-components-csp"
+            assert not cdp.exceptions, "Erros JavaScript/CSP: " + ", ".join(cdp.exceptions)
+
             return {
                 "benchmarks": benchmarks,
                 "memory": {
@@ -312,6 +463,10 @@ async def run_browser_test(debug_port, page_url):
                     "growthAfterWarmup": heap_growth,
                     "allowedGrowth": round(allowed_growth),
                 },
+                "nativeComparison": performance_comparison,
+                "testHarness": fixture_result,
+                "accessibility": accessibility,
+                "csp": csp_result,
                 "rendered": rendered,
                 "showcase": showcase,
                 "navigation": navigation,

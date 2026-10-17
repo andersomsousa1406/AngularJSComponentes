@@ -1,9 +1,9 @@
 {
   "name": "angularjs-easy-components-navigation",
   "displayName": "AngularJS Easy Components Navigation",
-  "description": "Ir para a declaracao JavaScript de componentes AngularJS Easy Components a partir do HTML.",
+  "description": "Autocomplete, diagnosticos, rename e navegacao para AngularJS Easy Components.",
   "publisher": "local",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "engines": {
     "vscode": ">=1.80.0"
   },
@@ -18,6 +18,14 @@
     "onLanguage:typescriptreact"
   ],
   "main": "./extension.js",
+  "files": [
+    "extension.js",
+    "navigation.js",
+    "semantic.js",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "contributes": {
     "configuration": {
       "title": "AngularJS Easy Components",
