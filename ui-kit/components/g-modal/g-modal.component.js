@@ -3,7 +3,7 @@ import styles from './g-modal.css';
 let sequence = 0;
 export default EasyComponents.defineComponent('g-modal', {
   inject: { timeout: '$timeout', scope: '$scope' }, transclude: true,
-  props: { open: EasyComponents.boolean(false), title: EasyComponents.text(''), description: EasyComponents.text(''), size: EasyComponents.text('md'), busy: EasyComponents.boolean(false), closeOnBackdrop: EasyComponents.boolean(true), confirmText: EasyComponents.text('Confirmar'), cancelText: EasyComponents.text('Cancelar'), onClose: EasyComponents.event(), onConfirm: EasyComponents.event() },
+  props: { open: EasyComponents.boolean(false), title: EasyComponents.text(''), description: EasyComponents.text(''), size: EasyComponents.text('md'), busy: EasyComponents.boolean(false), closeOnBackdrop: EasyComponents.boolean(true), confirmText: EasyComponents.text('Confirmar'), confirmColor: EasyComponents.text('primary'), cancelText: EasyComponents.text('Cancelar'), onClose: EasyComponents.event(), onConfirm: EasyComponents.event() },
   state: function () { return { uid: 'g-dialog-' + ++sequence }; },
   methods: {
     close: function (reason) { if (!this.busy) this.$emit('onClose', reason); },
