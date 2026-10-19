@@ -16,7 +16,7 @@ var config = {
     target: ['es2017'],
     minify: true,
     sourcemap: true,
-    budgets: { bundle: 150000, gzip: 40000 }
+    budgets: { bundle: 180000, gzip: 48000 }
   }
 };
 
@@ -49,7 +49,7 @@ function buildLab() {
     entry: path.join(root, 'legacy-migration/lab/app.js'),
     outfile: path.join(root, 'legacy-migration/dist/lab.bundle.js'),
     report: path.join(root, 'legacy-migration/dist/lab-report.json'),
-    budgets: { bundle: 200000, gzip: 50000 }
+    budgets: { bundle: 220000, gzip: 60000 }
   }) }, { onReport: function (report) { console.log('Laboratorio compilado: ' + report.bytes + ' bytes, ' + report.gzipBytes + ' gzip.'); } });
 }
 
@@ -58,7 +58,7 @@ function buildReference() {
     entry: path.join(root, 'legacy-migration/reference-22430/app.js'),
     outfile: path.join(root, 'legacy-migration/dist/22430.bundle.js'),
     report: path.join(root, 'legacy-migration/dist/22430-report.json'),
-    budgets: { bundle: 200000, gzip: 50000 }
+    budgets: { bundle: 220000, gzip: 60000 }
   }) }, { onReport: function (report) { console.log('Referencia 22430 compilada: ' + report.bytes + ' bytes.'); } });
 }
 

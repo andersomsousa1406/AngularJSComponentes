@@ -34,15 +34,23 @@
       </tr></thead>
       <tbody>
         <tr ng-if="vm.isLoading"><td colspan="{{ vm.columnCount || 1 }}" class="text-center gc-data-grid__message"><span class="glyphicon glyphicon-refresh gc-spin" aria-hidden="true"></span> Carregando...</td></tr>
-        <tr ng-if="!vm.isLoading" ng-repeat="row in vm.visibleRows track by vm.identity(row)" ng-click="vm.select(row)" ng-class="{ selected: vm.selected(row), 'gc-data-grid__selectable': vm.selectable }" tabindex="{{ vm.selectable ? 0 : -1 }}" ng-keydown="$event.key === 'Enter' && vm.select(row)">
+        <tr ng-if="!vm.isLoading" ng-repeat="row in vm.visibleRows track by vm.identity(row)" ng-click="vm.select(row)" ng-focus="vm.focusRow(row, $event)" ng-dblclick="vm.viewRow(row, $event)" ng-class="{ selected: vm.rowSelected(row), 'gc-data-grid__selectable': vm.selectable || vm.grid }" tabindex="{{ vm.selectable || vm.grid ? 0 : -1 }}" ng-keydown="vm.rowKeydown($event, row)">
           <td ng-if="vm.grid.status_visible" class="gc-data-grid__check" ng-attr-style="{{ vm.statusStyle(row) }}"><span class="t-status" ng-class="'status-' + row.STATUS" title="{{ row.HINT_STATUS || (row.STATUS == 1 ? 'Ativo' : 'Inativo') }}" aria-label="{{ row.STATUS == 1 ? 'Ativo' : 'Inativo' }}"></span></td>
-          <td ng-if="vm.showCheckboxes" class="gc-data-grid__check"><input type="checkbox" aria-label="Selecionar registro {{ vm.identity(row) }}" ng-checked="vm.selected(row)" ng-click="$event.stopPropagation(); vm.toggleCheck(row)"></td>
+          <td ng-if="vm.showCheckboxes" class="gc-data-grid__check"><input type="checkbox" aria-label="Selecionar registro {{ vm.identity(row) }}" ng-disabled="vm.checkboxDisabled(row)" ng-checked="vm.selected(row)" ng-dblclick="$event.stopPropagation()" ng-click="$event.stopPropagation(); vm.toggleCheck(row)"></td>
           <td ng-repeat="column in vm.displayColumns track by column.id" ng-class="column.className" ng-attr-style="{{ vm.cellStyle(column, false, row) }}" title="{{ column.TITLE ? column.TITLE(row) : vm.format(row, column) }}">
-            <span ng-if="column.type !== 'btn3' && !column.POPOVER">{{ vm.format(row, column) }}</span>
+            <span ng-switch="vm.cellKind(column)">
+              <span ng-switch-when="text" ng-if="!column.POPOVER">{{ vm.format(row, column) }}</span>
+              <span ng-switch-when="status" class="gc-data-grid__cell-status"><span class="t-status {{ column.type }}-{{ row[column.key] }}" aria-label="{{ row[column.key] }}"></span></span>
+              <span ng-switch-when="color" class="gc-data-grid__swatch" ng-attr-style="{{ vm.colorStyle(column, row) }}"></span>
+              <a ng-switch-when="link" ng-href="{{ vm.cellLink(column, row) }}" ng-click="vm.linkSelect($event, row)" ng-dblclick="$event.stopPropagation()" target="_blank" rel="noopener noreferrer">{{ vm.format(row, column) }}</a>
+              <span ng-switch-when="html" ng-bind-html="vm.cellHtml(column, row)"></span>
+              <span ng-switch-when="htmlcp" class="text-danger" title="Esta declaração ainda exige conversão do template e de seu contexto">HTMLCP ainda não convertido</span>
+              <input ng-switch-when="imput_number" class="item_edit_tab text-right" type="number" aria-label="{{ column.label }}" ng-model="row[column.key]" ng-attr-min="{{ column.MIN }}" ng-attr-max="{{ column.MAX }}" step="any" ng-focus="vm.focusRow(row, $event)" ng-click="$event.stopPropagation()" ng-dblclick="$event.stopPropagation()" ng-blur="vm.editBlur($event, column, row)">
+            </span>
             <button ng-if="column.POPOVER && vm.format(row, column)" class="gc-data-grid__hint" type="button" ng-click="vm.showPopover($event, column, row)" aria-expanded="{{ vm.cellPopover.row === row && vm.cellPopover.column === column }}">{{ vm.format(row, column) }}</button>
-            <span ng-if="column.type === 'btn3'" class="gc-data-grid__row-actions">
-              <span class="dropdown acoes" ng-repeat="action in column.BTN3 track by $index" ng-if="vm.actionFlag(action, 'visible', row, true)">
-                <button type="button" class="btn btn-sm {{ action.type }} {{ action.class }}" title="{{ action.title }}" aria-label="{{ action.label || 'Opções do registro ' + vm.identity(row) }}" ng-disabled="vm.actionFlag(action, 'disabled', row, false) || vm.actionFlag(action, 'readonly', row, false)" ng-click="vm.activateAction($event, action, row)" aria-expanded="{{ vm.rowMenu.row === row && vm.rowMenu.button === action }}"><span class="{{ action.icone }}"></span> {{ action.label }}</button>
+            <span ng-if="vm.cellKind(column) === 'buttons'" class="gc-data-grid__row-actions">
+              <span class="dropdown acoes" ng-repeat="action in vm.buttons(column) track by $index" ng-if="vm.actionFlag(action, 'visible', row, true)">
+                <button type="button" class="btn btn-sm {{ action.type }} {{ vm.actionValue(action, 'class', row, '') }}" ng-attr-style="{{ action.xstyle }}" title="{{ vm.actionValue(action, 'title', row, vm.actionValue(action, 'ttitle', row, '')) }}" aria-label="{{ vm.actionValue(action, 'label', row, '') || 'Opções do registro ' + vm.identity(row) }}" ng-disabled="vm.actionFlag(action, 'disabled', row, false) || vm.actionFlag(action, 'readonly', row, false)" ng-click="vm.activateAction($event, action, row)" ng-dblclick="$event.stopPropagation()" aria-expanded="{{ vm.rowMenu.row === row && vm.rowMenu.button === action }}"><span class="{{ vm.actionValue(action, 'icone', row, '') }}"></span> {{ column.type === 'btn' ? column.CAMPO : vm.actionValue(action, 'label', row, '') }}</button>
               </span>
             </span>
           </td>

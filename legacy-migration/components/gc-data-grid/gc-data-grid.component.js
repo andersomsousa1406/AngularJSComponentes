@@ -1,6 +1,7 @@
 import template from './gc-data-grid.html';
 import styles from './gc-data-grid.css';
 import { createGridClient, normalizeColumns, gridMenu, gridCellStyle } from '../../services/grid-client.js';
+import { gridButtons, gridCellKind, gridLink, gridGradient } from '../../services/grid-cell-contract.js';
 
 function compare(left, right) {
   if (left === right) return 0;
@@ -10,7 +11,7 @@ function compare(left, right) {
 }
 
 export default EasyComponents.defineComponent('gc-data-grid', {
-  inject: { api: 'GcApi', scope: '$scope' },
+  inject: { api: 'GcApi', scope: '$scope', sce: '$sce', timeout: '$timeout' },
   props: {
     rows: EasyComponents.array(function () { return []; }),
     columns: EasyComponents.array(function () { return []; }),
@@ -74,12 +75,68 @@ export default EasyComponents.defineComponent('gc-data-grid', {
 
   methods: {
     search: function () { if (this.grid) { this.grid.filtro = this.query; this.grid.FiltrarTabela(); } this.$setState({ page: 1 }); },
-    format: function (row, column) { return this.grid ? this.grid.format(row, column) : row[column.key]; },
+    format: function (row, column) { return this.grid ? this.grid.formatCell(row, column) : row[column.key]; },
+    cellKind: gridCellKind,
+    buttons: function (column) {
+      if (!/^btn-/.test(column.type)) return gridButtons(column);
+      if (!this._legacyButtons) this._legacyButtons = new Map();
+      if (!this._legacyButtons.has(column.id)) {
+        var vm = this, icons = { 'btn-danger': 'trash', 'btn-primary': 'edit', 'btn-success': 'ok', 'btn-warning': 'print', 'btn-info': 'ok' };
+        this._legacyButtons.set(column.id, [{ type: column.type, label: column.CAMPO, icone: 'glyphicon glyphicon-' + icons[column.type],
+          disabled: function () { return !!vm.model().desabilitado; }, funcao: function (event, row) {
+            var model = vm.model(); if (model.funcao_botao) { if (model.parametro === true) model.funcao_botao(row); else model.funcao_botao(); }
+          } }]);
+      }
+      return this._legacyButtons.get(column.id);
+    },
+    actionValue: function (action, name, row, fallback) { return typeof action[name] === 'function' ? action[name](row) : action[name] === undefined ? fallback : action[name]; },
+    model: function () { return this.grid && (typeof this.grid.model_selected === 'object' ? this.grid.model_selected : this.grid.model_tabela) || {}; },
+    rowSelected: function (row) { return this.grid ? this.grid.marcar_linhas ? this.selected(row) : this.model().SELECTED === row : this.selected(row); },
+    focusRow: function (row, event) {
+      if (!this.grid) return;
+      this.grid.SELECTED = row; this.model().SELECTED = row; this.grid.VER = true;
+      if (this.grid.event_focus && this.grid.event_focus.function) this.grid.event_focus.function(row, event);
+    },
+    viewRow: function (row, event) {
+      if (!this.grid || this.grid.marcar_linhas || this.grid.VER === false) return;
+      this.focusRow(row, event);
+      var model = this.model(); if (model.visualizar) model.visualizar();
+    },
+    rowKeydown: function (event, row) {
+      // A cell control owns its own keyboard events.
+      if (event.target !== event.currentTarget) return;
+      if (!this.grid) { if (event.key === 'Enter') this.select(row); return; }
+      if (event.key === 'Enter' && !this.grid.desabilitar_atalho_enter) this.viewRow(row, event);
+      else if (event.key === ' ' && this.grid.input_visible && !this.grid.desabilitar_atalho_space) {
+        event.preventDefault();
+        var veto = this.grid.validar_space_function;
+        if ((!veto || !veto.funcao || veto.funcao(row) === false) && !this.checkboxDisabled(row)) {
+          this.grid.setRowChecked(row, !this.selected(row), false);
+          this.$emit('onSelect', this.selectedRows);
+        }
+        if (this.grid.space_function) this.grid.space_function(row);
+      }
+    },
+    checkboxDisabled: function (row) {
+      if (!this.grid) return false;
+      var disabled = this.grid.input_disabled;
+      return disabled === true || !!(disabled && disabled.funcao && disabled.funcao(row)) || !this.grid.validarMarcarItem(row);
+    },
+    cellHtml: function (column, row) {
+      var html = column.HTML && column.HTML.funcao ? String(column.HTML.funcao(row) || '') : '';
+      if (!this._htmlCache) this._htmlCache = new Map();
+      if (!this._htmlCache.has(html)) { if (this._htmlCache.size > 500) this._htmlCache.clear(); this._htmlCache.set(html, this.sce.trustAsHtml(html)); }
+      return this._htmlCache.get(html);
+    },
+    cellLink: function (column, row) { return gridLink(column.LINK, column.LINK_PARAM, row); },
+    linkSelect: function (event, row) { event.stopPropagation(); this.focusRow(row, event); },
+    colorStyle: function (column, row) { return column.type === 'cor-grd' ? gridGradient(row[column.key]) : 'background-color:' + row[column.key] + ';'; },
+    editBlur: function (event, column, row) { if (column.EVENT_BLUR && column.EVENT_BLUR.funcao) column.EVENT_BLUR.funcao(row, event); },
     exportCsv: function () { if (this.grid) this.$emit('onExport', { name: (this.grid.titulo || 'tabela') + '.csv', type: 'text/csv', content: this.grid.exportCsv() }); },
     columnVisible: function (column) { return this.columnVisibility[column.id] === undefined ? column.visible : this.columnVisibility[column.id]; },
     toggleColumn: function (column) {
       var visible = !this.columnVisible(column);
-      if (this.grid) this.grid.setVisible(column.key, visible, column.id);
+      if (this.grid) this.grid.setColumnVisible(column.key, visible, column.id);
       else { var visibility = Object.assign({}, this.columnVisibility); visibility[column.id] = visible; this.$setState({ columnVisibility: visibility }); }
       this.$emit('onColumnsChange', this.displayColumns);
     },
@@ -97,8 +154,7 @@ export default EasyComponents.defineComponent('gc-data-grid', {
     activateAction: function (event, action, row) {
       event.stopPropagation();
       if (this.actionFlag(action, 'disabled', row, false) || this.actionFlag(action, 'readonly', row, false)) return;
-      this.grid.SELECTED = row;
-      if (this.grid.model_tabela) this.grid.model_tabela.SELECTED = row;
+      if (action.dropdown) { this.grid.SELECTED = row; this.model().SELECTED = row; }
       if (action.funcao) action.funcao(event, row);
       var bounds = event.currentTarget.getBoundingClientRect();
       this.rowMenu = action.dropdown ? (this.rowMenu && this.rowMenu.row === row && this.rowMenu.button === action ? null : { row: row, button: action,
@@ -121,7 +177,8 @@ export default EasyComponents.defineComponent('gc-data-grid', {
     filterStatus: function () { if (!this.grid) return; this.grid.FILTRO = Object.assign({}, this.grid.FILTRO, { STATUS: this.grid.STATUS }); this.grid.FiltrarTabela(); this.$setState({ page: 1 }); },
     clearFilter: function () { this.query = ''; this.search(); },
     toggleCheck: function (row) {
-      if (this.grid) this.grid.setChangeCheck(row, !this.selected(row));
+      if (this.checkboxDisabled(row)) return;
+      if (this.grid) this.grid.setRowChecked(row, !this.selected(row));
       else { var vm = this; var selected = this.selected(row); this.$setState({ selection: selected ? this.selection.filter(function (item) { return item[vm.trackBy] !== row[vm.trackBy]; }) : this.selection.concat([row]) }); }
       this.$emit('onSelect', this.selectedRows);
     },
@@ -144,6 +201,10 @@ export default EasyComponents.defineComponent('gc-data-grid', {
       this.$emit('onPageChange', page);
     },
     select: function (row) {
+      if (this.grid) {
+        if (this.grid.marcar_linhas) { this.toggleCheck(row); if (this.grid.onMarcarClick) this.grid.onMarcarClick(row); }
+        return; // Focus selects; viewing and marking are independent in TabelaJS.
+      }
       if (!this.selectable) return;
       if (this.showCheckboxes) return this.toggleCheck(row);
       var key = this.trackBy;
@@ -155,7 +216,7 @@ export default EasyComponents.defineComponent('gc-data-grid', {
       if (this.grid) {
         this.grid.SELECTED = row;
         if (!this.multiSelect) this.grid.DesmarcarItens();
-        this.grid.setChangeCheck(row, !exists);
+        this.grid.setRowChecked(row, !exists);
       }
       this.$emit('onSelect', this.multiSelect ? selection : row);
     },
@@ -184,7 +245,7 @@ export default EasyComponents.defineComponent('gc-data-grid', {
       if (!this.config) return;
       var vm = this;
       vm.grid = createGridClient(Object.assign({ DADOS: vm.rows, COLUNAS: vm.columns }, vm.config), {
-        api: vm.api, notify: function () { if (vm.grid) vm.$setState({ grid: vm.grid }); }
+        api: vm.api, schedule: vm.timeout, cancel: vm.timeout.cancel, notify: function () { if (vm.grid) vm.$setState({ grid: vm.grid }); }
       });
       vm.$emit('onReady', vm.grid);
     },

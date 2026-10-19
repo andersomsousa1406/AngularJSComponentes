@@ -72,6 +72,7 @@ async function main() {
       return result.result.value;
     }
     await call('Runtime.enable'); await call('Page.enable'); await call('Network.enable');
+    await call('Emulation.setFocusEmulationEnabled', { enabled: true });
     await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
     await call('Page.navigate', { url: 'http://127.0.0.1:' + server.address().port + '/legacy-migration/' + (referenceMode ? '22430.html' : labMode ? 'lab.html' : '') });
     var ready;
@@ -212,6 +213,39 @@ async function main() {
       }())`);
       assert.deepEqual(gridAppearance, { header: 'rgb(51, 122, 183)', text: 'rgb(255, 255, 255)', padding: '3px',
         total: 'rgb(191, 191, 191)', sticky: 'sticky', legacyClasses: true, height: 260, marked: 5, afterUncheck: 4, menu: true, visibleColumns: 3 });
+      var cellContracts = await evaluate(`(async function () {
+        var injector = angular.element(document.querySelector('migration-lab')).injector();
+        var scope = injector.get('$rootScope').$new(), calls = [], viewed = 0;
+        var row = { ID: 9, COLOR: '#123456', GRADIENT: ['#fff', '#000'], STATUS: 0, VALOR: 2 };
+        scope.probe = { DADOS: [row], HEIGHT: '160px', MIN_HEIGHT: '0px', status_visible: false, input_visible: true,
+          model_tabela: { visualizar: function () { viewed++; } }, COLUNAS: [
+            { CAMPO: '', TIPO: 'btn2', BTN2: [{ class: 'probe-btn2', label: 'B2', funcao: function (event, value) { calls.push(['btn2', event.type, value.ID]); } }] },
+            { CAMPO: '', TIPO: 'btn4', BTN4: [{ class: function () { return 'probe-btn4'; }, label: function (value) { return 'B4-' + value.ID; }, icone: function () { return 'glyphicon glyphicon-ok'; }, funcao: function (event, value) { calls.push(['btn4', event.type, value.ID]); } }] },
+            { CAMPO: 'STATUS', TIPO: 'status2' }, { CAMPO: 'COLOR', TIPO: 'cor' }, { CAMPO: 'GRADIENT', TIPO: 'cor-grd' },
+            { CAMPO: 'ID', TIPO: 'html', HTML: { funcao: function (value) { return '<b class="probe-html">Registro ' + value.ID + '</b>'; } } },
+            { CAMPO: 'ID', TIPO: 'link', LINK: '/modelo/#ID#', LINK_PARAM: [{ PARAM: 'ID', CAMPO: 'ID' }] },
+            { CAMPO: 'VALOR', TIPO: 'imput_number', MIN: 0, MAX: 10, EVENT_BLUR: { funcao: function (value, event) { calls.push(['blur', event.type, value.ID, value.VALOR]); } } }
+          ] };
+        var element = injector.get('$compile')('<gc-data-grid config="probe"></gc-data-grid>')(scope);
+        angular.element(document.body).append(element); scope.$digest();
+        element[0].querySelector('.probe-btn2').click(); element[0].querySelector('.probe-btn4').click(); scope.$digest();
+        var tr = element[0].querySelector('tbody tr'); tr.focus(); scope.$digest();
+        await new Promise(function (resolve) { setTimeout(resolve, 20); }); scope.$digest();
+        var focused = scope.probe.model_tabela.SELECTED === row;
+        tr.dispatchEvent(new MouseEvent('dblclick', { bubbles: true })); scope.$digest();
+        var checkedBefore = !!row.CHECKED;
+        var editor = element[0].querySelector('.item_edit_tab'); editor.value = '7'; editor.dispatchEvent(new Event('input', { bubbles: true })); editor.dispatchEvent(new Event('blur')); scope.$digest();
+        var result = { calls: calls, focused: focused, viewed: viewed, checkedBefore: checkedBefore,
+          label: element[0].querySelector('.probe-btn4').textContent.trim(), html: element[0].querySelector('.probe-html').textContent,
+          status: getComputedStyle(element[0].querySelector('.status2-0')).backgroundColor,
+          color: getComputedStyle(element[0].querySelector('.gc-data-grid__swatch')).backgroundColor,
+          gradient: getComputedStyle(element[0].querySelectorAll('.gc-data-grid__swatch')[1]).backgroundImage.includes('linear-gradient'),
+          link: element[0].querySelector('tbody a').getAttribute('href') };
+        scope.$destroy(); element.remove(); return result;
+      }())`);
+      assert.deepEqual(cellContracts, { calls: [['btn2', 'click', 9], ['btn4', 'click', 9], ['blur', 'blur', 9, 7]], focused: true,
+        viewed: 1, checkedBefore: false, label: 'B4-9', html: 'Registro 9', status: 'rgb(68, 157, 68)', color: 'rgb(18, 52, 86)', gradient: true, link: '/modelo/9' });
+      assert.deepEqual(exceptions, []);
       assert(requests.every(function (url) { return !/^https?:/.test(url) || url.startsWith('http://127.0.0.1:' + server.address().port + '/'); }), 'O laboratorio tentou acessar um servidor externo.');
       await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
       var mobileOverflow = await evaluate(`(function () {

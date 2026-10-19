@@ -1,0 +1,2292 @@
+{
+  "source": "old_componentes/componentes/TabelaJS.js",
+  "sourceHash": "6d6e5a0d3230caa28e46e95fcd8622a4cb6c8b8e4da9c40cfeb113ce979a873b",
+  "complete": false,
+  "entries": [
+    {
+      "path": "ID",
+      "type": "property",
+      "line": 212,
+      "endLine": 212,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "nonce",
+      "type": "property",
+      "line": 213,
+      "endLine": 213,
+      "hash": "ea7d107e23c6425e874a66cef17d408450b82705a2db6a8f78395053b0c12525",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "tabela_id",
+      "type": "property",
+      "line": 214,
+      "endLine": 214,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "componente",
+      "type": "property",
+      "line": 215,
+      "endLine": 215,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "model",
+      "type": "property",
+      "line": 216,
+      "endLine": 216,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "titulo",
+      "type": "property",
+      "line": 217,
+      "endLine": 217,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "filtro",
+      "type": "property",
+      "line": 218,
+      "endLine": 218,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "zoom",
+      "type": "property",
+      "line": 219,
+      "endLine": 219,
+      "hash": "ad57366865126e55649ecb23ae1d48887544976efea46a48eb5d85a6eeb4d306",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "DADOS",
+      "type": "property",
+      "line": 220,
+      "endLine": 220,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "DADOS_RENDER",
+      "type": "property",
+      "line": 221,
+      "endLine": 221,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "DADOS_RENDER_FILTRADOS",
+      "type": "property",
+      "line": 222,
+      "endLine": 222,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "campos_filtro",
+      "type": "property",
+      "line": 223,
+      "endLine": 223,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "html_total",
+      "type": "property",
+      "line": 224,
+      "endLine": 224,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "impressao_inativa",
+      "type": "property",
+      "line": 225,
+      "endLine": 225,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_visible",
+      "type": "property",
+      "line": 226,
+      "endLine": 226,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "FILTRO_RENDER",
+      "type": "property",
+      "line": 227,
+      "endLine": 227,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "input_visible",
+      "type": "property",
+      "line": 228,
+      "endLine": 228,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "total_visible",
+      "type": "property",
+      "line": 229,
+      "endLine": 229,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "options_fixed",
+      "type": "property",
+      "line": 230,
+      "endLine": 230,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "VER",
+      "type": "property",
+      "line": 231,
+      "endLine": 231,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "marcar_todos",
+      "type": "property",
+      "line": 232,
+      "endLine": 232,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "tabela_compilada",
+      "type": "property",
+      "line": 233,
+      "endLine": 233,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "using_total_dados",
+      "type": "property",
+      "line": 234,
+      "endLine": 234,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "model_selected",
+      "type": "property",
+      "line": 235,
+      "endLine": 235,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "backup_colunas",
+      "type": "property",
+      "line": 236,
+      "endLine": 236,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "filtro_visible",
+      "type": "property",
+      "line": 237,
+      "endLine": 237,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS_RESTAURADAS",
+      "type": "property",
+      "line": 238,
+      "endLine": 238,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "MODIFICAR_PAGINACAO",
+      "type": "property",
+      "line": 239,
+      "endLine": 239,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "EVENTOS_GERADOS",
+      "type": "property",
+      "line": 240,
+      "endLine": 240,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "BACKUP_STATUS",
+      "type": "property",
+      "line": 241,
+      "endLine": 241,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "CABECALHO_CSV",
+      "type": "property",
+      "line": 242,
+      "endLine": 242,
+      "hash": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "IMPRESSAO_RELATORIO",
+      "type": "property",
+      "line": 243,
+      "endLine": 243,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "OBSERVACAO_VISUAL_REL",
+      "type": "property",
+      "line": 244,
+      "endLine": 244,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "CABECALHO_HABILITADO",
+      "type": "property",
+      "line": 245,
+      "endLine": 245,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "marcar_perc_visible",
+      "type": "property",
+      "line": 246,
+      "endLine": 246,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "Confirmacao",
+      "type": "property",
+      "line": 247,
+      "endLine": 247,
+      "hash": "218be4f427e71d3174009ead47fc3536d5e26e06ad26e5a499bf780831367e7d",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS",
+      "type": "property",
+      "line": 248,
+      "endLine": 273,
+      "hash": "181aeefde3b17014953a052754349f1d6d7674357c89a798cfbd2f0849d184f4",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].CAMPO",
+      "type": "property",
+      "line": 250,
+      "endLine": 250,
+      "hash": "d54f6ede53e2c0910a7eb6ed66080ea0b5a2f1e3558a3cf792a204a2a2343c9e",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].DESCRICAO",
+      "type": "property",
+      "line": 251,
+      "endLine": 251,
+      "hash": "d54f6ede53e2c0910a7eb6ed66080ea0b5a2f1e3558a3cf792a204a2a2343c9e",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].TIPO",
+      "type": "property",
+      "line": 252,
+      "endLine": 252,
+      "hash": "bc019b822aacd51b00433e98630301a5b01153d2154c06f8484d3e18ec75cea3",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].ALIGN",
+      "type": "property",
+      "line": 253,
+      "endLine": 253,
+      "hash": "6ca6aed47cd2b71e75a4f04637d47d0ef4a03143f75199dfd0a51c4860bdbc2f",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].VISIBLE",
+      "type": "property",
+      "line": 254,
+      "endLine": 254,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].SIZE",
+      "type": "property",
+      "line": 255,
+      "endLine": 255,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].STYLE",
+      "type": "property",
+      "line": 256,
+      "endLine": 256,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].ORDEM",
+      "type": "property",
+      "line": 257,
+      "endLine": 257,
+      "hash": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].PARAM_CLASS_DIV",
+      "type": "property",
+      "line": 258,
+      "endLine": 258,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[0].CHAVE_COLUNA",
+      "type": "property",
+      "line": 259,
+      "endLine": 259,
+      "hash": "2ab43fb3b328344e5766281ae1251ac11641541e93b106d57cf48059b1048ac2",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].CAMPO",
+      "type": "property",
+      "line": 262,
+      "endLine": 262,
+      "hash": "2a15cb6ddbb5ce1e90b207bc62c15497d1051610528de6e5504562e2157e908c",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].DESCRICAO",
+      "type": "property",
+      "line": 263,
+      "endLine": 263,
+      "hash": "e454bb0018361e68005c46c444a8beb54c422f10937b6985d057a1c811aae7fc",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].TIPO",
+      "type": "property",
+      "line": 264,
+      "endLine": 264,
+      "hash": "7fda3139315ef36c97138859ab308e419d774aa7d1711c212890963cd6a21706",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].ALIGN",
+      "type": "property",
+      "line": 265,
+      "endLine": 265,
+      "hash": "6ca6aed47cd2b71e75a4f04637d47d0ef4a03143f75199dfd0a51c4860bdbc2f",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].VISIBLE",
+      "type": "property",
+      "line": 266,
+      "endLine": 266,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].SIZE",
+      "type": "property",
+      "line": 267,
+      "endLine": 267,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].STYLE",
+      "type": "property",
+      "line": 268,
+      "endLine": 268,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].ORDEM",
+      "type": "property",
+      "line": 269,
+      "endLine": 269,
+      "hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].PARAM_CLASS_DIV",
+      "type": "property",
+      "line": 270,
+      "endLine": 270,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS[1].CHAVE_COLUNA",
+      "type": "property",
+      "line": 271,
+      "endLine": 271,
+      "hash": "88ecd244b473c7955f269b6c027fd70fbc2f373b85a181299bcbace695c49e40",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS2",
+      "type": "property",
+      "line": 274,
+      "endLine": 274,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COLUNAS_FUNC",
+      "type": "property",
+      "line": 275,
+      "endLine": 275,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "position_colunas2",
+      "type": "property",
+      "line": 276,
+      "endLine": 276,
+      "hash": "cfea46ed28bfde3078d540aa30332ab72307a84aa7842aa2e071ad9e619899de",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "position_colunas_func",
+      "type": "property",
+      "line": 277,
+      "endLine": 277,
+      "hash": "309be0201d19558c3a28bdd017b63493260efc63a22678b4a5b731c17c55a11e",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "FILTRO",
+      "type": "property",
+      "line": 278,
+      "endLine": 278,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "STATUS",
+      "type": "property",
+      "line": 279,
+      "endLine": 279,
+      "hash": "9a7622b24ae73586214f453f44ed438ce5c63aa07c720c2ccc29ae5bd7ec5322",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "ORDER_BY",
+      "type": "property",
+      "line": 280,
+      "endLine": 280,
+      "hash": "d54f6ede53e2c0910a7eb6ed66080ea0b5a2f1e3558a3cf792a204a2a2343c9e",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "WIDTH",
+      "type": "property",
+      "line": 281,
+      "endLine": 281,
+      "hash": "49ae052fae8502243c17102f2703914d003b581ab2e57a0c1d47022f7c279ed2",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "HEIGHT",
+      "type": "property",
+      "line": 282,
+      "endLine": 282,
+      "hash": "e7f893d2720b2aa3acc1eed5489f56db23f8e3eb63c5c7f0405178a83c38afe4",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "MIN_HEIGHT",
+      "type": "property",
+      "line": 283,
+      "endLine": 283,
+      "hash": "5c98c59eb721ef8b70de4cf1b134f4b4565833f439a609384281efdd7abb8f1b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "STYLE_TABELA",
+      "type": "property",
+      "line": 284,
+      "endLine": 284,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "SELECTED",
+      "type": "property",
+      "line": 285,
+      "endLine": 285,
+      "hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "descricoes",
+      "type": "property",
+      "line": 286,
+      "endLine": 286,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "btn_filtrar_registros",
+      "type": "property",
+      "line": 287,
+      "endLine": 287,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "btn_excluir_filtro",
+      "type": "property",
+      "line": 288,
+      "endLine": 288,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "coluna_gerada",
+      "type": "property",
+      "line": 289,
+      "endLine": 289,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "imprinting",
+      "type": "property",
+      "line": 290,
+      "endLine": 290,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "infinite_scroll",
+      "type": "property",
+      "line": 291,
+      "endLine": 291,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "fix_infinite_scroll",
+      "type": "property",
+      "line": 292,
+      "endLine": 292,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "infinite_end",
+      "type": "property",
+      "line": 293,
+      "endLine": 293,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "time_counter",
+      "type": "property",
+      "line": 294,
+      "endLine": 294,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "timer_out",
+      "type": "property",
+      "line": 295,
+      "endLine": 295,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "operacao_merge_gravar",
+      "type": "property",
+      "line": 296,
+      "endLine": 296,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "scroll_counter",
+      "type": "property",
+      "line": 297,
+      "endLine": 297,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "consulta_pagina",
+      "type": "property",
+      "line": 298,
+      "endLine": 298,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "consulta_qtd",
+      "type": "property",
+      "line": 299,
+      "endLine": 299,
+      "hash": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "counter_selected",
+      "type": "property",
+      "line": 300,
+      "endLine": 300,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "tabela_itens",
+      "type": "property",
+      "line": 301,
+      "endLine": 301,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "habilita_botao_next",
+      "type": "property",
+      "line": 302,
+      "endLine": 302,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "habilita_botao_nextAll",
+      "type": "property",
+      "line": 303,
+      "endLine": 303,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "check_list",
+      "type": "property",
+      "line": 304,
+      "endLine": 304,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "col_pressed",
+      "type": "property",
+      "line": 305,
+      "endLine": 305,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "start_width",
+      "type": "property",
+      "line": 306,
+      "endLine": 306,
+      "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "start_x",
+      "type": "property",
+      "line": 307,
+      "endLine": 307,
+      "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "filtro_status_v",
+      "type": "property",
+      "line": 308,
+      "endLine": 308,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "filtro_status_v2",
+      "type": "property",
+      "line": 309,
+      "endLine": 309,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "not_focus_enter",
+      "type": "property",
+      "line": 310,
+      "endLine": 310,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "disabled_tab_enter",
+      "type": "property",
+      "line": 311,
+      "endLine": 311,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "cabecalho_print",
+      "type": "property",
+      "line": 312,
+      "endLine": 312,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt",
+      "type": "property",
+      "line": 313,
+      "endLine": 313,
+      "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "totalizador_html",
+      "type": "property",
+      "line": 314,
+      "endLine": 314,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "fimcountmarcados",
+      "type": "property",
+      "line": 315,
+      "endLine": 315,
+      "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "onMergeEnd",
+      "type": "property",
+      "line": 316,
+      "endLine": 316,
+      "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "total_registros_default",
+      "type": "property",
+      "line": 317,
+      "endLine": 317,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "habilitar_load_colunas",
+      "type": "property",
+      "line": 318,
+      "endLine": 318,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "total_registros_aux",
+      "type": "property",
+      "line": 319,
+      "endLine": 319,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "array_numericos",
+      "type": "property",
+      "line": 320,
+      "endLine": 320,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp",
+      "type": "property",
+      "line": 321,
+      "endLine": 325,
+      "hash": "d3b9215fc3b3124baa253d3b3f7bad31f5537bf2c667c6c34de67383dd077e06",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp[0].VALOR",
+      "type": "property",
+      "line": 322,
+      "endLine": 322,
+      "hash": "6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp[0].DESCRICAO",
+      "type": "property",
+      "line": 322,
+      "endLine": 322,
+      "hash": "efaea3cddbddc234d98da3f772eb3a1e07e6c0695c3b0a6108d228cb728894de",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp[1].VALOR",
+      "type": "property",
+      "line": 323,
+      "endLine": 323,
+      "hash": "59a984d6e30211daccf6e26a37b9072d26fe6a602047a6bbda948ed227f67a8b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp[1].DESCRICAO",
+      "type": "property",
+      "line": 323,
+      "endLine": 323,
+      "hash": "18e9ccb48e3c679f2617a48c117f5ed10c9676310c5b359cd98114fce8c7fac7",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp[2].VALOR",
+      "type": "property",
+      "line": 324,
+      "endLine": 324,
+      "hash": "9a7622b24ae73586214f453f44ed438ce5c63aa07c720c2ccc29ae5bd7ec5322",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "status_opt_bkp[2].DESCRICAO",
+      "type": "property",
+      "line": 324,
+      "endLine": 324,
+      "hash": "f1fc2b2dfeeae450f8b478686df59636ea5c54a4171b939caefce71be8f31913",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "item_status",
+      "type": "property",
+      "line": 326,
+      "endLine": 329,
+      "hash": "03e3a69119df5c76a95ed0f7845afd1455bcf662a9df33066ff0a3c5ee230589",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "item_status.VALOR",
+      "type": "property",
+      "line": 327,
+      "endLine": 327,
+      "hash": "59a984d6e30211daccf6e26a37b9072d26fe6a602047a6bbda948ed227f67a8b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "item_status.DESCRICAO",
+      "type": "property",
+      "line": 328,
+      "endLine": 328,
+      "hash": "18e9ccb48e3c679f2617a48c117f5ed10c9676310c5b359cd98114fce8c7fac7",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "HABILITA_COLUNAS_V_BTN",
+      "type": "property",
+      "line": 330,
+      "endLine": 330,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "compilado",
+      "type": "property",
+      "line": 331,
+      "endLine": 331,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "BACKUP_ID_ARR",
+      "type": "property",
+      "line": 332,
+      "endLine": 332,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "BACKUP_TABELA_ID_ARR",
+      "type": "property",
+      "line": 333,
+      "endLine": 333,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "is_compile_eve",
+      "type": "property",
+      "line": 334,
+      "endLine": 334,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "bkp_is_compile_eve",
+      "type": "property",
+      "line": 335,
+      "endLine": 335,
+      "hash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "next",
+      "type": "method",
+      "line": 336,
+      "endLine": 356,
+      "hash": "a0ae9406e2499b8f5d40cb75907a59feac02dfbedf349ce3538dbe1c95888831",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "previous",
+      "type": "method",
+      "line": 357,
+      "endLine": 379,
+      "hash": "d63276b20ecb81e7e5f616a4fd77e6c935edc434294856d1644e94da3afc7756",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "previousReg",
+      "type": "method",
+      "line": 380,
+      "endLine": 406,
+      "hash": "09302de85d41534a5e7974b4462069546964452a3e13a9a92b7f24b462ad3c2e",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "nextReg",
+      "type": "method",
+      "line": 407,
+      "endLine": 431,
+      "hash": "6e1f41bf76630055f92877152ab6dee7924960898dd3210731136b60f50ef8d5",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "first",
+      "type": "method",
+      "line": 432,
+      "endLine": 440,
+      "hash": "78c1f67509b4aaf82190144b3b6487e13d4cd21130050fd64c223f92dd4943d4",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "last",
+      "type": "method",
+      "line": 441,
+      "endLine": 449,
+      "hash": "145e4c5a2071974c4c512b6d1372d75f7b4b2f9dc2c7e549b4c1b00f671b16db",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "setColuna",
+      "type": "method",
+      "line": 450,
+      "endLine": 507,
+      "hash": "9442386a35d520ea925845bfc86a6e812203878d025118a304fc7590673dd007",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "trunc_number",
+      "type": "method",
+      "line": 508,
+      "endLine": 511,
+      "hash": "a188a59377f5184c3e5569ea2f35bf573f2ef78128bbe9d955dd39be66f2516a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "number_format",
+      "type": "method",
+      "line": 512,
+      "endLine": 548,
+      "hash": "dbc57f677dba54637b3bc0a353f2d9ef68d3a1e741a50670539ac63633501d70",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "isValid",
+      "type": "method",
+      "line": 549,
+      "endLine": 555,
+      "hash": "cd0e57402ba01649d07638bc72a9161ede0317726036baa248b5c46b8dbb960b",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "format",
+      "type": "method",
+      "line": 556,
+      "endLine": 661,
+      "hash": "c1d4313da06fcc50a37c23e0f957974a80da6c1781afa3221229cc57ad1711d5",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "COLUNAS_REC",
+      "type": "property",
+      "line": 662,
+      "endLine": 662,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "getColuns",
+      "type": "method",
+      "line": 663,
+      "endLine": 695,
+      "hash": "5e6e8ebe2c4bb2a2937f454891dee0adbd8dc026fa06fd55756405e849825311",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "xls_v",
+      "type": "property",
+      "line": 696,
+      "endLine": 696,
+      "hash": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "exportTXT",
+      "type": "method",
+      "line": 697,
+      "endLine": 714,
+      "hash": "9cf757147860e806f8264dfe5588bcc8304bb80a1bcac76ea125938631c7df29",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "exportXls",
+      "type": "method",
+      "line": 715,
+      "endLine": 736,
+      "hash": "2e4ddd1470c5ff1cb0471e8ba9e232ad0800d9ffcc02572911492255b7a21051",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "exportHTML",
+      "type": "method",
+      "line": 737,
+      "endLine": 771,
+      "hash": "c9621b5f795849b5dfdfd62123a5c5c6554378765469b5029e5d99ee01700133",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "exportHTML2",
+      "type": "method",
+      "line": 772,
+      "endLine": 788,
+      "hash": "4e3ac32f855781d1441d67a8429fea0c7929376f69946a4d5cb8b93be45d1686",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "fixTable",
+      "type": "method",
+      "line": 789,
+      "endLine": 811,
+      "hash": "0a90420fda4794fc7aa8235145c617e573863337ffc2d3ad6676039b0fae25a5",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "clearCache",
+      "type": "method",
+      "line": 812,
+      "endLine": 824,
+      "hash": "c310465678005231d36b858d9434473f5d07fadbbf5218e052226c8f1fbb3c03",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "exportCsv",
+      "type": "method",
+      "line": 825,
+      "endLine": 840,
+      "hash": "f5691aa74f7738d3e5e95b4125d8fc40bcff3f4c353f9dc7d1c21b3c6f550eb9",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "exportPDF",
+      "type": "method",
+      "line": 841,
+      "endLine": 918,
+      "hash": "7f4bf1ebecef722df78e90429c3c8a39e41532ca38dafaad045cda2be034ae31",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "exportHtmlPDF",
+      "type": "method",
+      "line": 919,
+      "endLine": 953,
+      "hash": "a0b2d649ce8bfb58a7f51366e93410f528325d2ea56429bba7ee9b82d4f2ed02",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "imprimir",
+      "type": "method",
+      "line": 954,
+      "endLine": 964,
+      "hash": "bf63ff59f18674dba3416bfb64cc12bac03460aa6d4d9e3acf36120014d5cb7f",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "imprimirPDF",
+      "type": "method",
+      "line": 965,
+      "endLine": 999,
+      "hash": "95198ed62e81709eb497f8c90d8359a086d9c52a1716cd280bdbb2ebddafa081",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "exportEmail",
+      "type": "method",
+      "line": 1000,
+      "endLine": 1007,
+      "hash": "00c6e0a0e9af8b990a94357c486ad9de5f259f4c29d5d7e86f09ee977c57b5dd",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "opemEmailFile",
+      "type": "method",
+      "line": 1008,
+      "endLine": 1134,
+      "hash": "c644d09226d4bee34c23c6a00e7cbf80f21297e7af63cbbdf7bb3094fffa391b",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getHtmlS",
+      "type": "method",
+      "line": 1135,
+      "endLine": 1147,
+      "hash": "eec115eea6338f1e99b169198e921bb07c1bb2e35c3216f8f8cc6193edf1b65e",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "sendEmailFile",
+      "type": "method",
+      "line": 1148,
+      "endLine": 1221,
+      "hash": "5abf95d58cfabe46c93ef0f2040a8b486208707f5cc0ea48e55b6524eba4ba89",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "csv_com_bom",
+      "type": "property",
+      "line": 1222,
+      "endLine": 1222,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "getTegsCsv",
+      "type": "method",
+      "line": 1223,
+      "endLine": 1234,
+      "hash": "65dc60a5262afa9f8ac9e427805c97d9c98728afe77368716fb955d5afd90245",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "exportTo",
+      "type": "method",
+      "line": 1235,
+      "endLine": 1634,
+      "hash": "be538c5b1c9971de5a538236dc15f2ac058cb975377338d489c2d3fcebadabfa",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "printHtml",
+      "type": "method",
+      "line": 1635,
+      "endLine": 2183,
+      "hash": "5c63ab787c6033ee4e65c51dd08ec77daa1270eefd98c8a6d87d19bfea909cff",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "print_end",
+      "type": "method",
+      "line": 2184,
+      "endLine": 2192,
+      "hash": "4afa62ae0cdf4b7d6d255e5bd001f6bc047726db638a74eb3bb1ff3ee1a9c45a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ModalOPT",
+      "type": "property",
+      "line": 2193,
+      "endLine": 2426,
+      "hash": "3bd929e76e050d1d61cc56437c6caabee42dde0419999936fc2456f4f9ac703b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "ModalOPT.father",
+      "type": "property",
+      "line": 2194,
+      "endLine": 2194,
+      "hash": "1eb79602411ef02cf6fe117897015fff89f80face4eccd50425c45149b148408",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "ModalOPT.key_object_scop2",
+      "type": "property",
+      "line": 2195,
+      "endLine": 2195,
+      "hash": "1bad6b8cf97131fceab8543e81f7757195fbb1d36b376ee994ad1cf17699c464",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "ModalOPT.destroy",
+      "type": "method",
+      "line": 2196,
+      "endLine": 2243,
+      "hash": "dcc4b000f3e7a9a6787e5f436c125ced5df5778a9cb653c7c702ceb7530f8672",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ModalOPT.compile",
+      "type": "method",
+      "line": 2244,
+      "endLine": 2304,
+      "hash": "7572e5f3b5c1badfce5350928f748de5895f44ae860cd3ae34137bf54a545365",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ModalOPT.getHtml",
+      "type": "method",
+      "line": 2305,
+      "endLine": 2373,
+      "hash": "9079702682a49e97ba4f8014bd3827f21b790d07babaae2914a0155820585399",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ModalOPT._modal",
+      "type": "property",
+      "line": 2374,
+      "endLine": 2374,
+      "hash": "210ece3a37b3225d77c6b33734454de6cfcaf45550c9ca7d42a347035ea9596e",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "ModalOPT.focus",
+      "type": "method",
+      "line": 2375,
+      "endLine": 2377,
+      "hash": "4f5c06f5fc26d9453f47171521e18b33ee78cc3644af5a0dc49e33241b11c6bb",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ModalOPT.show",
+      "type": "method",
+      "line": 2378,
+      "endLine": 2411,
+      "hash": "5bf0fe2b3cc76ea758085f75bafae916ec0f8db2ef6efd8b030723a6d1e4810d",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ModalOPT.hide",
+      "type": "method",
+      "line": 2412,
+      "endLine": 2425,
+      "hash": "b19f0c499c40c4b57b7604cbb239a62cbbe650b2667530a5932504069b2d3692",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "openModalOPT",
+      "type": "method",
+      "line": 2427,
+      "endLine": 2446,
+      "hash": "074764937f3b232ce8890f92c936f547b33967db7e703707cbd5d531e0d0be15",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "excluirFiltroTabela",
+      "type": "method",
+      "line": 2447,
+      "endLine": 2453,
+      "hash": "d852f337f6994546cf1936c3822f55c734d5525f336bb7dac01c1d4275acf801",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "closeModalOPT",
+      "type": "method",
+      "line": 2454,
+      "endLine": 2472,
+      "hash": "8b1895fa7c5147a2c3c4be215fa6434fab9b45cee657176202a64e15d8c65337",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "aplicarOrdem",
+      "type": "method",
+      "line": 2473,
+      "endLine": 2483,
+      "hash": "6274760b5309de90866d1ac64e88f2fa0e6eb62c3b643ba60204846d334b01cc",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "dragOrdem",
+      "type": "method",
+      "line": 2484,
+      "endLine": 2493,
+      "hash": "cb4f09cfe30905d92f526db75d294ab0f5a173395d4dc6e57f39aeef290f87b0",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "recalcularOrdenColunas",
+      "type": "method",
+      "line": 2494,
+      "endLine": 2505,
+      "hash": "d5a5ca51b43191363d5c537a68e0c2ce21c9e908e77d3bfaa55cabb60d244130",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "toggle_lista",
+      "type": "method",
+      "line": 2506,
+      "endLine": 2520,
+      "hash": "247080f1b66f490d72bdf5f7f50d17acc775587ae87522d95db5cd7ba9f0375c",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setDropdownPos",
+      "type": "method",
+      "line": 2521,
+      "endLine": 2564,
+      "hash": "5b4677b7bc2216db4aabd08d936c8020128978b73aad0fdd1f0860beff2a0a59",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setDropdownScrollListeners",
+      "type": "method",
+      "line": 2565,
+      "endLine": 2586,
+      "hash": "ba6b10e58a892e187e448503b1aa281eea99e1f7c3b1cc303717992ee5c5eaed",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "funcao_lista",
+      "type": "method",
+      "line": 2587,
+      "endLine": 2629,
+      "hash": "eb7ffc55143489077d7af225b3c2781b3bd7d6f2f72f1de5c99f4385bed099fb",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "cancelarOrdem",
+      "type": "method",
+      "line": 2630,
+      "endLine": 2643,
+      "hash": "86c5b5801b1c1fe6e3eb7b9ca6e99c3b2996bbfe7e5868bdcc0257ce7d28004c",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "clickOrdem",
+      "type": "method",
+      "line": 2644,
+      "endLine": 2650,
+      "hash": "b5cae689cb25fbde9fababb4ef16b981386e3f9e74b34a960297c9d01a49e83a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "trocarOrdem",
+      "type": "method",
+      "line": 2651,
+      "endLine": 2660,
+      "hash": "7444962aec5f51359af5d53e3d9b11e580925da40fdd290317021e0217b6c0fa",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setChangeCheck",
+      "type": "method",
+      "line": 2661,
+      "endLine": 2674,
+      "hash": "d4cea46c72262448ac239a3ceb95a5e584e83b70b7660c20b3596869b72d10ee",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "setVisibleLocalStorage",
+      "type": "method",
+      "line": 2675,
+      "endLine": 2692,
+      "hash": "2902729e791979786e8c698180667fc4bdb6439d6d105c8f91e8286675b2e6b3",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setVisible",
+      "type": "method",
+      "line": 2693,
+      "endLine": 2714,
+      "hash": "2df58347cdf91aab9057d0f83b9e6246dfb3e1ebbaebd460d8352cf062fb74f9",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "filterObjectsByProps",
+      "type": "method",
+      "line": 2715,
+      "endLine": 2729,
+      "hash": "015cfcfc0ab5fa0ebf22fa473d3f646a14a0cc4eb569c73789da960fbb1908e1",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "getMenuControle",
+      "type": "method",
+      "line": 2730,
+      "endLine": 2745,
+      "hash": "c37ff4d8b13745d2eb5d685220bbe8507bda421d666bf347a88e245b8e66474c",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setPersistentVisible",
+      "type": "method",
+      "line": 2746,
+      "endLine": 2837,
+      "hash": "b7e5388791f90ddb2f73f84b41642b68b1ef4132b1b240ba855818de474650d4",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "getPersistentVisible",
+      "type": "method",
+      "line": 2838,
+      "endLine": 2845,
+      "hash": "e6e3529c944dc8c90e681c887a1a7edb65fb62b237da241b1b443595425deb45",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setCacheColunasVisiveis",
+      "type": "method",
+      "line": 2846,
+      "endLine": 2882,
+      "hash": "9608aa8dd79b694946de28c4e17e0a088196cd646dde3f58c618f5d839f1de6b",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setDefault",
+      "type": "method",
+      "line": 2883,
+      "endLine": 2891,
+      "hash": "90c656eaddd038ef10a052d9ff1085d50edace4e6e3fed44f0fea34185c8cda7",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setRestored",
+      "type": "method",
+      "line": 2892,
+      "endLine": 2901,
+      "hash": "9ddf4712c0c57dd8561a990de24819fc7d9ddc09cdfb14040d9b8a25aed33f19",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setStandard",
+      "type": "method",
+      "line": 2902,
+      "endLine": 2918,
+      "hash": "e3ce1173a86d81ced5e54193576ce7ebfa1c5242dff0259755401810b4be5e33",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "onMarcar",
+      "type": "method",
+      "line": 2919,
+      "endLine": 2921,
+      "hash": "5f06e80f906efc71988d6064d5bb1107c90835bd95cba444b9e867608a01bce9",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "MarcarItensPerc",
+      "type": "method",
+      "line": 2922,
+      "endLine": 3075,
+      "hash": "45a48405c6e1e89cf7a58d2d5efd73db38d76071b61a7aad141bfbd92cfd415d",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "MarcarItens",
+      "type": "method",
+      "line": 3076,
+      "endLine": 3125,
+      "hash": "2f5611cd7f38e940322da689eb19a213836483c2aa9f2e4b3028a3115abf5165",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "DesmarcarItens",
+      "type": "method",
+      "line": 3126,
+      "endLine": 3180,
+      "hash": "7426a6f5f9a62e83f82a4df3f5246e82b04618dbd9a6eb702dc818a62eacf578",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "Resize",
+      "type": "method",
+      "line": 3181,
+      "endLine": 3187,
+      "hash": "634ceb4fc3f6ebf2095d7abe0d38a62a3dea6e0b71d5a0d368ec9e9d3b114955",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ResizeMove",
+      "type": "method",
+      "line": 3188,
+      "endLine": 3194,
+      "hash": "3285f902db8c87e1b9e15049c44125a232adbf890c3007e4a7ab543b168564f2",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ResizeUp",
+      "type": "method",
+      "line": 3195,
+      "endLine": 3202,
+      "hash": "ba41de42a904bbb4c0f4ab6248683dd09cf70fc08119c943a6dade33298e24a5",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getCampo",
+      "type": "method",
+      "line": 3203,
+      "endLine": 3359,
+      "hash": "4ff77fb63d8e3208e768d6e85fd609f7d99bf5650205bc46bdf298e0bbdc588c",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "remove_focus_submenu",
+      "type": "method",
+      "line": 3360,
+      "endLine": 3364,
+      "hash": "78ebe56183c82f36dcb581fbea5b0f5d12837b37acb2939ae6aa048a3d0f8af7",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "normalizarMenuBtn3",
+      "type": "method",
+      "line": 3365,
+      "endLine": 3401,
+      "hash": "98f175d0fac014fb8743c1d0d9c789024af2afd0b645a6e109f2840369fa9040",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "montarMenuBtn3",
+      "type": "method",
+      "line": 3402,
+      "endLine": 3516,
+      "hash": "32700204cce47d4e6107d020124d901bc36a8740c38d4f458f343f5ecf4c419e",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getCampoCP",
+      "type": "method",
+      "line": 3517,
+      "endLine": 3700,
+      "hash": "926e8513d13fbb5df118225ed6da24ed976421777bc2851150fdfe7553d44d6a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "DADOS_AGRUPAMENTO",
+      "type": "property",
+      "line": 3701,
+      "endLine": 3701,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "DADOS_AGRUP_BKP",
+      "type": "property",
+      "line": 3702,
+      "endLine": 3702,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "getTD2",
+      "type": "method",
+      "line": 3703,
+      "endLine": 3868,
+      "hash": "f6cde713ad938dadd228678070787bc01f0bfe0abd8c1326a78d317143927023",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getValueNivel",
+      "type": "method",
+      "line": 3869,
+      "endLine": 3873,
+      "hash": "dc9b5d08dd354d952c3bef46b7660d48f163dc16f6a996536f4e95df6a137b6f",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getTD",
+      "type": "method",
+      "line": 3874,
+      "endLine": 4038,
+      "hash": "67f6359c81e3243673e544a61aaa8154f0d2ffb0243391eb4763f9588a1ab8b2",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "merge",
+      "type": "method",
+      "line": 4039,
+      "endLine": 4433,
+      "hash": "63137332348c049f2dbade5197ee5ab670c9b9ea1f454167d338ab2c80488040",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "GeraHtml",
+      "type": "method",
+      "line": 4434,
+      "endLine": 4436,
+      "hash": "4cf309a576395e0e2cafece505bb376676b7941c0bfbf78c9fc2bac2f28d54d1",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "MergeDados",
+      "type": "method",
+      "line": 4437,
+      "endLine": 4461,
+      "hash": "ef51d1957d100580e9dc0b05b755e0a2bee222f64f5131e72ced91dd80450aee",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "calcValor",
+      "type": "method",
+      "line": 4462,
+      "endLine": 4464,
+      "hash": "18c524365660fc4bb7872cfe43f5481218b323b127034cbc8b240a691e80642b",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "somar",
+      "type": "method",
+      "line": 4465,
+      "endLine": 4469,
+      "hash": "cbcc404cc261c9412dea831067315c87d3a5469a13da08ba9bdf1960eebcdf4a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "subtrair",
+      "type": "method",
+      "line": 4470,
+      "endLine": 4474,
+      "hash": "db7bae4b669fddee7816f63a69b52df083bb2bfe89745c97cd5e09c3c6016008",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "dividir",
+      "type": "method",
+      "line": 4475,
+      "endLine": 4479,
+      "hash": "203438f1cc0b313be15e10a516c6109f6f6639fa0b54b3b2dc5d8579c1dae7bd",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "multiplicar",
+      "type": "method",
+      "line": 4480,
+      "endLine": 4484,
+      "hash": "cd863ee18e53056ca98b750009958d00b03fbf9515aa68c988f808e444f71483",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getDadosRDZ",
+      "type": "method",
+      "line": 4485,
+      "endLine": 4679,
+      "hash": "778e28851559c8162e928e312f2345603397388980e55fdbc731c52529e27d9a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getDadosRender",
+      "type": "method",
+      "line": 4680,
+      "endLine": 4707,
+      "hash": "236a8ad4c633c7c9ce7b790ca14496b5a2cba24a6c6fb52ac1db99b90475772e",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "ITENS_GROUP",
+      "type": "property",
+      "line": 4708,
+      "endLine": 4708,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "COUNTER_RDZ",
+      "type": "property",
+      "line": 4709,
+      "endLine": 4709,
+      "hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "InvertGroup",
+      "type": "method",
+      "line": 4710,
+      "endLine": 4733,
+      "hash": "063d8406f06cbaac2b53bf8a3cd255e8229a4ec8aed8275d79298d1258a92d17",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "PushGroup",
+      "type": "method",
+      "line": 4734,
+      "endLine": 4742,
+      "hash": "3237b7ecafdd5435770fd4c2b8a28087b829b82142f5e1b713346e16baaf33b3",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "PushGroupPrint",
+      "type": "method",
+      "line": 4743,
+      "endLine": 4751,
+      "hash": "14840bf5e6467759a9d63d7868034ac30bbbc55c4785cc6c4237e115375944cf",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "isMobile",
+      "type": "method",
+      "line": 4752,
+      "endLine": 4757,
+      "hash": "afd5ce44c691f4e7644f82ee2142844b3d47a1cd6f7c9f361f0d75280ebfe71a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "isMobileDevice",
+      "type": "method",
+      "line": 4758,
+      "endLine": 4775,
+      "hash": "1a16b29208cea90856e8146de0b80c3a0ff2ddbdecf7b5e6ad56bf64720b0c3c",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getAccordion2",
+      "type": "method",
+      "line": 4776,
+      "endLine": 4825,
+      "hash": "0f7c1f266653f1ae192bbfe40a39c65b775be806e8241a690da04b5199ecaec5",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getAccordion",
+      "type": "method",
+      "line": 4826,
+      "endLine": 4887,
+      "hash": "47020c59d6adfde30c8b78878f124cc49648bcb1f954a36f5e842885c63c7871",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getClickAccordion",
+      "type": "method",
+      "line": 4888,
+      "endLine": 4903,
+      "hash": "0669014231a5a445a7dfba7a037b03381563088a59c18ce6d6183d2b11fea32f",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "compileDropdownColunas",
+      "type": "method",
+      "line": 4904,
+      "endLine": 4945,
+      "hash": "0f761a7b45217f5d1407b6d1e3ce4960be604a19f745abd9f2323effaa2b3db7",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "abrirDropdownColunas",
+      "type": "method",
+      "line": 4946,
+      "endLine": 4962,
+      "hash": "b5854c0c0a634c3df1622774c820f95a793d80d51445936bcb1ce031ed7aa482",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setColunasVisiveisBtn",
+      "type": "method",
+      "line": 4963,
+      "endLine": 4976,
+      "hash": "0fe0e1f6e1c970f9421c3450a110fcc93fc4397e95b32c58088fc995bc028768",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "getHtml",
+      "type": "method",
+      "line": 4977,
+      "endLine": 5670,
+      "hash": "ba9cbdc12b7e88aceef30c0dc990be41101112e2e2307f84be814822a8ec90d4",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "NextPageAll",
+      "type": "method",
+      "line": 5671,
+      "endLine": 5808,
+      "hash": "4bad9a35fb488f3abf1306c16d88d8a1aca314517399793e54d4b85a930fc6f7",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "NextPage",
+      "type": "method",
+      "line": 5809,
+      "endLine": 5908,
+      "hash": "30b11f719a248175e6f30091725749f60bc97981fb7940d22cb7fdcf69055f6b",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "fixed_menu",
+      "type": "method",
+      "line": 5909,
+      "endLine": 5949,
+      "hash": "ab8563a133f4b8daa4526bef6f6894b3562bc85275aaedac103fb1e103be1974",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "fecha_menu",
+      "type": "method",
+      "line": 5950,
+      "endLine": 5956,
+      "hash": "fdacbcb24b54fd3297f760ee230c20136eb5a5c3509779c6a6271889d21af4c1",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "count_marcados",
+      "type": "method",
+      "line": 5957,
+      "endLine": 5987,
+      "hash": "41799655da91fda7849befecd52d12b05822a9ac30a3371958d09d6acb43c4a6",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "filtroStatusOnChange",
+      "type": "method",
+      "line": 5988,
+      "endLine": 6038,
+      "hash": "e7b779589bf2321e2a0728e3650c86ae756402146895a58ea1ba55b6ec828d5e",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "filtroOnChange",
+      "type": "method",
+      "line": 6039,
+      "endLine": 6055,
+      "hash": "658c218ee2ed122bfd0ec9ac40505b37b0b87e5cf0a74b0bbfa1a2bcaa2f4364",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "apagar",
+      "type": "method",
+      "line": 6056,
+      "endLine": 6076,
+      "hash": "2bdce624b03d6b51340b4710d061e3f1c336970303e37ecb3ec19add78762db3",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "Executioner",
+      "type": "method",
+      "line": 6077,
+      "endLine": 6079,
+      "hash": "b9f35423c51b17eebea227aff04ce65d371e6e196986cc3507b6f534022a2780",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "onScrollEnd",
+      "type": "method",
+      "line": 6080,
+      "endLine": 6089,
+      "hash": "84a94b36ab6912614685b74660aef7685f394363157f4b40b31452a1efe23455",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "onScrollUP",
+      "type": "method",
+      "line": 6090,
+      "endLine": 6102,
+      "hash": "6aa1671a8d55fe44bd0a8d5477cfe93384d728789f9ac616fed777739fdee440",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "clearTimer",
+      "type": "method",
+      "line": 6103,
+      "endLine": 6108,
+      "hash": "3af8d3fdaf823b3a5a57360727cea8a2bff7ad24657d1bf1992b08ac27078642",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setTimer",
+      "type": "method",
+      "line": 6109,
+      "endLine": 6121,
+      "hash": "70b6537e3efd0029c1107538221b6006a0dd8a9e8d727a86d3018d613607151a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "setTamanhoDiv",
+      "type": "method",
+      "line": 6122,
+      "endLine": 6132,
+      "hash": "29f66240d592e721d88fa2f626128153a119d89d173e004013e1de51cff750a1",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "onScrollDown",
+      "type": "method",
+      "line": 6133,
+      "endLine": 6185,
+      "hash": "db89c707bdff9b3ae142f3c8a35298e11e1174db7a1c21e599d7636cf53d6808",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "focus_checkbox",
+      "type": "method",
+      "line": 6186,
+      "endLine": 6209,
+      "hash": "ceab601b670859c23b5a993502ab9e2f066ccea431de6ee145873cd619b425a9",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "count_checked",
+      "type": "method",
+      "line": 6210,
+      "endLine": 6215,
+      "hash": "5959c02fe78f6adbd1fedcebae4f42ead02f10c995ea70cbb38b7999c869c0fd",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "desabilitar_atalho_enter",
+      "type": "property",
+      "line": 6216,
+      "endLine": 6216,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "desabilitar_atalho_delete",
+      "type": "property",
+      "line": 6217,
+      "endLine": 6217,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "desabilitar_atalho_space",
+      "type": "property",
+      "line": 6218,
+      "endLine": 6218,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "atalho_enter",
+      "type": "method",
+      "line": 6219,
+      "endLine": 6330,
+      "hash": "b2f757acb5f5eaa38bfada0a2c10f2fc5cde2e13f57895af6a528e026175513f",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "generate_page",
+      "type": "method",
+      "line": 6331,
+      "endLine": 6344,
+      "hash": "86a00b05b96630459bd6ced88f53c1eeb49284eb70bd9f3e2ee40c85660b3766",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "select_page",
+      "type": "method",
+      "line": 6345,
+      "endLine": 6348,
+      "hash": "76a9b5d2efed61e516bbb829b8d2c7a1fe0150014e9e57628697ad47dbaec15a",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "skip_page",
+      "type": "method",
+      "line": 6349,
+      "endLine": 6357,
+      "hash": "66e8975ce6f6082a38b14b47118b7f83fb1cec19443a4871cfcb5c42d0b1fd29",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "prev_page",
+      "type": "method",
+      "line": 6358,
+      "endLine": 6366,
+      "hash": "9fa87d35ce64663a444f8527026bd335cfd3e67113fa2794833909201b58697e",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "gerar_gradiente",
+      "type": "method",
+      "line": 6367,
+      "endLine": 6383,
+      "hash": "6ee093b491e20abe564adf3d9c69e9b9616045bc6aa327ecdc815544d7fdc085",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "open_link",
+      "type": "method",
+      "line": 6384,
+      "endLine": 6410,
+      "hash": "5b77d4a61a1ca11cbb8190e28db83f39ed5a8223626a725f14cb755bcb196dab",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "colunas_originais",
+      "type": "property",
+      "line": 6411,
+      "endLine": 6411,
+      "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "no_use_cache_tabela",
+      "type": "property",
+      "line": 6412,
+      "endLine": 6412,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "localStorage_lite",
+      "type": "property",
+      "line": 6413,
+      "endLine": 6413,
+      "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "destroy",
+      "type": "method",
+      "line": 6414,
+      "endLine": 6464,
+      "hash": "1fd3242c1ee6a70b13ed3731b074e3712f5349f40cea4ffbf1f7f73e6423aa58",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "getAllScopes",
+      "type": "method",
+      "line": 6465,
+      "endLine": 6479,
+      "hash": "c0fb01248c990590535653c788bcfa64fa8a7ba9c36b4acb6e516d2bf36d61e6",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "findOrphanScopes",
+      "type": "method",
+      "line": 6480,
+      "endLine": 6483,
+      "hash": "085bfd0e785a7b2285965c742a458e8bd3a8078692eff7d2de3caa01d50f00f4",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "clearOrphanScopes",
+      "type": "method",
+      "line": 6484,
+      "endLine": 6507,
+      "hash": "247c3fdd32cc2ab55c4d10b184fa8f4966da7711bd06dd78772cc4981353bbf1",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "countWatchers",
+      "type": "method",
+      "line": 6508,
+      "endLine": 6520,
+      "hash": "fa2eeb75613d28380dbfab981ffcdd05f19019f5d1db6f6bf3ef4b4215f8e36f",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "tratarIDTabelas",
+      "type": "method",
+      "line": 6521,
+      "endLine": 6541,
+      "hash": "c189f5948bf0f367430f6fbab220c8a9c08a8bdfc4178c84d888e927053c9bb4",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "compile",
+      "type": "method",
+      "line": 6542,
+      "endLine": 6807,
+      "hash": "871b00ea874ac8f531b12d413fd81f6957e65bd3010ce40b90da0d251edb0d50",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "checkTableVisibility",
+      "type": "method",
+      "line": 6808,
+      "endLine": 6816,
+      "hash": "ab34fbe92280484a1298723fa3833c68f0e37500a82bf540c372e2b7d60c4b5f",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "handleTableVisibility",
+      "type": "method",
+      "line": 6817,
+      "endLine": 6826,
+      "hash": "bc3ad54449e7626e4d6110db449175a490f4612e3399c65252d34d85991cf58b",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "handleVisibilityChange",
+      "type": "method",
+      "line": 6827,
+      "endLine": 6839,
+      "hash": "a88c26f2907fc91eaccabacf15926051adb0e6aec91b4c20168b93a5e8e61a56",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "recompile",
+      "type": "method",
+      "line": 6840,
+      "endLine": 6853,
+      "hash": "c606654af6d66ad8b4d484a638be944e76c90c0dc3c85369fb78e0917ad724b1",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "key_object_scop",
+      "type": "property",
+      "line": 6854,
+      "endLine": 6854,
+      "hash": "1bad6b8cf97131fceab8543e81f7757195fbb1d36b376ee994ad1cf17699c464",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "no_restore_print",
+      "type": "property",
+      "line": 6855,
+      "endLine": 6855,
+      "hash": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "status": "default-a-conferir"
+    },
+    {
+      "path": "compile_print_html",
+      "type": "method",
+      "line": 6856,
+      "endLine": 6915,
+      "hash": "7732f3f440806328861acc0f8fde393c8f13125fc16c49732264e295b0dbeada",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "TotalTabela",
+      "type": "method",
+      "line": 6915,
+      "endLine": 7187,
+      "hash": "0b1ec52262d43ed9783a0d3c4d119cc13a4687350f409babf40d0eb9a8273ca8",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "OrderTabela",
+      "type": "method",
+      "line": 7187,
+      "endLine": 7342,
+      "hash": "b2c86fa9eedd473d5175384ef63ba1ec61580256b646d7f5a14cd4aeb1c567b8",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "FiltrarTabela",
+      "type": "method",
+      "line": 7343,
+      "endLine": 7351,
+      "hash": "3afd89abb81da34e54c8a8ed7e9b84a93eafc166e4ca62b7c2a980e65a7ca370",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "ZoominItem",
+      "type": "method",
+      "line": 7352,
+      "endLine": 7369,
+      "hash": "5e56dd60417f16f3265fdd5b2be07acb17bf4221feee5ba0c3044c5c4eb72ad0",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "ZoomoutItem",
+      "type": "method",
+      "line": 7370,
+      "endLine": 7381,
+      "hash": "dc9ef10cb983fbbdb58d9d2097a27a7859cb6234d5755833081777c2710f56e3",
+      "status": "sem-correspondencia-direta"
+    },
+    {
+      "path": "restaurarColunas",
+      "type": "method",
+      "line": 7382,
+      "endLine": 7432,
+      "hash": "a01359ef9ef1597e570db7a06b9d239fb9648298c425f3ec81f042e2a702891a",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "validarMarcarItem",
+      "type": "method",
+      "line": 7433,
+      "endLine": 7435,
+      "hash": "349323cbc72e71a43ce0384d4cbada8a11321f6c0984d04cce40e03fa9c368a5",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "setTableCheckList",
+      "type": "method",
+      "line": 7436,
+      "endLine": 7495,
+      "hash": "8574026da27728993e05c1955fa1ec371eefa52bde54556222a287660e22c3d7",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "fimCheckSelect",
+      "type": "method",
+      "line": 7496,
+      "endLine": 7498,
+      "hash": "60bc7e8ff1aeef89b0186da30c864959d9c3798463c43c3461f37489b5653262",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "fimCompilar",
+      "type": "method",
+      "line": 7499,
+      "endLine": 7501,
+      "hash": "60bc7e8ff1aeef89b0186da30c864959d9c3798463c43c3461f37489b5653262",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "removeColunas",
+      "type": "method",
+      "line": 7503,
+      "endLine": 7503,
+      "hash": "f6dcd5571fe764ce6932407aa813b94f6739a2e065f0eedcffdc9bd667878f64",
+      "status": "presente-sem-aprovacao-integral"
+    },
+    {
+      "path": "disableTableCheckList",
+      "type": "method",
+      "line": 7505,
+      "endLine": 7522,
+      "hash": "234d584d1fc54a30f38e6575506c9ca2c2de26f2293b6c0920bafabc71bee8f6",
+      "status": "presente-sem-aprovacao-integral"
+    }
+  ],
+  "totals": {
+    "entries": 285,
+    "methods": 146,
+    "withoutDirectMethod": 104
+  }
+}

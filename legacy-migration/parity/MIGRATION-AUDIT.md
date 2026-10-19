@@ -36,6 +36,20 @@ Cada comportamento deve ter cenarios diferenciais para entradas, defaults, mutac
 
 Nao ha percentual confiavel de conclusao funcional neste momento. Os testes aprovados acima nao autorizam substituir os componentes antigos em todas as telas.
 
+## Conversao direta da tabela
+
+O [mapa especifico de TabelaJS](TABLE-CONVERSION.generated.md) e gerado por `npm run legacy:table:audit` a partir do objeto `default_table` integral, incluindo membros aninhados. O mapa preserva linhas e hashes de cada declaracao. `--require-complete` rejeita a conversao incompleta. Nomes presentes na implementacao continuam sem aprovacao integral; membros dinamicos criados por metodos nao estao todos contabilizados nesse mapa.
+
+Foram restaurados 105 valores iniciais, assinaturas e comportamentos de `format(valor,campo,item)`, `number_format`, `isValid`, `next`, `previous`, `nextReg`, `previousReg`, `first`, `last`, `MergeDados(origem,dados,agrup)`, `setChangeCheck(check)` e `setVisible()` sem argumentos. Operacoes novas usam `formatCell`, `setRowChecked` e `setColumnVisible`; o overload anterior de `setVisible(campo,visible,id)` permanece disponivel. `removeColunas` agora remove declaracoes em vez de apenas ocultar.
+
+A fase de dados de `merge` segue as regras originais de conversao numerica, substituicao/concatenacao, fim de pagina, operacao de gravacao, links derivados, modelo associado e callback agendado. Nao equivale a toda a funcao original, que tambem gerava iframes, HTML para impressao e modo html_speed. Checklist conserva ITENS_MARCADOS e hooks. A temporizacao da aplicacao e feita por `$timeout` injetado e descartada na destruicao.
+
+O renderer passou a distinguir BTN/BTN2/BTN3/BTN4 e botoes semanticos, status/status2, cores/gradientes, links, HTML nao compilado e entrada numerica. HTMLCP mostra uma indicacao explicita de conversao pendente. A entrada numerica ainda nao reproduz o plugin `ng-number-format`, e HTML dinamico nao inicializa os antigos plugins Bootstrap. Esses casos nao estao aprovados como equivalentes.
+
+`test/table-direct-conversion.test.js` executa corpos originais somente como oraculo de teste: compara defaults, 1492 casos de formatacao/navegacao/toggle, estado do merge por paginas, callback, checklist, MergeDados e setVisible. O teste de navegador do laboratorio verifica botoes, HTML, cores, status2, link, foco, visualizacao e callback de edicao. O modo headless mantem o documento em foco para testar eventos reais. A cobertura desses cenarios nao representa os 146 metodos completos.
+
+Persistem lacunas em agrupamentos/accordion, HTMLCP/contexto do consumidor, totalizadores avancados e assinaturas que ainda divergem, reordenacao/redimensionamento completo, preferencias, impressao/PDF/XLS/email, atalhos e integracoes. Em particular, a atual implementacao de `OrderTabela` e `TotalTabela` ainda nao equivale ao original integral. A interface de fabrica `new TabelaJS().getNew()` ainda nao foi substituida integralmente. O limite de gzip do build nativo foi ajustado de 40 kB para 48 kB para comportar os contratos restaurados; nao usar o tamanho ou o sucesso do build como prova de compatibilidade.
+
 ## Laboratorio local
 
 Execute `powershell -ExecutionPolicy Bypass -File .\testar-componentes.ps1` na raiz do repositorio. O script usa Node 22+ ja instalado (inclusive pelo NVM), compila a demonstracao e abre um servidor em `http://127.0.0.1:4173/legacy-migration/lab.html`. Alternativa com Node moderno no PATH: `npm run demo:lab`.

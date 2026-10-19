@@ -13,7 +13,7 @@ export default EasyComponents.defineComponent('migration-lab', {
         { id: 'historico', label: 'Histórico' }, { id: 'fluxo', label: 'Fluxo operacional' }, { id: 'servicos', label: 'Dispositivos, RFID e voz' }, { id: 'cobertura', label: 'Auditoria de paridade' }],
       columns: [{ key: 'ID', label: 'Código' }, { key: 'NOME', label: 'Nome' }, { key: 'CIDADE', label: 'Cidade' }, { key: 'VALOR', label: 'Valor' }],
       lookupConfig: { cache: true, option: { consulta_qtd: 2, infinite_scroll: true, obj_ret: ['ID', 'NOME'] } },
-      gridConfig: { ID: 'lab-grid', titulo: 'Pessoas do laboratório', total_visible: true, HEIGHT: '260px', input_visible: true,
+      gridConfig: { ID: 'lab-grid', titulo: 'Pessoas do laboratório', total_visible: true, HEIGHT: '260px', MIN_HEIGHT: '0px', input_visible: true,
         filtro_status_v: true, STATUS: '', status_opt_bkp: [{ VALOR: '', DESCRICAO: 'TODOS' }, { VALOR: '1', DESCRICAO: 'ATIVOS' }, { VALOR: '0', DESCRICAO: 'INATIVOS' }],
         COLUNAS: [{ CAMPO: 'ID', DESCRICAO: 'Código', VISIBLE: true, ORDEM: 1 }, { CAMPO: 'NOME', DESCRICAO: 'Nome', VISIBLE: true, ORDEM: 2 },
           { CAMPO: 'CIDADE', DESCRICAO: 'Cidade', VISIBLE: true, ORDEM: 3 }, { CAMPO: 'VALOR', DESCRICAO: 'Valor', VISIBLE: true, TIPO: 'number', DECIMAL: 2, ALIGN: 'right', TOTAL: true, ORDEM: 4 }] },

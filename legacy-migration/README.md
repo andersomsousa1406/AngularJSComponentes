@@ -4,6 +4,8 @@ Esta pasta recebe a nova implementacao dos arquivos de `old_componentes`. Os ori
 
 **A migracao ainda nao possui paridade integral aprovada.** Veja [a auditoria atualizada](parity/MIGRATION-AUDIT.md) para funcionalidades implementadas, testes e lacunas.
 
+A tabela anterior era uma implementacao parcial com APIs divergentes. A conversao direta agora tem [um mapa de todos os membros declarados em TabelaJS](parity/TABLE-CONVERSION.generated.md), incluindo os que continuam sem correspondente. `grid-defaults.js` transcreve 105 valores iniciais do original; os contratos de dados e celulas ficam em modulos separados do renderer. `npm run test:table:direct` confronta funcoes originais com a implementacao nova, sem carregar o motor antigo na aplicacao. A existencia de um nome no componente novo nao significa que sua conversao esteja concluida.
+
 ## Pagina para testar
 
 Na raiz do projeto, execute:

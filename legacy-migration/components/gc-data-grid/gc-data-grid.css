@@ -3,6 +3,12 @@
 .gc-data-grid__popover { display: block; position: fixed; z-index: 1100; max-width: 290px; }
 .t-status { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #d9534f; }
 .t-status.status-1 { background: #449d44; }
+.t-status.status2-1 { background: #d9534f; }
+.t-status.status2-0 { background: #449d44; }
+.gc-data-grid__cell-status { display: flex; justify-content: center; }
+.gc-data-grid__swatch { display: block; padding: 12px; border-radius: 3px; box-shadow: 0 1px 3px #646464; transform-origin: left top; transition: transform .5s; cursor: zoom-in; }
+.gc-data-grid__swatch:hover { transform: scale(1.5); }
+.item_edit_tab { width: 80px; height: 25px; padding: 5px; }
 .gc-data-grid__row-actions .btn { padding: 2px 8px; font-size: 12px; line-height: 1.4; }
 .gc-data-grid__row-menu { display: block; position: fixed; z-index: 1100; max-width: min(420px, 95vw); max-height: 180px; overflow: auto; }
 .gc-data-grid__row-menu button { border: 0; background: none; width: 100%; text-align: left; padding: 4px 20px; font-size: 12px; }
@@ -10,7 +16,7 @@
 .gc-data-grid__column-picker { position: absolute; z-index: 100; top: 30px; left: 0; background: white; padding: 12px; border: 1px solid #ccc; max-height: 380px; overflow: auto; box-shadow: 0 6px 12px #0003; }
 .gc-data-grid__column-picker label { display: block; font-weight: normal; }
 /* Bootstrap 3 plus the GCWeb table-ec/table-low rules. */
-.gc-data-grid { position: relative; margin-bottom: 15px; font-family: Arial, sans-serif; font-size: 12px; color: #333; }
+.gc-data-grid { --screen-height: 100vh; position: relative; margin-bottom: 15px; font-family: Arial, sans-serif; font-size: 12px; color: #333; }
 .gc-data-grid__toolbar { display: flex; width: 100%; gap: 0; margin-bottom: 4px; }
 .gc-data-grid__toolbar .form-control { float: none; min-width: 0; border-radius: 5px 0 0 5px; font-size: 12px; }
 .gc-data-grid__toolbar .gc-data-grid__status { flex: 0 0 125px; width: 125px; margin-right: 8px; border-radius: 4px; }
