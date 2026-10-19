@@ -47,7 +47,7 @@
     "pack:check": "npm pack --dry-run",
     "predemo": "npm run build:example",
     "demo": "npx http-server . -o /example/",
-    "demo:legacy": "npm run build:legacy && npx http-server . -o /legacy-migration/",
+    "demo:legacy": "npm run build:legacy && npx http-server . -c-1 -o /legacy-migration/22430.html",
     "demo:lab": "npm run build:legacy && node scripts/serve-lab.js"
   },
   "easyComponents": {

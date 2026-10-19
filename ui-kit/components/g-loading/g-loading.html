@@ -1,0 +1,1 @@
+<div ng-if="vm.active" class="loading" ng-class="{ overlay: vm.overlay }" role="status" aria-live="polite"><g-spinner size="lg" label="{{ vm.text }}"></g-spinner><strong>{{ vm.text }}</strong><progress ng-if="vm.progress >= 0" max="100" value="{{ vm.progress }}" aria-label="{{ vm.text }}"></progress><span ng-if="vm.progress >= 0">{{ vm.progress }}%</span></div>
