@@ -1,3 +1,4 @@
+param([switch]$Ui)
 $ErrorActionPreference = 'Stop'
 $projectDirectory = $PSScriptRoot
 $nodeExecutable = (Get-Command node -ErrorAction SilentlyContinue).Source
@@ -17,9 +18,11 @@ if ($nodeMajor -lt 22) {
 if (-not $nodeExecutable) { throw 'Node.js 22 ou superior nao encontrado.' }
 Push-Location -LiteralPath $projectDirectory
 try {
-    & $nodeExecutable scripts/build-legacy-migration.js
+    $buildScript = if ($Ui) { 'scripts/build-ui-kit.js' } else { 'scripts/build-legacy-migration.js' }
+    & $nodeExecutable $buildScript
     if ($LASTEXITCODE -ne 0) { throw 'Falha ao compilar os componentes.' }
-    & $nodeExecutable scripts/serve-lab.js
+    if ($Ui) { & $nodeExecutable scripts/serve-lab.js --ui-kit }
+    else { & $nodeExecutable scripts/serve-lab.js }
 } finally {
     Pop-Location
 }

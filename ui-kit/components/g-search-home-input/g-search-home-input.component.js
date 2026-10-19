@@ -16,6 +16,10 @@ export default EasyComponents.defineComponent('g-search-home-input', {
       else if (event.key === 'Enter' && this.open && this.matches[this.active]) { event.preventDefault(); this.choose(this.matches[this.active]); }
     }
   },
-  hooks: { postLink: function () { const vm = this; vm._outside = event => { if (vm.open && !vm.$element[0].contains(event.target)) vm.scope.$evalAsync(() => { vm.open = false; }); }; vm.document[0].addEventListener('click', vm._outside); }, onDestroy: function () { this.document[0].removeEventListener('click', this._outside); } },
+  hooks: { postLink: function () {
+    const vm = this; vm._outside = event => { if (vm.open && !vm.$element[0].contains(event.target)) vm.scope.$evalAsync(() => { vm.open = false; }); };
+    vm._blur = event => { if (vm.open && !vm.$element[0].contains(event.relatedTarget)) vm.scope.$evalAsync(() => { vm.open = false; }); };
+    vm.document[0].addEventListener('click', vm._outside); vm.$element[0].addEventListener('focusout', vm._blur);
+  }, onDestroy: function () { this.document[0].removeEventListener('click', this._outside); this.$element[0].removeEventListener('focusout', this._blur); } },
   template, styles, scoped: true
 });

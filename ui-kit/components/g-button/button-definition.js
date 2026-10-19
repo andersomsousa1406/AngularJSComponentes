@@ -10,6 +10,7 @@ export function buttonDefinition(defaults = {}) {
       type: EasyComponents.text('button'), customClass: EasyComponents.text(''), ariaLabel: EasyComponents.text(''), onClick: EasyComponents.event()
     },
     methods: { click: function (event) { if (!this.isDisabled && !this.loading) this.$emit('onClick', event); } },
+    hooks: { onChanges: function () { this.$element[0].style.display = this.block ? 'block' : ''; } },
     template, styles, scoped: true
   };
 }

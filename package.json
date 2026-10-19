@@ -10,6 +10,10 @@
     "src",
     "bin",
     "lib",
+    "ui-kit/components",
+    "ui-kit/services",
+    "ui-kit/index.js",
+    "ui-kit/README.md",
     "html-custom-data.json",
     "README.md",
     "CHANGELOG.md",
@@ -32,6 +36,9 @@
     "legacy:table:audit": "node scripts/audit-table-conversion.js",
     "prebuild:example": "npm run components:sync",
     "build:example": "node scripts/build-example.js",
+    "build:ui": "node scripts/build-ui-kit.js",
+    "demo:ui": "npm run build:ui && node scripts/serve-lab.js --ui-kit",
+    "test:ui:browser": "node test/confirmation-browser.test.js --ui-kit",
     "build:legacy": "node scripts/build-legacy-migration.js",
     "build:legacy:compat": "node scripts/build-legacy-migration.js --with-legacy-engine",
     "test:migration:browser": "node test/confirmation-browser.test.js --lab",
@@ -81,7 +88,8 @@
   "browser": "src/angularjs-easy-components.js",
   "exports": {
     ".": "./src/angularjs-easy-components.js",
-    "./html-custom-data.json": "./html-custom-data.json"
+    "./html-custom-data.json": "./html-custom-data.json",
+    "./ui-kit": "./ui-kit/index.js"
   },
   "peerDependencies": {
     "angular": ">=1.5.0 <2"

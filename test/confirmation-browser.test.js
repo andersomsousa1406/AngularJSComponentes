@@ -10,6 +10,7 @@ var spawn = require('node:child_process').spawn;
 var root = path.resolve(__dirname, '..');
 var labMode = process.argv.includes('--lab');
 var referenceMode = process.argv.includes('--22430');
+var uiMode = process.argv.includes('--ui-kit');
 var screenshotMode = process.argv.includes('--screenshot');
 var browser = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -74,14 +75,68 @@ async function main() {
     await call('Runtime.enable'); await call('Page.enable'); await call('Network.enable');
     await call('Emulation.setFocusEmulationEnabled', { enabled: true });
     await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
-    await call('Page.navigate', { url: 'http://127.0.0.1:' + server.address().port + '/legacy-migration/' + (referenceMode ? '22430.html' : labMode ? 'lab.html' : '') });
+    await call('Page.navigate', { url: 'http://127.0.0.1:' + server.address().port + (uiMode ? '/ui-kit/index.html' : '/legacy-migration/' + (referenceMode ? '22430.html' : labMode ? 'lab.html' : '')) });
     var ready;
     for (i = 0; i < 200; i++) {
-      ready = await evaluate(referenceMode ? "!!(window.angular && document.querySelector('reference-22430 .screen-22430') && document.querySelectorAll('gc-data-grid tbody tr').length === 50)" : labMode ? "!!(window.angular && document.querySelector('migration-lab .lab-shell'))" : "!!(window.angular && document.querySelector('legacy-demo-root .gc-demo'))");
+      ready = await evaluate(uiMode ? "!!(window.angular && document.querySelector('g-catalog .catalog'))" : referenceMode ? "!!(window.angular && document.querySelector('reference-22430 .screen-22430') && document.querySelectorAll('gc-data-grid tbody tr').length === 50)" : labMode ? "!!(window.angular && document.querySelector('migration-lab .lab-shell'))" : "!!(window.angular && document.querySelector('legacy-demo-root .gc-demo'))");
       if (ready) break;
       await pause(50);
     }
     assert(ready, 'Demo nao montou.');
+    if (uiMode) {
+      var uiResult = await evaluate(`(async function () {
+        var scope = angular.element(document.querySelector('g-catalog')).isolateScope(), app = scope.vm;
+        function digest() { if (!scope.$root.$$phase) scope.$root.$digest(); }
+        function input(element, value) { element.value = value; element.dispatchEvent(new Event('input', { bubbles: true })); digest(); }
+        function choose(element, label) { element.value = Array.from(element.options).find(function (option) { return option.textContent === label; }).value; element.dispatchEvent(new Event('change', { bubbles: true })); digest(); }
+        var preview = document.querySelector('.preview-button button'), before = app.events.length;
+        app.disabled = true; digest(); preview.click(); digest(); var disabled = preview.disabled && app.events.length === before;
+        app.disabled = false; app.previewLoading = true; digest(); preview.click(); var blockedLoading = preview.disabled && preview.getAttribute('aria-busy') === 'true' && preview.textContent.includes('Carregando');
+        app.previewLoading = false; digest(); preview.click(); digest(); var click = app.events[0].text === 'Criar registro';
+        choose(document.querySelector('.controls-grid g-select select'), 'success'); var color = app.color;
+        document.querySelector('g-button-group button:nth-child(2)').click(); digest(); var group = app.view;
+        document.querySelector('g-save-button button').click(); digest(); var saving = app.saving && document.querySelector('g-save-button button').disabled;
+        await new Promise(function (resolve) { setTimeout(resolve, 750); }); digest(); var saved = !app.saving && app.events[0].text === 'Dados gravados';
+        app.active = 'forms'; digest();
+        input(document.querySelector('section[aria-label="Campos e buscas"] g-float-label-input input'), 'Ana Lima'); var name = app.name;
+        input(document.querySelectorAll('section[aria-label="Campos e buscas"] g-float-label-input input')[1], 'invalido'); var error = !!document.querySelector('g-float-label-input [role=alert]');
+        app.name = 'João'; digest(); var controlled = document.querySelector('g-float-label-input input').value === 'João';
+        choose(document.querySelector('section[aria-label="Campos e buscas"] g-select select'), 'Produção'); var department = app.department;
+        document.querySelector('section[aria-label="Campos e buscas"] g-switch input').click(); digest(); var switched = !app.notifications;
+        var search = document.querySelector('g-search-home-input input'); search.focus(); input(search, 'producao');
+        var results = document.querySelectorAll('g-search-home-input [role=option]').length;
+        search.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); search.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); digest();
+        var selected = app.selectedModule.CONTROLE;
+        app.modalOpen = true; digest(); await new Promise(function (resolve) { setTimeout(resolve, 30); }); digest();
+        var dialog = document.querySelector('g-modal dialog'), opened = dialog.open && dialog.contains(document.activeElement);
+        input(dialog.querySelector('input'), 'Modelo novo');
+        Array.from(dialog.querySelectorAll('footer button')).find(function (button) { return button.textContent.includes('Criar registro'); }).click(); digest();
+        await new Promise(function (resolve) { setTimeout(resolve, 30); }); digest(); var confirmed = !dialog.open && app.events[0].text === 'Registro criado: Modelo novo';
+        app.modalOpen = true; digest(); await new Promise(function (resolve) { setTimeout(resolve, 30); });
+        dialog.dispatchEvent(new Event('cancel', { cancelable: true })); digest(); await new Promise(function (resolve) { setTimeout(resolve, 30); }); var escaped = !dialog.open && !app.modalOpen;
+        var toastCount = app.toast.items.length; document.querySelector('g-toast button').click(); digest(); var dismissed = app.toast.items.length === toastCount - 1;
+        var temporary = app.toast.show('Temporária', '', 'info', 30); await new Promise(function (resolve) { setTimeout(resolve, 70); }); digest(); var expired = !app.toast.items.some(function (item) { return item.id === temporary; });
+        app.active = 'feedback'; digest(); var progress = document.querySelector('g-loading progress').value;
+        return { disabled: disabled, blockedLoading: blockedLoading, click: click, color: color, group: group, saving: saving, saved: saved, name: name, error: error,
+          controlled: controlled, department: department, switched: switched, results: results, selected: selected, opened: opened, confirmed: confirmed, escaped: escaped, dismissed: dismissed, expired: expired, progress: progress };
+      }())`);
+      assert.deepEqual(uiResult, { disabled: true, blockedLoading: true, click: true, color: 'success', group: 'cards', saving: true, saved: true, name: 'Ana Lima', error: true,
+        controlled: true, department: 'producao', switched: true, results: 1, selected: '22430', opened: true, confirmed: true, escaped: true, dismissed: true, expired: true, progress: 65 });
+      await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+      var uiOverflow = await evaluate(`(function () { var scope = angular.element(document.querySelector('g-catalog')).isolateScope(), bad = []; scope.vm.tabs.forEach(function (tab) { scope.vm.active = tab.id; scope.$root.$digest(); if (document.documentElement.scrollWidth > 391) bad.push(tab.id); }); return bad; }())`);
+      assert.deepEqual(uiOverflow, []);
+      assert.deepEqual(exceptions, []);
+      assert(!requests.some(function (url) { return /legacy-migration|bootstrap/.test(url); }));
+      assert(requests.every(function (url) { return !/^https?:/.test(url) || url.startsWith('http://127.0.0.1:' + server.address().port + '/'); }));
+      if (screenshotMode) {
+        await call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
+        await evaluate("(function () { var s = angular.element(document.querySelector('g-catalog')).isolateScope(); s.vm.active = 'buttons'; s.vm.color = 'primary'; s.vm.toast.items.forEach(function (item) { s.vm.toast.dismiss(item.id); }); s.$root.$digest(); window.scrollTo(0,0); }())");
+        var uiScreenshot = await call('Page.captureScreenshot', { format: 'png' });
+        fs.mkdirSync(path.join(root, 'test/artifacts'), { recursive: true }); fs.writeFileSync(path.join(root, 'test/artifacts/ui-kit.png'), Buffer.from(uiScreenshot.data, 'base64'));
+      }
+      console.log('OK: UI Kit valida botoes, carregamento, campos controlados, busca com teclado, select, switch, dialogo, toast, progresso e 4 abas em celular, sem componentes antigos.');
+      return;
+    }
     if (referenceMode) {
       var referenceResult = await evaluate(`(async function () {
         var scope = angular.element(document.querySelector('reference-22430')).isolateScope(), app = scope.vm;
