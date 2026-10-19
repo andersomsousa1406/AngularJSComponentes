@@ -8,6 +8,8 @@ O [GCWeb UI Kit](ui-kit/README.md) traz 27 componentes novos inspirados no gcweb
 
 ## Uso rapido
 
+Para o projeto GCWeb com Gulp, veja a [integracao dos componentes nos bundles globais](integration/gcweb/README.md).
+
 Carregue o AngularJS e o plugin:
 
 ```html

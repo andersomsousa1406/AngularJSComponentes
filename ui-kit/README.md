@@ -14,6 +14,8 @@ Acesse http://127.0.0.1:4173/ui-kit/index.html. Com Node moderno no PATH: `npm r
 
 ## Usar em outra tela
 
+No GCWeb, a integracao com o Gulp esta documentada em [integration/gcweb/README.md](../integration/gcweb/README.md). O entry `gcweb.js` registra o kit no modulo `gc-ui`, ligado a `gc-find`, sem iniciar outra aplicacao.
+
 Carregue AngularJS e `src/angularjs-easy-components.js`. Importe o kit no entry do projeto compilado por esbuild (com loaders de texto para HTML e CSS, como neste repositorio):
 
 ```js

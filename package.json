@@ -13,6 +13,7 @@
     "ui-kit/components",
     "ui-kit/services",
     "ui-kit/index.js",
+    "ui-kit/gcweb.js",
     "ui-kit/README.md",
     "html-custom-data.json",
     "README.md",
