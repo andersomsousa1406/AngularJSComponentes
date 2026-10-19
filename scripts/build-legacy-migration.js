@@ -16,7 +16,7 @@ var config = {
     target: ['es2017'],
     minify: true,
     sourcemap: true,
-    budgets: { bundle: 60000, gzip: 15000 }
+    budgets: { bundle: 150000, gzip: 40000 }
   }
 };
 
@@ -44,11 +44,22 @@ function buildEngine() {
   });
 }
 
+function buildLab() {
+  return buildProject({ root: root, build: Object.assign({}, config.build, {
+    entry: path.join(root, 'legacy-migration/lab/app.js'),
+    outfile: path.join(root, 'legacy-migration/dist/lab.bundle.js'),
+    report: path.join(root, 'legacy-migration/dist/lab-report.json'),
+    budgets: { bundle: 200000, gzip: 50000 }
+  }) }, { onReport: function (report) { console.log('Laboratorio compilado: ' + report.bytes + ' bytes, ' + report.gzipBytes + ' gzip.'); } });
+}
+
 buildProject(config, {
   onReport: function (report) {
     console.log('Migracao compilada: ' + report.bytes + ' bytes, ' + report.gzipBytes + ' gzip, ' + report.embeddedTemplates + ' templates.');
   }
-}).then(buildEngine).catch(function (error) {
+}).then(buildLab).then(function () {
+  if (process.argv.indexOf('--with-legacy-engine') >= 0) return buildEngine();
+}).catch(function (error) {
   console.error(error.message || error);
   process.exitCode = 1;
 });

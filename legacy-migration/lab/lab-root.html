@@ -1,0 +1,108 @@
+<div class="lab-shell">
+  <aside class="lab-sidebar">
+    <div class="lab-brand"><span class="lab-mark">EC</span><div>EasyComponents<small>Laboratório de migração</small></div></div>
+    <div class="lab-environment"><span></span> Ambiente de teste local</div>
+    <nav aria-label="Componentes">
+      <button type="button" ng-repeat="tab in vm.tabs track by tab.id" ng-click="vm.selectTab(tab.id)" ng-class="{ active: vm.active === tab.id }" ng-attr-aria-current="{{ vm.active === tab.id ? 'page' : undefined }}">{{ tab.label }}</button>
+    </nav>
+    <div class="lab-sidebar-note">AngularJS 1.8.4<br>EasyComponents · Bootstrap 3<br>Dados sintéticos em memória</div>
+  </aside>
+  <main class="lab-main">
+    <header class="lab-header">
+      <div><span class="lab-eyebrow">COMPONENTES / VALIDAÇÃO FUNCIONAL</span><h1>Explore. Execute. Confira.</h1><p>Teste os componentes novos e inspecione os eventos e contratos de dados.</p></div>
+      <span class="lab-status">Migração em andamento</span>
+    </header>
+    <div class="lab-stats">
+      <div><strong>9</strong><span>componentes de interface</span></div>
+      <div><strong>{{ vm.audit.totals.publicEntries || '…' }}</strong><span>candidatos de API catalogados</span></div>
+      <div><strong>{{ vm.backend.calls.length }}</strong><span>requisições simuladas</span></div>
+      <div><strong>0</strong><span>gravações no GCWeb</span></div>
+    </div>
+    <div class="lab-feedback" role="status">{{ vm.message }}</div>
+    <div class="alert alert-danger" role="alert" ng-if="vm.error">{{ vm.error }}</div>
+
+    <section class="lab-section" ng-show="vm.active === 'consulta'" aria-label="Consultas e selecao">
+      <div class="lab-section-header"><div><h2>Consultas e seleção</h2><p>Pesquisa remota simulada, paginação, seleção por teclado e múltipla escolha.</p></div><span class="lab-pill">3 componentes</span></div>
+      <div class="row">
+        <div class="col-md-6"><div class="lab-card"><h3>Consulta com carregamento remoto</h3><p>Pesquise um nome. Uma busca vazia retorna duas pessoas por página.</p>
+          <gc-lookup label="Cliente" endpoint="/lab/people" config="vm.lookupConfig" columns="vm.columns" on-ready="vm.capture('lookup', $event)" on-select="vm.selectedPerson = $event; vm.record('Cliente selecionado', $event)" on-error="vm.fail($event)"></gc-lookup>
+          <p class="lab-hint">Teclas ↑ ↓ para navegar, Enter para selecionar e Esc para fechar.</p>
+        </div></div>
+        <div class="col-md-6"><div class="lab-card"><h3>Campo inteligente</h3>
+          <gc-smart-input label="Nome do cliente" items="vm.backend.people" display-key="NOME" on-ready="vm.capture('input', $event)" on-select="vm.record('Campo selecionado', $event)"></gc-smart-input>
+          <pre>{{ vm.selectedPerson | json }}</pre>
+        </div></div>
+      </div>
+      <div class="lab-card"><h3>Seleção múltipla</h3><gc-multi-lookup items="vm.backend.people" columns="vm.columns" selected="vm.selectedPeople" on-change="vm.selectedPeople = $event; vm.record('Seleção múltipla alterada', $event)" on-ready="vm.capture('multi', $event)"></gc-multi-lookup></div>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'tabela'" aria-label="Tabela">
+      <div class="lab-section-header"><div><h2>Tabela de dados</h2><p>Colunas no contrato antigo, filtros, ordenação, seleção, totais e exportação CSV.</p></div></div>
+      <gc-data-grid rows="vm.backend.people" config="vm.gridConfig" selectable="true" multi-select="true" page-size="3" on-ready="vm.capture('grid', $event)" on-select="vm.record('Linha selecionada', $event)" on-export="vm.download($event)"></gc-data-grid>
+      <div class="lab-actions"><button type="button" class="btn btn-default" ng-click="vm.handles.grid.MarcarItens()">Marcar todos</button><button type="button" class="btn btn-default" ng-click="vm.handles.grid.DesmarcarItens()">Desmarcar todos</button><button type="button" class="btn btn-default" ng-click="vm.handles.grid.setVisible('CIDADE', false)">Ocultar cidade</button><button type="button" class="btn btn-default" ng-click="vm.handles.grid.restaurarColunas()">Restaurar colunas</button></div>
+      <pre>Totais: {{ vm.handles.grid.TotalTabela() | json }}</pre>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'confirmacao'" aria-label="Confirmacao">
+      <div class="lab-section-header"><div><h2>Confirmação</h2><p>Diálogos independentes, botões configuráveis, callbacks e espera antes da confirmação.</p></div></div>
+      <div class="lab-card"><h3>Contagem regressiva</h3><p>Abra dois diálogos para verificar o fechamento individual.</p><button type="button" class="btn btn-primary" ng-click="vm.openDialog()">Abrir confirmação</button><button type="button" class="btn btn-default" ng-click="vm.handles.confirm.closeAll()">Fechar todos</button></div>
+    </section>
+    <gc-confirm-dialog on-ready="vm.capture('confirm', $event)" on-error="vm.fail($event)"></gc-confirm-dialog>
+
+    <section class="lab-section" ng-show="vm.active === 'crud'" aria-label="CRUD">
+      <div class="lab-section-header"><div><h2>Cadastro e CRUD</h2><p>Consulta, inclusão, edição, cópia, cancelamento, gravação e exclusão em memória.</p></div></div>
+      <div class="lab-actions"><button type="button" class="btn btn-primary" ng-click="vm.crudList()" ng-disabled="vm.busy">Consultar registros</button><button type="button" class="btn btn-default" ng-click="vm.crud.incluir()">Incluir</button></div>
+      <div class="lab-card"><table class="table"><thead><tr><th>Código</th><th>Descrição</th><th>Ações</th></tr></thead><tbody><tr ng-repeat="row in vm.crud.DADOS track by row.ID"><td>{{ row.ID }}</td><td>{{ row.DESCRICAO }}</td><td><button type="button" class="btn btn-default btn-sm" ng-click="vm.editRecord(row)">Editar</button></td></tr></tbody></table></div>
+      <form class="lab-card" ng-if="vm.crud.Modal.isShown" ng-submit="vm.crudSave()">
+        <h3>{{ vm.crud.INCLUINDO ? 'Novo registro' : 'Editar registro' }}</h3>
+        <label>Descrição <input class="form-control" ng-model="vm.crud.SELECTED.DESCRICAO" required></label>
+        <div class="lab-actions"><button type="submit" class="btn btn-success" ng-disabled="vm.busy">Gravar</button><button type="button" class="btn btn-default" ng-click="vm.crudCancel()">Cancelar</button><button type="button" class="btn btn-default" ng-click="vm.crud.copiar()">Copiar</button><button type="button" class="btn btn-danger" ng-click="vm.crudDelete()" ng-disabled="vm.busy || vm.crud.INCLUINDO">Excluir</button></div>
+      </form>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'arquivos'" aria-label="Arquivos">
+      <div class="lab-section-header"><div><h2>Arquivos</h2><p>Adicionar arquivos locais, preparar o payload e simular persistência e exclusão.</p></div></div>
+      <div class="lab-actions"><button type="button" class="btn btn-primary" ng-click="vm.loadFiles()">Carregar exemplo</button><button type="button" class="btn btn-success" ng-click="vm.saveFiles()">Simular gravação</button><button type="button" class="btn btn-default" ng-click="vm.handles.files.backup(); vm.record('Backup criado', true)">Backup</button><button type="button" class="btn btn-default" ng-click="vm.handles.files.restore()">Restaurar</button></div>
+      <gc-file-manager config="vm.fileConfig" on-ready="vm.capture('files', $event)" on-add="vm.record('Arquivo adicionado', $event.length)" on-error="vm.fail($event)"></gc-file-manager>
+      <pre>Arquivos para excluir: {{ vm.handles.files.data_excluir | json }}</pre>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'importacao'" aria-label="Importacao">
+      <div class="lab-section-header"><div><h2>Importação CSV</h2><p>Envie um arquivo ou teste texto com aspas, separadores dentro dos valores e múltiplas linhas.</p></div></div>
+      <div class="lab-card"><label class="lab-wide">CSV de exemplo <textarea class="form-control" rows="5" ng-model="vm.csv" spellcheck="false"></textarea></label><button type="button" class="btn btn-primary" ng-click="vm.parseCsv()">Analisar texto de exemplo</button></div>
+      <gc-file-import fields="vm.importFields" on-ready="vm.capture('importer', $event)" on-import="vm.record('Linhas mapeadas para importar', $event)" on-error="vm.fail($event)"></gc-file-import>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'historico'" aria-label="Historico">
+      <div class="lab-section-header"><div><h2>Histórico</h2><p>Consulta simulada com o contrato de /api/historico.</p></div></div>
+      <button type="button" class="btn btn-primary" ng-click="vm.refreshHistory()">Consultar histórico</button>
+      <gc-history-panel args="vm.historyArgs" on-ready="vm.capture('history', $event)" on-select="vm.record('Histórico selecionado', $event)" on-error="vm.fail($event)"></gc-history-panel>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'fluxo'" aria-label="Fluxo operacional">
+      <div class="lab-section-header"><div><h2>Fluxo operacional</h2><p>Execute a consulta de tarefas e teste aprovação, recusa e retorno. A credencial é simulada.</p></div></div>
+      <gc-operation-flow config="vm.flowConfig" on-ready="vm.capture('flow', $event)" on-error="vm.fail($event)"></gc-operation-flow>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'servicos'" aria-label="Servicos">
+      <div class="lab-section-header"><div><h2>Dispositivos, RFID e voz</h2><p>Contratos testáveis sem enviar comandos a impressoras, leitores ou serviços do GCWeb.</p></div></div>
+      <div class="row"><div class="col-md-6"><div class="lab-card"><h3>Dispositivo simulado</h3><p>Inspecione o endpoint e os parâmetros do comando de etiqueta.</p><button type="button" class="btn btn-primary" ng-click="vm.sendDevice()">Simular impressão de etiqueta</button></div></div>
+        <div class="col-md-6"><div class="lab-card"><h3>Comandos de voz</h3><label class="lab-wide">Transcrição <input class="form-control" ng-model="vm.command"></label><button type="button" class="btn btn-primary" ng-click="vm.runCommand()">Interpretar comando</button></div></div></div>
+      <div class="lab-card"><h3>Entrada manual de EPC</h3><label class="lab-wide">Código EPC (mais de 20 caracteres) <input class="form-control" ng-model="vm.epcCode"></label><button type="button" class="btn btn-primary" ng-click="vm.scanEpc()">Adicionar EPC</button><p>{{ vm.epc.QUANTIDADE_TOTAL }} item(ns) adicionados</p><pre>{{ vm.epc.ITENS_INCLUIR | json }}</pre></div>
+      <div class="lab-card"><h3>Teste de velocidade</h3><p>A transferência é simulada para testar a sequência e o cancelamento; os valores não medem sua conexão.</p><button type="button" class="btn btn-primary" ng-click="vm.runSpeed()" ng-disabled="vm.busy">Simular transferência</button><button type="button" class="btn btn-default" ng-click="vm.speedTask.cancel()" ng-disabled="!vm.speedTask || !vm.busy">Cancelar</button><pre>{{ vm.speed | json }}</pre></div>
+    </section>
+
+    <section class="lab-section" ng-show="vm.active === 'cobertura'" aria-label="Auditoria">
+      <div class="lab-section-header"><div><h2>Auditoria de paridade</h2><p>A presença de um método e o funcionamento deste laboratório não comprovam todas as regras do sistema antigo.</p></div></div>
+      <div class="alert alert-warning">A substituição integral ainda não está aprovada. Esta página testa cenários implementados; a migração completa exige validar os contratos restantes.</div>
+      <table class="table lab-audit"><thead><tr><th>Arquivo original</th><th>Métodos candidatos</th><th>Propriedades candidatas</th><th>Paridade integral</th></tr></thead><tbody><tr ng-repeat="file in vm.auditRows track by file.name"><td>{{ file.name }}</td><td>{{ file.counts.methods }}</td><td>{{ file.counts.properties }}</td><td><span class="lab-pending">Pendente de validação</span></td></tr></tbody></table>
+      <a href="parity/MIGRATION-AUDIT.md">Ler a auditoria detalhada</a>
+    </section>
+
+    <section class="lab-inspector" aria-label="Inspetor">
+      <div class="lab-section-header"><div><h2>Inspetor de testes</h2><p>Chamadas simuladas e eventos dos componentes.</p></div><button type="button" class="btn btn-default btn-sm" ng-click="vm.backend.failNext = true; vm.record('Próxima requisição falhará', true)">Simular erro na próxima requisição</button></div>
+      <div class="row"><div class="col-md-7"><h3>Requisições <small>{{ vm.backend.calls.length }}</small></h3><div class="lab-log" ng-if="!vm.backend.calls.length">Execute um cenário para ver os dados enviados.</div><details ng-repeat="call in vm.backend.calls track by $index"><summary><span ng-class="'lab-result-' + call.status">{{ call.status }}</span> {{ call.method }} {{ call.url }}</summary><pre>{{ call.data | json }}</pre></details></div>
+        <div class="col-md-5"><h3>Eventos</h3><details ng-repeat="event in vm.events track by $index"><summary>{{ event.name }}</summary><pre>{{ event.data | json }}</pre></details></div></div>
+    </section>
+  </main>
+</div>

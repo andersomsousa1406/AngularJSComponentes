@@ -1,0 +1,14 @@
+{
+  "output": "legacy-migration/dist/lab.bundle.js",
+  "bytes": 137896,
+  "gzipBytes": 40223,
+  "embeddedTemplates": 11,
+  "embeddedStyles": 11,
+  "inputCount": 56,
+  "budgets": {
+    "bundle": 200000,
+    "gzip": 50000
+  },
+  "passed": true,
+  "failures": []
+}

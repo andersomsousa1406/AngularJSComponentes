@@ -1,0 +1,1 @@
+Arquivo sintetico do laboratorio de componentes. Nenhum dado do GCWeb e usado aqui.

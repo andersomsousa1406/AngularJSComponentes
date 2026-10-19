@@ -1,3 +1,6 @@
+import { createDeviceClient } from './device-client.js';
+import { createDeviceRequests } from './device-requests.js';
+
 export default function registerGcDeviceBridge(app) {
   app.angularModule.constant('GcDeviceConfig', {
     serverUrl: 'http://127.0.0.1:8081/datasnap/rest/TServerMethods1/',
@@ -20,14 +23,20 @@ export default function registerGcDeviceBridge(app) {
       });
     }
 
-    return {
+    var client = createDeviceClient(function (options) { return $http(options).then(function (response) { return response.data; }); }, config);
+    return Object.assign(client, {
+      create: function (options) { return createDeviceClient(function (request) { return $http(request).then(function (response) { return response.data; }); }, Object.assign({}, config, options)); },
       command: command,
       connectScale: function () { return command('conectar_balanca'); },
       disconnectScale: function () { return command('desconectar_balanca'); },
       printLabel: function (data) { return command('imprimir_etiqueta', data, { print: true }); },
       printReceipt: function (data) { return command('imprimir_cupom', data, { print: true }); },
       health: function () { return command('echo'); }
-    };
+    });
+  }]);
+  app.angularModule.factory('GcDeviceRequests', ['$http', 'GcApi', function ($http, api) {
+    function create(options) { return createDeviceRequests(function (request) { return $http(request).then(function (response) { return response.data; }); }, api, options); }
+    return Object.assign(create(), { create: create });
   }]);
   return app;
 }

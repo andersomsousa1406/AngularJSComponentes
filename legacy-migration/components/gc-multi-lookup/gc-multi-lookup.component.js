@@ -12,6 +12,8 @@ export default EasyComponents.defineComponent('gc-multi-lookup', {
     selected: EasyComponents.array(function () { return []; }),
     columns: EasyComponents.array(function () { return []; }),
     trackBy: EasyComponents.text('ID'),
+    disabled: EasyComponents.boolean(false),
+    onReady: EasyComponents.event(),
     onChange: EasyComponents.event(),
     onConfirm: EasyComponents.event()
   },
@@ -35,30 +37,38 @@ export default EasyComponents.defineComponent('gc-multi-lookup', {
 
   methods: {
     add: function (item) {
+      if (this.disabled || includes(this.draft, item, this.trackBy)) return;
       var draft = this.draft.concat([item]);
       this.$setState({ draft: draft });
       this.$emit('onChange', draft);
     },
     remove: function (item) {
+      if (this.disabled) return;
       var key = this.trackBy;
       var draft = this.draft.filter(function (current) { return current[key] !== item[key]; });
       this.$setState({ draft: draft });
       this.$emit('onChange', draft);
     },
     addAll: function () {
+      if (this.disabled) return;
       var draft = this.draft.concat(this.available);
       this.$setState({ draft: draft });
       this.$emit('onChange', draft);
     },
     clear: function () {
+      if (this.disabled) return;
       this.$setState({ draft: [] });
       this.$emit('onChange', []);
     },
-    confirm: function () { this.$emit('onConfirm', this.draft.slice()); },
+    getItensSelecionado: function () { return this.draft.slice(); },
+    limpar: function () { return this.clear(); },
+    incluirVarios: function (items) { var vm = this; items.forEach(function (item) { vm.add(item); }); },
+    confirm: function () { if (!this.disabled) this.$emit('onConfirm', this.draft.slice()); },
     identity: function (item) { return item[this.trackBy]; }
   },
 
   hooks: {
+    onInit: function () { this.$emit('onReady', this); },
     onChanges: function (changes) {
       if (changes.selected) this.$setState({ draft: (changes.selected.currentValue || []).slice() });
     }

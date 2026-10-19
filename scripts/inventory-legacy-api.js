@@ -62,14 +62,18 @@ function isFunction(node, functionNames) {
 }
 
 function objectEntries(node, prefix, functionNames, output) {
+  if (node && node.type === 'ArrayExpression') {
+    node.elements.forEach(function (entry, index) { objectEntries(entry, prefix + '[' + index + ']', functionNames, output); });
+    return;
+  }
   if (!node || node.type !== 'ObjectExpression') return;
   node.properties.forEach(function (property) {
     if (property.type !== 'Property') return;
     var key = propertyName(property.key);
     if (!key) return;
     var name = prefix ? prefix + '.' + key : key;
-    output.push({ path: name, type: isFunction(property.value, functionNames) ? 'method' : 'property' });
-    if (property.value.type === 'ObjectExpression') objectEntries(property.value, name, functionNames, output);
+    output.push({ path: name, type: isFunction(property.value, functionNames) ? 'method' : 'property', line: property.loc.start.line });
+    if (property.value.type === 'ObjectExpression' || property.value.type === 'ArrayExpression') objectEntries(property.value, name, functionNames, output);
   });
 }
 
@@ -83,14 +87,20 @@ function unique(entries) {
 
 function inventory(name) {
   var source = fs.readFileSync(path.join(sourceDirectory, name), 'utf8');
-  var ast = acorn.parse(source, { ecmaVersion: 'latest', sourceType: 'script', allowHashBang: true });
+  var ast = acorn.parse(source, { ecmaVersion: 'latest', sourceType: 'script', allowHashBang: true, locations: true });
   var functionNames = {};
   var factory = null;
   var candidates = [];
+  var dependencies = [];
   var targets = publicObjects[name] || [];
 
   walk(ast, function (node) {
     if (node.type === 'FunctionDeclaration' && node.id) functionNames[node.id.name] = true;
+    if (node.type === 'AssignmentExpression' && /\.\$inject$/.test(memberName(node.left) || '') && node.right.type === 'ArrayExpression') {
+      node.right.elements.forEach(function (entry) {
+        if (entry && entry.type === 'Literal' && typeof entry.value === 'string' && dependencies.indexOf(entry.value) === -1) dependencies.push(entry.value);
+      });
+    }
     if (node.type === 'CallExpression' && node.callee && node.callee.type === 'MemberExpression' && propertyName(node.callee.property) === 'factory') {
       if (node.arguments[0] && node.arguments[0].type === 'Literal') factory = String(node.arguments[0].value);
     }
@@ -103,8 +113,13 @@ function inventory(name) {
     if (node.type === 'AssignmentExpression') {
       var left = memberName(node.left);
       if (targets.indexOf(left) !== -1) objectEntries(node.right, '', functionNames, candidates);
-      if (/^(?:this|obj)\.[A-Za-z_$][\w$]*$/.test(left || '')) {
-        candidates.push({ path: left.split('.')[1], type: isFunction(node.right, functionNames) ? 'method' : 'property' });
+      // Some factories extend their prototype one member at a time instead of assigning an object.
+      if (left && /^[\w$]+\.prototype\./.test(left)) {
+        candidates.push({ path: left.replace(/^[\w$]+\.prototype\./, ''), type: isFunction(node.right, functionNames) ? 'method' : 'property', line: node.loc.start.line });
+      }
+      if (/^(?:this|obj|self)\.[A-Za-z_$][\w$]*$/.test(left || '')) {
+        candidates.push({ path: left.split('.')[1], type: isFunction(node.right, functionNames) ? 'method' : 'property', line: node.loc.start.line });
+        if (targets.indexOf(left) === -1) objectEntries(node.right, left.split('.')[1], functionNames, candidates);
       }
     }
   });
@@ -114,6 +129,8 @@ function inventory(name) {
   var properties = entries.filter(function (entry) { return entry.type === 'property'; }).map(function (entry) { return entry.path; });
   return {
     factory: factory,
+    dependencies: dependencies,
+    entries: entries,
     lines: source.split(/\r?\n/).length,
     methods: methods,
     properties: properties,
@@ -123,6 +140,7 @@ function inventory(name) {
 
 var report = {
   generatedAt: new Date().toISOString(),
+  limitations: ['Static candidates only: aliases, computed keys and runtime mutations require runtime verification.', 'An API name or type does not prove equivalent behavior.'],
   source: 'old_componentes/componentes',
   files: {},
   totals: { files: 0, methods: 0, properties: 0, publicEntries: 0 }

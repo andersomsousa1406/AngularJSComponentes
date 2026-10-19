@@ -1,6 +1,22 @@
 <section class="panel panel-default gc-operation-flow">
   <header class="panel-heading"><strong>{{ vm.title }}</strong><span class="label label-info pull-right" ng-if="vm.running">Executando</span></header>
   <div class="panel-body">
+    <div class="alert alert-danger" ng-if="vm.error">{{ vm.error }}</div>
+    <div ng-if="vm.flow">
+      <div class="well well-sm" ng-repeat="task in vm.flow.DADOS track by $index">
+        <strong>{{ task.DESCRICAO }}</strong>
+        <button type="button" class="btn btn-success btn-sm" ng-click="vm.chooseOption(task, 'opcaoAprovar')" ng-disabled="vm.flow.executando_operacao">Aprovar</button>
+        <button type="button" class="btn btn-danger btn-sm" ng-click="vm.chooseOption(task, 'opcaoRecusar')" ng-disabled="vm.flow.executando_operacao">Recusar</button>
+        <button type="button" class="btn btn-warning btn-sm" ng-click="vm.chooseOption(task, 'opcaoVoltar')" ng-disabled="vm.flow.executando_operacao">Retornar</button>
+      </div>
+      <div class="alert alert-warning" ng-repeat="error in vm.flow.errors track by $index">{{ error.msg }}</div>
+      <form ng-if="vm.flow.loginOpen" ng-submit="vm.authenticate()">
+        <label>Credencial <input type="password" class="form-control" ng-model="vm.flow.SENHA_INFORMADA" autocomplete="off"></label>
+        <label ng-if="vm.flow.ARGS.OPCAO_TAREFA === 2">Motivo da recusa <textarea class="form-control" ng-model="vm.flow.MOTIVO_RECUSA"></textarea></label>
+        <label ng-if="vm.flow.ARGS.OPCAO_TAREFA === 3">Motivo do retorno <textarea class="form-control" ng-model="vm.flow.MOTIVO_RETORNO"></textarea></label>
+        <button type="submit" class="btn btn-primary" ng-disabled="vm.flow.executando_operacao">Confirmar operação</button>
+      </form>
+    </div>
     <ol class="gc-operation-flow__steps">
       <li ng-repeat="step in vm.steps track by step.id" ng-class="'gc-operation-flow--' + vm.statusClass(step, $index)">
         <button type="button" ng-click="vm.select(step, $index)" ng-disabled="vm.running">
@@ -13,6 +29,6 @@
   </div>
   <footer class="panel-footer text-right">
     <button class="btn btn-danger" type="button" ng-if="vm.running" ng-click="vm.cancel()"><span class="glyphicon glyphicon-stop"></span> Cancelar</button>
-    <button class="btn btn-primary" type="button" ng-if="!vm.running" ng-click="vm.execute()" ng-disabled="!vm.steps.length"><span class="glyphicon glyphicon-play"></span> Executar</button>
+    <button class="btn btn-primary" type="button" ng-if="!vm.running" ng-click="vm.execute()" ng-disabled="vm.flow.executando_operacao || (!vm.flow && !vm.steps.length)"><span class="glyphicon glyphicon-play"></span> Executar</button>
   </footer>
 </section>

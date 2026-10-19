@@ -1,3 +1,5 @@
+import { createSpeedClient } from './speed-client.js';
+
 export default function registerGcSpeedTest(app) {
   app.angularModule.factory('GcSpeedTest', ['$window', '$q', function ($window, $q) {
     function timedFetch(url, options) {
@@ -9,13 +11,18 @@ export default function registerGcSpeedTest(app) {
     }
     function latency(url) { return $q.when(timedFetch(url, { method: 'HEAD', cache: 'no-store' })).then(function (result) { return result.duration; }); }
     function download(url) {
+      var started = $window.performance.now();
       return $q.when(timedFetch(url + (url.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now(), { cache: 'no-store' })).then(function (result) {
         return result.response.arrayBuffer().then(function (buffer) {
-          return { bytes: buffer.byteLength, milliseconds: result.duration, mbps: (buffer.byteLength * 8) / (result.duration / 1000) / 1000000 };
+          var duration = $window.performance.now() - started;
+          return { bytes: buffer.byteLength, milliseconds: duration, mbps: (buffer.byteLength * 8) / (duration / 1000) / 1000000 };
         });
       });
     }
-    return { latency: latency, download: download };
+    function create(options) {
+      return createSpeedClient({ XMLHttpRequest: $window.XMLHttpRequest, now: Date.now, random: Math.random }, options);
+    }
+    return Object.assign(create(), { create: create, latency: latency, download: download });
   }]);
   return app;
 }

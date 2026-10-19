@@ -2,6 +2,22 @@
 
 Esta pasta recebe a nova implementacao dos arquivos de `old_componentes`. Os originais nao sao alterados e continuam servindo como referencia durante a validacao funcional.
 
+**A migracao ainda nao possui paridade integral aprovada.** Veja [a auditoria atualizada](parity/MIGRATION-AUDIT.md) para funcionalidades implementadas, testes e lacunas.
+
+## Pagina para testar
+
+Na raiz do projeto, execute:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\testar-componentes.ps1
+```
+
+Acesse `http://127.0.0.1:4173/legacy-migration/lab.html`. O script seleciona Node 22+ instalado sem alterar o Node global. Com Node moderno no PATH, tambem pode usar `npm run demo:lab`.
+
+O laboratorio tem abas para todos os componentes de interface e testes de servicos, respostas em memoria, eventos e inspecao dos payloads. Nenhuma requisicao de componente e enviada ao GCWeb. A pasta `C:\xampp\htdocs` nao e alterada.
+
+O build normal gera somente os componentes novos, a demonstracao e o laboratorio. Para regenerar o bundle antigo opcional, use `npm run build:legacy:compat`.
+
 ## Estrategia
 
 - UI vira componente declarativo com `EasyComponents.defineComponent`.
@@ -63,7 +79,7 @@ Antes de usar dispositivos em producao, ajuste `GcDeviceConfig` para os endereco
 
 ## Modo de compatibilidade integral
 
-O build gera também `dist/legacy-engine.bundle.js`. Esse bundle registra os 21 factories originais no modulo `gcLegacyEngine`, sem reimplementar ou remover metodos. Carregue-o antes do bundle da aplicacao:
+O comando opcional `npm run build:legacy:compat` gera `dist/legacy-engine.bundle.js`. Esse bundle registra os 21 factories originais no modulo `gcLegacyEngine`; nao representa a reescrita solicitada e nao e carregado pelo laboratorio. Seu uso nao comprova equivalencia dos novos componentes. Para usar o hospedeiro antigo, carregue-o antes do bundle da aplicacao:
 
 ```html
 <script src="angular.js"></script>

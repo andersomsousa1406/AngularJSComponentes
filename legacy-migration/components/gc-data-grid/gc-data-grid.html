@@ -5,11 +5,12 @@
       <input class="form-control" type="search" aria-label="Filtrar registros" ng-model="vm.query" ng-change="vm.search()" placeholder="Filtrar registros">
     </div>
     <span class="label label-default">{{ vm.filteredRows.length }} registros</span>
+    <button ng-if="vm.grid" type="button" class="btn btn-default btn-sm" ng-click="vm.exportCsv()">Exportar CSV</button>
   </header>
   <div class="table-responsive gc-data-grid__viewport">
     <table class="table table-striped table-bordered table-condensed table-hover">
       <thead><tr>
-        <th ng-repeat="column in vm.columns track by column.key" ng-style="{ width: column.width }">
+        <th ng-repeat="column in vm.displayColumns track by column.key" ng-style="{ width: column.width }">
           <button type="button" ng-click="vm.sort(column)" ng-disabled="column.sortable === false">
             {{ column.label }}
             <span class="glyphicon" ng-if="vm.sortKey === column.key" ng-class="vm.sortDirection === 'asc' ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"></span>
@@ -19,10 +20,11 @@
       <tbody>
         <tr ng-if="vm.loading"><td colspan="{{ vm.columns.length }}" class="text-center"><span class="glyphicon glyphicon-refresh gc-spin"></span> Carregando...</td></tr>
         <tr ng-if="!vm.loading" ng-repeat="row in vm.visibleRows track by vm.identity(row)" ng-click="vm.select(row)" ng-class="{ info: vm.selected(row), 'gc-data-grid__selectable': vm.selectable }">
-          <td ng-repeat="column in vm.columns track by column.key" ng-class="column.className">{{ row[column.key] }}</td>
+          <td ng-repeat="column in vm.displayColumns track by column.key" ng-class="column.className">{{ vm.format(row, column) }}</td>
         </tr>
         <tr ng-if="!vm.loading && !vm.visibleRows.length"><td colspan="{{ vm.columns.length }}" class="text-center text-muted">{{ vm.emptyText }}</td></tr>
       </tbody>
+      <tfoot ng-if="vm.grid.total_visible"><tr><td ng-repeat="column in vm.displayColumns track by column.key">{{ vm.totals[column.key] }}</td></tr></tfoot>
     </table>
   </div>
   <footer class="panel-footer gc-data-grid__footer">

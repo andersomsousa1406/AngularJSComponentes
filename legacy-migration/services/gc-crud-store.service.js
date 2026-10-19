@@ -1,5 +1,7 @@
+import { createCrudClient } from './crud-client.js';
+
 export default function registerGcCrudStore(app) {
-  app.angularModule.factory('GcCrudStore', ['$q', function ($q) {
+  app.angularModule.factory('GcCrudStore', ['$q', 'GcApi', function ($q, api) {
     function create(options) {
       options = options || {};
       var adapter = options.adapter || {};
@@ -47,7 +49,7 @@ export default function registerGcCrudStore(app) {
       return store;
     }
 
-    return { create: create };
+    return { create: create, getNew: function (configuration, environment) { return createCrudClient(api, configuration, environment); } };
   }]);
   return app;
 }

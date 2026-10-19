@@ -6,6 +6,21 @@ var root = path.resolve(__dirname, '..');
 var inventoryPath = path.join(root, 'legacy-migration/parity/legacy-api.generated.json');
 var outputPath = path.join(root, 'legacy-migration/parity/parity-report.generated.md');
 var inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
+var crypto = require('crypto');
+var audit = { schemaVersion: 1, complete: false, files: {} };
+
+Object.keys(inventory.files).forEach(function (name) {
+  var source = fs.readFileSync(path.join(root, inventory.source, name));
+  var file = inventory.files[name];
+  audit.files[name] = {
+    sourceSha256: crypto.createHash('sha256').update(source).digest('hex'),
+    factory: file.factory,
+    dependencies: file.dependencies || [],
+    entries: (file.entries || []).map(function (entry) {
+      return { path: entry.path, type: entry.type, line: entry.line, status: 'nao-validado', evidence: [] };
+    })
+  };
+});
 
 var groups = [
   { sources: ['TabelaJS.js', 'TabelaHTML.js', 'comp.js', 'comp2.js'], target: 'gc-data-grid', native: 'parcial', priority: 1 },
@@ -32,12 +47,14 @@ function sum(group, field) {
 var lines = [
   '# Relatorio de paridade legado',
   '',
-  'Gerado por `npm run legacy:parity`. A compatibilidade integral usa o codigo original pelo modulo `gcLegacyEngine`; a coluna nativa indica o andamento da reescrita sem `$compile` e sem jQuery.',
+  'Gerado por `npm run legacy:parity`. **Migracao incompleta: substituicao direta nao aprovada.** O modulo `gcLegacyEngine` carrega codigo original; isso nao demonstra equivalencia dos componentes novos nem valida o hospedeiro.',
   '',
   '- API catalogada: **' + inventory.totals.publicEntries + '** entradas publicas.',
   '- Metodos: **' + inventory.totals.methods + '**.',
   '- Propriedades: **' + inventory.totals.properties + '**.',
   '- Factories originais no bundle de compatibilidade: **21**.',
+  '- Inventario estatico de candidatos: nomes iguais nao demonstram comportamento igual; aliases e propriedades dinamicas exigem verificacao em execucao.',
+  '- Evidencias por entrada: `compatibility-audit.generated.json`. `nao-validado` significa ausencia de comprovacao, nao necessariamente ausencia de implementacao.',
   '',
   '| Prioridade | Origem | Destino | Metodos | Propriedades | Compatibilidade | Reescrita nativa |',
   '| ---: | --- | --- | ---: | ---: | --- | --- |'
@@ -45,14 +62,18 @@ var lines = [
 
 groups.forEach(function (group) {
   lines.push('| ' + group.priority + ' | `' + group.sources.join('`, `') + '` | `' + group.target + '` | ' +
-    sum(group, 'methods') + ' | ' + sum(group, 'properties') + ' | preservada pelo motor original | ' + group.native + ' |');
+    sum(group, 'methods') + ' | ' + sum(group, 'properties') + ' | motor original disponivel; equivalencia nao comprovada | ' + group.native + ' |');
 });
 
 lines = lines.concat([
   '',
   '## Regra de conclusao',
   '',
-  'Um destino so muda de `parcial` para `completo` depois que cada entrada publica relevante estiver classificada como implementada, delegada ou removida com justificativa, e seus cenarios forem aprovados contra dados reais. A existencia no motor de compatibilidade evita regressao durante esse processo, mas nao conta como reescrita nativa.',
+  'Para compatibilidade de 100%, nenhuma API pode ser removida apenas com justificativa. Cada entrada precisa preservar assinatura, valores padrao, mutacoes, retornos, promises, callbacks, eventos, erros e efeitos visuais. Delegacao precisa ser validada no componente consumidor. O motor original disponivel nao garante ausencia de regressao.',
+  '',
+  'Os testes atuais de contrato inspecionam nomes de Consulta e Tabela na inicializacao, com dependencias simuladas. Eles nao executam todos os metodos nem demonstram a criacao dos campos classificados como tardios. Os demais testes exercitam a demonstracao, nao a equivalencia completa.',
+  '',
+  '`functions.js`, estilos em `old_componentes/css`, plugins jQuery, filtros/diretivas externos, endpoints e dispositivos tambem fazem parte da validacao de integracao. O inventario desta tabela cobre apenas `old_componentes/componentes`.',
   '',
   '## Proximos blocos',
   '',
@@ -63,4 +84,9 @@ lines = lines.concat([
 ]);
 
 fs.writeFileSync(outputPath, lines.join('\n') + '\n', 'utf8');
+fs.writeFileSync(path.join(path.dirname(outputPath), 'compatibility-audit.generated.json'), JSON.stringify(audit, null, 2) + '\n', 'utf8');
 console.log('Relatorio de paridade atualizado: ' + path.relative(root, outputPath));
+if (process.argv.indexOf('--require-complete') !== -1) {
+  console.error('Migracao incompleta: nao existe comprovacao de compatibilidade de 100%.');
+  process.exitCode = 1;
+}

@@ -1,9 +1,339 @@
 {
-  "generatedAt": "2026-10-17T13:24:12.327Z",
+  "generatedAt": "2026-10-19T11:17:55.084Z",
+  "limitations": [
+    "Static candidates only: aliases, computed keys and runtime mutations require runtime verification.",
+    "An API name or type does not prove equivalent behavior."
+  ],
   "source": "old_componentes/componentes",
   "files": {
     "Arquivos.js": {
       "factory": "Arquivos",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$rootScope",
+        "$compile",
+        "$timeout",
+        "Upload",
+        "Confirmacao"
+      ],
+      "entries": [
+        {
+          "path": "ARGS",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "CIMPILADO",
+          "type": "property",
+          "line": 41
+        },
+        {
+          "path": "DADOS",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "EXTENSAO",
+          "type": "property",
+          "line": 179
+        },
+        {
+          "path": "FILTRO",
+          "type": "property",
+          "line": 40
+        },
+        {
+          "path": "TABELA",
+          "type": "property",
+          "line": 174
+        },
+        {
+          "path": "TABELA_ID",
+          "type": "property",
+          "line": 178
+        },
+        {
+          "path": "TAMA_IMG",
+          "type": "property",
+          "line": 176
+        },
+        {
+          "path": "TAML_IMG",
+          "type": "property",
+          "line": 175
+        },
+        {
+          "path": "TAM_ARQ",
+          "type": "property",
+          "line": 177
+        },
+        {
+          "path": "_button",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "_button_attr",
+          "type": "property",
+          "line": 43
+        },
+        {
+          "path": "_controller",
+          "type": "method",
+          "line": 46
+        },
+        {
+          "path": "_modal",
+          "type": "method",
+          "line": 45
+        },
+        {
+          "path": "_object",
+          "type": "property",
+          "line": 57
+        },
+        {
+          "path": "aberto",
+          "type": "property",
+          "line": 181
+        },
+        {
+          "path": "abrirQrCode",
+          "type": "method",
+          "line": 533
+        },
+        {
+          "path": "alterarArquivo",
+          "type": "method",
+          "line": 772
+        },
+        {
+          "path": "cam_error",
+          "type": "property",
+          "line": 231
+        },
+        {
+          "path": "canvas",
+          "type": "property",
+          "line": 237
+        },
+        {
+          "path": "clear",
+          "type": "method",
+          "line": 929
+        },
+        {
+          "path": "clearphoto",
+          "type": "method",
+          "line": 326
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 184
+        },
+        {
+          "path": "data",
+          "type": "property",
+          "line": 182
+        },
+        {
+          "path": "data_excluir",
+          "type": "property",
+          "line": 183
+        },
+        {
+          "path": "enviarArquivo",
+          "type": "method",
+          "line": 941
+        },
+        {
+          "path": "excluirArquivo",
+          "type": "method",
+          "line": 839
+        },
+        {
+          "path": "fecharModal",
+          "type": "method",
+          "line": 862
+        },
+        {
+          "path": "flipCam",
+          "type": "method",
+          "line": 375
+        },
+        {
+          "path": "foto_gerada",
+          "type": "property",
+          "line": 232
+        },
+        {
+          "path": "gerarQrCodeToken",
+          "type": "method",
+          "line": 489
+        },
+        {
+          "path": "getArgs",
+          "type": "method",
+          "line": 1165
+        },
+        {
+          "path": "getFiles",
+          "type": "method",
+          "line": 869
+        },
+        {
+          "path": "getHistorico",
+          "type": "method",
+          "line": 1169
+        },
+        {
+          "path": "getHtml",
+          "type": "method",
+          "line": 975
+        },
+        {
+          "path": "gravar",
+          "type": "method",
+          "line": 745
+        },
+        {
+          "path": "gravarCamera",
+          "type": "method",
+          "line": 394
+        },
+        {
+          "path": "height",
+          "type": "property",
+          "line": 234
+        },
+        {
+          "path": "html",
+          "type": "method",
+          "line": 1190
+        },
+        {
+          "path": "incluirCamera",
+          "type": "method",
+          "line": 241
+        },
+        {
+          "path": "iniciarCamera",
+          "type": "method",
+          "line": 255
+        },
+        {
+          "path": "limparFiles",
+          "type": "method",
+          "line": 715
+        },
+        {
+          "path": "load",
+          "type": "method",
+          "line": 893
+        },
+        {
+          "path": "mode",
+          "type": "property",
+          "line": 239
+        },
+        {
+          "path": "montar",
+          "type": "method",
+          "line": 956
+        },
+        {
+          "path": "onFileClear",
+          "type": "method",
+          "line": 939
+        },
+        {
+          "path": "onFileGravar",
+          "type": "method",
+          "line": 937
+        },
+        {
+          "path": "onFileLoad",
+          "type": "method",
+          "line": 938
+        },
+        {
+          "path": "photo",
+          "type": "property",
+          "line": 238
+        },
+        {
+          "path": "printPdf",
+          "type": "method",
+          "line": 586
+        },
+        {
+          "path": "qr_code",
+          "type": "property",
+          "line": 486
+        },
+        {
+          "path": "qr_code_exp",
+          "type": "property",
+          "line": 487
+        },
+        {
+          "path": "randomInt",
+          "type": "method",
+          "line": 583
+        },
+        {
+          "path": "removerExtensao",
+          "type": "method",
+          "line": 213
+        },
+        {
+          "path": "removerQrCodeToken",
+          "type": "method",
+          "line": 511
+        },
+        {
+          "path": "setDataFiles",
+          "type": "method",
+          "line": 731
+        },
+        {
+          "path": "streaming",
+          "type": "property",
+          "line": 235
+        },
+        {
+          "path": "substituirCaracteresEspeciais",
+          "type": "method",
+          "line": 188
+        },
+        {
+          "path": "takepicture",
+          "type": "method",
+          "line": 357
+        },
+        {
+          "path": "tirarFoto",
+          "type": "method",
+          "line": 320
+        },
+        {
+          "path": "tratarArquivos",
+          "type": "method",
+          "line": 623
+        },
+        {
+          "path": "video",
+          "type": "property",
+          "line": 236
+        },
+        {
+          "path": "width",
+          "type": "property",
+          "line": 233
+        }
+      ],
       "lines": 1305,
       "methods": [
         "_controller",
@@ -17,10 +347,13 @@
         "fecharModal",
         "flipCam",
         "gerarQrCodeToken",
+        "getArgs",
         "getFiles",
+        "getHistorico",
         "getHtml",
         "gravar",
         "gravarCamera",
+        "html",
         "incluirCamera",
         "iniciarCamera",
         "limparFiles",
@@ -70,13 +403,203 @@
         "width"
       ],
       "counts": {
-        "methods": 32,
+        "methods": 35,
         "properties": 28,
-        "publicEntries": 60
+        "publicEntries": 63
       }
     },
     "ArquivosGC.js": {
       "factory": "ArquivosGC",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$compile",
+        "Upload",
+        "$rootScope",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "OBJ_JS",
+          "type": "property",
+          "line": 21
+        },
+        {
+          "path": "TABELA",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "TAMA_IMG",
+          "type": "property",
+          "line": 52
+        },
+        {
+          "path": "TAML_IMG",
+          "type": "property",
+          "line": 51
+        },
+        {
+          "path": "addArquivo",
+          "type": "method",
+          "line": 179
+        },
+        {
+          "path": "allowedExtensions",
+          "type": "property",
+          "line": 65
+        },
+        {
+          "path": "backup",
+          "type": "method",
+          "line": 66
+        },
+        {
+          "path": "clear",
+          "type": "method",
+          "line": 142
+        },
+        {
+          "path": "comentario",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 53
+        },
+        {
+          "path": "dadosbackup",
+          "type": "property",
+          "line": 57
+        },
+        {
+          "path": "data",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "data_excluir",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "disabled",
+          "type": "property",
+          "line": 54
+        },
+        {
+          "path": "editando",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "enviarArquivo",
+          "type": "method",
+          "line": 218
+        },
+        {
+          "path": "excluirArquivo",
+          "type": "method",
+          "line": 412
+        },
+        {
+          "path": "excluirbackup",
+          "type": "property",
+          "line": 58
+        },
+        {
+          "path": "formatDataEnvio",
+          "type": "method",
+          "line": 430
+        },
+        {
+          "path": "getFiles",
+          "type": "method",
+          "line": 79
+        },
+        {
+          "path": "getHtml",
+          "type": "method",
+          "line": 433
+        },
+        {
+          "path": "habilita_descricao",
+          "type": "property",
+          "line": 62
+        },
+        {
+          "path": "habilita_ordem",
+          "type": "property",
+          "line": 63
+        },
+        {
+          "path": "load",
+          "type": "method",
+          "line": 147
+        },
+        {
+          "path": "montar",
+          "type": "method",
+          "line": 113
+        },
+        {
+          "path": "montarLista",
+          "type": "property",
+          "line": 55
+        },
+        {
+          "path": "mostrarBotao",
+          "type": "property",
+          "line": 56
+        },
+        {
+          "path": "mostrar_descricao",
+          "type": "property",
+          "line": 60
+        },
+        {
+          "path": "mostrar_nome",
+          "type": "property",
+          "line": 59
+        },
+        {
+          "path": "mostrar_ordem",
+          "type": "property",
+          "line": 61
+        },
+        {
+          "path": "processarArquivo",
+          "type": "method",
+          "line": 229
+        },
+        {
+          "path": "restore",
+          "type": "method",
+          "line": 74
+        },
+        {
+          "path": "setData",
+          "type": "method",
+          "line": 176
+        },
+        {
+          "path": "setDataFiles",
+          "type": "method",
+          "line": 101
+        },
+        {
+          "path": "tamanho_arquivo",
+          "type": "property",
+          "line": 64
+        },
+        {
+          "path": "vGravar",
+          "type": "property",
+          "line": 48
+        }
+      ],
       "lines": 616,
       "methods": [
         "addArquivo",
@@ -126,6 +649,175 @@
     },
     "ArquivosJS.js": {
       "factory": "ArquivosJS",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$compile",
+        "Upload",
+        "$rootScope"
+      ],
+      "entries": [
+        {
+          "path": "EDITOR",
+          "type": "property",
+          "line": 51
+        },
+        {
+          "path": "NF_ID",
+          "type": "property",
+          "line": 60
+        },
+        {
+          "path": "OBJ_JS",
+          "type": "property",
+          "line": 20
+        },
+        {
+          "path": "ORIGEM",
+          "type": "property",
+          "line": 59
+        },
+        {
+          "path": "TABELA",
+          "type": "property",
+          "line": 52
+        },
+        {
+          "path": "addArquivo",
+          "type": "method",
+          "line": 176
+        },
+        {
+          "path": "backup",
+          "type": "method",
+          "line": 61
+        },
+        {
+          "path": "carregarArquivo",
+          "type": "method",
+          "line": 222
+        },
+        {
+          "path": "clear",
+          "type": "method",
+          "line": 139
+        },
+        {
+          "path": "comentario",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 53
+        },
+        {
+          "path": "dadosbackup",
+          "type": "property",
+          "line": 57
+        },
+        {
+          "path": "data",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "data_excluir",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "disabled",
+          "type": "property",
+          "line": 54
+        },
+        {
+          "path": "editando",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "enviarArquivo",
+          "type": "method",
+          "line": 211
+        },
+        {
+          "path": "excluirArquivo",
+          "type": "method",
+          "line": 416
+        },
+        {
+          "path": "excluirbackup",
+          "type": "property",
+          "line": 58
+        },
+        {
+          "path": "getFiles",
+          "type": "method",
+          "line": 74
+        },
+        {
+          "path": "getHtml",
+          "type": "method",
+          "line": 434
+        },
+        {
+          "path": "load",
+          "type": "method",
+          "line": 144
+        },
+        {
+          "path": "montar",
+          "type": "method",
+          "line": 108
+        },
+        {
+          "path": "montarLista",
+          "type": "property",
+          "line": 55
+        },
+        {
+          "path": "mostrarBotao",
+          "type": "property",
+          "line": 56
+        },
+        {
+          "path": "processarArquivo",
+          "type": "method",
+          "line": 235
+        },
+        {
+          "path": "restore",
+          "type": "method",
+          "line": 69
+        },
+        {
+          "path": "selecao_multipla",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "setData",
+          "type": "method",
+          "line": 173
+        },
+        {
+          "path": "setDataFiles",
+          "type": "method",
+          "line": 96
+        },
+        {
+          "path": "style_inputs",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "vGravar",
+          "type": "property",
+          "line": 47
+        }
+      ],
       "lines": 639,
       "methods": [
         "addArquivo",
@@ -171,6 +863,279 @@
     },
     "Confirmacao.js": {
       "factory": "Confirmacao",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "Confirmacao",
+          "type": "method",
+          "line": 51
+        },
+        {
+          "path": "ID",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "add",
+          "type": "method",
+          "line": 134
+        },
+        {
+          "path": "agendada_Confirmacao",
+          "type": "method",
+          "line": 43
+        },
+        {
+          "path": "alto_fechar",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "closeAll",
+          "type": "method",
+          "line": 126
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 307
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "confirmacao_id",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "default",
+          "type": "property",
+          "line": 36
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 35
+        },
+        {
+          "path": "getbutom",
+          "type": "method",
+          "line": 109
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 306
+        },
+        {
+          "path": "lista",
+          "type": "property",
+          "line": 42
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 40
+        },
+        {
+          "path": "obtn_cancelar",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "obtn_cancelar.class",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "obtn_cancelar.desc",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "obtn_cancelar.glyphicon",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "obtn_cancelar.hotkey",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "obtn_cancelar.ret",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "obtn_gravar",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "obtn_gravar.class",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "obtn_gravar.desc",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "obtn_gravar.glyphicon",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "obtn_gravar.hotkey",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "obtn_gravar.ret",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "obtn_nao",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "obtn_nao.class",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "obtn_nao.desc",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "obtn_nao.glyphicon",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "obtn_nao.hotkey",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "obtn_nao.ret",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "obtn_ok",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "obtn_ok.class",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "obtn_ok.desc",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "obtn_ok.glyphicon",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "obtn_ok.hotkey",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "obtn_ok.ret",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "obtn_sim",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "obtn_sim.class",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "obtn_sim.desc",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "obtn_sim.glyphicon",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "obtn_sim.hotkey",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "obtn_sim.ret",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "obtn_voltar",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "obtn_voltar.class",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "obtn_voltar.desc",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "obtn_voltar.glyphicon",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "obtn_voltar.hotkey",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "obtn_voltar.ret",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "titulo",
+          "type": "property",
+          "line": 41
+        }
+      ],
       "lines": 345,
       "methods": [
         "Confirmacao",
@@ -236,6 +1201,777 @@
     },
     "Consulta.js": {
       "factory": "$consulta",
+      "dependencies": [
+        "$ajax",
+        "$httpParamSerializer",
+        "$rootScope",
+        "gScope",
+        "$compile",
+        "$timeout",
+        "$sce"
+      ],
+      "entries": [
+        {
+          "path": "Consulta",
+          "type": "method",
+          "line": 1778
+        },
+        {
+          "path": "Input",
+          "type": "property",
+          "line": 1726
+        },
+        {
+          "path": "Input.disabled",
+          "type": "property",
+          "line": 1727
+        },
+        {
+          "path": "Input.focus",
+          "type": "property",
+          "line": 1729
+        },
+        {
+          "path": "Input.readonly",
+          "type": "property",
+          "line": 1728
+        },
+        {
+          "path": "Input.value",
+          "type": "property",
+          "line": 1730
+        },
+        {
+          "path": "InputBlur",
+          "type": "method",
+          "line": 741
+        },
+        {
+          "path": "InputKeydown",
+          "type": "method",
+          "line": 725
+        },
+        {
+          "path": "MontarHtml",
+          "type": "method",
+          "line": 118
+        },
+        {
+          "path": "actionsClear",
+          "type": "property",
+          "line": 1690
+        },
+        {
+          "path": "actionsSelct",
+          "type": "property",
+          "line": 1689
+        },
+        {
+          "path": "addFiltro",
+          "type": "method",
+          "line": 1423
+        },
+        {
+          "path": "apagar",
+          "type": "method",
+          "line": 1302
+        },
+        {
+          "path": "apagarCache",
+          "type": "method",
+          "line": 359
+        },
+        {
+          "path": "autoclear",
+          "type": "property",
+          "line": 1733
+        },
+        {
+          "path": "autoload",
+          "type": "property",
+          "line": 1732
+        },
+        {
+          "path": "beforeSearch",
+          "type": "method",
+          "line": 389
+        },
+        {
+          "path": "btn_apagar_filtro",
+          "type": "property",
+          "line": 1718
+        },
+        {
+          "path": "btn_apagar_filtro.disabled",
+          "type": "property",
+          "line": 1719
+        },
+        {
+          "path": "btn_apagar_filtro.visivel",
+          "type": "property",
+          "line": 1720
+        },
+        {
+          "path": "btn_filtro",
+          "type": "property",
+          "line": 1722
+        },
+        {
+          "path": "btn_filtro.disabled",
+          "type": "property",
+          "line": 1723
+        },
+        {
+          "path": "btn_filtro.visivel",
+          "type": "property",
+          "line": 1724
+        },
+        {
+          "path": "cache",
+          "type": "property",
+          "line": 1734
+        },
+        {
+          "path": "clear",
+          "type": "method",
+          "line": 1299
+        },
+        {
+          "path": "clearHistory",
+          "type": "method",
+          "line": 4967
+        },
+        {
+          "path": "closeTab",
+          "type": "method",
+          "line": 923
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 1069
+        },
+        {
+          "path": "component",
+          "type": "method",
+          "line": 4952
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 1711
+        },
+        {
+          "path": "consultando",
+          "type": "property",
+          "line": 557
+        },
+        {
+          "path": "consultar",
+          "type": "method",
+          "line": 391
+        },
+        {
+          "path": "contem_vinc_usuario",
+          "type": "property",
+          "line": 1771
+        },
+        {
+          "path": "dados",
+          "type": "property",
+          "line": 1712
+        },
+        {
+          "path": "disable",
+          "type": "method",
+          "line": 1389
+        },
+        {
+          "path": "disabled",
+          "type": "property",
+          "line": 1395
+        },
+        {
+          "path": "element_button_search",
+          "type": "property",
+          "line": 1116
+        },
+        {
+          "path": "element_form_group",
+          "type": "property",
+          "line": 1118
+        },
+        {
+          "path": "element_input",
+          "type": "property",
+          "line": 1115
+        },
+        {
+          "path": "element_input_group",
+          "type": "property",
+          "line": 1117
+        },
+        {
+          "path": "executarFiltrobtn",
+          "type": "method",
+          "line": 1420
+        },
+        {
+          "path": "filtrar",
+          "type": "method",
+          "line": 1371
+        },
+        {
+          "path": "fimClear",
+          "type": "property",
+          "line": 1691
+        },
+        {
+          "path": "fimConsultar",
+          "type": "method",
+          "line": 722
+        },
+        {
+          "path": "focus",
+          "type": "method",
+          "line": 1066
+        },
+        {
+          "path": "focused",
+          "type": "property",
+          "line": 1708
+        },
+        {
+          "path": "gerar_class",
+          "type": "method",
+          "line": 89
+        },
+        {
+          "path": "getClassButton",
+          "type": "method",
+          "line": 1685
+        },
+        {
+          "path": "getClassFiltro",
+          "type": "method",
+          "line": 1673
+        },
+        {
+          "path": "getClassForm",
+          "type": "method",
+          "line": 1667
+        },
+        {
+          "path": "getClassInput",
+          "type": "method",
+          "line": 1682
+        },
+        {
+          "path": "getClassPesqContainer",
+          "type": "method",
+          "line": 1670
+        },
+        {
+          "path": "getClassTabela",
+          "type": "method",
+          "line": 1664
+        },
+        {
+          "path": "getConsultaPadrao",
+          "type": "method",
+          "line": 1966
+        },
+        {
+          "path": "getConsultasPadrao",
+          "type": "method",
+          "line": 1800
+        },
+        {
+          "path": "getDataComponent",
+          "type": "method",
+          "line": 1120
+        },
+        {
+          "path": "getHistory",
+          "type": "method",
+          "line": 4983
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 1783
+        },
+        {
+          "path": "getScale",
+          "type": "method",
+          "line": 1114
+        },
+        {
+          "path": "getVisualizarReferenciaModelo",
+          "type": "method",
+          "line": 97
+        },
+        {
+          "path": "html",
+          "type": "method",
+          "line": 1180
+        },
+        {
+          "path": "htmlDecode",
+          "type": "method",
+          "line": 38
+        },
+        {
+          "path": "id_cached",
+          "type": "property",
+          "line": 358
+        },
+        {
+          "path": "item",
+          "type": "property",
+          "line": 1709
+        },
+        {
+          "path": "item.dados",
+          "type": "property",
+          "line": 1709
+        },
+        {
+          "path": "item.selected",
+          "type": "property",
+          "line": 1709
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 357
+        },
+        {
+          "path": "key_object_scop_filtro",
+          "type": "property",
+          "line": 1419
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 1710
+        },
+        {
+          "path": "onAutoFiltroFimished",
+          "type": "method",
+          "line": 593
+        },
+        {
+          "path": "onBeforeClear",
+          "type": "method",
+          "line": 1700
+        },
+        {
+          "path": "onClear",
+          "type": "property",
+          "line": 1702
+        },
+        {
+          "path": "onFilter",
+          "type": "property",
+          "line": 1701
+        },
+        {
+          "path": "onFindItem",
+          "type": "method",
+          "line": 1694
+        },
+        {
+          "path": "onFormatMerge",
+          "type": "method",
+          "line": 1699
+        },
+        {
+          "path": "onMerge",
+          "type": "property",
+          "line": 1698
+        },
+        {
+          "path": "onScrollEnd",
+          "type": "method",
+          "line": 77
+        },
+        {
+          "path": "onSelect",
+          "type": "property",
+          "line": 1692
+        },
+        {
+          "path": "onSelectMultipla",
+          "type": "property",
+          "line": 1693
+        },
+        {
+          "path": "onVincularUsuario",
+          "type": "method",
+          "line": 1418
+        },
+        {
+          "path": "option",
+          "type": "property",
+          "line": 1735
+        },
+        {
+          "path": "option.autofocus",
+          "type": "property",
+          "line": 1751
+        },
+        {
+          "path": "option.cache_id",
+          "type": "property",
+          "line": 1737
+        },
+        {
+          "path": "option.campo_filtro",
+          "type": "property",
+          "line": 1766
+        },
+        {
+          "path": "option.campo_gravar",
+          "type": "property",
+          "line": 1769
+        },
+        {
+          "path": "option.campo_index",
+          "type": "property",
+          "line": 1736
+        },
+        {
+          "path": "option.campos_inputs",
+          "type": "property",
+          "line": 1743
+        },
+        {
+          "path": "option.campos_sql",
+          "type": "property",
+          "line": 1742
+        },
+        {
+          "path": "option.campos_tabela",
+          "type": "property",
+          "line": 1745
+        },
+        {
+          "path": "option.class",
+          "type": "property",
+          "line": 1750
+        },
+        {
+          "path": "option.consulta_pagina",
+          "type": "property",
+          "line": 1754
+        },
+        {
+          "path": "option.consulta_qtd",
+          "type": "property",
+          "line": 1755
+        },
+        {
+          "path": "option.consulta_tipo",
+          "type": "property",
+          "line": 1753
+        },
+        {
+          "path": "option.data_request",
+          "type": "property",
+          "line": 1759
+        },
+        {
+          "path": "option.filtro_consulta",
+          "type": "property",
+          "line": 1765
+        },
+        {
+          "path": "option.filtro_sql",
+          "type": "property",
+          "line": 1744
+        },
+        {
+          "path": "option.id_campo_vinc_c",
+          "type": "property",
+          "line": 1768
+        },
+        {
+          "path": "option.imput_request",
+          "type": "property",
+          "line": 1760
+        },
+        {
+          "path": "option.infinite_end",
+          "type": "property",
+          "line": 1757
+        },
+        {
+          "path": "option.infinite_scroll",
+          "type": "property",
+          "line": 1756
+        },
+        {
+          "path": "option.input_width",
+          "type": "property",
+          "line": 1762
+        },
+        {
+          "path": "option.label_descricao",
+          "type": "property",
+          "line": 1738
+        },
+        {
+          "path": "option.obj_consulta",
+          "type": "property",
+          "line": 1740
+        },
+        {
+          "path": "option.obj_ret",
+          "type": "property",
+          "line": 1741
+        },
+        {
+          "path": "option.paran",
+          "type": "property",
+          "line": 1758
+        },
+        {
+          "path": "option.placeholder",
+          "type": "property",
+          "line": 1763
+        },
+        {
+          "path": "option.require_request",
+          "type": "property",
+          "line": 1761
+        },
+        {
+          "path": "option.required",
+          "type": "property",
+          "line": 1749
+        },
+        {
+          "path": "option.selecionado",
+          "type": "property",
+          "line": 1752
+        },
+        {
+          "path": "option.sub_visualizacao",
+          "type": "property",
+          "line": 1746
+        },
+        {
+          "path": "option.tamanho_input",
+          "type": "property",
+          "line": 1747
+        },
+        {
+          "path": "option.tamanho_tabela",
+          "type": "property",
+          "line": 1748
+        },
+        {
+          "path": "option.ttitle",
+          "type": "property",
+          "line": 1739
+        },
+        {
+          "path": "option.width",
+          "type": "property",
+          "line": 1764
+        },
+        {
+          "path": "pageScroll",
+          "type": "property",
+          "line": 1062
+        },
+        {
+          "path": "placeholder",
+          "type": "property",
+          "line": 96
+        },
+        {
+          "path": "postHistory",
+          "type": "method",
+          "line": 4970
+        },
+        {
+          "path": "require",
+          "type": "property",
+          "line": 1703
+        },
+        {
+          "path": "require2",
+          "type": "property",
+          "line": 1704
+        },
+        {
+          "path": "require_msg",
+          "type": "property",
+          "line": 1183
+        },
+        {
+          "path": "selecao_multipla",
+          "type": "property",
+          "line": 1416
+        },
+        {
+          "path": "selecionado",
+          "type": "property",
+          "line": 1600
+        },
+        {
+          "path": "selecionarItem",
+          "type": "method",
+          "line": 817
+        },
+        {
+          "path": "selecionarKeydown",
+          "type": "method",
+          "line": 757
+        },
+        {
+          "path": "selected",
+          "type": "property",
+          "line": 1707
+        },
+        {
+          "path": "setAlert",
+          "type": "method",
+          "line": 1652
+        },
+        {
+          "path": "setData",
+          "type": "method",
+          "line": 719
+        },
+        {
+          "path": "setDataRequest",
+          "type": "method",
+          "line": 1661
+        },
+        {
+          "path": "setDefalt",
+          "type": "method",
+          "line": 1655
+        },
+        {
+          "path": "setErro",
+          "type": "method",
+          "line": 1649
+        },
+        {
+          "path": "setFocusInput",
+          "type": "method",
+          "line": 1063
+        },
+        {
+          "path": "setFocusTabela",
+          "type": "method",
+          "line": 932
+        },
+        {
+          "path": "setRequireRequest",
+          "type": "method",
+          "line": 1658
+        },
+        {
+          "path": "setSelected",
+          "type": "method",
+          "line": 1592
+        },
+        {
+          "path": "tabela",
+          "type": "property",
+          "line": 1713
+        },
+        {
+          "path": "tabela.disabled",
+          "type": "property",
+          "line": 1714
+        },
+        {
+          "path": "tabela.style",
+          "type": "property",
+          "line": 1716
+        },
+        {
+          "path": "tabela.style.max-height",
+          "type": "property",
+          "line": 1716
+        },
+        {
+          "path": "tabela.visivel",
+          "type": "property",
+          "line": 1715
+        },
+        {
+          "path": "tabela_fixa",
+          "type": "property",
+          "line": 931
+        },
+        {
+          "path": "timeFechar",
+          "type": "property",
+          "line": 1706
+        },
+        {
+          "path": "trustAsHtml",
+          "type": "method",
+          "line": 72
+        },
+        {
+          "path": "usuario_vinculado",
+          "type": "property",
+          "line": 1417
+        },
+        {
+          "path": "validar",
+          "type": "method",
+          "line": 1259
+        },
+        {
+          "path": "validarConsultar",
+          "type": "method",
+          "line": 384
+        },
+        {
+          "path": "validarInput",
+          "type": "property",
+          "line": 1705
+        },
+        {
+          "path": "validar_apagar",
+          "type": "property",
+          "line": 1304
+        },
+        {
+          "path": "validar_consultar",
+          "type": "property",
+          "line": 383
+        },
+        {
+          "path": "validate",
+          "type": "method",
+          "line": 1184
+        },
+        {
+          "path": "vincular",
+          "type": "method",
+          "line": 767
+        },
+        {
+          "path": "vincularUsuario",
+          "type": "method",
+          "line": 1528
+        },
+        {
+          "path": "vinculoEnabled",
+          "type": "property",
+          "line": 1688
+        }
+      ],
       "lines": 5034,
       "methods": [
         "Consulta",
@@ -401,6 +2137,652 @@
     },
     "ConsultaBootstrap4.js": {
       "factory": "ConsultaBootstrap4",
+      "dependencies": [
+        "$ajax",
+        "$httpParamSerializer",
+        "$rootScope",
+        "gScope",
+        "$compile",
+        "$timeout",
+        "$sce"
+      ],
+      "entries": [
+        {
+          "path": "ConsultaBootstrap4",
+          "type": "method",
+          "line": 1293
+        },
+        {
+          "path": "Input",
+          "type": "property",
+          "line": 1252
+        },
+        {
+          "path": "Input.disabled",
+          "type": "property",
+          "line": 1253
+        },
+        {
+          "path": "Input.focus",
+          "type": "property",
+          "line": 1255
+        },
+        {
+          "path": "Input.readonly",
+          "type": "property",
+          "line": 1254
+        },
+        {
+          "path": "Input.value",
+          "type": "property",
+          "line": 1256
+        },
+        {
+          "path": "InputBlur",
+          "type": "method",
+          "line": 525
+        },
+        {
+          "path": "InputKeydown",
+          "type": "method",
+          "line": 509
+        },
+        {
+          "path": "MontarHtml",
+          "type": "method",
+          "line": 96
+        },
+        {
+          "path": "actionsClear",
+          "type": "property",
+          "line": 1217
+        },
+        {
+          "path": "actionsSelct",
+          "type": "property",
+          "line": 1216
+        },
+        {
+          "path": "apagar",
+          "type": "method",
+          "line": 983
+        },
+        {
+          "path": "apagarCache",
+          "type": "method",
+          "line": 270
+        },
+        {
+          "path": "autoload",
+          "type": "property",
+          "line": 1258
+        },
+        {
+          "path": "beforeSearch",
+          "type": "method",
+          "line": 278
+        },
+        {
+          "path": "btn_apagar_filtro",
+          "type": "property",
+          "line": 1244
+        },
+        {
+          "path": "btn_apagar_filtro.disabled",
+          "type": "property",
+          "line": 1245
+        },
+        {
+          "path": "btn_apagar_filtro.visivel",
+          "type": "property",
+          "line": 1246
+        },
+        {
+          "path": "btn_filtro",
+          "type": "property",
+          "line": 1248
+        },
+        {
+          "path": "btn_filtro.disabled",
+          "type": "property",
+          "line": 1249
+        },
+        {
+          "path": "btn_filtro.visivel",
+          "type": "property",
+          "line": 1250
+        },
+        {
+          "path": "cache",
+          "type": "property",
+          "line": 1259
+        },
+        {
+          "path": "clear",
+          "type": "method",
+          "line": 980
+        },
+        {
+          "path": "clearHistory",
+          "type": "method",
+          "line": 2762
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 828
+        },
+        {
+          "path": "component",
+          "type": "method",
+          "line": 2747
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 1237
+        },
+        {
+          "path": "consultando",
+          "type": "property",
+          "line": 377
+        },
+        {
+          "path": "consultar",
+          "type": "method",
+          "line": 279
+        },
+        {
+          "path": "dados",
+          "type": "property",
+          "line": 1238
+        },
+        {
+          "path": "disable",
+          "type": "method",
+          "line": 1061
+        },
+        {
+          "path": "disabled",
+          "type": "property",
+          "line": 1067
+        },
+        {
+          "path": "element_button_search",
+          "type": "property",
+          "line": 848
+        },
+        {
+          "path": "element_form_group",
+          "type": "property",
+          "line": 850
+        },
+        {
+          "path": "element_input",
+          "type": "property",
+          "line": 847
+        },
+        {
+          "path": "element_input_group",
+          "type": "property",
+          "line": 849
+        },
+        {
+          "path": "filtrar",
+          "type": "method",
+          "line": 1043
+        },
+        {
+          "path": "fimClear",
+          "type": "property",
+          "line": 1218
+        },
+        {
+          "path": "focus",
+          "type": "method",
+          "line": 825
+        },
+        {
+          "path": "focused",
+          "type": "property",
+          "line": 1234
+        },
+        {
+          "path": "gerar_class",
+          "type": "method",
+          "line": 89
+        },
+        {
+          "path": "getClassButton",
+          "type": "method",
+          "line": 1212
+        },
+        {
+          "path": "getClassForm",
+          "type": "method",
+          "line": 1206
+        },
+        {
+          "path": "getClassInput",
+          "type": "method",
+          "line": 1209
+        },
+        {
+          "path": "getClassTabela",
+          "type": "method",
+          "line": 1203
+        },
+        {
+          "path": "getConsultaPadrao",
+          "type": "method",
+          "line": 1396
+        },
+        {
+          "path": "getConsultasPadrao",
+          "type": "method",
+          "line": 1315
+        },
+        {
+          "path": "getDataComponent",
+          "type": "method",
+          "line": 852
+        },
+        {
+          "path": "getHistory",
+          "type": "method",
+          "line": 2778
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 1298
+        },
+        {
+          "path": "getScale",
+          "type": "method",
+          "line": 846
+        },
+        {
+          "path": "html",
+          "type": "method",
+          "line": 912
+        },
+        {
+          "path": "htmlDecode",
+          "type": "method",
+          "line": 38
+        },
+        {
+          "path": "id_cached",
+          "type": "property",
+          "line": 269
+        },
+        {
+          "path": "item",
+          "type": "property",
+          "line": 1235
+        },
+        {
+          "path": "item.dados",
+          "type": "property",
+          "line": 1235
+        },
+        {
+          "path": "item.selected",
+          "type": "property",
+          "line": 1235
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 268
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 1236
+        },
+        {
+          "path": "onBeforeClear",
+          "type": "method",
+          "line": 1227
+        },
+        {
+          "path": "onClear",
+          "type": "property",
+          "line": 1229
+        },
+        {
+          "path": "onFilter",
+          "type": "property",
+          "line": 1228
+        },
+        {
+          "path": "onFindItem",
+          "type": "method",
+          "line": 1220
+        },
+        {
+          "path": "onFormatMerge",
+          "type": "method",
+          "line": 1226
+        },
+        {
+          "path": "onMerge",
+          "type": "property",
+          "line": 1225
+        },
+        {
+          "path": "onScrollEnd",
+          "type": "method",
+          "line": 77
+        },
+        {
+          "path": "onSelect",
+          "type": "property",
+          "line": 1219
+        },
+        {
+          "path": "onVincularUsuario",
+          "type": "method",
+          "line": 1090
+        },
+        {
+          "path": "option",
+          "type": "property",
+          "line": 1260
+        },
+        {
+          "path": "option.autofocus",
+          "type": "property",
+          "line": 1273
+        },
+        {
+          "path": "option.campos_inputs",
+          "type": "property",
+          "line": 1266
+        },
+        {
+          "path": "option.campos_sql",
+          "type": "property",
+          "line": 1265
+        },
+        {
+          "path": "option.campos_tabela",
+          "type": "property",
+          "line": 1268
+        },
+        {
+          "path": "option.class",
+          "type": "property",
+          "line": 1272
+        },
+        {
+          "path": "option.consulta_pagina",
+          "type": "property",
+          "line": 1276
+        },
+        {
+          "path": "option.consulta_qtd",
+          "type": "property",
+          "line": 1277
+        },
+        {
+          "path": "option.consulta_tipo",
+          "type": "property",
+          "line": 1275
+        },
+        {
+          "path": "option.data_request",
+          "type": "property",
+          "line": 1281
+        },
+        {
+          "path": "option.filtro_sql",
+          "type": "property",
+          "line": 1267
+        },
+        {
+          "path": "option.infinite_end",
+          "type": "property",
+          "line": 1279
+        },
+        {
+          "path": "option.infinite_scroll",
+          "type": "property",
+          "line": 1278
+        },
+        {
+          "path": "option.input_width",
+          "type": "property",
+          "line": 1283
+        },
+        {
+          "path": "option.label_descricao",
+          "type": "property",
+          "line": 1261
+        },
+        {
+          "path": "option.obj_consulta",
+          "type": "property",
+          "line": 1263
+        },
+        {
+          "path": "option.obj_ret",
+          "type": "property",
+          "line": 1264
+        },
+        {
+          "path": "option.paran",
+          "type": "property",
+          "line": 1280
+        },
+        {
+          "path": "option.placeholder",
+          "type": "property",
+          "line": 1284
+        },
+        {
+          "path": "option.require_request",
+          "type": "property",
+          "line": 1282
+        },
+        {
+          "path": "option.required",
+          "type": "property",
+          "line": 1271
+        },
+        {
+          "path": "option.selecionado",
+          "type": "property",
+          "line": 1274
+        },
+        {
+          "path": "option.tamanho_input",
+          "type": "property",
+          "line": 1269
+        },
+        {
+          "path": "option.tamanho_tabela",
+          "type": "property",
+          "line": 1270
+        },
+        {
+          "path": "option.ttitle",
+          "type": "property",
+          "line": 1262
+        },
+        {
+          "path": "option.width",
+          "type": "property",
+          "line": 1285
+        },
+        {
+          "path": "pageScroll",
+          "type": "property",
+          "line": 821
+        },
+        {
+          "path": "postHistory",
+          "type": "method",
+          "line": 2765
+        },
+        {
+          "path": "require",
+          "type": "property",
+          "line": 1230
+        },
+        {
+          "path": "require_msg",
+          "type": "property",
+          "line": 915
+        },
+        {
+          "path": "selecao_multipla",
+          "type": "property",
+          "line": 1088
+        },
+        {
+          "path": "selecionado",
+          "type": "property",
+          "line": 1146
+        },
+        {
+          "path": "selecionarItem",
+          "type": "method",
+          "line": 596
+        },
+        {
+          "path": "selecionarKeydown",
+          "type": "method",
+          "line": 541
+        },
+        {
+          "path": "selected",
+          "type": "property",
+          "line": 1233
+        },
+        {
+          "path": "setAlert",
+          "type": "method",
+          "line": 1191
+        },
+        {
+          "path": "setData",
+          "type": "method",
+          "line": 506
+        },
+        {
+          "path": "setDataRequest",
+          "type": "method",
+          "line": 1200
+        },
+        {
+          "path": "setDefalt",
+          "type": "method",
+          "line": 1194
+        },
+        {
+          "path": "setErro",
+          "type": "method",
+          "line": 1188
+        },
+        {
+          "path": "setFocusInput",
+          "type": "method",
+          "line": 822
+        },
+        {
+          "path": "setFocusTabela",
+          "type": "method",
+          "line": 694
+        },
+        {
+          "path": "setRequireRequest",
+          "type": "method",
+          "line": 1197
+        },
+        {
+          "path": "setSelected",
+          "type": "method",
+          "line": 1138
+        },
+        {
+          "path": "tabela",
+          "type": "property",
+          "line": 1239
+        },
+        {
+          "path": "tabela.disabled",
+          "type": "property",
+          "line": 1240
+        },
+        {
+          "path": "tabela.style",
+          "type": "property",
+          "line": 1242
+        },
+        {
+          "path": "tabela.style.max-height",
+          "type": "property",
+          "line": 1242
+        },
+        {
+          "path": "tabela.visivel",
+          "type": "property",
+          "line": 1241
+        },
+        {
+          "path": "tabela_fixa",
+          "type": "property",
+          "line": 693
+        },
+        {
+          "path": "timeFechar",
+          "type": "property",
+          "line": 1232
+        },
+        {
+          "path": "trustAsHtml",
+          "type": "method",
+          "line": 72
+        },
+        {
+          "path": "usuario_vinculado",
+          "type": "property",
+          "line": 1089
+        },
+        {
+          "path": "validar",
+          "type": "method",
+          "line": 955
+        },
+        {
+          "path": "validarInput",
+          "type": "property",
+          "line": 1231
+        },
+        {
+          "path": "validate",
+          "type": "method",
+          "line": 916
+        },
+        {
+          "path": "vincular",
+          "type": "method",
+          "line": 551
+        },
+        {
+          "path": "vincularUsuario",
+          "type": "method",
+          "line": 1091
+        },
+        {
+          "path": "vinculoEnabled",
+          "type": "property",
+          "line": 1215
+        }
+      ],
       "lines": 2828,
       "methods": [
         "ConsultaBootstrap4",
@@ -541,6 +2923,657 @@
     },
     "ConsultaBootstrap5.js": {
       "factory": "ConsultaBootstrap5",
+      "dependencies": [
+        "$ajax",
+        "$httpParamSerializer",
+        "$rootScope",
+        "gScope",
+        "$compile",
+        "$timeout",
+        "$sce"
+      ],
+      "entries": [
+        {
+          "path": "ConsultaBootstrap5",
+          "type": "method",
+          "line": 1371
+        },
+        {
+          "path": "Input",
+          "type": "property",
+          "line": 1330
+        },
+        {
+          "path": "Input.disabled",
+          "type": "property",
+          "line": 1331
+        },
+        {
+          "path": "Input.focus",
+          "type": "property",
+          "line": 1333
+        },
+        {
+          "path": "Input.readonly",
+          "type": "property",
+          "line": 1332
+        },
+        {
+          "path": "Input.value",
+          "type": "property",
+          "line": 1334
+        },
+        {
+          "path": "InputBlur",
+          "type": "method",
+          "line": 589
+        },
+        {
+          "path": "InputKeydown",
+          "type": "method",
+          "line": 573
+        },
+        {
+          "path": "MontarHtml",
+          "type": "method",
+          "line": 96
+        },
+        {
+          "path": "actionsClear",
+          "type": "property",
+          "line": 1295
+        },
+        {
+          "path": "actionsSelct",
+          "type": "property",
+          "line": 1294
+        },
+        {
+          "path": "apagar",
+          "type": "method",
+          "line": 1060
+        },
+        {
+          "path": "apagarCache",
+          "type": "method",
+          "line": 334
+        },
+        {
+          "path": "autoload",
+          "type": "property",
+          "line": 1336
+        },
+        {
+          "path": "beforeSearch",
+          "type": "method",
+          "line": 342
+        },
+        {
+          "path": "btn_apagar_filtro",
+          "type": "property",
+          "line": 1322
+        },
+        {
+          "path": "btn_apagar_filtro.disabled",
+          "type": "property",
+          "line": 1323
+        },
+        {
+          "path": "btn_apagar_filtro.visivel",
+          "type": "property",
+          "line": 1324
+        },
+        {
+          "path": "btn_filtro",
+          "type": "property",
+          "line": 1326
+        },
+        {
+          "path": "btn_filtro.disabled",
+          "type": "property",
+          "line": 1327
+        },
+        {
+          "path": "btn_filtro.visivel",
+          "type": "property",
+          "line": 1328
+        },
+        {
+          "path": "cache",
+          "type": "property",
+          "line": 1337
+        },
+        {
+          "path": "clear",
+          "type": "method",
+          "line": 1057
+        },
+        {
+          "path": "clearHistory",
+          "type": "method",
+          "line": 2840
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 905
+        },
+        {
+          "path": "component",
+          "type": "method",
+          "line": 2825
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 1315
+        },
+        {
+          "path": "consultando",
+          "type": "property",
+          "line": 441
+        },
+        {
+          "path": "consultar",
+          "type": "method",
+          "line": 343
+        },
+        {
+          "path": "dados",
+          "type": "property",
+          "line": 1316
+        },
+        {
+          "path": "disable",
+          "type": "method",
+          "line": 1139
+        },
+        {
+          "path": "disabled",
+          "type": "property",
+          "line": 1145
+        },
+        {
+          "path": "element_button_search",
+          "type": "property",
+          "line": 925
+        },
+        {
+          "path": "element_form_group",
+          "type": "property",
+          "line": 927
+        },
+        {
+          "path": "element_input",
+          "type": "property",
+          "line": 924
+        },
+        {
+          "path": "element_input_group",
+          "type": "property",
+          "line": 926
+        },
+        {
+          "path": "filtrar",
+          "type": "method",
+          "line": 1120
+        },
+        {
+          "path": "fimClear",
+          "type": "property",
+          "line": 1296
+        },
+        {
+          "path": "focus",
+          "type": "method",
+          "line": 902
+        },
+        {
+          "path": "focused",
+          "type": "property",
+          "line": 1312
+        },
+        {
+          "path": "gerar_class",
+          "type": "method",
+          "line": 89
+        },
+        {
+          "path": "getClassButton",
+          "type": "method",
+          "line": 1290
+        },
+        {
+          "path": "getClassForm",
+          "type": "method",
+          "line": 1284
+        },
+        {
+          "path": "getClassInput",
+          "type": "method",
+          "line": 1287
+        },
+        {
+          "path": "getClassTabela",
+          "type": "method",
+          "line": 1281
+        },
+        {
+          "path": "getConsultaPadrao",
+          "type": "method",
+          "line": 1474
+        },
+        {
+          "path": "getConsultasPadrao",
+          "type": "method",
+          "line": 1393
+        },
+        {
+          "path": "getDataComponent",
+          "type": "method",
+          "line": 929
+        },
+        {
+          "path": "getHistory",
+          "type": "method",
+          "line": 2856
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 1376
+        },
+        {
+          "path": "getScale",
+          "type": "method",
+          "line": 923
+        },
+        {
+          "path": "html",
+          "type": "method",
+          "line": 989
+        },
+        {
+          "path": "htmlDecode",
+          "type": "method",
+          "line": 38
+        },
+        {
+          "path": "id_cached",
+          "type": "property",
+          "line": 333
+        },
+        {
+          "path": "item",
+          "type": "property",
+          "line": 1313
+        },
+        {
+          "path": "item.dados",
+          "type": "property",
+          "line": 1313
+        },
+        {
+          "path": "item.selected",
+          "type": "property",
+          "line": 1313
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 332
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 1314
+        },
+        {
+          "path": "onBeforeClear",
+          "type": "method",
+          "line": 1305
+        },
+        {
+          "path": "onClear",
+          "type": "property",
+          "line": 1307
+        },
+        {
+          "path": "onFilter",
+          "type": "property",
+          "line": 1306
+        },
+        {
+          "path": "onFindItem",
+          "type": "method",
+          "line": 1298
+        },
+        {
+          "path": "onFormatMerge",
+          "type": "method",
+          "line": 1304
+        },
+        {
+          "path": "onMerge",
+          "type": "property",
+          "line": 1303
+        },
+        {
+          "path": "onScrollEnd",
+          "type": "method",
+          "line": 77
+        },
+        {
+          "path": "onSelect",
+          "type": "property",
+          "line": 1297
+        },
+        {
+          "path": "onVincularUsuario",
+          "type": "method",
+          "line": 1168
+        },
+        {
+          "path": "option",
+          "type": "property",
+          "line": 1338
+        },
+        {
+          "path": "option.autofocus",
+          "type": "property",
+          "line": 1351
+        },
+        {
+          "path": "option.campos_inputs",
+          "type": "property",
+          "line": 1344
+        },
+        {
+          "path": "option.campos_sql",
+          "type": "property",
+          "line": 1343
+        },
+        {
+          "path": "option.campos_tabela",
+          "type": "property",
+          "line": 1346
+        },
+        {
+          "path": "option.class",
+          "type": "property",
+          "line": 1350
+        },
+        {
+          "path": "option.consulta_pagina",
+          "type": "property",
+          "line": 1354
+        },
+        {
+          "path": "option.consulta_qtd",
+          "type": "property",
+          "line": 1355
+        },
+        {
+          "path": "option.consulta_tipo",
+          "type": "property",
+          "line": 1353
+        },
+        {
+          "path": "option.data_request",
+          "type": "property",
+          "line": 1359
+        },
+        {
+          "path": "option.filtro_sql",
+          "type": "property",
+          "line": 1345
+        },
+        {
+          "path": "option.infinite_end",
+          "type": "property",
+          "line": 1357
+        },
+        {
+          "path": "option.infinite_scroll",
+          "type": "property",
+          "line": 1356
+        },
+        {
+          "path": "option.input_width",
+          "type": "property",
+          "line": 1361
+        },
+        {
+          "path": "option.label_descricao",
+          "type": "property",
+          "line": 1339
+        },
+        {
+          "path": "option.obj_consulta",
+          "type": "property",
+          "line": 1341
+        },
+        {
+          "path": "option.obj_ret",
+          "type": "property",
+          "line": 1342
+        },
+        {
+          "path": "option.paran",
+          "type": "property",
+          "line": 1358
+        },
+        {
+          "path": "option.placeholder",
+          "type": "property",
+          "line": 1362
+        },
+        {
+          "path": "option.require_request",
+          "type": "property",
+          "line": 1360
+        },
+        {
+          "path": "option.required",
+          "type": "property",
+          "line": 1349
+        },
+        {
+          "path": "option.selecionado",
+          "type": "property",
+          "line": 1352
+        },
+        {
+          "path": "option.tamanho_input",
+          "type": "property",
+          "line": 1347
+        },
+        {
+          "path": "option.tamanho_tabela",
+          "type": "property",
+          "line": 1348
+        },
+        {
+          "path": "option.ttitle",
+          "type": "property",
+          "line": 1340
+        },
+        {
+          "path": "option.width",
+          "type": "property",
+          "line": 1363
+        },
+        {
+          "path": "pageScroll",
+          "type": "property",
+          "line": 898
+        },
+        {
+          "path": "postHistory",
+          "type": "method",
+          "line": 2843
+        },
+        {
+          "path": "require",
+          "type": "property",
+          "line": 1308
+        },
+        {
+          "path": "require_msg",
+          "type": "property",
+          "line": 992
+        },
+        {
+          "path": "selecao_multipla",
+          "type": "property",
+          "line": 1166
+        },
+        {
+          "path": "selecionado",
+          "type": "property",
+          "line": 1224
+        },
+        {
+          "path": "selecionarItem",
+          "type": "method",
+          "line": 682
+        },
+        {
+          "path": "selecionarKeydown",
+          "type": "method",
+          "line": 614
+        },
+        {
+          "path": "selected",
+          "type": "property",
+          "line": 1311
+        },
+        {
+          "path": "setAlert",
+          "type": "method",
+          "line": 1269
+        },
+        {
+          "path": "setData",
+          "type": "method",
+          "line": 570
+        },
+        {
+          "path": "setDataRequest",
+          "type": "method",
+          "line": 1278
+        },
+        {
+          "path": "setDefalt",
+          "type": "method",
+          "line": 1272
+        },
+        {
+          "path": "setErro",
+          "type": "method",
+          "line": 1266
+        },
+        {
+          "path": "setFocus",
+          "type": "method",
+          "line": 605
+        },
+        {
+          "path": "setFocusInput",
+          "type": "method",
+          "line": 899
+        },
+        {
+          "path": "setFocusTabela",
+          "type": "method",
+          "line": 780
+        },
+        {
+          "path": "setRequireRequest",
+          "type": "method",
+          "line": 1275
+        },
+        {
+          "path": "setSelected",
+          "type": "method",
+          "line": 1216
+        },
+        {
+          "path": "tabela",
+          "type": "property",
+          "line": 1317
+        },
+        {
+          "path": "tabela.disabled",
+          "type": "property",
+          "line": 1318
+        },
+        {
+          "path": "tabela.style",
+          "type": "property",
+          "line": 1320
+        },
+        {
+          "path": "tabela.style.max-height",
+          "type": "property",
+          "line": 1320
+        },
+        {
+          "path": "tabela.visivel",
+          "type": "property",
+          "line": 1319
+        },
+        {
+          "path": "tabela_fixa",
+          "type": "property",
+          "line": 779
+        },
+        {
+          "path": "timeFechar",
+          "type": "property",
+          "line": 1310
+        },
+        {
+          "path": "trustAsHtml",
+          "type": "method",
+          "line": 72
+        },
+        {
+          "path": "usuario_vinculado",
+          "type": "property",
+          "line": 1167
+        },
+        {
+          "path": "validar",
+          "type": "method",
+          "line": 1032
+        },
+        {
+          "path": "validarInput",
+          "type": "property",
+          "line": 1309
+        },
+        {
+          "path": "validate",
+          "type": "method",
+          "line": 993
+        },
+        {
+          "path": "vincular",
+          "type": "method",
+          "line": 637
+        },
+        {
+          "path": "vincularUsuario",
+          "type": "method",
+          "line": 1169
+        },
+        {
+          "path": "vinculoEnabled",
+          "type": "property",
+          "line": 1293
+        }
+      ],
       "lines": 2906,
       "methods": [
         "ConsultaBootstrap5",
@@ -682,6 +3715,178 @@
     },
     "ConsultaMultipla.js": {
       "factory": "ConsultaMultipla",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$rootScope",
+        "gScope",
+        "$compile",
+        "$timeout",
+        "$sce",
+        "TabelaJS"
+      ],
+      "entries": [
+        {
+          "path": "CONSULTAS",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "Consulta",
+          "type": "method",
+          "line": 569
+        },
+        {
+          "path": "DADOS_SELECAO_MULTIPLA",
+          "type": "property",
+          "line": 40
+        },
+        {
+          "path": "DADOS_SELECAO_MULTIPLA.SELECTED",
+          "type": "property",
+          "line": 41
+        },
+        {
+          "path": "DADOS_SELECAO_MULTIPLA.visualizar",
+          "type": "method",
+          "line": 42
+        },
+        {
+          "path": "FILTRO_DADOS",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "MontarHtml",
+          "type": "method",
+          "line": 436
+        },
+        {
+          "path": "NUM_LISTA_MULTIPLA",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "PARAM_RELATORIO",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "add",
+          "type": "method",
+          "line": 79
+        },
+        {
+          "path": "atalhoTabelaItenParan",
+          "type": "method",
+          "line": 187
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 128
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 35
+        },
+        {
+          "path": "consulta_qtd",
+          "type": "property",
+          "line": 36
+        },
+        {
+          "path": "execFiltrarConsultaSelecaoMultipla",
+          "type": "method",
+          "line": 345
+        },
+        {
+          "path": "filtrarConsultaSelecaoMultipla",
+          "type": "method",
+          "line": 359
+        },
+        {
+          "path": "fimCompile",
+          "type": "method",
+          "line": 122
+        },
+        {
+          "path": "fimTabela",
+          "type": "method",
+          "line": 125
+        },
+        {
+          "path": "getItensSelecionado",
+          "type": "method",
+          "line": 55
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 574
+        },
+        {
+          "path": "gravarItensConsultaSelecaoMultipla",
+          "type": "method",
+          "line": 321
+        },
+        {
+          "path": "height",
+          "type": "property",
+          "line": 435
+        },
+        {
+          "path": "incluirVarios",
+          "type": "method",
+          "line": 235
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 565
+        },
+        {
+          "path": "limpar",
+          "type": "method",
+          "line": 45
+        },
+        {
+          "path": "limparColunasConsultaSelecaoMultipla",
+          "type": "method",
+          "line": 428
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 34
+        },
+        {
+          "path": "removerItemTabelaParan",
+          "type": "method",
+          "line": 174
+        },
+        {
+          "path": "setData",
+          "type": "method",
+          "line": 171
+        },
+        {
+          "path": "tabParanClick",
+          "type": "method",
+          "line": 228
+        },
+        {
+          "path": "tratarTabela",
+          "type": "method",
+          "line": 168
+        },
+        {
+          "path": "width",
+          "type": "property",
+          "line": 434
+        }
+      ],
       "lines": 597,
       "methods": [
         "Consulta",
@@ -727,6 +3932,34 @@
     },
     "ControllerService.js": {
       "factory": "ControllerService",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "create",
+          "type": "method",
+          "line": 57
+        },
+        {
+          "path": "defaultActions",
+          "type": "property",
+          "line": 29
+        },
+        {
+          "path": "init",
+          "type": "method",
+          "line": 31
+        }
+      ],
       "lines": 78,
       "methods": [
         "create",
@@ -743,6 +3976,149 @@
     },
     "Devices.js": {
       "factory": "Devices",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "conectarHenry",
+          "type": "method",
+          "line": 48
+        },
+        {
+          "path": "conectarInner",
+          "type": "method",
+          "line": 49
+        },
+        {
+          "path": "desligarBalanca",
+          "type": "method",
+          "line": 45
+        },
+        {
+          "path": "execComando",
+          "type": "method",
+          "line": 36
+        },
+        {
+          "path": "execComando2",
+          "type": "method",
+          "line": 37
+        },
+        {
+          "path": "execComandoProgress",
+          "type": "method",
+          "line": 51
+        },
+        {
+          "path": "getImpressoras",
+          "type": "method",
+          "line": 53
+        },
+        {
+          "path": "htmlToPDF",
+          "type": "method",
+          "line": 52
+        },
+        {
+          "path": "imprimirCheque",
+          "type": "method",
+          "line": 46
+        },
+        {
+          "path": "imprimirCupom",
+          "type": "method",
+          "line": 39
+        },
+        {
+          "path": "imprimirEspelhoPonto",
+          "type": "method",
+          "line": 42
+        },
+        {
+          "path": "imprimirEtiqueta",
+          "type": "method",
+          "line": 38
+        },
+        {
+          "path": "imprimirRelatorio",
+          "type": "method",
+          "line": 43
+        },
+        {
+          "path": "iniciandoServer",
+          "type": "property",
+          "line": 58
+        },
+        {
+          "path": "iniciarServidor",
+          "type": "method",
+          "line": 40
+        },
+        {
+          "path": "lerPedidoBihands",
+          "type": "method",
+          "line": 50
+        },
+        {
+          "path": "ligarBalanca",
+          "type": "method",
+          "line": 44
+        },
+        {
+          "path": "pesoBalanca",
+          "type": "method",
+          "line": 47
+        },
+        {
+          "path": "postImpressoras1",
+          "type": "method",
+          "line": 54
+        },
+        {
+          "path": "postImpressoras2",
+          "type": "method",
+          "line": 55
+        },
+        {
+          "path": "printAuto",
+          "type": "method",
+          "line": 56
+        },
+        {
+          "path": "printer_url",
+          "type": "property",
+          "line": 34
+        },
+        {
+          "path": "server",
+          "type": "property",
+          "line": 30
+        },
+        {
+          "path": "serverPrint",
+          "type": "property",
+          "line": 31
+        },
+        {
+          "path": "server_url",
+          "type": "property",
+          "line": 33
+        },
+        {
+          "path": "testarServer",
+          "type": "method",
+          "line": 41
+        }
+      ],
       "lines": 579,
       "methods": [
         "conectarHenry",
@@ -782,23 +4158,1052 @@
     },
     "DevicesRequest.js": {
       "factory": "DevicesRequest",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "balanca",
+          "type": "property",
+          "line": 32
+        },
+        {
+          "path": "balanca.conectar",
+          "type": "method",
+          "line": 34
+        },
+        {
+          "path": "balanca.desconectar",
+          "type": "method",
+          "line": 45
+        },
+        {
+          "path": "balanca.lerPeso",
+          "type": "method",
+          "line": 56
+        },
+        {
+          "path": "balanca.pai",
+          "type": "property",
+          "line": 33
+        },
+        {
+          "path": "balanca.tratarPeso",
+          "type": "method",
+          "line": 69
+        },
+        {
+          "path": "developing",
+          "type": "property",
+          "line": 29
+        },
+        {
+          "path": "digital",
+          "type": "property",
+          "line": 79
+        },
+        {
+          "path": "digital.backdrop",
+          "type": "method",
+          "line": 81
+        },
+        {
+          "path": "digital.cadastrar",
+          "type": "method",
+          "line": 115
+        },
+        {
+          "path": "digital.digitaisVersao",
+          "type": "method",
+          "line": 223
+        },
+        {
+          "path": "digital.getDigitais",
+          "type": "method",
+          "line": 238
+        },
+        {
+          "path": "digital.gravarDigital",
+          "type": "method",
+          "line": 205
+        },
+        {
+          "path": "digital.identificar",
+          "type": "method",
+          "line": 148
+        },
+        {
+          "path": "digital.pai",
+          "type": "property",
+          "line": 80
+        },
+        {
+          "path": "digital.removerDigital",
+          "type": "method",
+          "line": 190
+        },
+        {
+          "path": "requestExc",
+          "type": "method",
+          "line": 30
+        }
+      ],
       "lines": 297,
       "methods": [
+        "balanca.conectar",
+        "balanca.desconectar",
+        "balanca.lerPeso",
+        "balanca.tratarPeso",
+        "digital.backdrop",
+        "digital.cadastrar",
+        "digital.digitaisVersao",
+        "digital.getDigitais",
+        "digital.gravarDigital",
+        "digital.identificar",
+        "digital.removerDigital",
         "requestExc"
       ],
       "properties": [
         "balanca",
+        "balanca.pai",
         "developing",
-        "digital"
+        "digital",
+        "digital.pai"
       ],
       "counts": {
-        "methods": 1,
-        "properties": 3,
-        "publicEntries": 4
+        "methods": 12,
+        "properties": 5,
+        "publicEntries": 17
       }
     },
     "FactoryDefault.js": {
       "factory": "FactoryDefault",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$rootScope",
+        "$compile",
+        "$timeout",
+        "$consulta",
+        "gScope",
+        "gcCollection",
+        "gcObject"
+      ],
+      "entries": [
+        {
+          "path": "ALTERANDO",
+          "type": "property",
+          "line": 180
+        },
+        {
+          "path": "ARRAY_TABELAS",
+          "type": "property",
+          "line": 183
+        },
+        {
+          "path": "ARRAY_TABELAS_ITENS",
+          "type": "property",
+          "line": 184
+        },
+        {
+          "path": "BACKUP",
+          "type": "property",
+          "line": 191
+        },
+        {
+          "path": "BACKUP_ID_COPY",
+          "type": "property",
+          "line": 176
+        },
+        {
+          "path": "BACKUP_ITENS",
+          "type": "property",
+          "line": 192
+        },
+        {
+          "path": "BACKUP_ITENS_MARCADOS",
+          "type": "property",
+          "line": 193
+        },
+        {
+          "path": "CAMPO_INDEX",
+          "type": "property",
+          "line": 175
+        },
+        {
+          "path": "COPIANDO",
+          "type": "property",
+          "line": 181
+        },
+        {
+          "path": "CheckSelect",
+          "type": "method",
+          "line": 63
+        },
+        {
+          "path": "DADOS",
+          "type": "property",
+          "line": 185
+        },
+        {
+          "path": "DADOS_RENDER",
+          "type": "property",
+          "line": 187
+        },
+        {
+          "path": "EXCLUINDO_MULTIPLOS",
+          "type": "property",
+          "line": 182
+        },
+        {
+          "path": "FILTRO_DADOS",
+          "type": "property",
+          "line": 177
+        },
+        {
+          "path": "FILTRO_DADOS_ADD",
+          "type": "property",
+          "line": 178
+        },
+        {
+          "path": "INCLUINDO",
+          "type": "property",
+          "line": 179
+        },
+        {
+          "path": "ITENS",
+          "type": "property",
+          "line": 188
+        },
+        {
+          "path": "ITENS_EXCLUIDOS",
+          "type": "property",
+          "line": 186
+        },
+        {
+          "path": "Itens",
+          "type": "property",
+          "line": 145
+        },
+        {
+          "path": "MODAL_ITENS_SELECIONADOS",
+          "type": "property",
+          "line": 195
+        },
+        {
+          "path": "MSG_GRAVAR",
+          "type": "property",
+          "line": 194
+        },
+        {
+          "path": "Modal",
+          "type": "property",
+          "line": 196
+        },
+        {
+          "path": "Modal.Pai",
+          "type": "property",
+          "line": 197
+        },
+        {
+          "path": "Modal._modal",
+          "type": "property",
+          "line": 198
+        },
+        {
+          "path": "Modal.focus",
+          "type": "method",
+          "line": 201
+        },
+        {
+          "path": "Modal.getFactoryPai",
+          "type": "method",
+          "line": 205
+        },
+        {
+          "path": "Modal.hide",
+          "type": "method",
+          "line": 283
+        },
+        {
+          "path": "Modal.isShown",
+          "type": "property",
+          "line": 199
+        },
+        {
+          "path": "Modal.preventAutoFocus",
+          "type": "property",
+          "line": 200
+        },
+        {
+          "path": "Modal.show",
+          "type": "method",
+          "line": 208
+        },
+        {
+          "path": "ORDER_BY",
+          "type": "property",
+          "line": 174
+        },
+        {
+          "path": "SELECTED",
+          "type": "property",
+          "line": 190
+        },
+        {
+          "path": "SELECTEDS",
+          "type": "property",
+          "line": 189
+        },
+        {
+          "path": "TIPO_ADD",
+          "type": "property",
+          "line": 146
+        },
+        {
+          "path": "TIPO_GRAVAR",
+          "type": "property",
+          "line": 147
+        },
+        {
+          "path": "Tabela",
+          "type": "property",
+          "line": 136
+        },
+        {
+          "path": "Tabela.DADOS",
+          "type": "property",
+          "line": 136
+        },
+        {
+          "path": "Tabela.apagar",
+          "type": "method",
+          "line": 136
+        },
+        {
+          "path": "Tabela.count_marcados",
+          "type": "method",
+          "line": 136
+        },
+        {
+          "path": "Tabela.merge",
+          "type": "method",
+          "line": 136
+        },
+        {
+          "path": "TabelaAddItens",
+          "type": "property",
+          "line": 138
+        },
+        {
+          "path": "TabelaAddItens.DADOS",
+          "type": "property",
+          "line": 138
+        },
+        {
+          "path": "TabelaAddItens.apagar",
+          "type": "method",
+          "line": 138
+        },
+        {
+          "path": "TabelaAddItens.count_marcados",
+          "type": "method",
+          "line": 138
+        },
+        {
+          "path": "TabelaAddItens.merge",
+          "type": "method",
+          "line": 138
+        },
+        {
+          "path": "TabelaItensSelecionados",
+          "type": "property",
+          "line": 137
+        },
+        {
+          "path": "TabelaItensSelecionados.DADOS",
+          "type": "property",
+          "line": 137
+        },
+        {
+          "path": "TabelaItensSelecionados.apagar",
+          "type": "method",
+          "line": 137
+        },
+        {
+          "path": "TabelaItensSelecionados.count_marcados",
+          "type": "method",
+          "line": 137
+        },
+        {
+          "path": "TabelaItensSelecionados.merge",
+          "type": "method",
+          "line": 137
+        },
+        {
+          "path": "VALIDAR_MODAL_ITENS_SELECIONADOS",
+          "type": "property",
+          "line": 171
+        },
+        {
+          "path": "ajax_new_job_ItensDel",
+          "type": "property",
+          "line": 36
+        },
+        {
+          "path": "ajax_new_job_consultar",
+          "type": "property",
+          "line": 34
+        },
+        {
+          "path": "ajax_new_job_excluir",
+          "type": "property",
+          "line": 35
+        },
+        {
+          "path": "ajax_new_job_excluir_mult",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "ajax_new_job_get_itens_add",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "ajax_new_job_gravar",
+          "type": "property",
+          "line": 33
+        },
+        {
+          "path": "alterar",
+          "type": "method",
+          "line": 46
+        },
+        {
+          "path": "atualizar_principal",
+          "type": "property",
+          "line": 155
+        },
+        {
+          "path": "beforeCancelar",
+          "type": "method",
+          "line": 104
+        },
+        {
+          "path": "beforeConfirmarGravar",
+          "type": "method",
+          "line": 113
+        },
+        {
+          "path": "beforeDataAssign",
+          "type": "method",
+          "line": 115
+        },
+        {
+          "path": "beforeExcluirMultiplos",
+          "type": "method",
+          "line": 77
+        },
+        {
+          "path": "beforeFimGravar",
+          "type": "method",
+          "line": 119
+        },
+        {
+          "path": "beforeMerge",
+          "type": "method",
+          "line": 114
+        },
+        {
+          "path": "cancelar",
+          "type": "method",
+          "line": 49
+        },
+        {
+          "path": "clearTabela",
+          "type": "property",
+          "line": 132
+        },
+        {
+          "path": "compileItemIncluir",
+          "type": "property",
+          "line": 131
+        },
+        {
+          "path": "compileTabela",
+          "type": "method",
+          "line": 134
+        },
+        {
+          "path": "confirmItensSelected",
+          "type": "method",
+          "line": 87
+        },
+        {
+          "path": "confirmarExcluir",
+          "type": "method",
+          "line": 54
+        },
+        {
+          "path": "confirmarExcluirMultiplos",
+          "type": "method",
+          "line": 75
+        },
+        {
+          "path": "confirmarGravar",
+          "type": "method",
+          "line": 55
+        },
+        {
+          "path": "confirmar_cancelar",
+          "type": "property",
+          "line": 168
+        },
+        {
+          "path": "confirmar_excluir",
+          "type": "property",
+          "line": 170
+        },
+        {
+          "path": "confirmar_gravar",
+          "type": "property",
+          "line": 167
+        },
+        {
+          "path": "consulta_itens_add_on_gravar",
+          "type": "property",
+          "line": 143
+        },
+        {
+          "path": "consultar",
+          "type": "method",
+          "line": 42
+        },
+        {
+          "path": "consultar_itens",
+          "type": "property",
+          "line": 144
+        },
+        {
+          "path": "consultas",
+          "type": "property",
+          "line": 141
+        },
+        {
+          "path": "copiar",
+          "type": "method",
+          "line": 47
+        },
+        {
+          "path": "default_item",
+          "type": "property",
+          "line": 32
+        },
+        {
+          "path": "disabled_consulta_on_visualizar",
+          "type": "property",
+          "line": 157
+        },
+        {
+          "path": "excluir",
+          "type": "method",
+          "line": 50
+        },
+        {
+          "path": "excluirMultiplos",
+          "type": "method",
+          "line": 69
+        },
+        {
+          "path": "execPosExcluirMultiplos",
+          "type": "method",
+          "line": 80
+        },
+        {
+          "path": "execPrePosGravar",
+          "type": "method",
+          "line": 82
+        },
+        {
+          "path": "executeOnReject",
+          "type": "method",
+          "line": 122
+        },
+        {
+          "path": "executeOnRejectExcluirMultiplos",
+          "type": "method",
+          "line": 81
+        },
+        {
+          "path": "factory_principal",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "fecharModal",
+          "type": "method",
+          "line": 52
+        },
+        {
+          "path": "fecharModalItensSelected",
+          "type": "method",
+          "line": 86
+        },
+        {
+          "path": "fechar_modal_incluir",
+          "type": "property",
+          "line": 148
+        },
+        {
+          "path": "fechar_modal_incluir_t2",
+          "type": "property",
+          "line": 149
+        },
+        {
+          "path": "filtrarToggle",
+          "type": "method",
+          "line": 53
+        },
+        {
+          "path": "fimConsultar",
+          "type": "method",
+          "line": 117
+        },
+        {
+          "path": "fimConsultarOnReject",
+          "type": "method",
+          "line": 118
+        },
+        {
+          "path": "fimExcluir",
+          "type": "method",
+          "line": 121
+        },
+        {
+          "path": "fimExcluirMultiplos",
+          "type": "method",
+          "line": 79
+        },
+        {
+          "path": "fimGravar",
+          "type": "method",
+          "line": 120
+        },
+        {
+          "path": "fimGravarConfirmItensSelected",
+          "type": "method",
+          "line": 127
+        },
+        {
+          "path": "fimGravarConfirmTexto",
+          "type": "method",
+          "line": 128
+        },
+        {
+          "path": "force_confirmar_cancelar",
+          "type": "property",
+          "line": 169
+        },
+        {
+          "path": "formatDataMerge",
+          "type": "method",
+          "line": 57
+        },
+        {
+          "path": "formatDataMergeItens",
+          "type": "method",
+          "line": 58
+        },
+        {
+          "path": "format_datamerge",
+          "type": "property",
+          "line": 153
+        },
+        {
+          "path": "format_datamerge_itens",
+          "type": "property",
+          "line": 154
+        },
+        {
+          "path": "getFimExcluirMultiplos",
+          "type": "method",
+          "line": 78
+        },
+        {
+          "path": "getFimGravar",
+          "type": "method",
+          "line": 123
+        },
+        {
+          "path": "getItensAdd",
+          "type": "method",
+          "line": 61
+        },
+        {
+          "path": "getItensDel",
+          "type": "method",
+          "line": 73
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 31
+        },
+        {
+          "path": "getTabelaItens",
+          "type": "method",
+          "line": 64
+        },
+        {
+          "path": "gravar",
+          "type": "method",
+          "line": 48
+        },
+        {
+          "path": "habilita_itens",
+          "type": "property",
+          "line": 142
+        },
+        {
+          "path": "habilita_toggle",
+          "type": "property",
+          "line": 140
+        },
+        {
+          "path": "incluir",
+          "type": "method",
+          "line": 44
+        },
+        {
+          "path": "incluirNovo",
+          "type": "method",
+          "line": 45
+        },
+        {
+          "path": "init",
+          "type": "method",
+          "line": 323
+        },
+        {
+          "path": "isFactoryDefault",
+          "type": "property",
+          "line": 89
+        },
+        {
+          "path": "isShown",
+          "type": "property",
+          "line": 220
+        },
+        {
+          "path": "limparTabela",
+          "type": "method",
+          "line": 133
+        },
+        {
+          "path": "manter_itens_marcados",
+          "type": "property",
+          "line": 156
+        },
+        {
+          "path": "marcar_todos_itens",
+          "type": "property",
+          "line": 152
+        },
+        {
+          "path": "merge",
+          "type": "method",
+          "line": 43
+        },
+        {
+          "path": "merger_dados",
+          "type": "property",
+          "line": 150
+        },
+        {
+          "path": "merger_tabela",
+          "type": "property",
+          "line": 151
+        },
+        {
+          "path": "montar_dados_excluir",
+          "type": "property",
+          "line": 158
+        },
+        {
+          "path": "nextRecord",
+          "type": "method",
+          "line": 66
+        },
+        {
+          "path": "onAlterar",
+          "type": "method",
+          "line": 98
+        },
+        {
+          "path": "onCancelar",
+          "type": "method",
+          "line": 105
+        },
+        {
+          "path": "onCancelarGravar",
+          "type": "method",
+          "line": 106
+        },
+        {
+          "path": "onCheckSelect",
+          "type": "method",
+          "line": 116
+        },
+        {
+          "path": "onConfirmarExcluir",
+          "type": "method",
+          "line": 111
+        },
+        {
+          "path": "onConfirmarExcluirMultiplos",
+          "type": "method",
+          "line": 76
+        },
+        {
+          "path": "onConfirmarGravar",
+          "type": "method",
+          "line": 112
+        },
+        {
+          "path": "onConsultar",
+          "type": "method",
+          "line": 90
+        },
+        {
+          "path": "onCopiar",
+          "type": "method",
+          "line": 99
+        },
+        {
+          "path": "onExcluir",
+          "type": "method",
+          "line": 107
+        },
+        {
+          "path": "onExcluirMultiplos",
+          "type": "method",
+          "line": 71
+        },
+        {
+          "path": "onFecharModal",
+          "type": "method",
+          "line": 109
+        },
+        {
+          "path": "onFecharModalItensSelected",
+          "type": "method",
+          "line": 124
+        },
+        {
+          "path": "onFiltrarToggle",
+          "type": "method",
+          "line": 110
+        },
+        {
+          "path": "onFimConsultarItensAdd",
+          "type": "method",
+          "line": 83
+        },
+        {
+          "path": "onFimConsultarItensDel",
+          "type": "method",
+          "line": 84
+        },
+        {
+          "path": "onFormatterItensSelected",
+          "type": "method",
+          "line": 125
+        },
+        {
+          "path": "onGravar",
+          "type": "method",
+          "line": 100
+        },
+        {
+          "path": "onHideModal",
+          "type": "method",
+          "line": 92
+        },
+        {
+          "path": "onIncluir",
+          "type": "method",
+          "line": 97
+        },
+        {
+          "path": "onMarcar",
+          "type": "method",
+          "line": 62
+        },
+        {
+          "path": "onMerge",
+          "type": "method",
+          "line": 93
+        },
+        {
+          "path": "onMergeItens",
+          "type": "method",
+          "line": 126
+        },
+        {
+          "path": "onNextRecord",
+          "type": "method",
+          "line": 130
+        },
+        {
+          "path": "onPreviousRecord",
+          "type": "method",
+          "line": 129
+        },
+        {
+          "path": "onShowModal",
+          "type": "method",
+          "line": 91
+        },
+        {
+          "path": "onValidarAlterar",
+          "type": "method",
+          "line": 95
+        },
+        {
+          "path": "onValidarConfirmarItensAdd",
+          "type": "method",
+          "line": 103
+        },
+        {
+          "path": "onValidarConsultar",
+          "type": "method",
+          "line": 101
+        },
+        {
+          "path": "onValidarConsultarItensAdd",
+          "type": "method",
+          "line": 102
+        },
+        {
+          "path": "onValidarConsultarItensDel",
+          "type": "method",
+          "line": 72
+        },
+        {
+          "path": "onValidarCopiar",
+          "type": "method",
+          "line": 96
+        },
+        {
+          "path": "onValidarExcluirMultiplos",
+          "type": "method",
+          "line": 70
+        },
+        {
+          "path": "onValidarIncluir",
+          "type": "method",
+          "line": 94
+        },
+        {
+          "path": "onVisualizar",
+          "type": "method",
+          "line": 108
+        },
+        {
+          "path": "postfiles",
+          "type": "property",
+          "line": 165
+        },
+        {
+          "path": "previousRecord",
+          "type": "method",
+          "line": 67
+        },
+        {
+          "path": "see_active",
+          "type": "property",
+          "line": 159
+        },
+        {
+          "path": "see_metodos",
+          "type": "property",
+          "line": 160
+        },
+        {
+          "path": "see_type",
+          "type": "property",
+          "line": 161
+        },
+        {
+          "path": "setDadosConsultar",
+          "type": "method",
+          "line": 60
+        },
+        {
+          "path": "setDadosConsultarDelItens",
+          "type": "property",
+          "line": 74
+        },
+        {
+          "path": "setDadosFiltro",
+          "type": "method",
+          "line": 56
+        },
+        {
+          "path": "setDadosIncluir",
+          "type": "method",
+          "line": 59
+        },
+        {
+          "path": "setFactoryPrincipal",
+          "type": "method",
+          "line": 41
+        },
+        {
+          "path": "setNewJobAll",
+          "type": "method",
+          "line": 40
+        },
+        {
+          "path": "tabela_height",
+          "type": "method",
+          "line": 173
+        },
+        {
+          "path": "url_consultar",
+          "type": "property",
+          "line": 162
+        },
+        {
+          "path": "url_excluir",
+          "type": "property",
+          "line": 164
+        },
+        {
+          "path": "url_gravar",
+          "type": "property",
+          "line": 163
+        },
+        {
+          "path": "validarVisualizar",
+          "type": "method",
+          "line": 65
+        },
+        {
+          "path": "visualizar",
+          "type": "method",
+          "line": 51
+        }
+      ],
       "lines": 2363,
       "methods": [
         "CheckSelect",
@@ -993,8 +5398,271 @@
     },
     "FluxoOperacional.js": {
       "factory": "FluxoOperacional",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$parse",
+        "$rootScope",
+        "$compile",
+        "$timeout",
+        "TabelaJS",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "ARGS",
+          "type": "property",
+          "line": 183
+        },
+        {
+          "path": "DADOS",
+          "type": "property",
+          "line": 182
+        },
+        {
+          "path": "FILTRO",
+          "type": "property",
+          "line": 184
+        },
+        {
+          "path": "FILTRO_DADOS",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "HISTORICO",
+          "type": "property",
+          "line": 147
+        },
+        {
+          "path": "HISTORICO.BACKUP_DADOS",
+          "type": "property",
+          "line": 152
+        },
+        {
+          "path": "HISTORICO.DADOS",
+          "type": "property",
+          "line": 151
+        },
+        {
+          "path": "HISTORICO.SELECTED",
+          "type": "property",
+          "line": 150
+        },
+        {
+          "path": "HISTORICO.consultar",
+          "type": "property",
+          "line": 149
+        },
+        {
+          "path": "HISTORICO.visualizar",
+          "type": "method",
+          "line": 148
+        },
+        {
+          "path": "PANEL_SOLICITACOES_ABERTO",
+          "type": "property",
+          "line": 386
+        },
+        {
+          "path": "Tabela",
+          "type": "property",
+          "line": 41
+        },
+        {
+          "path": "Tabela2",
+          "type": "property",
+          "line": 154
+        },
+        {
+          "path": "TabelaFluxoOperacional",
+          "type": "property",
+          "line": 43
+        },
+        {
+          "path": "TabelaHistorico",
+          "type": "property",
+          "line": 156
+        },
+        {
+          "path": "_button",
+          "type": "property",
+          "line": 226
+        },
+        {
+          "path": "_button_attr",
+          "type": "property",
+          "line": 221
+        },
+        {
+          "path": "_button_historico_attr",
+          "type": "property",
+          "line": 224
+        },
+        {
+          "path": "_button_progress_attr",
+          "type": "property",
+          "line": 223
+        },
+        {
+          "path": "_controller",
+          "type": "method",
+          "line": 231
+        },
+        {
+          "path": "_modal",
+          "type": "method",
+          "line": 227
+        },
+        {
+          "path": "_modal_historico",
+          "type": "method",
+          "line": 229
+        },
+        {
+          "path": "_modal_login",
+          "type": "method",
+          "line": 228
+        },
+        {
+          "path": "_modal_motivo",
+          "type": "method",
+          "line": 230
+        },
+        {
+          "path": "_object",
+          "type": "property",
+          "line": 27
+        },
+        {
+          "path": "_object_historico",
+          "type": "property",
+          "line": 33
+        },
+        {
+          "path": "atalhoValidarUsuario",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "changePainel",
+          "type": "method",
+          "line": 387
+        },
+        {
+          "path": "checkPainel",
+          "type": "method",
+          "line": 397
+        },
+        {
+          "path": "consultarHistorico",
+          "type": "property",
+          "line": 36
+        },
+        {
+          "path": "consultarProgresso",
+          "type": "property",
+          "line": 35
+        },
+        {
+          "path": "executando_operacao",
+          "type": "property",
+          "line": 40
+        },
+        {
+          "path": "executar",
+          "type": "property",
+          "line": 34
+        },
+        {
+          "path": "getArgs",
+          "type": "method",
+          "line": 568
+        },
+        {
+          "path": "html",
+          "type": "method",
+          "line": 833
+        },
+        {
+          "path": "html_historico",
+          "type": "method",
+          "line": 1010
+        },
+        {
+          "path": "html_login",
+          "type": "method",
+          "line": 936
+        },
+        {
+          "path": "html_motivo",
+          "type": "method",
+          "line": 1071
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 185
+        },
+        {
+          "path": "limparParaEnvio",
+          "type": "method",
+          "line": 191
+        },
+        {
+          "path": "opcaoAprovar",
+          "type": "method",
+          "line": 359
+        },
+        {
+          "path": "opcaoRecusar",
+          "type": "method",
+          "line": 365
+        },
+        {
+          "path": "opcaoVerMotivo",
+          "type": "method",
+          "line": 379
+        },
+        {
+          "path": "opcaoVoltar",
+          "type": "method",
+          "line": 372
+        },
+        {
+          "path": "processarValidacaoJavascript",
+          "type": "method",
+          "line": 239
+        },
+        {
+          "path": "tabela2_id",
+          "type": "property",
+          "line": 155
+        },
+        {
+          "path": "tabela_id",
+          "type": "property",
+          "line": 42
+        },
+        {
+          "path": "validarOpcao",
+          "type": "method",
+          "line": 407
+        },
+        {
+          "path": "validarUsuario",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "visualizar",
+          "type": "method",
+          "line": 186
+        }
+      ],
       "lines": 1132,
       "methods": [
+        "HISTORICO.visualizar",
         "_controller",
         "_modal",
         "_modal_historico",
@@ -1002,6 +5670,11 @@
         "_modal_motivo",
         "changePainel",
         "checkPainel",
+        "getArgs",
+        "html",
+        "html_historico",
+        "html_login",
+        "html_motivo",
         "limparParaEnvio",
         "opcaoAprovar",
         "opcaoRecusar",
@@ -1017,6 +5690,10 @@
         "FILTRO",
         "FILTRO_DADOS",
         "HISTORICO",
+        "HISTORICO.BACKUP_DADOS",
+        "HISTORICO.DADOS",
+        "HISTORICO.SELECTED",
+        "HISTORICO.consultar",
         "PANEL_SOLICITACOES_ABERTO",
         "Tabela",
         "Tabela2",
@@ -1039,17 +5716,116 @@
         "validarUsuario"
       ],
       "counts": {
-        "methods": 15,
-        "properties": 25,
-        "publicEntries": 40
+        "methods": 21,
+        "properties": 29,
+        "publicEntries": 50
       }
     },
     "Historico.js": {
       "factory": "Historico",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$parse",
+        "$rootScope",
+        "$compile",
+        "$timeout",
+        "TabelaJS",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "ARGS",
+          "type": "property",
+          "line": 65
+        },
+        {
+          "path": "DADOS",
+          "type": "property",
+          "line": 64
+        },
+        {
+          "path": "FILTRO",
+          "type": "property",
+          "line": 66
+        },
+        {
+          "path": "FILTRO_DADOS",
+          "type": "property",
+          "line": 35
+        },
+        {
+          "path": "Tabela",
+          "type": "property",
+          "line": 36
+        },
+        {
+          "path": "TabelaHistorico",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "_button",
+          "type": "property",
+          "line": 70
+        },
+        {
+          "path": "_button_attr",
+          "type": "property",
+          "line": 69
+        },
+        {
+          "path": "_controller",
+          "type": "method",
+          "line": 72
+        },
+        {
+          "path": "_modal",
+          "type": "method",
+          "line": 71
+        },
+        {
+          "path": "_object",
+          "type": "property",
+          "line": 27
+        },
+        {
+          "path": "consultar",
+          "type": "property",
+          "line": 33
+        },
+        {
+          "path": "getArgs",
+          "type": "method",
+          "line": 141
+        },
+        {
+          "path": "getHistorico",
+          "type": "property",
+          "line": 34
+        },
+        {
+          "path": "html",
+          "type": "method",
+          "line": 224
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 67
+        },
+        {
+          "path": "tabela_id",
+          "type": "property",
+          "line": 37
+        }
+      ],
       "lines": 291,
       "methods": [
         "_controller",
-        "_modal"
+        "_modal",
+        "getArgs",
+        "html"
       ],
       "properties": [
         "ARGS",
@@ -1067,13 +5843,192 @@
         "tabela_id"
       ],
       "counts": {
-        "methods": 2,
+        "methods": 4,
         "properties": 13,
-        "publicEntries": 15
+        "publicEntries": 17
       }
     },
     "ImportarArquivos.js": {
       "factory": "ImportarArquivos",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "Confirmacao",
+        "TabelaJS"
+      ],
+      "entries": [
+        {
+          "path": "COLUNAS",
+          "type": "property",
+          "line": 41
+        },
+        {
+          "path": "Confirmacao",
+          "type": "property",
+          "line": 31
+        },
+        {
+          "path": "Confirme",
+          "type": "property",
+          "line": 32
+        },
+        {
+          "path": "INFO",
+          "type": "property",
+          "line": 43
+        },
+        {
+          "path": "INFO.EXT",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "INFO.LEGEND",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "INFO.TITULO",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "SELECTED",
+          "type": "property",
+          "line": 34
+        },
+        {
+          "path": "SELECTED.ARRAY_CABECALHO_CSV",
+          "type": "property",
+          "line": 35
+        },
+        {
+          "path": "SELECTED.ARRAY_DADOS_CSV",
+          "type": "property",
+          "line": 36
+        },
+        {
+          "path": "SELECTED.CABECALHO_ARQUIVO",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "SELECTED.HABILITA_ROWS",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "cancelar1",
+          "type": "method",
+          "line": 57
+        },
+        {
+          "path": "cancelar2",
+          "type": "method",
+          "line": 58
+        },
+        {
+          "path": "changeCabecalhoFile",
+          "type": "method",
+          "line": 54
+        },
+        {
+          "path": "confirmar",
+          "type": "method",
+          "line": 65
+        },
+        {
+          "path": "formatData",
+          "type": "method",
+          "line": 61
+        },
+        {
+          "path": "importar",
+          "type": "method",
+          "line": 56
+        },
+        {
+          "path": "iniciar",
+          "type": "method",
+          "line": 59
+        },
+        {
+          "path": "init",
+          "type": "method",
+          "line": 55
+        },
+        {
+          "path": "loadFileConvert",
+          "type": "method",
+          "line": 67
+        },
+        {
+          "path": "loadHeaderAll",
+          "type": "method",
+          "line": 52
+        },
+        {
+          "path": "loadHeaderCsv",
+          "type": "method",
+          "line": 51
+        },
+        {
+          "path": "loadRows",
+          "type": "method",
+          "line": 53
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 70
+        },
+        {
+          "path": "montarTabela",
+          "type": "method",
+          "line": 66
+        },
+        {
+          "path": "postData",
+          "type": "method",
+          "line": 64
+        },
+        {
+          "path": "selectedFile",
+          "type": "method",
+          "line": 49
+        },
+        {
+          "path": "selectedFile2",
+          "type": "method",
+          "line": 50
+        },
+        {
+          "path": "selectedSeparator",
+          "type": "method",
+          "line": 68
+        },
+        {
+          "path": "setType",
+          "type": "method",
+          "line": 60
+        },
+        {
+          "path": "validarCampos",
+          "type": "method",
+          "line": 63
+        },
+        {
+          "path": "validarDados",
+          "type": "method",
+          "line": 62
+        }
+      ],
       "lines": 895,
       "methods": [
         "cancelar1",
@@ -1102,17 +6057,347 @@
         "Confirmacao",
         "Confirme",
         "INFO",
+        "INFO.EXT",
+        "INFO.LEGEND",
+        "INFO.TITULO",
         "SELECTED",
+        "SELECTED.ARRAY_CABECALHO_CSV",
+        "SELECTED.ARRAY_DADOS_CSV",
+        "SELECTED.CABECALHO_ARQUIVO",
+        "SELECTED.HABILITA_ROWS",
         "model"
       ],
       "counts": {
         "methods": 20,
-        "properties": 6,
-        "publicEntries": 26
+        "properties": 13,
+        "publicEntries": 33
       }
     },
     "InputJS.js": {
       "factory": "InputJS",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "AbrirLista",
+          "type": "method",
+          "line": 311
+        },
+        {
+          "path": "BACKUP",
+          "type": "property",
+          "line": 75
+        },
+        {
+          "path": "CalcWidthLista",
+          "type": "method",
+          "line": 145
+        },
+        {
+          "path": "CheckDados",
+          "type": "method",
+          "line": 181
+        },
+        {
+          "path": "DADOS",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "DADOS_RENDER",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "FILTRO",
+          "type": "property",
+          "line": 69
+        },
+        {
+          "path": "GeraHtml",
+          "type": "method",
+          "line": 232
+        },
+        {
+          "path": "HEIGHT",
+          "type": "property",
+          "line": 72
+        },
+        {
+          "path": "ID",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "MAX_HEIGHT",
+          "type": "property",
+          "line": 73
+        },
+        {
+          "path": "ORDER_BY",
+          "type": "property",
+          "line": 70
+        },
+        {
+          "path": "SELECTED",
+          "type": "property",
+          "line": 74
+        },
+        {
+          "path": "WIDTH",
+          "type": "property",
+          "line": 71
+        },
+        {
+          "path": "alterar",
+          "type": "method",
+          "line": 98
+        },
+        {
+          "path": "apagar",
+          "type": "method",
+          "line": 131
+        },
+        {
+          "path": "atalhos",
+          "type": "method",
+          "line": 363
+        },
+        {
+          "path": "atalhosFiltro",
+          "type": "method",
+          "line": 394
+        },
+        {
+          "path": "atalhosLista",
+          "type": "method",
+          "line": 427
+        },
+        {
+          "path": "bloquear",
+          "type": "method",
+          "line": 139
+        },
+        {
+          "path": "campos_filtro",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "closeLista",
+          "type": "method",
+          "line": 285
+        },
+        {
+          "path": "close_event",
+          "type": "property",
+          "line": 49
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 475
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 41
+        },
+        {
+          "path": "console",
+          "type": "method",
+          "line": 212
+        },
+        {
+          "path": "dados_consultados",
+          "type": "property",
+          "line": 55
+        },
+        {
+          "path": "default_input",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "filtro",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "filtro_visible",
+          "type": "property",
+          "line": 60
+        },
+        {
+          "path": "findInList",
+          "type": "method",
+          "line": 107
+        },
+        {
+          "path": "getCampo",
+          "type": "method",
+          "line": 78
+        },
+        {
+          "path": "getHtml",
+          "type": "method",
+          "line": 235
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 37
+        },
+        {
+          "path": "input_id",
+          "type": "property",
+          "line": 40
+        },
+        {
+          "path": "input_visible",
+          "type": "property",
+          "line": 51
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 474
+        },
+        {
+          "path": "lista_visivel",
+          "type": "property",
+          "line": 54
+        },
+        {
+          "path": "margin_left",
+          "type": "property",
+          "line": 58
+        },
+        {
+          "path": "merge",
+          "type": "method",
+          "line": 216
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 42
+        },
+        {
+          "path": "model_selected",
+          "type": "property",
+          "line": 57
+        },
+        {
+          "path": "onBlur",
+          "type": "method",
+          "line": 128
+        },
+        {
+          "path": "onClear",
+          "type": "property",
+          "line": 77
+        },
+        {
+          "path": "onSelect",
+          "type": "property",
+          "line": 76
+        },
+        {
+          "path": "open_list",
+          "type": "property",
+          "line": 52
+        },
+        {
+          "path": "option",
+          "type": "property",
+          "line": 61
+        },
+        {
+          "path": "option.disabled",
+          "type": "property",
+          "line": 64
+        },
+        {
+          "path": "option.filtros",
+          "type": "property",
+          "line": 67
+        },
+        {
+          "path": "option.input_disabled",
+          "type": "property",
+          "line": 63
+        },
+        {
+          "path": "option.item_selected",
+          "type": "property",
+          "line": 62
+        },
+        {
+          "path": "option.maxlength",
+          "type": "property",
+          "line": 66
+        },
+        {
+          "path": "option.required",
+          "type": "property",
+          "line": 65
+        },
+        {
+          "path": "restore",
+          "type": "method",
+          "line": 102
+        },
+        {
+          "path": "setChoosen",
+          "type": "method",
+          "line": 170
+        },
+        {
+          "path": "setFocusInput",
+          "type": "method",
+          "line": 157
+        },
+        {
+          "path": "setSelected",
+          "type": "method",
+          "line": 162
+        },
+        {
+          "path": "status_visible",
+          "type": "property",
+          "line": 50
+        },
+        {
+          "path": "tamanho_setado",
+          "type": "property",
+          "line": 56
+        },
+        {
+          "path": "titulo",
+          "type": "property",
+          "line": 43
+        },
+        {
+          "path": "total_visible",
+          "type": "property",
+          "line": 53
+        },
+        {
+          "path": "zoom",
+          "type": "property",
+          "line": 45
+        }
+      ],
       "lines": 526,
       "methods": [
         "AbrirLista",
@@ -1188,15 +6473,707 @@
     },
     "RFID.js": {
       "factory": "RFID",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "gScope"
+      ],
+      "entries": [
+        {
+          "path": "BIPAGEM_INVERSA",
+          "type": "property",
+          "line": 397
+        },
+        {
+          "path": "CONFERENCIA",
+          "type": "property",
+          "line": 391
+        },
+        {
+          "path": "CONF_COMPLETA",
+          "type": "property",
+          "line": 392
+        },
+        {
+          "path": "DADOS_ENVIAR",
+          "type": "property",
+          "line": 47
+        },
+        {
+          "path": "DADOS_EPC",
+          "type": "property",
+          "line": 777
+        },
+        {
+          "path": "EPC_SIMPLIFICADO",
+          "type": "property",
+          "line": 395
+        },
+        {
+          "path": "EXIBIR_BIPAGEM_INVERSA",
+          "type": "property",
+          "line": 407
+        },
+        {
+          "path": "EXIBIR_DESCRICAO",
+          "type": "property",
+          "line": 398
+        },
+        {
+          "path": "INFO_PDV",
+          "type": "property",
+          "line": 411
+        },
+        {
+          "path": "INFO_PEDIDO",
+          "type": "property",
+          "line": 410
+        },
+        {
+          "path": "ITENS_ERRO_LISTA",
+          "type": "property",
+          "line": 766
+        },
+        {
+          "path": "ITENS_INCLUIR",
+          "type": "property",
+          "line": 389
+        },
+        {
+          "path": "ITENS_LISTA",
+          "type": "property",
+          "line": 390
+        },
+        {
+          "path": "LOTE",
+          "type": "property",
+          "line": 30
+        },
+        {
+          "path": "MOSTRANDO_ERRO",
+          "type": "property",
+          "line": 48
+        },
+        {
+          "path": "PRECO_PDV",
+          "type": "property",
+          "line": 409
+        },
+        {
+          "path": "QUANTIDADE_SIMPLIFICADA",
+          "type": "property",
+          "line": 605
+        },
+        {
+          "path": "QUANTIDADE_TOTAL",
+          "type": "property",
+          "line": 400
+        },
+        {
+          "path": "QUANTIDADE_TOTAL_CONFERIDA",
+          "type": "property",
+          "line": 402
+        },
+        {
+          "path": "QUANTIDADE_TOTAL_CONFERIR",
+          "type": "property",
+          "line": 403
+        },
+        {
+          "path": "QUANTIDADE_TOTAL_ERROS",
+          "type": "property",
+          "line": 767
+        },
+        {
+          "path": "QUANTIDADE_TOTAL_ITENS",
+          "type": "property",
+          "line": 401
+        },
+        {
+          "path": "SEND",
+          "type": "property",
+          "line": 675
+        },
+        {
+          "path": "STATUS_RFID",
+          "type": "property",
+          "line": 46
+        },
+        {
+          "path": "TIPO_SOLUCAO_RFID",
+          "type": "property",
+          "line": 45
+        },
+        {
+          "path": "VISUALIZAR_EST_DISPONIVEL",
+          "type": "property",
+          "line": 406
+        },
+        {
+          "path": "VISUALIZAR_LOTE",
+          "type": "property",
+          "line": 405
+        },
+        {
+          "path": "VISUALIZAR_VALOR_UNITARIO",
+          "type": "property",
+          "line": 408
+        },
+        {
+          "path": "ZONAS_LEITURAS",
+          "type": "property",
+          "line": 43
+        },
+        {
+          "path": "ZONA_LEITURA_ID",
+          "type": "property",
+          "line": 44
+        },
+        {
+          "path": "addConfirmeError",
+          "type": "method",
+          "line": 61
+        },
+        {
+          "path": "audioAlert",
+          "type": "property",
+          "line": 60
+        },
+        {
+          "path": "configuracao",
+          "type": "property",
+          "line": 38
+        },
+        {
+          "path": "configurar",
+          "type": "method",
+          "line": 50
+        },
+        {
+          "path": "dividir",
+          "type": "method",
+          "line": 75
+        },
+        {
+          "path": "epcAvulso",
+          "type": "property",
+          "line": 343
+        },
+        {
+          "path": "epcAvulso.AbrirModalErro",
+          "type": "method",
+          "line": 765
+        },
+        {
+          "path": "epcAvulso.AvaliarEPC",
+          "type": "method",
+          "line": 522
+        },
+        {
+          "path": "epcAvulso.BIPAGEM_INVERSA",
+          "type": "property",
+          "line": 347
+        },
+        {
+          "path": "epcAvulso.CONFERENCIA",
+          "type": "property",
+          "line": 353
+        },
+        {
+          "path": "epcAvulso.EPC_SIMPLIFICADO",
+          "type": "property",
+          "line": 346
+        },
+        {
+          "path": "epcAvulso.ESTABELECIMENTO_ID",
+          "type": "property",
+          "line": 363
+        },
+        {
+          "path": "epcAvulso.EXIBIR_BIPAGEM_INVERSA",
+          "type": "property",
+          "line": 351
+        },
+        {
+          "path": "epcAvulso.EXIBIR_DESCRICAO",
+          "type": "property",
+          "line": 348
+        },
+        {
+          "path": "epcAvulso.ITENS_INCLUIR",
+          "type": "property",
+          "line": 355
+        },
+        {
+          "path": "epcAvulso.ITENS_LISTA",
+          "type": "property",
+          "line": 356
+        },
+        {
+          "path": "epcAvulso.LOCALIZACAO_ID",
+          "type": "property",
+          "line": 362
+        },
+        {
+          "path": "epcAvulso.LOTE",
+          "type": "property",
+          "line": 357
+        },
+        {
+          "path": "epcAvulso.PERFIL_PEDIDO",
+          "type": "property",
+          "line": 365
+        },
+        {
+          "path": "epcAvulso.PRECO_PDV",
+          "type": "property",
+          "line": 354
+        },
+        {
+          "path": "epcAvulso.QUANTIDADE_SIMPLIFICADA",
+          "type": "property",
+          "line": 345
+        },
+        {
+          "path": "epcAvulso.QUANTIDADE_TOTAL",
+          "type": "property",
+          "line": 358
+        },
+        {
+          "path": "epcAvulso.QUANTIDADE_TOTAL_CONFERIDA",
+          "type": "property",
+          "line": 360
+        },
+        {
+          "path": "epcAvulso.QUANTIDADE_TOTAL_CONFERIR",
+          "type": "property",
+          "line": 361
+        },
+        {
+          "path": "epcAvulso.QUANTIDADE_TOTAL_ITENS",
+          "type": "property",
+          "line": 359
+        },
+        {
+          "path": "epcAvulso.SEND",
+          "type": "property",
+          "line": 366
+        },
+        {
+          "path": "epcAvulso.TABELA_PRECO_ID",
+          "type": "property",
+          "line": 364
+        },
+        {
+          "path": "epcAvulso.VISUALIZAR_EST_DISPONIVEL",
+          "type": "property",
+          "line": 349
+        },
+        {
+          "path": "epcAvulso.VISUALIZAR_LOTE",
+          "type": "property",
+          "line": 352
+        },
+        {
+          "path": "epcAvulso.VISUALIZAR_VALOR_UNITARIO",
+          "type": "property",
+          "line": 350
+        },
+        {
+          "path": "epcAvulso.addListaItens",
+          "type": "method",
+          "line": 561
+        },
+        {
+          "path": "epcAvulso.consultarListaProdutoEpc",
+          "type": "method",
+          "line": 724
+        },
+        {
+          "path": "epcAvulso.consultarProdutoEpc",
+          "type": "method",
+          "line": 696
+        },
+        {
+          "path": "epcAvulso.excluir",
+          "type": "method",
+          "line": 502
+        },
+        {
+          "path": "epcAvulso.fechar",
+          "type": "method",
+          "line": 496
+        },
+        {
+          "path": "epcAvulso.fecharErro",
+          "type": "method",
+          "line": 499
+        },
+        {
+          "path": "epcAvulso.focus",
+          "type": "method",
+          "line": 367
+        },
+        {
+          "path": "epcAvulso.getConfiguracao",
+          "type": "method",
+          "line": 372
+        },
+        {
+          "path": "epcAvulso.getRequest",
+          "type": "method",
+          "line": 674
+        },
+        {
+          "path": "epcAvulso.gravar",
+          "type": "method",
+          "line": 451
+        },
+        {
+          "path": "epcAvulso.iniciar",
+          "type": "method",
+          "line": 376
+        },
+        {
+          "path": "epcAvulso.jaNaLista",
+          "type": "method",
+          "line": 552
+        },
+        {
+          "path": "epcAvulso.onAddItens",
+          "type": "method",
+          "line": 441
+        },
+        {
+          "path": "epcAvulso.onRemoverItens",
+          "type": "method",
+          "line": 446
+        },
+        {
+          "path": "epcAvulso.that",
+          "type": "property",
+          "line": 344
+        },
+        {
+          "path": "epcAvulso.validarItemConferencia",
+          "type": "method",
+          "line": 636
+        },
+        {
+          "path": "epcAvulso.validarItemExcluir",
+          "type": "method",
+          "line": 670
+        },
+        {
+          "path": "epcAvulso.validarItemGravar",
+          "type": "method",
+          "line": 662
+        },
+        {
+          "path": "epcAvulso.validarItemIncluir",
+          "type": "method",
+          "line": 666
+        },
+        {
+          "path": "epcAvulso.verListaEPC",
+          "type": "method",
+          "line": 775
+        },
+        {
+          "path": "hideModalErroLeitura",
+          "type": "method",
+          "line": 55
+        },
+        {
+          "path": "hideModalInventario",
+          "type": "method",
+          "line": 57
+        },
+        {
+          "path": "hideModalLeitura",
+          "type": "method",
+          "line": 53
+        },
+        {
+          "path": "listarZonas",
+          "type": "method",
+          "line": 51
+        },
+        {
+          "path": "modal_erro_leitura",
+          "type": "property",
+          "line": 39
+        },
+        {
+          "path": "modal_erro_leitura.fechar",
+          "type": "method",
+          "line": 39
+        },
+        {
+          "path": "modal_inventario",
+          "type": "property",
+          "line": 41
+        },
+        {
+          "path": "modal_inventario.fechar",
+          "type": "method",
+          "line": 41
+        },
+        {
+          "path": "modal_leitura",
+          "type": "property",
+          "line": 40
+        },
+        {
+          "path": "modal_leitura.fechar",
+          "type": "method",
+          "line": 40
+        },
+        {
+          "path": "multiplicar",
+          "type": "method",
+          "line": 81
+        },
+        {
+          "path": "onSetItens",
+          "type": "method",
+          "line": 87
+        },
+        {
+          "path": "requestExc",
+          "type": "method",
+          "line": 32
+        },
+        {
+          "path": "rfid",
+          "type": "property",
+          "line": 31
+        },
+        {
+          "path": "server",
+          "type": "property",
+          "line": 29
+        },
+        {
+          "path": "setDados",
+          "type": "method",
+          "line": 58
+        },
+        {
+          "path": "showModalErro",
+          "type": "method",
+          "line": 54
+        },
+        {
+          "path": "showModalInventario",
+          "type": "method",
+          "line": 56
+        },
+        {
+          "path": "showModalLeitura",
+          "type": "method",
+          "line": 52
+        },
+        {
+          "path": "sistema_mascara_ean",
+          "type": "property",
+          "line": 35
+        },
+        {
+          "path": "somar",
+          "type": "method",
+          "line": 63
+        },
+        {
+          "path": "subtrair",
+          "type": "method",
+          "line": 69
+        },
+        {
+          "path": "tocarAudio",
+          "type": "method",
+          "line": 59
+        },
+        {
+          "path": "type_list",
+          "type": "property",
+          "line": 89
+        },
+        {
+          "path": "type_list[0].carregarItens",
+          "type": "method",
+          "line": 114
+        },
+        {
+          "path": "type_list[0].id",
+          "type": "property",
+          "line": 90
+        },
+        {
+          "path": "type_list[0].iniciarInventario",
+          "type": "method",
+          "line": 209
+        },
+        {
+          "path": "type_list[0].iniciar_leitura",
+          "type": "method",
+          "line": 134
+        },
+        {
+          "path": "type_list[0].iniciar_zona_leitura",
+          "type": "method",
+          "line": 91
+        },
+        {
+          "path": "type_list[0].itensInventario",
+          "type": "method",
+          "line": 184
+        },
+        {
+          "path": "type_list[0].loadEPC",
+          "type": "method",
+          "line": 124
+        },
+        {
+          "path": "type_list[0].nome",
+          "type": "property",
+          "line": 90
+        },
+        {
+          "path": "type_list[0].parar_leitura",
+          "type": "method",
+          "line": 176
+        },
+        {
+          "path": "type_list[0].parar_zona_leitura",
+          "type": "method",
+          "line": 103
+        },
+        {
+          "path": "type_list[0].showErro",
+          "type": "method",
+          "line": 280
+        },
+        {
+          "path": "type_list[0].tipo",
+          "type": "property",
+          "line": 90
+        },
+        {
+          "path": "type_list[1].carregarItens",
+          "type": "method",
+          "line": 312
+        },
+        {
+          "path": "type_list[1].id",
+          "type": "property",
+          "line": 285
+        },
+        {
+          "path": "type_list[1].iniciarInventario",
+          "type": "method",
+          "line": 334
+        },
+        {
+          "path": "type_list[1].iniciar_leitura",
+          "type": "method",
+          "line": 325
+        },
+        {
+          "path": "type_list[1].iniciar_zona_leitura",
+          "type": "method",
+          "line": 306
+        },
+        {
+          "path": "type_list[1].itensInventario",
+          "type": "method",
+          "line": 331
+        },
+        {
+          "path": "type_list[1].loadEPC",
+          "type": "method",
+          "line": 315
+        },
+        {
+          "path": "type_list[1].login",
+          "type": "method",
+          "line": 287
+        },
+        {
+          "path": "type_list[1].nome",
+          "type": "property",
+          "line": 285
+        },
+        {
+          "path": "type_list[1].parar_leitura",
+          "type": "method",
+          "line": 328
+        },
+        {
+          "path": "type_list[1].parar_zona_leitura",
+          "type": "method",
+          "line": 309
+        },
+        {
+          "path": "type_list[1].showErro",
+          "type": "method",
+          "line": 337
+        },
+        {
+          "path": "type_list[1].tipo",
+          "type": "property",
+          "line": 285
+        },
+        {
+          "path": "usar_gcweb_request",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "utiliza_epc_avulso",
+          "type": "property",
+          "line": 34
+        }
+      ],
       "lines": 1204,
       "methods": [
         "addConfirmeError",
         "configurar",
         "dividir",
+        "epcAvulso.AbrirModalErro",
+        "epcAvulso.AvaliarEPC",
+        "epcAvulso.addListaItens",
+        "epcAvulso.consultarListaProdutoEpc",
+        "epcAvulso.consultarProdutoEpc",
+        "epcAvulso.excluir",
+        "epcAvulso.fechar",
+        "epcAvulso.fecharErro",
+        "epcAvulso.focus",
+        "epcAvulso.getConfiguracao",
+        "epcAvulso.getRequest",
+        "epcAvulso.gravar",
+        "epcAvulso.iniciar",
+        "epcAvulso.jaNaLista",
+        "epcAvulso.onAddItens",
+        "epcAvulso.onRemoverItens",
+        "epcAvulso.validarItemConferencia",
+        "epcAvulso.validarItemExcluir",
+        "epcAvulso.validarItemGravar",
+        "epcAvulso.validarItemIncluir",
+        "epcAvulso.verListaEPC",
         "hideModalErroLeitura",
         "hideModalInventario",
         "hideModalLeitura",
         "listarZonas",
+        "modal_erro_leitura.fechar",
+        "modal_inventario.fechar",
+        "modal_leitura.fechar",
         "multiplicar",
         "onSetItens",
         "requestExc",
@@ -1206,7 +7183,26 @@
         "showModalLeitura",
         "somar",
         "subtrair",
-        "tocarAudio"
+        "tocarAudio",
+        "type_list[0].carregarItens",
+        "type_list[0].iniciarInventario",
+        "type_list[0].iniciar_leitura",
+        "type_list[0].iniciar_zona_leitura",
+        "type_list[0].itensInventario",
+        "type_list[0].loadEPC",
+        "type_list[0].parar_leitura",
+        "type_list[0].parar_zona_leitura",
+        "type_list[0].showErro",
+        "type_list[1].carregarItens",
+        "type_list[1].iniciarInventario",
+        "type_list[1].iniciar_leitura",
+        "type_list[1].iniciar_zona_leitura",
+        "type_list[1].itensInventario",
+        "type_list[1].loadEPC",
+        "type_list[1].login",
+        "type_list[1].parar_leitura",
+        "type_list[1].parar_zona_leitura",
+        "type_list[1].showErro"
       ],
       "properties": [
         "BIPAGEM_INVERSA",
@@ -1242,6 +7238,29 @@
         "audioAlert",
         "configuracao",
         "epcAvulso",
+        "epcAvulso.BIPAGEM_INVERSA",
+        "epcAvulso.CONFERENCIA",
+        "epcAvulso.EPC_SIMPLIFICADO",
+        "epcAvulso.ESTABELECIMENTO_ID",
+        "epcAvulso.EXIBIR_BIPAGEM_INVERSA",
+        "epcAvulso.EXIBIR_DESCRICAO",
+        "epcAvulso.ITENS_INCLUIR",
+        "epcAvulso.ITENS_LISTA",
+        "epcAvulso.LOCALIZACAO_ID",
+        "epcAvulso.LOTE",
+        "epcAvulso.PERFIL_PEDIDO",
+        "epcAvulso.PRECO_PDV",
+        "epcAvulso.QUANTIDADE_SIMPLIFICADA",
+        "epcAvulso.QUANTIDADE_TOTAL",
+        "epcAvulso.QUANTIDADE_TOTAL_CONFERIDA",
+        "epcAvulso.QUANTIDADE_TOTAL_CONFERIR",
+        "epcAvulso.QUANTIDADE_TOTAL_ITENS",
+        "epcAvulso.SEND",
+        "epcAvulso.TABELA_PRECO_ID",
+        "epcAvulso.VISUALIZAR_EST_DISPONIVEL",
+        "epcAvulso.VISUALIZAR_LOTE",
+        "epcAvulso.VISUALIZAR_VALOR_UNITARIO",
+        "epcAvulso.that",
         "modal_erro_leitura",
         "modal_inventario",
         "modal_leitura",
@@ -1249,17 +7268,83 @@
         "server",
         "sistema_mascara_ean",
         "type_list",
+        "type_list[0].id",
+        "type_list[0].nome",
+        "type_list[0].tipo",
+        "type_list[1].id",
+        "type_list[1].nome",
+        "type_list[1].tipo",
         "usar_gcweb_request",
         "utiliza_epc_avulso"
       ],
       "counts": {
-        "methods": 17,
-        "properties": 42,
-        "publicEntries": 59
+        "methods": 60,
+        "properties": 71,
+        "publicEntries": 131
       }
     },
     "SpeechRecognition.js": {
       "factory": "SpeechRecognition",
+      "dependencies": [
+        "$ajax",
+        "$q",
+        "$compile",
+        "Upload",
+        "$rootScope",
+        "$timeout"
+      ],
+      "entries": [
+        {
+          "path": "SpeechRecognitionObj",
+          "type": "property",
+          "line": 103
+        },
+        {
+          "path": "comandoManual",
+          "type": "method",
+          "line": 111
+        },
+        {
+          "path": "executando",
+          "type": "property",
+          "line": 102
+        },
+        {
+          "path": "iniciar",
+          "type": "method",
+          "line": 152
+        },
+        {
+          "path": "onend",
+          "type": "method",
+          "line": 145
+        },
+        {
+          "path": "onerror",
+          "type": "method",
+          "line": 136
+        },
+        {
+          "path": "onresult",
+          "type": "method",
+          "line": 115
+        },
+        {
+          "path": "onstart",
+          "type": "method",
+          "line": 104
+        },
+        {
+          "path": "tratarMensagem",
+          "type": "method",
+          "line": 178
+        },
+        {
+          "path": "valido",
+          "type": "property",
+          "line": 101
+        }
+      ],
       "lines": 238,
       "methods": [
         "comandoManual",
@@ -1283,6 +7368,28 @@
     },
     "TabelaHTML.js": {
       "factory": "TabelaHTML",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce"
+      ],
+      "entries": [
+        {
+          "path": "default_table",
+          "type": "property",
+          "line": 32
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 31
+        }
+      ],
       "lines": 53,
       "methods": [
         "getNew"
@@ -1298,6 +7405,1464 @@
     },
     "TabelaJS.js": {
       "factory": "TabelaJS",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce",
+        "TabelaHTML",
+        "gScope",
+        "Confirmacao",
+        "$interval",
+        "safeCompiler",
+        "MemoryCleaner"
+      ],
+      "entries": [
+        {
+          "path": "BACKUP_ID_ARR",
+          "type": "property",
+          "line": 332
+        },
+        {
+          "path": "BACKUP_STATUS",
+          "type": "property",
+          "line": 241
+        },
+        {
+          "path": "BACKUP_TABELA_ID_ARR",
+          "type": "property",
+          "line": 333
+        },
+        {
+          "path": "CABECALHO_CSV",
+          "type": "property",
+          "line": 242
+        },
+        {
+          "path": "CABECALHO_HABILITADO",
+          "type": "property",
+          "line": 245
+        },
+        {
+          "path": "COLUNAS",
+          "type": "property",
+          "line": 248
+        },
+        {
+          "path": "COLUNAS2",
+          "type": "property",
+          "line": 274
+        },
+        {
+          "path": "COLUNAS[0].ALIGN",
+          "type": "property",
+          "line": 253
+        },
+        {
+          "path": "COLUNAS[0].CAMPO",
+          "type": "property",
+          "line": 250
+        },
+        {
+          "path": "COLUNAS[0].CHAVE_COLUNA",
+          "type": "property",
+          "line": 259
+        },
+        {
+          "path": "COLUNAS[0].DESCRICAO",
+          "type": "property",
+          "line": 251
+        },
+        {
+          "path": "COLUNAS[0].ORDEM",
+          "type": "property",
+          "line": 257
+        },
+        {
+          "path": "COLUNAS[0].PARAM_CLASS_DIV",
+          "type": "property",
+          "line": 258
+        },
+        {
+          "path": "COLUNAS[0].SIZE",
+          "type": "property",
+          "line": 255
+        },
+        {
+          "path": "COLUNAS[0].STYLE",
+          "type": "property",
+          "line": 256
+        },
+        {
+          "path": "COLUNAS[0].TIPO",
+          "type": "property",
+          "line": 252
+        },
+        {
+          "path": "COLUNAS[0].VISIBLE",
+          "type": "property",
+          "line": 254
+        },
+        {
+          "path": "COLUNAS[1].ALIGN",
+          "type": "property",
+          "line": 265
+        },
+        {
+          "path": "COLUNAS[1].CAMPO",
+          "type": "property",
+          "line": 262
+        },
+        {
+          "path": "COLUNAS[1].CHAVE_COLUNA",
+          "type": "property",
+          "line": 271
+        },
+        {
+          "path": "COLUNAS[1].DESCRICAO",
+          "type": "property",
+          "line": 263
+        },
+        {
+          "path": "COLUNAS[1].ORDEM",
+          "type": "property",
+          "line": 269
+        },
+        {
+          "path": "COLUNAS[1].PARAM_CLASS_DIV",
+          "type": "property",
+          "line": 270
+        },
+        {
+          "path": "COLUNAS[1].SIZE",
+          "type": "property",
+          "line": 267
+        },
+        {
+          "path": "COLUNAS[1].STYLE",
+          "type": "property",
+          "line": 268
+        },
+        {
+          "path": "COLUNAS[1].TIPO",
+          "type": "property",
+          "line": 264
+        },
+        {
+          "path": "COLUNAS[1].VISIBLE",
+          "type": "property",
+          "line": 266
+        },
+        {
+          "path": "COLUNAS_FUNC",
+          "type": "property",
+          "line": 275
+        },
+        {
+          "path": "COLUNAS_REC",
+          "type": "property",
+          "line": 662
+        },
+        {
+          "path": "COLUNAS_RESTAURADAS",
+          "type": "property",
+          "line": 238
+        },
+        {
+          "path": "COUNTER_RDZ",
+          "type": "property",
+          "line": 4709
+        },
+        {
+          "path": "Confirmacao",
+          "type": "property",
+          "line": 247
+        },
+        {
+          "path": "DADOS",
+          "type": "property",
+          "line": 220
+        },
+        {
+          "path": "DADOS_AGRUPAMENTO",
+          "type": "property",
+          "line": 3701
+        },
+        {
+          "path": "DADOS_AGRUP_BKP",
+          "type": "property",
+          "line": 3702
+        },
+        {
+          "path": "DADOS_RENDER",
+          "type": "property",
+          "line": 221
+        },
+        {
+          "path": "DADOS_RENDER_FILTRADOS",
+          "type": "property",
+          "line": 222
+        },
+        {
+          "path": "DesmarcarItens",
+          "type": "method",
+          "line": 3126
+        },
+        {
+          "path": "EVENTOS_GERADOS",
+          "type": "property",
+          "line": 240
+        },
+        {
+          "path": "Executioner",
+          "type": "method",
+          "line": 6077
+        },
+        {
+          "path": "FILTRO",
+          "type": "property",
+          "line": 278
+        },
+        {
+          "path": "FILTRO_RENDER",
+          "type": "property",
+          "line": 227
+        },
+        {
+          "path": "FiltrarTabela",
+          "type": "method",
+          "line": 7343
+        },
+        {
+          "path": "GeraHtml",
+          "type": "method",
+          "line": 4434
+        },
+        {
+          "path": "HABILITA_COLUNAS_V_BTN",
+          "type": "property",
+          "line": 330
+        },
+        {
+          "path": "HEIGHT",
+          "type": "property",
+          "line": 282
+        },
+        {
+          "path": "ID",
+          "type": "property",
+          "line": 212
+        },
+        {
+          "path": "IMPRESSAO_RELATORIO",
+          "type": "property",
+          "line": 243
+        },
+        {
+          "path": "ITENS_GROUP",
+          "type": "property",
+          "line": 4708
+        },
+        {
+          "path": "InvertGroup",
+          "type": "method",
+          "line": 4710
+        },
+        {
+          "path": "MIN_HEIGHT",
+          "type": "property",
+          "line": 283
+        },
+        {
+          "path": "MODIFICAR_PAGINACAO",
+          "type": "property",
+          "line": 239
+        },
+        {
+          "path": "MarcarItens",
+          "type": "method",
+          "line": 3076
+        },
+        {
+          "path": "MarcarItensPerc",
+          "type": "method",
+          "line": 2922
+        },
+        {
+          "path": "MergeDados",
+          "type": "method",
+          "line": 4437
+        },
+        {
+          "path": "ModalOPT",
+          "type": "property",
+          "line": 2193
+        },
+        {
+          "path": "ModalOPT._modal",
+          "type": "property",
+          "line": 2374
+        },
+        {
+          "path": "ModalOPT.compile",
+          "type": "method",
+          "line": 2244
+        },
+        {
+          "path": "ModalOPT.destroy",
+          "type": "method",
+          "line": 2196
+        },
+        {
+          "path": "ModalOPT.father",
+          "type": "property",
+          "line": 2194
+        },
+        {
+          "path": "ModalOPT.focus",
+          "type": "method",
+          "line": 2375
+        },
+        {
+          "path": "ModalOPT.getHtml",
+          "type": "method",
+          "line": 2305
+        },
+        {
+          "path": "ModalOPT.hide",
+          "type": "method",
+          "line": 2412
+        },
+        {
+          "path": "ModalOPT.key_object_scop2",
+          "type": "property",
+          "line": 2195
+        },
+        {
+          "path": "ModalOPT.show",
+          "type": "method",
+          "line": 2378
+        },
+        {
+          "path": "NextPage",
+          "type": "method",
+          "line": 5809
+        },
+        {
+          "path": "NextPageAll",
+          "type": "method",
+          "line": 5671
+        },
+        {
+          "path": "OBSERVACAO_VISUAL_REL",
+          "type": "property",
+          "line": 244
+        },
+        {
+          "path": "ORDER_BY",
+          "type": "property",
+          "line": 280
+        },
+        {
+          "path": "OrderTabela",
+          "type": "method",
+          "line": 7187
+        },
+        {
+          "path": "PushGroup",
+          "type": "method",
+          "line": 4734
+        },
+        {
+          "path": "PushGroupPrint",
+          "type": "method",
+          "line": 4743
+        },
+        {
+          "path": "Resize",
+          "type": "method",
+          "line": 3181
+        },
+        {
+          "path": "ResizeMove",
+          "type": "method",
+          "line": 3188
+        },
+        {
+          "path": "ResizeUp",
+          "type": "method",
+          "line": 3195
+        },
+        {
+          "path": "SELECTED",
+          "type": "property",
+          "line": 285
+        },
+        {
+          "path": "STATUS",
+          "type": "property",
+          "line": 279
+        },
+        {
+          "path": "STYLE_TABELA",
+          "type": "property",
+          "line": 284
+        },
+        {
+          "path": "TotalTabela",
+          "type": "method",
+          "line": 6915
+        },
+        {
+          "path": "VER",
+          "type": "property",
+          "line": 231
+        },
+        {
+          "path": "WIDTH",
+          "type": "property",
+          "line": 281
+        },
+        {
+          "path": "ZoominItem",
+          "type": "method",
+          "line": 7352
+        },
+        {
+          "path": "ZoomoutItem",
+          "type": "method",
+          "line": 7370
+        },
+        {
+          "path": "_modal",
+          "type": "property",
+          "line": 2383
+        },
+        {
+          "path": "abrirDropdownColunas",
+          "type": "method",
+          "line": 4946
+        },
+        {
+          "path": "apagar",
+          "type": "method",
+          "line": 6056
+        },
+        {
+          "path": "aplicarOrdem",
+          "type": "method",
+          "line": 2473
+        },
+        {
+          "path": "array_numericos",
+          "type": "property",
+          "line": 320
+        },
+        {
+          "path": "atalho_enter",
+          "type": "method",
+          "line": 6219
+        },
+        {
+          "path": "backup_colunas",
+          "type": "property",
+          "line": 236
+        },
+        {
+          "path": "bkp_is_compile_eve",
+          "type": "property",
+          "line": 335
+        },
+        {
+          "path": "btn_excluir_filtro",
+          "type": "property",
+          "line": 288
+        },
+        {
+          "path": "btn_filtrar_registros",
+          "type": "property",
+          "line": 287
+        },
+        {
+          "path": "cabecalho_print",
+          "type": "property",
+          "line": 312
+        },
+        {
+          "path": "calcValor",
+          "type": "method",
+          "line": 4462
+        },
+        {
+          "path": "campos_filtro",
+          "type": "property",
+          "line": 223
+        },
+        {
+          "path": "cancelarOrdem",
+          "type": "method",
+          "line": 2630
+        },
+        {
+          "path": "checkTableVisibility",
+          "type": "method",
+          "line": 6808
+        },
+        {
+          "path": "check_list",
+          "type": "property",
+          "line": 304
+        },
+        {
+          "path": "clearCache",
+          "type": "method",
+          "line": 812
+        },
+        {
+          "path": "clearOrphanScopes",
+          "type": "method",
+          "line": 6484
+        },
+        {
+          "path": "clearTimer",
+          "type": "method",
+          "line": 6103
+        },
+        {
+          "path": "clickOrdem",
+          "type": "method",
+          "line": 2644
+        },
+        {
+          "path": "closeModalOPT",
+          "type": "method",
+          "line": 2454
+        },
+        {
+          "path": "col_pressed",
+          "type": "property",
+          "line": 305
+        },
+        {
+          "path": "coluna_gerada",
+          "type": "property",
+          "line": 289
+        },
+        {
+          "path": "colunas_originais",
+          "type": "property",
+          "line": 6411
+        },
+        {
+          "path": "compilado",
+          "type": "property",
+          "line": 331
+        },
+        {
+          "path": "compile",
+          "type": "method",
+          "line": 6542
+        },
+        {
+          "path": "compileDropdownColunas",
+          "type": "method",
+          "line": 4904
+        },
+        {
+          "path": "compile_print_html",
+          "type": "method",
+          "line": 6856
+        },
+        {
+          "path": "componente",
+          "type": "property",
+          "line": 215
+        },
+        {
+          "path": "consulta_pagina",
+          "type": "property",
+          "line": 298
+        },
+        {
+          "path": "consulta_qtd",
+          "type": "property",
+          "line": 299
+        },
+        {
+          "path": "countWatchers",
+          "type": "method",
+          "line": 6508
+        },
+        {
+          "path": "count_checked",
+          "type": "method",
+          "line": 6210
+        },
+        {
+          "path": "count_marcados",
+          "type": "method",
+          "line": 5957
+        },
+        {
+          "path": "counter_selected",
+          "type": "property",
+          "line": 300
+        },
+        {
+          "path": "csv_com_bom",
+          "type": "property",
+          "line": 1222
+        },
+        {
+          "path": "default_table",
+          "type": "property",
+          "line": 211
+        },
+        {
+          "path": "desabilitar_atalho_delete",
+          "type": "property",
+          "line": 6217
+        },
+        {
+          "path": "desabilitar_atalho_enter",
+          "type": "property",
+          "line": 6216
+        },
+        {
+          "path": "desabilitar_atalho_space",
+          "type": "property",
+          "line": 6218
+        },
+        {
+          "path": "descricoes",
+          "type": "property",
+          "line": 286
+        },
+        {
+          "path": "destroy",
+          "type": "method",
+          "line": 6414
+        },
+        {
+          "path": "disableTableCheckList",
+          "type": "method",
+          "line": 7505
+        },
+        {
+          "path": "disabled_tab_enter",
+          "type": "property",
+          "line": 311
+        },
+        {
+          "path": "dividir",
+          "type": "method",
+          "line": 4475
+        },
+        {
+          "path": "dragOrdem",
+          "type": "method",
+          "line": 2484
+        },
+        {
+          "path": "excluirFiltroTabela",
+          "type": "method",
+          "line": 2447
+        },
+        {
+          "path": "exportCsv",
+          "type": "method",
+          "line": 825
+        },
+        {
+          "path": "exportEmail",
+          "type": "method",
+          "line": 1000
+        },
+        {
+          "path": "exportHTML",
+          "type": "method",
+          "line": 737
+        },
+        {
+          "path": "exportHTML2",
+          "type": "method",
+          "line": 772
+        },
+        {
+          "path": "exportHtmlPDF",
+          "type": "method",
+          "line": 919
+        },
+        {
+          "path": "exportPDF",
+          "type": "method",
+          "line": 841
+        },
+        {
+          "path": "exportTXT",
+          "type": "method",
+          "line": 697
+        },
+        {
+          "path": "exportTo",
+          "type": "method",
+          "line": 1235
+        },
+        {
+          "path": "exportXls",
+          "type": "method",
+          "line": 715
+        },
+        {
+          "path": "fecha_menu",
+          "type": "method",
+          "line": 5950
+        },
+        {
+          "path": "filterObjectsByProps",
+          "type": "method",
+          "line": 2715
+        },
+        {
+          "path": "filtro",
+          "type": "property",
+          "line": 218
+        },
+        {
+          "path": "filtroOnChange",
+          "type": "method",
+          "line": 6039
+        },
+        {
+          "path": "filtroStatusOnChange",
+          "type": "method",
+          "line": 5988
+        },
+        {
+          "path": "filtro_status_v",
+          "type": "property",
+          "line": 308
+        },
+        {
+          "path": "filtro_status_v2",
+          "type": "property",
+          "line": 309
+        },
+        {
+          "path": "filtro_visible",
+          "type": "property",
+          "line": 237
+        },
+        {
+          "path": "fimCheckSelect",
+          "type": "method",
+          "line": 7496
+        },
+        {
+          "path": "fimCompilar",
+          "type": "method",
+          "line": 7499
+        },
+        {
+          "path": "fimcountmarcados",
+          "type": "property",
+          "line": 315
+        },
+        {
+          "path": "findOrphanScopes",
+          "type": "method",
+          "line": 6480
+        },
+        {
+          "path": "first",
+          "type": "method",
+          "line": 432
+        },
+        {
+          "path": "fixTable",
+          "type": "method",
+          "line": 789
+        },
+        {
+          "path": "fix_infinite_scroll",
+          "type": "property",
+          "line": 292
+        },
+        {
+          "path": "fixed_menu",
+          "type": "method",
+          "line": 5909
+        },
+        {
+          "path": "focus_checkbox",
+          "type": "method",
+          "line": 6186
+        },
+        {
+          "path": "format",
+          "type": "method",
+          "line": 556
+        },
+        {
+          "path": "funcao_lista",
+          "type": "method",
+          "line": 2587
+        },
+        {
+          "path": "generate_page",
+          "type": "method",
+          "line": 6331
+        },
+        {
+          "path": "gerar_gradiente",
+          "type": "method",
+          "line": 6367
+        },
+        {
+          "path": "getAccordion",
+          "type": "method",
+          "line": 4826
+        },
+        {
+          "path": "getAccordion2",
+          "type": "method",
+          "line": 4776
+        },
+        {
+          "path": "getAllScopes",
+          "type": "method",
+          "line": 6465
+        },
+        {
+          "path": "getCampo",
+          "type": "method",
+          "line": 3203
+        },
+        {
+          "path": "getCampoCP",
+          "type": "method",
+          "line": 3517
+        },
+        {
+          "path": "getClickAccordion",
+          "type": "method",
+          "line": 4888
+        },
+        {
+          "path": "getColuns",
+          "type": "method",
+          "line": 663
+        },
+        {
+          "path": "getDadosRDZ",
+          "type": "method",
+          "line": 4485
+        },
+        {
+          "path": "getDadosRender",
+          "type": "method",
+          "line": 4680
+        },
+        {
+          "path": "getHtml",
+          "type": "method",
+          "line": 4977
+        },
+        {
+          "path": "getHtmlS",
+          "type": "method",
+          "line": 1135
+        },
+        {
+          "path": "getMenuControle",
+          "type": "method",
+          "line": 2730
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 209
+        },
+        {
+          "path": "getPersistentVisible",
+          "type": "method",
+          "line": 2838
+        },
+        {
+          "path": "getTD",
+          "type": "method",
+          "line": 3874
+        },
+        {
+          "path": "getTD2",
+          "type": "method",
+          "line": 3703
+        },
+        {
+          "path": "getTegsCsv",
+          "type": "method",
+          "line": 1223
+        },
+        {
+          "path": "getValueNivel",
+          "type": "method",
+          "line": 3869
+        },
+        {
+          "path": "habilita_botao_next",
+          "type": "property",
+          "line": 302
+        },
+        {
+          "path": "habilita_botao_nextAll",
+          "type": "property",
+          "line": 303
+        },
+        {
+          "path": "habilitar_load_colunas",
+          "type": "property",
+          "line": 318
+        },
+        {
+          "path": "handleTableVisibility",
+          "type": "method",
+          "line": 6817
+        },
+        {
+          "path": "handleVisibilityChange",
+          "type": "method",
+          "line": 6827
+        },
+        {
+          "path": "html_total",
+          "type": "property",
+          "line": 224
+        },
+        {
+          "path": "impressao_inativa",
+          "type": "property",
+          "line": 225
+        },
+        {
+          "path": "imprimir",
+          "type": "method",
+          "line": 954
+        },
+        {
+          "path": "imprimirPDF",
+          "type": "method",
+          "line": 965
+        },
+        {
+          "path": "imprinting",
+          "type": "property",
+          "line": 290
+        },
+        {
+          "path": "infinite_end",
+          "type": "property",
+          "line": 293
+        },
+        {
+          "path": "infinite_scroll",
+          "type": "property",
+          "line": 291
+        },
+        {
+          "path": "input_visible",
+          "type": "property",
+          "line": 228
+        },
+        {
+          "path": "isMobile",
+          "type": "method",
+          "line": 4752
+        },
+        {
+          "path": "isMobileDevice",
+          "type": "method",
+          "line": 4758
+        },
+        {
+          "path": "isValid",
+          "type": "method",
+          "line": 549
+        },
+        {
+          "path": "is_compile_eve",
+          "type": "property",
+          "line": 334
+        },
+        {
+          "path": "item_status",
+          "type": "property",
+          "line": 326
+        },
+        {
+          "path": "item_status.DESCRICAO",
+          "type": "property",
+          "line": 328
+        },
+        {
+          "path": "item_status.VALOR",
+          "type": "property",
+          "line": 327
+        },
+        {
+          "path": "key_object_scop",
+          "type": "property",
+          "line": 6854
+        },
+        {
+          "path": "last",
+          "type": "method",
+          "line": 441
+        },
+        {
+          "path": "localStorage_lite",
+          "type": "property",
+          "line": 6413
+        },
+        {
+          "path": "marcar_perc_visible",
+          "type": "property",
+          "line": 246
+        },
+        {
+          "path": "marcar_todos",
+          "type": "property",
+          "line": 232
+        },
+        {
+          "path": "merge",
+          "type": "method",
+          "line": 4039
+        },
+        {
+          "path": "model",
+          "type": "property",
+          "line": 216
+        },
+        {
+          "path": "model_selected",
+          "type": "property",
+          "line": 235
+        },
+        {
+          "path": "montarMenuBtn3",
+          "type": "method",
+          "line": 3402
+        },
+        {
+          "path": "multiplicar",
+          "type": "method",
+          "line": 4480
+        },
+        {
+          "path": "next",
+          "type": "method",
+          "line": 336
+        },
+        {
+          "path": "nextReg",
+          "type": "method",
+          "line": 407
+        },
+        {
+          "path": "no_restore_print",
+          "type": "property",
+          "line": 6855
+        },
+        {
+          "path": "no_use_cache_tabela",
+          "type": "property",
+          "line": 6412
+        },
+        {
+          "path": "nonce",
+          "type": "property",
+          "line": 213
+        },
+        {
+          "path": "normalizarMenuBtn3",
+          "type": "method",
+          "line": 3365
+        },
+        {
+          "path": "not_focus_enter",
+          "type": "property",
+          "line": 310
+        },
+        {
+          "path": "number_format",
+          "type": "method",
+          "line": 512
+        },
+        {
+          "path": "onMarcar",
+          "type": "method",
+          "line": 2919
+        },
+        {
+          "path": "onMergeEnd",
+          "type": "property",
+          "line": 316
+        },
+        {
+          "path": "onScrollDown",
+          "type": "method",
+          "line": 6133
+        },
+        {
+          "path": "onScrollEnd",
+          "type": "method",
+          "line": 6080
+        },
+        {
+          "path": "onScrollUP",
+          "type": "method",
+          "line": 6090
+        },
+        {
+          "path": "opemEmailFile",
+          "type": "method",
+          "line": 1008
+        },
+        {
+          "path": "openModalOPT",
+          "type": "method",
+          "line": 2427
+        },
+        {
+          "path": "open_link",
+          "type": "method",
+          "line": 6384
+        },
+        {
+          "path": "operacao_merge_gravar",
+          "type": "property",
+          "line": 296
+        },
+        {
+          "path": "options_fixed",
+          "type": "property",
+          "line": 230
+        },
+        {
+          "path": "position_colunas2",
+          "type": "property",
+          "line": 276
+        },
+        {
+          "path": "position_colunas_func",
+          "type": "property",
+          "line": 277
+        },
+        {
+          "path": "prev_page",
+          "type": "method",
+          "line": 6358
+        },
+        {
+          "path": "previous",
+          "type": "method",
+          "line": 357
+        },
+        {
+          "path": "previousReg",
+          "type": "method",
+          "line": 380
+        },
+        {
+          "path": "printHtml",
+          "type": "method",
+          "line": 1635
+        },
+        {
+          "path": "print_end",
+          "type": "method",
+          "line": 2184
+        },
+        {
+          "path": "recalcularOrdenColunas",
+          "type": "method",
+          "line": 2494
+        },
+        {
+          "path": "recompile",
+          "type": "method",
+          "line": 6840
+        },
+        {
+          "path": "removeColunas",
+          "type": "method",
+          "line": 7503
+        },
+        {
+          "path": "remove_focus_submenu",
+          "type": "method",
+          "line": 3360
+        },
+        {
+          "path": "restaurarColunas",
+          "type": "method",
+          "line": 7382
+        },
+        {
+          "path": "scroll_counter",
+          "type": "property",
+          "line": 297
+        },
+        {
+          "path": "select_page",
+          "type": "method",
+          "line": 6345
+        },
+        {
+          "path": "sendEmailFile",
+          "type": "method",
+          "line": 1148
+        },
+        {
+          "path": "setCacheColunasVisiveis",
+          "type": "method",
+          "line": 2846
+        },
+        {
+          "path": "setChangeCheck",
+          "type": "method",
+          "line": 2661
+        },
+        {
+          "path": "setColuna",
+          "type": "method",
+          "line": 450
+        },
+        {
+          "path": "setColunasVisiveisBtn",
+          "type": "method",
+          "line": 4963
+        },
+        {
+          "path": "setDefault",
+          "type": "method",
+          "line": 2883
+        },
+        {
+          "path": "setDropdownPos",
+          "type": "method",
+          "line": 2521
+        },
+        {
+          "path": "setDropdownScrollListeners",
+          "type": "method",
+          "line": 2565
+        },
+        {
+          "path": "setPersistentVisible",
+          "type": "method",
+          "line": 2746
+        },
+        {
+          "path": "setRestored",
+          "type": "method",
+          "line": 2892
+        },
+        {
+          "path": "setStandard",
+          "type": "method",
+          "line": 2902
+        },
+        {
+          "path": "setTableCheckList",
+          "type": "method",
+          "line": 7436
+        },
+        {
+          "path": "setTamanhoDiv",
+          "type": "method",
+          "line": 6122
+        },
+        {
+          "path": "setTimer",
+          "type": "method",
+          "line": 6109
+        },
+        {
+          "path": "setVisible",
+          "type": "method",
+          "line": 2693
+        },
+        {
+          "path": "setVisibleLocalStorage",
+          "type": "method",
+          "line": 2675
+        },
+        {
+          "path": "skip_page",
+          "type": "method",
+          "line": 6349
+        },
+        {
+          "path": "somar",
+          "type": "method",
+          "line": 4465
+        },
+        {
+          "path": "start_width",
+          "type": "property",
+          "line": 306
+        },
+        {
+          "path": "start_x",
+          "type": "property",
+          "line": 307
+        },
+        {
+          "path": "status_opt",
+          "type": "property",
+          "line": 313
+        },
+        {
+          "path": "status_opt_bkp",
+          "type": "property",
+          "line": 321
+        },
+        {
+          "path": "status_opt_bkp[0].DESCRICAO",
+          "type": "property",
+          "line": 322
+        },
+        {
+          "path": "status_opt_bkp[0].VALOR",
+          "type": "property",
+          "line": 322
+        },
+        {
+          "path": "status_opt_bkp[1].DESCRICAO",
+          "type": "property",
+          "line": 323
+        },
+        {
+          "path": "status_opt_bkp[1].VALOR",
+          "type": "property",
+          "line": 323
+        },
+        {
+          "path": "status_opt_bkp[2].DESCRICAO",
+          "type": "property",
+          "line": 324
+        },
+        {
+          "path": "status_opt_bkp[2].VALOR",
+          "type": "property",
+          "line": 324
+        },
+        {
+          "path": "status_visible",
+          "type": "property",
+          "line": 226
+        },
+        {
+          "path": "subtrair",
+          "type": "method",
+          "line": 4470
+        },
+        {
+          "path": "tabela_compilada",
+          "type": "property",
+          "line": 233
+        },
+        {
+          "path": "tabela_id",
+          "type": "property",
+          "line": 214
+        },
+        {
+          "path": "tabela_itens",
+          "type": "property",
+          "line": 301
+        },
+        {
+          "path": "time_counter",
+          "type": "property",
+          "line": 294
+        },
+        {
+          "path": "timer_out",
+          "type": "property",
+          "line": 295
+        },
+        {
+          "path": "titulo",
+          "type": "property",
+          "line": 217
+        },
+        {
+          "path": "toggle_lista",
+          "type": "method",
+          "line": 2506
+        },
+        {
+          "path": "total_registros_aux",
+          "type": "property",
+          "line": 319
+        },
+        {
+          "path": "total_registros_default",
+          "type": "property",
+          "line": 317
+        },
+        {
+          "path": "total_visible",
+          "type": "property",
+          "line": 229
+        },
+        {
+          "path": "totalizador_html",
+          "type": "property",
+          "line": 314
+        },
+        {
+          "path": "tratarIDTabelas",
+          "type": "method",
+          "line": 6521
+        },
+        {
+          "path": "trocarOrdem",
+          "type": "method",
+          "line": 2651
+        },
+        {
+          "path": "trunc_number",
+          "type": "method",
+          "line": 508
+        },
+        {
+          "path": "using_total_dados",
+          "type": "property",
+          "line": 234
+        },
+        {
+          "path": "validarMarcarItem",
+          "type": "method",
+          "line": 7433
+        },
+        {
+          "path": "xls_v",
+          "type": "property",
+          "line": 696
+        },
+        {
+          "path": "zoom",
+          "type": "property",
+          "line": 219
+        }
+      ],
       "lines": 7582,
       "methods": [
         "DesmarcarItens",
@@ -1456,6 +9021,26 @@
         "CABECALHO_HABILITADO",
         "COLUNAS",
         "COLUNAS2",
+        "COLUNAS[0].ALIGN",
+        "COLUNAS[0].CAMPO",
+        "COLUNAS[0].CHAVE_COLUNA",
+        "COLUNAS[0].DESCRICAO",
+        "COLUNAS[0].ORDEM",
+        "COLUNAS[0].PARAM_CLASS_DIV",
+        "COLUNAS[0].SIZE",
+        "COLUNAS[0].STYLE",
+        "COLUNAS[0].TIPO",
+        "COLUNAS[0].VISIBLE",
+        "COLUNAS[1].ALIGN",
+        "COLUNAS[1].CAMPO",
+        "COLUNAS[1].CHAVE_COLUNA",
+        "COLUNAS[1].DESCRICAO",
+        "COLUNAS[1].ORDEM",
+        "COLUNAS[1].PARAM_CLASS_DIV",
+        "COLUNAS[1].SIZE",
+        "COLUNAS[1].STYLE",
+        "COLUNAS[1].TIPO",
+        "COLUNAS[1].VISIBLE",
         "COLUNAS_FUNC",
         "COLUNAS_REC",
         "COLUNAS_RESTAURADAS",
@@ -1550,6 +9135,12 @@
         "start_x",
         "status_opt",
         "status_opt_bkp",
+        "status_opt_bkp[0].DESCRICAO",
+        "status_opt_bkp[0].VALOR",
+        "status_opt_bkp[1].DESCRICAO",
+        "status_opt_bkp[1].VALOR",
+        "status_opt_bkp[2].DESCRICAO",
+        "status_opt_bkp[2].VALOR",
         "status_visible",
         "tabela_compilada",
         "tabela_id",
@@ -1567,26 +9158,162 @@
       ],
       "counts": {
         "methods": 147,
-        "properties": 115,
-        "publicEntries": 262
+        "properties": 141,
+        "publicEntries": 288
       }
     },
     "TesteSpeed.js": {
       "factory": "TesteSpeed",
+      "dependencies": [],
+      "entries": [
+        {
+          "path": "DEFAULT_OPTIONS",
+          "type": "property",
+          "line": 19
+        },
+        {
+          "path": "DEFAULT_OPTIONS.downloadUrl",
+          "type": "property",
+          "line": 21
+        },
+        {
+          "path": "DEFAULT_OPTIONS.latencyTestUrl",
+          "type": "property",
+          "line": 20
+        },
+        {
+          "path": "DEFAULT_OPTIONS.uploadDataMaxSize",
+          "type": "property",
+          "line": 24
+        },
+        {
+          "path": "DEFAULT_OPTIONS.uploadDataSize",
+          "type": "property",
+          "line": 23
+        },
+        {
+          "path": "DEFAULT_OPTIONS.uploadUrl",
+          "type": "property",
+          "line": 22
+        },
+        {
+          "path": "XhrPromise",
+          "type": "property",
+          "line": 37
+        },
+        {
+          "path": "XhrPromise.REJECT_RESPONSE",
+          "type": "method",
+          "line": 108
+        },
+        {
+          "path": "XhrPromise.abort",
+          "type": "method",
+          "line": 100
+        },
+        {
+          "path": "XhrPromise.cancel",
+          "type": "method",
+          "line": 97
+        },
+        {
+          "path": "XhrPromise.create",
+          "type": "method",
+          "line": 38
+        },
+        {
+          "path": "XhrPromise.executor",
+          "type": "method",
+          "line": 51
+        },
+        {
+          "path": "XhrPromise.then",
+          "type": "method",
+          "line": 103
+        },
+        {
+          "path": "calculateBandwidth",
+          "type": "method",
+          "line": 29
+        },
+        {
+          "path": "fimExec",
+          "type": "method",
+          "line": 35
+        },
+        {
+          "path": "options",
+          "type": "property",
+          "line": 27
+        },
+        {
+          "path": "promise",
+          "type": "property",
+          "line": 42
+        },
+        {
+          "path": "testDownloadSpeed",
+          "type": "method",
+          "line": 31
+        },
+        {
+          "path": "testLatency",
+          "type": "method",
+          "line": 33
+        },
+        {
+          "path": "testSpeed",
+          "type": "method",
+          "line": 34
+        },
+        {
+          "path": "testUploadSpeed",
+          "type": "method",
+          "line": 32
+        },
+        {
+          "path": "truncate",
+          "type": "method",
+          "line": 30
+        }
+      ],
       "lines": 249,
-      "methods": [],
+      "methods": [
+        "XhrPromise.REJECT_RESPONSE",
+        "XhrPromise.abort",
+        "XhrPromise.cancel",
+        "XhrPromise.create",
+        "XhrPromise.executor",
+        "XhrPromise.then",
+        "calculateBandwidth",
+        "fimExec",
+        "testDownloadSpeed",
+        "testLatency",
+        "testSpeed",
+        "testUploadSpeed",
+        "truncate"
+      ],
       "properties": [
+        "DEFAULT_OPTIONS",
+        "DEFAULT_OPTIONS.downloadUrl",
+        "DEFAULT_OPTIONS.latencyTestUrl",
+        "DEFAULT_OPTIONS.uploadDataMaxSize",
+        "DEFAULT_OPTIONS.uploadDataSize",
+        "DEFAULT_OPTIONS.uploadUrl",
+        "XhrPromise",
         "options",
         "promise"
       ],
       "counts": {
-        "methods": 0,
-        "properties": 2,
-        "publicEntries": 2
+        "methods": 13,
+        "properties": 9,
+        "publicEntries": 22
       }
     },
     "comp.js": {
       "factory": "TabelaJS",
+      "dependencies": [],
+      "entries": [],
       "lines": 8,
       "methods": [],
       "properties": [],
@@ -1598,6 +9325,28 @@
     },
     "comp2.js": {
       "factory": "TabelaHTML",
+      "dependencies": [
+        "$rootScope",
+        "$parse",
+        "$q",
+        "$compile",
+        "gcCollection",
+        "$ajax",
+        "$timeout",
+        "$sce"
+      ],
+      "entries": [
+        {
+          "path": "default_table",
+          "type": "property",
+          "line": 32
+        },
+        {
+          "path": "getNew",
+          "type": "method",
+          "line": 31
+        }
+      ],
       "lines": 53,
       "methods": [
         "getNew"
@@ -1614,8 +9363,8 @@
   },
   "totals": {
     "files": 23,
-    "methods": 608,
-    "properties": 705,
-    "publicEntries": 1313
+    "methods": 686,
+    "properties": 780,
+    "publicEntries": 1466
   }
 }

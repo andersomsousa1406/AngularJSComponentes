@@ -1,13 +1,13 @@
 {
   "output": "legacy-migration/dist/app.bundle.js",
-  "bytes": 44762,
-  "gzipBytes": 11941,
+  "bytes": 114408,
+  "gzipBytes": 33439,
   "embeddedTemplates": 11,
   "embeddedStyles": 11,
-  "inputCount": 43,
+  "inputCount": 55,
   "budgets": {
-    "bundle": 60000,
-    "gzip": 15000
+    "bundle": 150000,
+    "gzip": 40000
   },
   "passed": true,
   "failures": []

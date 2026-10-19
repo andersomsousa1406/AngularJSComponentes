@@ -20,3 +20,25 @@
     </div>
   </section>
 </div>
+<div ng-repeat="dialog in vm.dialogs.lista track by dialog.id">
+<div ng-if="!dialog.closed" ng-show="!dialog.hidden"
+  class="gc-confirm {{ dialog.classe }}" ng-keydown="vm.dialogKeydown($event, dialog)">
+  <div class="gc-confirm__backdrop"></div>
+  <section class="modal-dialog {{ dialog.classe_size }}" role="dialog" aria-modal="true" aria-labelledby="gc-confirm-{{ dialog.id }}" tabindex="-1">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h4 class="modal-title" id="gc-confirm-{{ dialog.id }}" ng-attr-style="{{ dialog.CSS_TITULO }}">{{ dialog.titulo }}</h4>
+        <button ng-if="dialog.tipo == 2" type="button" class="btn btn-danger" ng-click="dialog.cancelar($event)">Cancelar</button>
+      </header>
+      <div class="modal-body"><p>{{ dialog.pergunta }}</p></div>
+      <footer class="modal-footer">
+        <button ng-repeat="button in dialog.botao track by $index" type="button" class="btn {{ button.class }}"
+          data-hotkey="{{ button.hotkey }}" ng-disabled="button.aguardar2 && button.TEMPO_AGUARDAR > 0" ng-click="button.executar($event, button)">
+          <span class="glyphicon {{ button.glyphicon }}" aria-hidden="true"></span> {{ button.desc }}
+          <span ng-if="button.aguardar2 && button.TEMPO_AGUARDAR > 0">({{ button.TEMPO_AGUARDAR }})</span>
+        </button>
+      </footer>
+    </div>
+  </section>
+</div>
+</div>

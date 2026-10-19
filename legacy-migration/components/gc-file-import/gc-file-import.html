@@ -8,6 +8,12 @@
     </div>
     <div class="alert alert-danger" ng-if="vm.error"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ vm.error }}</div>
     <p class="text-center" ng-if="vm.loading"><span class="glyphicon glyphicon-refresh gc-spin"></span> Lendo arquivo...</p>
+    <div class="row" ng-if="vm.headers.length && vm.fields.length">
+      <label class="col-sm-4" ng-repeat="field in vm.fields track by (field.key || field.CAMPO)">
+        {{ field.label || field.DESCRICAO }} <span ng-if="field.required || field.OBRIGATORIO">*</span>
+        <select class="form-control" ng-model="vm.mapping[field.key || field.CAMPO]" ng-options="header for header in vm.headers"><option value="">Não importar</option></select>
+      </label>
+    </div>
     <gc-data-grid ng-if="!vm.loading && vm.rows.length" rows="vm.previewRows" columns="vm.columns" track-by="__id" page-size="10"></gc-data-grid>
     <p class="text-muted" ng-if="vm.rows.length > vm.maxPreview">A visualizacao mostra {{ vm.maxPreview }} de {{ vm.rows.length }} linhas. Todas serao enviadas na importacao.</p>
   </div>

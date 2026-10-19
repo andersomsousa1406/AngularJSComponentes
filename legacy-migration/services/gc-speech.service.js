@@ -1,5 +1,7 @@
+import { createSpeechClient, createDefaultSpeechCommands } from './speech-client.js';
+
 export default function registerGcSpeech(app) {
-  app.angularModule.factory('GcSpeech', ['$window', '$q', function ($window, $q) {
+  app.angularModule.factory('GcSpeech', ['$window', '$q', '$rootScope', 'GcApi', function ($window, $q, $rootScope, api) {
     var Recognition = $window.SpeechRecognition || $window.webkitSpeechRecognition;
     var recognition = null;
 
@@ -19,7 +21,18 @@ export default function registerGcSpeech(app) {
     }
     function stop() { if (recognition) recognition.stop(); }
 
-    return { supported: !!Recognition, listen: listen, stop: stop };
+    function create(options) {
+      options = Object.assign({}, options);
+      var onError = options.onError || function (error) { $rootScope.$broadcast('gcSpeech:error', error); };
+      if (!options.commands) options.commands = ($window.LISTA_METODOS_RECOGNIZER || []).concat(
+        createDefaultSpeechCommands($window.open.bind($window), api, options.baseUrl || $window.urlhost || '', onError));
+      options.onError = onError;
+      return createSpeechClient({ Recognition: Recognition, update: function (callback) { $rootScope.$evalAsync(callback); } }, options);
+    }
+    var client = create();
+    var stopCommands = client.stop;
+    return Object.assign(client, { create: create, supported: !!Recognition, listen: listen,
+      stop: function () { stopCommands(); stop(); }, stopListening: stop });
   }]);
   return app;
 }

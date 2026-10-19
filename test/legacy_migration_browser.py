@@ -88,6 +88,34 @@ async def run_test(debug_port, page_url):
             assert behavior["sortedBy"] == "NOME", behavior
             assert behavior["activeAfter"] == behavior["activeBefore"], behavior
 
+            confirmation_queue = await cdp.evaluate("""
+              (async function () {
+                var root = document.querySelector('legacy-demo-root');
+                var injector = angular.element(root).injector();
+                var scope = injector.get('$rootScope').$new();
+                var element = injector.get('$compile')('<gc-confirm-dialog></gc-confirm-dialog>')(scope);
+                angular.element(document.body).append(element);
+                scope.$digest();
+                var queue = element.isolateScope().vm.dialogs;
+                var received = null;
+                var dialog = queue.add(2, 'Contrato declarativo', 'Pergunta', [queue.obtn_ok], [function (event, button) {
+                  received = { type: event.type, ret: button.ret };
+                }]);
+                scope.$digest();
+                var mounted = element[0].querySelector('.gc-confirm');
+                var title = mounted.querySelector('.modal-title').textContent;
+                mounted.querySelector('.modal-footer button').click();
+                await new Promise(function (resolve) { setTimeout(resolve, 50); });
+                scope.$digest();
+                var closed = !element[0].querySelector('.gc-confirm');
+                scope.$destroy(); element.remove();
+                return { title: title, received: received, closed: closed, stateClosed: dialog.closed };
+              }())
+            """)
+            assert confirmation_queue["title"] == "Contrato declarativo", confirmation_queue
+            assert confirmation_queue["received"] == {"type": "click", "ret": "1"}, confirmation_queue
+            assert confirmation_queue["closed"] and confirmation_queue["stateClosed"], confirmation_queue
+
             lifecycle = await cdp.evaluate("""
               (function () {
                 var root = document.querySelector('legacy-demo-root');
@@ -186,11 +214,11 @@ async def run_test(debug_port, page_url):
                 parity[source_name] = {
                     "expected": len(expected_paths),
                     "availableAtInitialization": len(expected_paths) - len(missing),
-                    "createdOnDemand": missing,
-                    "contractCovered": len(expected_paths),
+                    "unverifiedUntilUse": missing,
+                    "namesAvailableAtInitialization": len(expected_paths) - len(missing),
                 }
 
-            return {"rendered": rendered, "services": services, "behavior": behavior, "lifecycle": lifecycle, "accessibility": accessibility, "heapGrowth": growth, "componentRequests": component_requests, "legacyEngine": {"registeredFactories": len(engine["registered"]), "parity": parity}}
+            return {"rendered": rendered, "services": services, "behavior": behavior, "confirmationQueue": confirmation_queue, "lifecycle": lifecycle, "accessibility": accessibility, "heapGrowth": growth, "componentRequests": component_requests, "legacyEngine": {"registeredFactories": len(engine["registered"]), "parity": parity}}
 
 
 def main():

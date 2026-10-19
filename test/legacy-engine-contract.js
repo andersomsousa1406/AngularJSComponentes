@@ -13,9 +13,9 @@
     seen.push(target);
     Object.keys(target).forEach(function (key) {
       var value = target[key];
-      var path = prefix ? prefix + '.' + key : key;
+      var path = prefix ? prefix + (Array.isArray(target) ? '[' + key + ']' : '.' + key) : key;
       entries[path] = typeof value === 'function' ? 'method' : 'property';
-      if (value && Object.prototype.toString.call(value) === '[object Object]') collect(value, entries, path, seen);
+      if (value && (Array.isArray(value) || Object.prototype.toString.call(value) === '[object Object]')) collect(value, entries, path, seen);
     });
   }
 
