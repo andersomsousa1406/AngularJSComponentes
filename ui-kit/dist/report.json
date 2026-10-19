@@ -1,7 +1,7 @@
 {
   "output": "ui-kit/dist/catalog.bundle.js",
-  "bytes": 51439,
-  "gzipBytes": 14521,
+  "bytes": 52060,
+  "gzipBytes": 14729,
   "embeddedTemplates": 17,
   "embeddedStyles": 17,
   "inputCount": 57,

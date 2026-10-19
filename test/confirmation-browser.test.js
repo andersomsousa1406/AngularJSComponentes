@@ -109,6 +109,8 @@ async function main() {
         var selected = app.selectedModule.CONTROLE;
         app.modalOpen = true; digest(); await new Promise(function (resolve) { setTimeout(resolve, 30); }); digest();
         var dialog = document.querySelector('g-modal dialog'), opened = dialog.open && dialog.contains(document.activeElement);
+        Array.from(dialog.querySelectorAll('footer button')).find(function (button) { return button.textContent.includes('Criar registro'); }).click(); digest();
+        var rejectedEmpty = dialog.open && !!dialog.querySelector('[role=alert]');
         input(dialog.querySelector('input'), 'Modelo novo');
         Array.from(dialog.querySelectorAll('footer button')).find(function (button) { return button.textContent.includes('Criar registro'); }).click(); digest();
         await new Promise(function (resolve) { setTimeout(resolve, 30); }); digest(); var confirmed = !dialog.open && app.events[0].text === 'Registro criado: Modelo novo';
@@ -118,10 +120,19 @@ async function main() {
         var temporary = app.toast.show('Temporária', '', 'info', 30); await new Promise(function (resolve) { setTimeout(resolve, 70); }); digest(); var expired = !app.toast.items.some(function (item) { return item.id === temporary; });
         app.active = 'feedback'; digest(); var progress = document.querySelector('g-loading progress').value;
         return { disabled: disabled, blockedLoading: blockedLoading, click: click, color: color, group: group, saving: saving, saved: saved, name: name, error: error,
-          controlled: controlled, department: department, switched: switched, results: results, selected: selected, opened: opened, confirmed: confirmed, escaped: escaped, dismissed: dismissed, expired: expired, progress: progress };
+          controlled: controlled, department: department, switched: switched, results: results, selected: selected, opened: opened, rejectedEmpty: rejectedEmpty, confirmed: confirmed, escaped: escaped, dismissed: dismissed, expired: expired, progress: progress };
       }())`);
       assert.deepEqual(uiResult, { disabled: true, blockedLoading: true, click: true, color: 'success', group: 'cards', saving: true, saved: true, name: 'Ana Lima', error: true,
-        controlled: true, department: 'producao', switched: true, results: 1, selected: '22430', opened: true, confirmed: true, escaped: true, dismissed: true, expired: true, progress: 65 });
+        controlled: true, department: 'producao', switched: true, results: 1, selected: '22430', opened: true, rejectedEmpty: true, confirmed: true, escaped: true, dismissed: true, expired: true, progress: 65 });
+      await evaluate("(async function () { var button = document.querySelector('main.content > g-toolbar button'); button.focus(); button.click(); await new Promise(function (resolve) { setTimeout(resolve, 30); }); }())");
+      for (var tab = 0; tab < 6; tab++) {
+        await call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+        await call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+        assert(await evaluate("document.querySelector('g-modal dialog').contains(document.activeElement)"), 'Foco escapou do dialogo.');
+      }
+      await call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      await call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      assert(await evaluate("(async function () { await new Promise(function (resolve) { setTimeout(resolve, 40); }); return !document.querySelector('g-modal dialog').open && document.activeElement === document.querySelector('main.content > g-toolbar button'); }())"), 'Escape ou restauracao de foco falhou.');
       await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
       var uiOverflow = await evaluate(`(function () { var scope = angular.element(document.querySelector('g-catalog')).isolateScope(), bad = []; scope.vm.tabs.forEach(function (tab) { scope.vm.active = tab.id; scope.$root.$digest(); if (document.documentElement.scrollWidth > 391) bad.push(tab.id); }); return bad; }())`);
       assert.deepEqual(uiOverflow, []);
