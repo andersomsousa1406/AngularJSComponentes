@@ -1,10 +1,35 @@
 function clone(value) { return angular.copy(value); }
 function escapeHtml(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, function (character) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]; }); }
+// Native rendering of the declarative BTN3 contract (no jQuery or generated $compile).
+export function gridMenu(button) {
+  var menu = button.menu_drop || {}, result = [], number = 0;
+  (menu.GRUPOS && menu.GRUPOS.length ? menu.GRUPOS : [menu]).forEach(function (group) {
+    if (group.DESC) result.push({ _MENU_TIPO: 'CABECALHO', desc: group.DESC });
+    (group.OPCAO || []).forEach(function (option) {
+      result.push(Object.assign({}, option, { _MENU_TIPO: 'OPCAO', _MENU_NUMERO: ++number }));
+    });
+  });
+  return result;
+}
+export function gridCellStyle(column, row, grid, header) {
+  var style = 'text-align:' + (column.ALIGN || column.align || 'left') + ';';
+  if (column.width) style += 'min-width:' + column.width + ';max-width:' + column.width + ';';
+  if (column.SIZE && column.SIZE !== '0') style += 'width:' + column.SIZE + ';';
+  style += (column.STYLE || '') + ';' + (header ? column.STYLE_HEADER || '' : column.STYLE_CELL || '') + ';';
+  if (!header && row) {
+    if (column.STYLE_OPT) style += column.STYLE_OPT.funcao(row) + ';';
+    if (column.STYLE_OPT_PARAM) style += column.STYLE_OPT_PARAM.funcao(row, column.PARAM_STYLE) + ';';
+    if (grid && grid.opt_style) style += grid.opt_style.funcao(row) + ';';
+    if (row.ESTILOS_CALCULADOS) style += (row.ESTILOS_CALCULADOS[column.key || column.CAMPO] || '') + ';';
+  }
+  return style;
+}
 export function normalizeColumns(columns) {
   return (columns || []).map(function (column, index) {
-    return Object.assign({}, column, { key: column.key || column.CAMPO, label: column.label || column.DESCRICAO || column.CAMPO,
-      visible: column.visible === undefined ? column.VISIBLE !== false : column.visible,
+    return Object.assign({}, column, { key: column.key || column.CAMPO, id: column.CHAVE_COLUNA || (column.key || column.CAMPO) + '_' + index, label: column.label || column.DESCRICAO || column.CAMPO,
+      visible: !column.HIDDEN && (column.visible === undefined ? (column.VISIBLE === undefined || !!column.VISIBLE) : column.visible),
       width: column.width || column.SIZE_CELL, type: column.type || column.TIPO || 'string',
+      sortable: column.sortable === undefined ? column.TIPO !== 'btn3' : column.sortable,
       order: column.order === undefined ? (column.ORDEM === undefined ? index : Number(column.ORDEM)) : column.order });
   }).sort(function (left, right) { return left.order - right.order; });
 }
@@ -125,8 +150,11 @@ export function createGridClient(configuration, environment) {
       return environment.print(client.exportHTML());
     },
     filterObjectsByProps: function (rows, fields) { return rows.map(function (row) { var result = {}; fields.forEach(function (field) { if (Object.prototype.hasOwnProperty.call(row, field)) result[field] = row[field]; }); return result; }); },
-    setVisible: function (field, visible) {
-      client.COLUNAS.forEach(function (column) { if ((column.key || column.CAMPO) === field) { column.VISIBLE = visible; column.visible = visible; } }); notify();
+    setVisible: function (field, visible, identity) {
+      client.COLUNAS.forEach(function (column, index) {
+        var id = column.CHAVE_COLUNA || (column.key || column.CAMPO) + '_' + index;
+        if ((column.key || column.CAMPO) === field && (identity === undefined || identity === id)) { column.VISIBLE = visible; column.visible = visible; }
+      }); notify();
     },
     removeColunas: function (fields) { fields.forEach(function (field) { client.setVisible(field, false); }); },
     restaurarColunas: function () { client.COLUNAS = clone(originalColumns); notify(); },
@@ -148,12 +176,13 @@ export function createGridClient(configuration, environment) {
         client.bkp_colunas_edit = []; client.backup_colunas = []; notify(); return response;
       });
     },
-    NextPage: function () { return client.loadPage(client.consulta_pagina + 1, client.infinite_scroll); },
+    NextPage: function () { return client.loading || client.infinite_end ? Promise.resolve([]) : client.loadPage(client.consulta_pagina + 1, client.infinite_scroll); },
     loadPage: function (page, append) {
       if (disposed) return Promise.reject(new Error('Tabela destruida.'));
       var loader = environment.load || (client.model_tabela && client.model_tabela.consultar && function () { return client.model_tabela.consultar(); });
       if (!loader) return Promise.reject(new Error('Configure o carregamento de paginas.'));
       var current = ++requestVersion;
+      var previousPage = client.consulta_pagina;
       client.consulta_pagina = page; client.loading = true; notify();
       return Promise.resolve().then(function () { return loader({ PAGINA: page * client.consulta_qtd, QTD: client.consulta_qtd, FILTRO: client.filtro, ORDER_BY: client.ORDER_BY }); })
         .then(function (rows) {
@@ -162,7 +191,8 @@ export function createGridClient(configuration, environment) {
             client.merge(append ? client.DADOS.concat(rows) : rows);
           }
           return rows;
-        }).finally(function () { if (!disposed && current === requestVersion) { client.loading = false; notify(); } });
+        }).catch(function (error) { if (!disposed && current === requestVersion) client.consulta_pagina = previousPage; throw error; })
+        .finally(function () { if (!disposed && current === requestVersion) { client.loading = false; notify(); } });
     },
     destroy: function () { disposed = true; ++requestVersion; }
   };

@@ -33,6 +33,7 @@
     "build:legacy": "node scripts/build-legacy-migration.js",
     "build:legacy:compat": "node scripts/build-legacy-migration.js --with-legacy-engine",
     "test:migration:browser": "node test/confirmation-browser.test.js --lab",
+    "test:migration:22430": "node test/confirmation-browser.test.js --22430",
     "prewatch:example": "npm run components:sync",
     "watch:example": "node scripts/build-example.js --watch",
     "test": "node test/easy-components.test.js",

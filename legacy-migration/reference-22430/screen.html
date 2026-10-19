@@ -1,0 +1,33 @@
+<main class="screen-22430" ng-keydown="vm.keydown($event)">
+  <header class="application-bar"><span class="glyphicon glyphicon-menu-hamburger"></span><strong>gc web</strong><span>22430 - Cadastro de Modelos e Fichas Técnicas</span><a href="lab.html">Laboratório de componentes</a></header>
+  <div class="screen-content">
+    <div class="screen-toolbar">
+      <button class="btn btn-primary" type="button" disabled title="O cadastro completo não faz parte deste cenário de consulta"><span class="glyphicon glyphicon-plus"></span> Incluir</button>
+      <button class="btn btn-warning" type="button" disabled title="As funcionalidades de negócio da tela não estão convertidas neste cenário"><span class="glyphicon glyphicon-list"></span> Funcionalidades</button>
+      <button class="btn btn-default" type="button" ng-click="vm.filtersOpen = !vm.filtersOpen" aria-expanded="{{ vm.filtersOpen }}">Filtro <span class="caret"></span></button>
+      <span class="local-label">Referência de conversão · dados locais simulados</span>
+    </div>
+    <form class="table-filter" ng-submit="vm.consultar()" ng-show="vm.filtersOpen">
+      <div class="date-filter">
+        <label class="sr-only" for="date-type">Tipo de data</label><select id="date-type" class="form-control" ng-model="vm.form.TIPODATA"><option value="1">Data do Cadastro</option><option value="2">Data de Lançamento</option></select>
+        <input class="form-control" type="date" aria-label="Período inicial" ng-model="vm.form.PERIODO_INICIAL"><span>à</span><input class="form-control" type="date" aria-label="Período final" ng-model="vm.form.PERIODO_FINAL">
+      </div>
+      <label class="filter-field status-filter">Status<select class="form-control" ng-model="vm.form.FILTRO_STATUS"><option value="1">ATIVOS</option><option value="0">INATIVOS</option><option value="">TODOS</option></select></label>
+      <gc-lookup ng-repeat="definition in vm.lookupDefinitions track by definition.key" class="filter-lookup" ng-class="{ 'category-filter': definition.key === 'CATEGORIA' }" label="{{ definition.label }}" config="vm.lookupDefinitions[$index].config" placeholder="" on-ready="vm.lookupReady(definition.key, $value)" on-select="vm.consultar()" on-clear="vm.clearLookup()" on-error="vm.reportError($value)"></gc-lookup>
+      <label class="filter-field model-filter">Tipo de Modelo:<select class="form-control" ng-model="vm.form.TIPO_MODELO"><option value="">TODOS</option><option value="1">MODELO PRINCIPAL</option><option value="2">ITEM DE CONJUNTO</option></select></label>
+      <label class="filter-field ecommerce-filter">E-commerce:<select class="form-control" ng-model="vm.form.FILTRO_ECOMMERCE"><option value="">TODOS</option><option value="1">HABILITADO PARA ENVIAR</option><option value="2">HABILITADO PARA PUBLICAR</option><option value="3">ENVIAR E PUBLICAR</option><option value="4">ENVIAR E NÃO PUBLICAR</option><option value="0">DESABILITADO</option></select></label>
+      <label class="filter-field">Marca/Tag:<input class="form-control" ng-model="vm.form.FILTRO_MARCA"></label>
+      <label class="filter-field">Status pedidos:<select class="form-control" ng-model="vm.form.FILTRO_BLOQ_PED"><option value="">TODOS</option><option value="1">LIBERADOS</option><option value="0">BLOQUEADOS</option></select></label>
+      <label class="filter-field text-filter">Filtro:<input class="form-control" ng-model="vm.form.FILTRO_DADOS" placeholder="ID, referência ou descrição"></label>
+      <button class="btn btn-primary filter-submit" type="submit" accesskey="f"><span class="glyphicon glyphicon-filter"></span> Filtrar<small>ALT+F</small></button>
+    </form>
+    <div class="alert alert-danger" ng-if="vm.error" role="alert">{{ vm.error }}</div>
+    <gc-data-grid config="vm.gridConfig" on-ready="vm.gridReady($value)" on-error="vm.reportError($value)"></gc-data-grid>
+    <div class="blocked-legend"><span>Fonte Vermelha:</span> Modelos com Bloqueio para Pedidos</div>
+    <details class="request-inspector"><summary>Requisições simuladas ({{ vm.backend.calls.length }})</summary><pre>{{ vm.backend.calls | json }}</pre></details>
+  </div>
+  <div class="modal-backdrop in" ng-if="vm.filesRow"></div>
+  <div class="modal gc-files-modal" ng-if="vm.filesRow" role="dialog" aria-modal="true" aria-label="Arquivos da ficha de processo" ng-keydown="$event.key === 'Escape' && (vm.filesRow = null)">
+    <div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button class="close" type="button" aria-label="Fechar" ng-click="vm.filesRow = null">×</button><h4 class="modal-title">Arquivos da Ficha de Processo — {{ vm.filesRow.DESC_ID }}</h4></div><div class="modal-body">Registro selecionado: {{ vm.filesRow.DESCRICAO }}.<p>O callback recebeu o registro original. Não há arquivos de produção neste cenário local.</p></div><div class="modal-footer"><button class="btn btn-default" ng-click="vm.filesRow = null" type="button">Fechar</button></div></div></div>
+  </div>
+</main>

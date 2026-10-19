@@ -9,6 +9,7 @@ var http = require('node:http');
 var spawn = require('node:child_process').spawn;
 var root = path.resolve(__dirname, '..');
 var labMode = process.argv.includes('--lab');
+var referenceMode = process.argv.includes('--22430');
 var screenshotMode = process.argv.includes('--screenshot');
 var browser = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -72,14 +73,69 @@ async function main() {
     }
     await call('Runtime.enable'); await call('Page.enable'); await call('Network.enable');
     await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
-    await call('Page.navigate', { url: 'http://127.0.0.1:' + server.address().port + '/legacy-migration/' + (labMode ? 'lab.html' : '') });
+    await call('Page.navigate', { url: 'http://127.0.0.1:' + server.address().port + '/legacy-migration/' + (referenceMode ? '22430.html' : labMode ? 'lab.html' : '') });
     var ready;
     for (i = 0; i < 200; i++) {
-      ready = await evaluate(labMode ? "!!(window.angular && document.querySelector('migration-lab .lab-shell'))" : "!!(window.angular && document.querySelector('legacy-demo-root .gc-demo'))");
+      ready = await evaluate(referenceMode ? "!!(window.angular && document.querySelector('reference-22430 .screen-22430') && document.querySelectorAll('gc-data-grid tbody tr').length === 50)" : labMode ? "!!(window.angular && document.querySelector('migration-lab .lab-shell'))" : "!!(window.angular && document.querySelector('legacy-demo-root .gc-demo'))");
       if (ready) break;
       await pause(50);
     }
     assert(ready, 'Demo nao montou.');
+    if (referenceMode) {
+      var referenceResult = await evaluate(`(async function () {
+        var scope = angular.element(document.querySelector('reference-22430')).isolateScope(), app = scope.vm;
+        function digest() { if (!scope.$root.$$phase) scope.$root.$digest(); }
+        var gridElement = document.querySelector('gc-data-grid');
+        var gridVm = angular.element(gridElement).isolateScope().vm;
+        var header = getComputedStyle(gridElement.querySelector('thead th')).backgroundColor;
+        var blocked = Array.from(gridElement.querySelectorAll('tbody tr')).find(function (tr) { return tr.textContent.includes('007619'); });
+        var blockedColor = getComputedStyle(blocked.querySelectorAll('td')[3]).color;
+        var initial = app.grid.DADOS.length;
+        await gridVm.loadMore(); digest(); var second = gridElement.querySelectorAll('tbody tr').length;
+        var offset = app.backend.calls.at(-1).data.FILTRO.PAGINA;
+        var viewport = gridElement.querySelector('.gc-data-grid__viewport');
+        viewport.scrollTop = viewport.scrollHeight; viewport.dispatchEvent(new Event('scroll'));
+        await new Promise(function (resolve) { setTimeout(resolve, 100); }); digest(); var last = app.grid.DADOS.length;
+        var end = app.grid.infinite_end;
+        viewport.scrollTop = 0;
+        var firstButton = gridElement.querySelector('tbody .acoes button'); firstButton.click(); digest();
+        var menu = !!gridElement.querySelector('.gc-data-grid__row-menu');
+        gridElement.querySelector('.gc-data-grid__row-menu button').click(); digest();
+        var callbackRow = app.filesRow.ID; app.filesRow = null;
+        app.grid.setVisible('HINT_TIPO', true); digest();
+        gridElement.querySelector('tbody .gc-data-grid__hint').click(); digest();
+        var popover = gridElement.querySelector('.popover-content').textContent;
+        gridVm.closeMenus(); app.grid.setVisible('HINT_TIPO', false); digest();
+        app.form.FILTRO_DADOS = 'BODY'; await app.consultar(); digest(); var filtered = app.grid.DADOS.length;
+        app.form.FILTRO_DADOS = ''; await app.consultar(); digest();
+        await app.lookups.FAMILIA_ID.filtrar(); digest();
+        var family = document.querySelectorAll('gc-lookup')[1];
+        var familyHeaders = Array.from(family.querySelectorAll('th')).map(function (th) { return th.textContent; });
+        app.lookups.FAMILIA_ID.selecionarItem(app.lookups.FAMILIA_ID.dados[0]); await app.consultar(); digest();
+        var familyFilter = app.backend.calls.at(-1).data.FILTRO.FAMILIA_ID;
+        app.lookups.FAMILIA_ID.clear(); digest();
+        var cleared = app.grid.DADOS.length;
+        app.backend.failNext = true; await app.consultar(); digest(); var failed = app.error.includes('Falha simulada');
+        await app.consultar(); digest();
+        return { header: header, blockedColor: blockedColor, initial: initial, second: second, offset: offset, last: last, end: end,
+          menu: menu, callbackRow: callbackRow, popover: popover, filtered: filtered, familyHeaders: familyHeaders, familyFilter: familyFilter, cleared: cleared, failed: failed,
+          declarations: app.grid.COLUNAS.length, motorLoaded: !!window.LegacyComponents };
+      }())`);
+      assert.deepEqual(referenceResult, { header: 'rgb(36, 75, 255)', blockedColor: 'rgb(169, 68, 66)', initial: 50, second: 100,
+        offset: 50, last: 124, end: true, menu: true, callbackRow: 1, popover: 'PRODUTOS REVENDA', filtered: 2,
+        familyHeaders: ['ID', 'DESCRIÇÃO', 'TIPO DO PRODUTO'], familyFilter: '0271', cleared: 0, failed: true, declarations: 27, motorLoaded: false });
+      assert.deepEqual(exceptions, []);
+      assert(requests.every(function (url) { return !/^https?:/.test(url) || url.startsWith('http://127.0.0.1:' + server.address().port + '/'); }));
+      if (screenshotMode) {
+        await call('Emulation.setDeviceMetricsOverride', { width: 1910, height: 900, deviceScaleFactor: 1, mobile: false });
+        await evaluate("(async function () { var s = angular.element(document.querySelector('reference-22430')).isolateScope(); await s.vm.lookups.FAMILIA_ID.filtrar(); s.$root.$digest(); }())");
+        var referenceScreenshot = await call('Page.captureScreenshot', { format: 'png' });
+        fs.mkdirSync(path.join(root, 'test/artifacts'), { recursive: true });
+        fs.writeFileSync(path.join(root, 'test/artifacts/22430.png'), Buffer.from(referenceScreenshot.data, 'base64'));
+      }
+      console.log('OK: 22430 valida 27 declaracoes, cores, status, BTN3/callback, consulta Familia, filtros, pagina 50/100/124 e falha sem rede externa.');
+      return;
+    }
     if (labMode) {
       var labResult = await evaluate(`(async function () {
         var element = document.querySelector('migration-lab');
@@ -133,6 +189,29 @@ async function main() {
         loadedFiles: 1, removedFiles: 1, parsed: 1, imported: 'Ana; Lima', history: 2, loginOpen: true,
         authenticated: true, epcs: 1, speed: true, handledError: true, confirmation: true, noLegacyEngine: true, overflow: [] });
       assert.deepEqual(exceptions, []);
+      var gridAppearance = await evaluate(`(function () {
+        var root = document.querySelector('migration-lab');
+        var scope = angular.element(root).isolateScope(); scope.vm.active = 'tabela'; scope.$root.$digest();
+        var grid = root.querySelector('section[aria-label="Tabela"] gc-data-grid');
+        var controller = angular.element(grid).isolateScope().vm;
+        var th = grid.querySelector('thead th'); var td = grid.querySelector('tbody td');
+        var style = { header: getComputedStyle(th).backgroundColor, text: getComputedStyle(th).color,
+          padding: getComputedStyle(td).paddingTop, total: getComputedStyle(grid.querySelector('tfoot td')).backgroundColor,
+          sticky: getComputedStyle(th).position, legacyClasses: !!grid.querySelector('.table-ec .table-low.tabelaJS'),
+          height: Math.round(grid.querySelector('.table-ec').getBoundingClientRect().height) };
+        grid.querySelector('thead input[type=checkbox]').click(); scope.$root.$digest();
+        style.marked = controller.selectedRows.length;
+        grid.querySelector('tbody input[type=checkbox]').click(); scope.$root.$digest();
+        style.afterUncheck = controller.selectedRows.length;
+        grid.querySelector('[aria-label="Ações da tabela"]').click(); scope.$root.$digest();
+        style.menu = !!grid.querySelector('.dropdown-menu');
+        grid.querySelector('.dropdown-menu input[type=checkbox]').click(); scope.$root.$digest();
+        style.visibleColumns = controller.displayColumns.length;
+        scope.vm.handles.grid.restaurarColunas(); controller.menuOpen = false; scope.$root.$digest();
+        return style;
+      }())`);
+      assert.deepEqual(gridAppearance, { header: 'rgb(51, 122, 183)', text: 'rgb(255, 255, 255)', padding: '3px',
+        total: 'rgb(191, 191, 191)', sticky: 'sticky', legacyClasses: true, height: 260, marked: 5, afterUncheck: 4, menu: true, visibleColumns: 3 });
       assert(requests.every(function (url) { return !/^https?:/.test(url) || url.startsWith('http://127.0.0.1:' + server.address().port + '/'); }), 'O laboratorio tentou acessar um servidor externo.');
       await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
       var mobileOverflow = await evaluate(`(function () {
@@ -144,7 +223,7 @@ async function main() {
       assert.deepEqual(mobileOverflow, [], 'Abas com overflow em celular.');
       if (screenshotMode) {
         await call('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
-        await evaluate("(function () { var scope = angular.element(document.querySelector('migration-lab')).isolateScope(); scope.vm.active = 'consulta'; scope.$root.$digest(); }())");
+        await evaluate("(function () { var scope = angular.element(document.querySelector('migration-lab')).isolateScope(); scope.vm.active = 'tabela'; scope.vm.error = ''; scope.$root.$digest(); window.scrollTo(0, 0); }())");
         var screenshot = await call('Page.captureScreenshot', { format: 'png' });
         var artifacts = path.join(root, 'test/artifacts'); fs.mkdirSync(artifacts, { recursive: true });
         fs.writeFileSync(path.join(artifacts, 'migration-lab.png'), Buffer.from(screenshot.data, 'base64'));

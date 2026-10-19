@@ -53,11 +53,20 @@ function buildLab() {
   }) }, { onReport: function (report) { console.log('Laboratorio compilado: ' + report.bytes + ' bytes, ' + report.gzipBytes + ' gzip.'); } });
 }
 
+function buildReference() {
+  return buildProject({ root: root, build: Object.assign({}, config.build, {
+    entry: path.join(root, 'legacy-migration/reference-22430/app.js'),
+    outfile: path.join(root, 'legacy-migration/dist/22430.bundle.js'),
+    report: path.join(root, 'legacy-migration/dist/22430-report.json'),
+    budgets: { bundle: 200000, gzip: 50000 }
+  }) }, { onReport: function (report) { console.log('Referencia 22430 compilada: ' + report.bytes + ' bytes.'); } });
+}
+
 buildProject(config, {
   onReport: function (report) {
     console.log('Migracao compilada: ' + report.bytes + ' bytes, ' + report.gzipBytes + ' gzip, ' + report.embeddedTemplates + ' templates.');
   }
-}).then(buildLab).then(function () {
+}).then(buildLab).then(buildReference).then(function () {
   if (process.argv.indexOf('--with-legacy-engine') >= 0) return buildEngine();
 }).catch(function (error) {
   console.error(error.message || error);

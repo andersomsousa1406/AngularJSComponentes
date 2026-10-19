@@ -32,6 +32,16 @@ export default EasyComponents.defineComponent('gc-lookup', {
   state: function () { return { query: '', open: false, lookup: null, activeIndex: -1 }; },
 
   computed: {
+    displayColumns: function () {
+      if (this.columns.length || !this.lookup) return this.columns;
+      var signature = JSON.stringify(this.lookup.option.campos_tabela);
+      if (this._columnSignature !== signature) {
+        this._columnSignature = signature;
+        this._displayColumns = this.lookup.option.campos_tabela.map(function (column) { return { key: column[0], label: column[1] }; });
+      }
+      return this._displayColumns;
+    },
+    resultsStyle: function () { return this.lookup && this.lookup.option.tamanho_tabela ? { width: this.lookup.option.tamanho_tabela + 'px', right: 'auto' } : {}; },
     visibleItems: function () {
       var query = text(this.query);
       var columns = this.columns;
@@ -43,7 +53,8 @@ export default EasyComponents.defineComponent('gc-lookup', {
     selectedLabel: function () {
       var value = this.value || (this.lookup && this.lookup.selected);
       if (!value) return '';
-      var first = this.columns[0];
+      if (this.lookup) return this.lookup.option.obj_ret.map(function (field) { return value[field]; }).filter(function (part) { return part != null; }).join(' - ');
+      var first = this.displayColumns[0];
       return first ? value[first.key] : value[this.trackBy];
     }
   },

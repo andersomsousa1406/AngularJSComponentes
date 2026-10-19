@@ -3,6 +3,7 @@
     <div class="lab-brand"><span class="lab-mark">EC</span><div>EasyComponents<small>Laboratório de migração</small></div></div>
     <div class="lab-environment"><span></span> Ambiente de teste local</div>
     <nav aria-label="Componentes">
+      <a class="btn btn-default" href="22430.html">Tela 22430 · referência real</a>
       <button type="button" ng-repeat="tab in vm.tabs track by tab.id" ng-click="vm.selectTab(tab.id)" ng-class="{ active: vm.active === tab.id }" ng-attr-aria-current="{{ vm.active === tab.id ? 'page' : undefined }}">{{ tab.label }}</button>
     </nav>
     <div class="lab-sidebar-note">AngularJS 1.8.4<br>EasyComponents · Bootstrap 3<br>Dados sintéticos em memória</div>

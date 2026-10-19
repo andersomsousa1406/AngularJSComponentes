@@ -16,6 +16,8 @@ Acesse `http://127.0.0.1:4173/legacy-migration/lab.html`. O script seleciona Nod
 
 O laboratorio tem abas para todos os componentes de interface e testes de servicos, respostas em memoria, eventos e inspecao dos payloads. Nenhuma requisicao de componente e enviada ao GCWeb. A pasta `C:\xampp\htdocs` nao e alterada.
 
+A referencia da tela enviada fica em `http://127.0.0.1:4173/legacy-migration/22430.html`, tambem acessivel pelas demonstracoes. Veja [escopo e diferencas da conversao 22430](reference-22430/README.md). O teste `npm run test:migration:22430` exercita os componentes no Chrome/Edge local.
+
 O build normal gera somente os componentes novos, a demonstracao e o laboratorio. Para regenerar o bundle antigo opcional, use `npm run build:legacy:compat`.
 
 ## Estrategia
@@ -23,6 +25,7 @@ O build normal gera somente os componentes novos, a demonstracao e o laboratorio
 - UI vira componente declarativo com `EasyComponents.defineComponent`.
 - HTML e CSS ficam ao lado do JavaScript para permitir navegacao e autocomplete no VS Code.
 - As classes usadas nos templates continuam compativeis com Bootstrap 3.
+- A tabela preserva o tema Bootstrap 3/GCWeb: `table-ec`, `tabelaJS`, `table-low`, cabecalho azul `#337ab7`, linhas compactas, totalizadores cinza, marcacao e legendas de contagem. `HEIGHT`, `WIDTH`, `MIN_HEIGHT`, `MAX_HEIGHT`, `zoom`, `ALIGN`, `SIZE_CELL`, `STYLE`, `STYLE_HEADER`, `HIDDEN` e `VISIBLE` sao aplicados pelo template declarativo.
 - Acesso a AJAX, impressoras, RFID e reconhecimento de voz permanece em servicos injetaveis; esses recursos nao devem manipular ou compilar HTML.
 - Variacoes Bootstrap 4/5 e arquivos duplicados nao geram componentes repetidos.
 

@@ -88,7 +88,11 @@ async function main() {
   first.resolve([{ ID: 1 }]); await a; assert.equal(lookup.dados[0].ID, 2);
   console.log('OK: payload de consulta, dependencias, selecao, paginacao e respostas fora de ordem.');
 
-  var grid = load('grid-client').createGridClient({ DADOS: [{ ID: 1, NOME: '<Ana>', VALOR: 2 }, { ID: 2, NOME: 'Bruno', VALOR: 3 }],
+  var gridModule = load('grid-client');
+  var columns = gridModule.normalizeColumns([{ CAMPO: 'ID' }, { CAMPO: 'ID', HIDDEN: true }, { CAMPO: 'NOME', VISIBLE: false }]);
+  assert.notEqual(columns[0].id, columns[1].id);
+  assert.equal(columns[1].visible, false); assert.equal(columns[2].visible, false);
+  var grid = gridModule.createGridClient({ DADOS: [{ ID: 1, NOME: '<Ana>', VALOR: 2 }, { ID: 2, NOME: 'Bruno', VALOR: 3 }],
     COLUNAS: [{ CAMPO: 'NOME', DESCRICAO: 'Nome', VISIBLE: true }, { CAMPO: 'VALOR', DESCRICAO: 'Valor', TOTAL: true }] });
   assert.equal(grid.TotalTabela().VALOR, 5); grid.MarcarItens(); assert.equal(grid.counter_selected, 2);
   grid.DesmarcarItens(); assert.equal(grid.counter_selected, 0);
@@ -98,6 +102,21 @@ async function main() {
   grid.filtro = ''; grid.FiltrarTabela(); grid.groupBy = ['VALOR']; assert.equal(grid.groups().length, 2);
   assert.deepEqual(json(grid.next(grid.DADOS[0])), { ITEM: json(grid.DADOS[1]), POS: 2, PRIMEIRO: false, ULTIMO: true });
   console.log('OK: tabela filtra, agrupa, totaliza, marca, exporta e navega.');
+  var menu = gridModule.gridMenu({ menu_drop: { GRUPOS: [{ DESC: 'Grupo A', OPCAO: [{ desc: 'Primeira' }] }, { DESC: 'Grupo B', OPCAO: [{ desc: 'Segunda' }] }] } });
+  assert.deepEqual(json(menu).map(function (item) { return [item._MENU_TIPO, item._MENU_NUMERO || 0]; }), [['CABECALHO', 0], ['OPCAO', 1], ['CABECALHO', 0], ['OPCAO', 2]]);
+  var style = gridModule.gridCellStyle({ CAMPO: 'VALOR', STYLE_OPT: { funcao: function (row) { return row.BLOQ_PED ? 'color:red' : ''; } }, STYLE_OPT_PARAM: { funcao: function (row, value) { return 'opacity:' + value; } }, PARAM_STYLE: 0.5 }, { BLOQ_PED: 1, ESTILOS_CALCULADOS: { VALOR: 'background:pink' } });
+  assert(style.includes('color:red')); assert(style.includes('opacity:0.5')); assert(style.includes('background:pink'));
+  var pageCalls = [], failPage = true;
+  var pagedGrid = gridModule.createGridClient({ consulta_qtd: 2, infinite_scroll: true }, { load: function (request) {
+    pageCalls.push(request.PAGINA);
+    if (request.PAGINA === 2 && failPage) { failPage = false; return Promise.reject(new Error('sem rede')); }
+    return Promise.resolve(request.PAGINA === 0 ? [{ ID: 1 }, { ID: 2 }] : [{ ID: 3 }]);
+  } });
+  await pagedGrid.loadPage(0, false); await assert.rejects(pagedGrid.NextPage(), /sem rede/);
+  assert.equal(pagedGrid.consulta_pagina, 0); await pagedGrid.NextPage();
+  assert.deepEqual(pageCalls, [0, 2, 2]); assert.equal(pagedGrid.DADOS.length, 3); assert.equal(pagedGrid.infinite_end, true);
+  await pagedGrid.NextPage(); assert.equal(pageCalls.length, 3);
+  console.log('OK: BTN3 agrupa e numera menus; estilos condicionais e pagina com falha preservam contratos.');
 
   var crudCalls = [];
   var crud = load('crud-client').createCrudClient({ post: function (url, data) {

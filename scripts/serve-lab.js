@@ -25,5 +25,6 @@ var server = http.createServer(function (request, response) {
 server.on('error', function (error) { console.error(error.message); process.exitCode = 1; });
 server.listen(Number(process.env.LAB_PORT || 4173), '127.0.0.1', function () {
   console.log('Laboratorio local: http://127.0.0.1:' + server.address().port + '/legacy-migration/lab.html');
+  console.log('Referencia 22430: http://127.0.0.1:' + server.address().port + '/legacy-migration/22430.html');
   console.log('Encerrar: Ctrl+C. Dados e requisicoes do laboratorio sao simulados.');
 });
