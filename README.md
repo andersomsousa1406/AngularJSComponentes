@@ -4,7 +4,7 @@ Uma camada pequena sobre `module.component()` para escrever componentes AngularJ
 
 Ela nao substitui o AngularJS nem cria um framework paralelo. O resultado continua sendo um componente AngularJS normal, compativel com templates, injecao de dependencias, transclusao e ferramentas existentes.
 
-O [GCWeb UI Kit](ui-kit/README.md) traz 17 componentes novos inspirados no gcweb-evolution: botoes, campos, busca, selecao, status, cards, dialogos e notificacoes. Execute `npm run demo:ui` ou `powershell -ExecutionPolicy Bypass -File .\testar-componentes.ps1 -Ui` para abrir o catalogo em `http://127.0.0.1:4173/ui-kit/index.html`.
+O [GCWeb UI Kit](ui-kit/README.md) traz 27 componentes novos inspirados no gcweb-evolution: botoes, formularios, arquivos, busca, selecao, abas, menus, status, cards, confirmacao, dialogos e notificacoes. Execute `npm run demo:ui` ou `powershell -ExecutionPolicy Bypass -File .\testar-componentes.ps1 -Ui` para abrir o catalogo em `http://127.0.0.1:4173/ui-kit/index.html`.
 
 ## Uso rapido
 

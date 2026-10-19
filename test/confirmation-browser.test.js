@@ -151,7 +151,7 @@ async function main() {
         var uiScreenshot = await call('Page.captureScreenshot', { format: 'png' });
         fs.mkdirSync(path.join(root, 'test/artifacts'), { recursive: true }); fs.writeFileSync(path.join(root, 'test/artifacts/ui-kit.png'), Buffer.from(uiScreenshot.data, 'base64'));
       }
-      console.log('OK: UI Kit valida botoes, carregamento, campos controlados, busca com teclado, select, switch, dialogo, toast, progresso e 4 abas em celular, sem componentes antigos.');
+      console.log('OK: UI Kit valida botoes, formularios, arquivos, busca, abas, menus, confirmacao, dialogos, avisos, notificacoes e responsividade, sem componentes antigos.');
       return;
     }
     if (referenceMode) {

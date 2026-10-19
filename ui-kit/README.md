@@ -1,6 +1,6 @@
 # GCWeb UI Kit
 
-17 componentes novos para a arquitetura EasyComponents deste repositorio, inspirados em `C:\Projetos\gcweb-evolution\Frontend\src\components`. O projeto de referencia foi consultado somente para leitura. Esta e uma biblioteca nova; nao e uma conversao dos componentes antigos nem uma copia das dependencias Angular/CoreUI daquele projeto.
+27 componentes novos para a arquitetura EasyComponents deste repositorio, inspirados em `C:\Projetos\gcweb-evolution\Frontend\src\components`. O projeto de referencia foi consultado somente para leitura. Esta e uma biblioteca nova; nao e uma conversao dos componentes antigos nem uma copia das dependencias Angular/CoreUI daquele projeto.
 
 Os componentes usam AngularJS 1.8 e EasyComponents ja disponiveis aqui. Nao precisam de Bootstrap, Font Awesome, CoreUI, servidor ou servico externo. Icones SVG locais, estilos com escopo e templates acompanham os arquivos JavaScript.
 
@@ -60,8 +60,18 @@ Valores booleanos, arrays, objetos e `model` usam expressoes. Textos usam atribu
 | `g-card` | `title`, `description`, `icon`, `padded` | Conteudo livre por transclusao |
 | `g-toolbar` | `eyebrow`, `title`, `description` | Acoes por transclusao |
 | `g-empty-state` | `title`, `description`, `icon` | Acoes por transclusao |
-| `g-modal` | `open`, `title`, `description`, `size`: sm/md/lg, `busy`, `close-on-backdrop`, `confirm-text`, `cancel-text` | Conteudo por transclusao; `on-close`: motivo; `on-confirm` |
+| `g-modal` | `open`, `title`, `description`, `size`: sm/md/lg, `busy`, `close-on-backdrop`, `confirm-text`, `confirm-color`, `cancel-text` | Conteudo por transclusao; `on-close`: motivo; `on-confirm` |
 | `g-toast` | Usa o servico `GToast` | `on-dismiss`: id |
+| `g-checkbox` | `model`, `label`, `description`, `required`, `is-disabled`, `indeterminate` | `on-change`: booleano; suporta estado misto |
+| `g-radio-group` | `model`, `options`: `{value,label,description?,disabled?}[]`, `label`, `required`, `is-disabled`, `inline` | `on-change`: valor da opcao; comparacao estrita de tipos |
+| `g-textarea` | `model`, `label`, `placeholder`, `rows`, `max-length`, `required`, `readonly`, `is-disabled`, `erro`, `hint` | `on-change`, `on-blur`: texto; contador e limite de caracteres |
+| `g-number-input` | `model`: numero/null, `label`, `min`, `max`, `step` (texto), `required`, `readonly`, `is-disabled`, `erro`, `hint` | `on-change`: numero/null; `on-validity`: `{valid,value,error}` |
+| `g-date-input` | `model`: texto ISO, `label`, `min`, `max`, `required`, `readonly`, `is-disabled`, `erro`, `hint` | `on-change`: YYYY-MM-DD ou vazio; `on-validity`: `{valid,value,error}` |
+| `g-file-upload` | `files`: `File[]`, `label`, `accept`, `multiple`, `max-files`, `max-size-mb`, `is-disabled` | `on-change`: nova lista; `on-reject`: `{file,error}[]`; clique/arraste/remocao |
+| `g-dropdown` | `text`, `icon`, `items`: `{id,label,icon?,disabled?,separator?,destructive?}[]`, `align`: start/end, `is-disabled` | `on-select`: item original; setas/Home/End/Escape e clique fora |
+| `g-tabs` | `items`: `{id,label,icon?,badge?,disabled?}[]`, `active`, `label` | `on-change`: id; conteudo por transclusao; setas/Home/End |
+| `g-confirm` | `open`, `title`, `message`, `confirm-text`, `cancel-text`, `color`, `busy` | `on-confirm`; `on-cancel`: motivo; composicao de g-modal |
+| `g-alert` | `visible`, `title`, `message`, `color`: info/success/warning/danger, `dismissible` | `on-dismiss`; conteudo adicional por transclusao |
 
 Cores de botao: primary, secondary, success, danger, warning, info, light, dark e link. Variantes: solid, outline, ghost. Tamanhos: sm, md, lg, xl, xxl. Formatos: rounded, pill, square, circle. Botoes somente com icone devem receber `aria-label`.
 
@@ -85,3 +95,50 @@ O modal usa `<dialog>` nativo em navegadores modernos: foco contido, fundo inert
 Injete `GToast` na pagina (`inject: { toast: 'GToast' }`). Use `toast.success(titulo, mensagem)`, `danger`, `warning` ou `info`. `show(titulo, mensagem, cor, duracaoMs)` retorna um id; `dismiss(id)` remove a mensagem. Duracao 0 mantem a mensagem ate fechamento manual. O limite e de cinco mensagens; timers sao cancelados na remocao e destruicao da aplicacao. Renderize um `g-toast` por aplicacao.
 
 Os tokens CSS `--g-primary`, `--g-border` e `--g-focus` personalizam a base sem mudar os componentes. A pagina do catalogo demonstra composicao e eventos reais com dados locais.
+
+## Formularios avancados
+
+```html
+<g-checkbox label="Conferencia concluida" model="vm.conferido"
+  on-change="vm.conferido = $value"></g-checkbox>
+<g-radio-group label="Prioridade" model="vm.prioridade"
+  options="vm.prioridades" on-change="vm.prioridade = $value"></g-radio-group>
+<g-textarea label="Observacoes" model="vm.observacoes" max-length="240"
+  on-change="vm.observacoes = $value"></g-textarea>
+<g-number-input label="Valor" model="vm.valor" min="0" max="10000" step="0.01"
+  on-change="vm.valor = $value" on-validity="vm.valorValido = $value.valid"></g-number-input>
+<g-date-input label="Entrega" model="vm.data" min="2026-01-01"
+  on-change="vm.data = $value"></g-date-input>
+<g-file-upload files="vm.anexos" accept=".pdf,.txt,image/*"
+  max-files="3" max-size-mb="2" on-change="vm.anexos = $value"
+  on-reject="vm.arquivosRejeitados = $value"></g-file-upload>
+```
+
+`g-number-input` preserva numeros e emite `null` quando vazio. Limites e incrementos usam a validacao nativa; valores fora dos limites sao informados por `on-validity`, sem arredondar ou limitar silenciosamente o valor. `g-date-input` preserva o texto ISO sem criar objetos Date ou converter fusos. Campos numericos usam o evento de entrada; datas usam o evento de alteracao do seletor nativo. O teclado e a apresentacao seguem o navegador e sua localidade.
+
+`g-file-upload` seleciona arquivos locais, aceita arraste e permite remover anexos. `accept` admite extensoes, MIME e grupos como `image/*`; tamanho e quantidade sao verificados na selecao. Arquivos com mesmo nome, tamanho e ultima modificacao nao sao duplicados. No modo unico (`multiple="false"`), uma nova selecao aceita substitui a anterior. Se todos os arquivos forem rejeitados, a selecao anterior e preservada. O componente nao envia arquivos ao servidor: a pagina recebe objetos File e decide como envia-los. A validacao do backend continua pertencendo ao fluxo de envio.
+
+## Abas, menus, avisos e confirmacao
+
+```html
+<g-tabs items="vm.abas" active="vm.aba" on-change="vm.aba = $value">
+  <div ng-switch="vm.aba">
+    <section ng-switch-when="geral">Dados gerais</section>
+    <section ng-switch-when="historico">Historico do registro</section>
+  </div>
+</g-tabs>
+<g-dropdown text="Acoes" items="vm.acoes" on-select="vm.executar($value)"></g-dropdown>
+<g-confirm open="vm.confirmando" title="Excluir registro?"
+  message="Confirme a exclusao do registro selecionado." color="danger"
+  busy="vm.excluindo" confirm-text="Sim, excluir"
+  on-confirm="vm.excluir()" on-cancel="vm.confirmando = false"></g-confirm>
+<g-alert visible="vm.mostrarAviso" color="warning" title="Confira os dados"
+  message="Ha informacoes pendentes." dismissible="true"
+  on-dismiss="vm.mostrarAviso = false"></g-alert>
+```
+
+Abas e formularios mantem o estado na pagina. Informe um id de aba habilitada em `active` e atualize-o em `on-change`; o componente renderiza um painel por transclusao. O menu mantem apenas seu estado de abertura, ignora opcoes desabilitadas e entrega o objeto escolhido. Escape devolve o foco ao botao de abertura. Separadores usam `{separator:true}`.
+
+`g-confirm` reutiliza o foco e os eventos do modal e nao fecha por clique no fundo. O pai decide quando fechar apos confirmar; `busy` bloqueia confirmacao, cancelamento e Escape durante a operacao. `g-alert` tambem depende do estado do pai para ocultar o aviso apos `on-dismiss`.
+
+O catalogo tem seis areas: botoes, campos, formularios avancados, abas e menus, feedback e estrutura. O teste de navegador cobre tipos dos valores, limites numericos e de data, arquivos aceitos/rejeitados e limites, selecao unica/multipla, teclado nas abas e menus, cancelamento/confirmacao, bloqueio por busy e layout em celular.
