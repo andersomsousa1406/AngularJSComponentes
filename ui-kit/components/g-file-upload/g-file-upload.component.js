@@ -5,6 +5,7 @@ export default EasyComponents.defineComponent('g-file-upload', {
   props: { files: EasyComponents.array(() => []), label: EasyComponents.text('Anexos'), accept: EasyComponents.text(''), multiple: EasyComponents.boolean(true), maxFiles: EasyComponents.number(5), maxSizeMb: EasyComponents.number(10), isDisabled: EasyComponents.boolean(false), onChange: EasyComponents.event(), onReject: EasyComponents.event() },
   state: function () { return { uid: 'g-file-' + ++sequence, errors: [], dragging: false }; },
   methods: {
+    syncInput: function () { const input = this.$element[0].querySelector('input'); if (input) input.multiple = this.multiple; },
     add: function (files) {
       if (this.isDisabled) return;
       const result = this.multiple ? this.files.slice() : [], rejected = [], accepted = this.accept.toLowerCase().split(',').map(value => value.trim()).filter(Boolean);
@@ -24,5 +25,5 @@ export default EasyComponents.defineComponent('g-file-upload', {
     drop: function (event) { event.preventDefault(); this.dragging = false; if (event.dataTransfer) this.add(event.dataTransfer.files); },
     remove: function (index) { if (!this.isDisabled) this.$emit('onChange', this.files.filter((file, offset) => offset !== index)); },
     size: function (bytes) { return bytes < 1048576 ? Math.max(1, Math.round(bytes / 1024)) + ' KB' : (bytes / 1048576).toFixed(1) + ' MB'; }
-  }, template, styles, scoped: true
+  }, hooks: { postLink: function () { this.syncInput(); }, onChanges: function () { this.syncInput(); } }, template, styles, scoped: true
 });

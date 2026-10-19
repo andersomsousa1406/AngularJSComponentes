@@ -133,6 +133,12 @@ async function main() {
       await call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
       await call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
       assert(await evaluate("(async function () { await new Promise(function (resolve) { setTimeout(resolve, 40); }); return !document.querySelector('g-modal dialog').open && document.activeElement === document.querySelector('main.content > g-toolbar button'); }())"), 'Escape ou restauracao de foco falhou.');
+      var additions = await evaluate('(' + require('./ui-kit-additions-browser.js').toString() + ')()');
+      assert.deepEqual(additions, { checked: true, disabledCheckbox: true, priority: 'urgent', disabledRadio: true, notes: 'Conferir etiquetas.', maxLength: 240,
+        numberInvalid: true, amount: 12.75, numberValid: true, emptyNumber: true, externalNumber: '88.5', dateInvalid: true, date: '2026-11-09', dateValid: true,
+        multiple: true, acceptedFiles: ['nota.txt'], rejectedFiles: 2, fileErrors: 2, dropped: 2, maxFiles: 3, limitError: true, removedFiles: 2,
+        tab: 'history', tabPanel: true, keyboardTab: 'history', wrappedTab: 'general', disabledTab: true, menuOpen: true, menuSkippedDisabled: true,
+        menuEscaped: true, confirmOpen: true, canceled: true, confirmed: true, alertDismissed: true, singleFile: true, disabledUpload: true, busyBlocked: true, cancelAfterBusy: true });
       await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
       var uiOverflow = await evaluate(`(function () { var scope = angular.element(document.querySelector('g-catalog')).isolateScope(), bad = []; scope.vm.tabs.forEach(function (tab) { scope.vm.active = tab.id; scope.$root.$digest(); if (document.documentElement.scrollWidth > 391) bad.push(tab.id); }); return bad; }())`);
       assert.deepEqual(uiOverflow, []);

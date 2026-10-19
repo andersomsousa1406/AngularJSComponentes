@@ -13,7 +13,7 @@ export default EasyComponents.defineComponent('g-modal', {
       const rect = this._dialog.getBoundingClientRect();
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) this.close('backdrop');
     },
-    sync: function () { if (!this._dialog) return; if (this.open && !this._dialog.open) this._dialog.showModal(); else if (!this.open && this._dialog.open) this._dialog.close(); }
+    sync: function () { if (!this._dialog || !this._dialog.isConnected) return; if (this.open && !this._dialog.open) this._dialog.showModal(); else if (!this.open && this._dialog.open) this._dialog.close(); }
   },
   hooks: {
     postLink: function () {
